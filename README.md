@@ -93,10 +93,15 @@ flowchart
 - [Later] Providing extra resources (scrap metal + precious metal) will result in an "investment" (increases in frequency of more powerful "tribally branded" surprise vehicles to convoy)
 
 **Hire Mercenaries**
+|Chassis|Specs|Machine Gun|Double Missile|Cannon|
+|---|---|---|---|---|
+|---|---|Short Range, High Fire Rate, Low Damage|Medium, Medium, Medium|Long Range, Slow Fire Rate, High Damage|
+|Buggy|Fast, East to Destroy, Low Gas|X|X|-|
+|Light Rider|Normal, Normal, Normal|X|X|X|
+|Armoured Rider|Slow, Hard to Destroy, High Gas|-|X|X|
+
 - Found while exploring in procedurally generated "points of interest"
-- Mercenary's armoured cars are generated in a random configuration 
-  - Chassis: Light (fast-weak), Medium (medium-medium), Heavy (slow-heavy)
-  - Turret: Long Range slow, Medium Range medium, short range fast
+- Mercenary's armoured cars are generated in a random configuration
   - [Later] Ram: Heavy (gas intensive)?, Medium, Light
 - Approaching mercenaries displays prompt showing precious metal cost and car stats
   - Honk to start dialogue
