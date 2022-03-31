@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668830299185360541, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_Name
-      value: Player Controller
+      value: PlayerController
       objectReference: {fileID: 0}
     - target: {fileID: 7668830299661638215, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_Enabled
@@ -127,11 +127,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7668830300499184786, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7668830300565591115, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7668830299661638215, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+    - {fileID: 7668830300565591115, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+    - {fileID: 7668830300499184786, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
 --- !u!1 &4064686241454495610 stripped
 GameObject:
@@ -141,6 +148,11 @@ GameObject:
 --- !u!1 &4064686240303372657 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7668830300565591113, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+  m_PrefabInstance: {fileID: 5910273157381852472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4064686240346407336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7668830300499184784, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
   m_PrefabInstance: {fileID: 5910273157381852472}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &237290544
@@ -263,6 +275,79 @@ MonoBehaviour:
       - m_Name: 
         m_Id: c8bf273d-9e8e-483e-9f49-08405bd05055
         m_Path: <XRController>{LeftHand}/deviceRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_HasMigratedActions: 1
+--- !u!114 &2147940713159723149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064686240346407336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e4a9118e-86d9-4cfc-9594-1720ed4554f7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 34967215-a860-4200-b426-d4c2357e39ee
+        m_Path: <XRHMD>/devicePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 5cae1610-42ec-459d-a72a-de3f67f3d61a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: c6ef2296-4235-428c-8a19-c6f1e22518bb
+        m_Path: <XRHMD>/deviceRotation
         m_Interactions: 
         m_Processors: 
         m_Groups: 
