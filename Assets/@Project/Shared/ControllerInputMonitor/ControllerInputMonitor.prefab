@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5843982289128224519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390145680754551857}
+  - component: {fileID: 1240125020492447963}
+  m_Layer: 0
+  m_Name: ControllerInputMonitor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390145680754551857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843982289128224519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240125020492447963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843982289128224519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e02668e69f27146b5d25b337078b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightToggleThumbstick:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Right Toggle Thumbstick
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 83eab8ac-5289-46fd-bbf8-a20cde06dc92
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: da17a323-ce4d-447e-87b9-529134299e85
+        m_Path: <XRController>{RightHand}/thumbstick
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Right Toggle Thumbstick
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 8650556816782149517, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  rightToggleThumbstickClick:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Right Toggle Thumbstick Click
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 873657e0-d638-46db-b922-01699d223aa2
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 5bcc1598-c106-4987-91b5-9a46fe9bd45e
+        m_Path: <XRController>{RightHand}/thumbstickClicked
+        m_Interactions: Press
+        m_Processors: 
+        m_Groups: 
+        m_Action: Right Toggle Thumbstick Click
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  rightControllerTrigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Controller Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f9aee022-a674-410c-b725-a24eba2d9e70
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8650556816782149517, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  rightControllerGrip:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Controller Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 01f90d40-2206-4573-8410-9ca49cf1550f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4456888692727725139, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  rightControllerB:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Right Controller B
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 468e5ddc-39b5-4c48-b1ee-6a17eb62a89f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 8583bddb-dd38-41e9-881e-a59ef82b7922
+        m_Path: <XRController>{RightHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Right Controller B
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: -2312345087674482032, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  rightControllerA:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Controller A
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d80e3df7-d7fb-40ef-8e3d-b05662f3e353
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2312345087674482032, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  leftToggleThumbstick:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Toggle Thumbstick
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: dbadc6ed-8351-4a28-8ab4-9e531ab66cab
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 8168fcef-5c95-4d0f-8d54-c9d236fb1d8c
+        m_Path: <XRController>{LeftHand}/thumbstick
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Toggle Thumbstick
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  leftToggleThumbstickClick:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Toggle Thumbstick Click
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b5f5997a-70f9-4cae-a0b5-9ee1d2e52e0a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 41dbfcdd-e9b6-4e64-82c1-2ccb07253a8b
+        m_Path: <XRController>{LeftHand}/thumbstickClicked
+        m_Interactions: Press
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Toggle Thumbstick Click
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  leftControllerTrigger:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Controller Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: abcc3b87-0cf1-4035-955e-73a2e5ddb217
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7463617642279240396, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  leftControllerGrip:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Controller Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3311ee52-2b91-4ebe-9d0b-f929ffc75486
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1890700126832101716, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  leftControllerY:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Controller Y
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 63415b9c-9603-40f6-839e-40f4704276c3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 8cc294ab-b204-4ac9-838e-d983d6e510ce
+        m_Path: <XRController>{LeftHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Controller Y
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  leftControllerX:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Controller X
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6066909b-7823-4706-9118-83f69e9d8ac3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4235571679551039572, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
