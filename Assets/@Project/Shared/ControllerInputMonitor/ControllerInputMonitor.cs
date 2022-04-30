@@ -129,10 +129,19 @@ namespace DuneRiders.Shared {
 			_window = ScriptableObject.CreateInstance<ControllerInputMonitorWindow>();
 			EditorWindow.GetWindow<ControllerInputMonitorWindow>(_window).Show();
 
-			rightToggleThumbstickClick.action.Enable();
 			rightToggleThumbstick.action.Enable();
-			leftToggleThumbstickClick.action.Enable();
+			rightToggleThumbstickClick.action.Enable();
+			rightControllerTrigger.action.Enable();
+			rightControllerGrip.action.Enable();
+			rightControllerB.action.Enable();
+			rightControllerA.action.Enable();
+
 			leftToggleThumbstick.action.Enable();
+			leftToggleThumbstickClick.action.Enable();
+			leftControllerTrigger.action.Enable();
+			leftControllerGrip.action.Enable();
+			leftControllerY.action.Enable();
+			leftControllerX.action.Enable();
 		}
 
 		void FixedUpdate() {
