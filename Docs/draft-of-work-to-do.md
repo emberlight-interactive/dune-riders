@@ -1,7 +1,6 @@
 Dev Ops
 ---
 - Integrate tdd with nunit?
-- Add visible "button presses" for ttd to help future freelancers
 - Add github issue templates for 
   - Environment/Rooms
   - Gameplay element
@@ -35,7 +34,7 @@ Dev Ops
 Build Player's Rider
   - Interior model
     - Windsheild and side door windows
-    - Rear view door mirrors
+    - Rear view door mirrors?
     - Resource stats panel for 3 current resources and burn rate / number of vechiles???
     - Panel for villages fuel status?
     - Should have sufficent space between player and front windshield for hand gestures
