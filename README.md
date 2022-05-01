@@ -60,8 +60,8 @@ flowchart
 ```
 
 **Drive**
-- b -> Accelerate
-- a -> break / reverse
+- b (or right trigger) -> Accelerate
+- a (or left trigger) -> break / reverse
 - y -> Shoot
 - x -> reload ? package weapon ? swap weapon type ?
 - Tap x -> Swap weapon, Hold x -> retract weapon system
