@@ -110,6 +110,10 @@ flowchart
 
 **Battle Other Companies**
 - Randomly generated groups crossing the player
+- Player needs to be able to have access to
+  - Attack command
+  - Follow command
+  - Wait here command
 - Player can choose to engage based on what they can see
 - Cars attack once the player gets too close or shoots at the convoy
 - Cars have battle AI that allows them a primitive sense of strategy and aiming
@@ -125,8 +129,12 @@ flowchart
 
 **Assault Outposts**
 - Procedurally generated throughout desert
-- Can have a 4, 6 or 10 turret configuration
-- Upon destruction drops resources 
+- Can have a 4 or 8 turret configuration
+  - Turrets "lob" shots with longer delays to dodge the farther you are
+- Upon destruction drops massive resources
+- Calls in a huge defensive raid, puts player under time pressure to destroy turrets to stop friendly cars dying
+- Turrets drop precious metals, drops nothing if main structure is targeted only
+- Turrets / Outpost health respawn after failed raid
 
 ### Resource Types
 
@@ -149,3 +157,4 @@ When gas is provided for the last migration to the ring the camera fades black a
 - Battles are fun
 - The honk and thumbs up thumbs down strategy is helpful
 - Quest 2 hardware can handle a procedural environment with a battle between 10 v 10 vehicle entities
+- How to recover from massive loss? (Maybe massive loss is not possible? Abundance of mercs bound only by gas limitations?, auto retreat, load last save?)
