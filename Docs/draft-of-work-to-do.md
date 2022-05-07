@@ -1,7 +1,7 @@
 Dev Ops
 ---
 - Integrate tdd with nunit?
-- Save system enhancement (all one file)
+- Save system enhancement (all one file) (purchase Easy Save)
 - Add github issue templates for 
   - Environment/Rooms
   - Gameplay element
@@ -78,6 +78,7 @@ Build Player's Rider
       - Spheres with hand gesture inside with descriptive text for option
     - Slider system (on resource panel???) for amount transfers (slider, cancel, confirm | Yes / No)
   - Area for status text (saving, pausing, etc)
+  - Add system for car to reset when flipped on side
 
 - Build dialogue system
   - Honkable areas (have a floating icon of some sort) -> events
