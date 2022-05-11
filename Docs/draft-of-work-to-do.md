@@ -2,13 +2,6 @@ Dev Ops
 ---
 - Integrate tdd with nunit?
 - Save system enhancement (all one file) (purchase Easy Save)
-- Add github issue templates for 
-  - Environment/Rooms
-  - Gameplay element
-  - AI system
-  - UI system
-  - Event Triggers
-  - Player Controller
 
 
 - Emberlight interactive Splash logo
