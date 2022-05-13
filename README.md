@@ -60,10 +60,9 @@ flowchart
 ```
 
 **Drive**
-- b (or right trigger) -> Accelerate
-- a (or left trigger) -> break / reverse
+- b -> Accelerate
+- a -> break / reverse
 - y -> Shoot
-- x -> reload ? package weapon ? swap weapon type ?
 - Tap x -> Swap weapon, Hold x -> retract weapon system
 - Retracted weapon system allows the player to travel faster
 - Weapon types include

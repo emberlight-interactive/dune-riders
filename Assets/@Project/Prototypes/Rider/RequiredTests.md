@@ -1,0 +1,32 @@
+- Drive system
+  - Can accelerate (b)
+  - Can break / reverse via deceleration (a)
+  - Can turn via grips moving wheel
+- Command system
+  - Can pull down to initiate command, letting go returns it to neutral position
+  - When pulled down less than 20% it can be shifted forward, pulled
+  - and then pulled all the way back and down for the 3rd command 
+- Yes no system
+  - Honk to start dialogue
+  - Bring up yes / no dialogue
+  - Bubble to represent yes/ no
+    - Yes / No triggers confirm / cancel event
+    - Driving away cancels event
+    - Starting another honk dialogue cancels the previous one
+- Cannon System
+  - Acceleration before deployment of weapons should be fine
+  - Cannon should be deployed after tapping x 
+  - One reticle should follow hmd to indicate firing direction
+  - Another reticle should indicate where the cannon is actually aiming 
+  - Acceleration after deployment of weapons should be slower
+  - Tapping x should swap weapons (b will unresponsive during swapping)
+  - x should be able to fire the weapon
+  - reloading should be automatic
+  - turrets should reach only a medium range, medium reload
+  - Machine gun can reach as close as possible, overheat system
+  - cannon can only reach medium to long distance, long reload
+  - can package the weapon system by holding b
+- Car will be reset when off wheels
+
+
+
