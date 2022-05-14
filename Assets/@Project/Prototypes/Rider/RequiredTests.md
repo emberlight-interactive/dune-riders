@@ -20,13 +20,11 @@
   - Another reticle should indicate where the cannon is actually aiming 
   - Acceleration after deployment of weapons should be slower
   - Tapping x should swap weapons (b will unresponsive during swapping)
-  - x should be able to fire the weapon
+  - y should be able to fire the weapon
   - reloading should be automatic
   - turrets should reach only a medium range, medium reload
   - Machine gun can reach as close as possible, overheat system
   - cannon can only reach medium to long distance, long reload
   - can package the weapon system by holding b
+- Car gun range test
 - Car will be reset when off wheels
-
-
-
