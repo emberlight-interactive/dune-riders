@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.InputSystem;
 
+#if UNITY_EDITOR
 namespace DuneRiders.Shared {
 	public class ControllerInputMonitorWindow : EditorWindow {
 		public bool rightControllerTrigger = false;
@@ -173,3 +174,4 @@ namespace DuneRiders.Shared {
 		}
 	}
 }
+#endif
