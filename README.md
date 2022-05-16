@@ -7,11 +7,11 @@
 - Exploring (Travel procedural road looking for opportunities)
 - Building social status (build tribe, pay for new "mercenaries")
 - Escape the predator (later trying to escape bandit convoys)
-- Social Acceptance
+- Social Acceptance (Saving the tribe)
 
 ## High Concept
 
-Obtain fuel to support your village's survival and migration to "the ring" (security). With your own an armed vehicle, explore an open world, find points of interest to gather fuel, precious metal and scrap metals. Hire mercenaries to expand your company. Hunt bandit parties and crime convoys for higher payouts of resources to support your objectives.
+Obtain fuel to support your village's survival and migration to "the ring" (security). With your own an armoured vehicle, explore an open world, find points of interest to gather fuel, precious metal and scrap metals. Hire mercenaries to expand your company. Hunt bandit parties and crime convoys for higher payouts of resources to support your objectives.
 
 ## Story
 
