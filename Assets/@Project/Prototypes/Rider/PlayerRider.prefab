@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1568865100023096490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3509610618883477758}
+  - component: {fileID: 7373323930008563800}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3509610618883477758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568865100023096490}
+  m_LocalRotation: {x: -0, y: -0.70710564, z: -0, w: 0.70710796}
+  m_LocalPosition: {x: -2.459, y: 2.151, z: -0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4193219782736199961}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &7373323930008563800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568865100023096490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78067929e82ffa94bb77508fbbe99974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6119093443619386574, guid: 19be39a34ca99714faccba46ed0242f6, type: 3}
+  leftControllerY:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Controller Y
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 51768c59-87a7-436e-bc35-05e36bd98fdf
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 41312a3a-9304-40bf-b338-c2ef41cdfa7c
+        m_Path: <XRController>{LeftHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Controller Y
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1 &4193219780615575234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +2880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steeringWheel: {fileID: 4193219781816914076}
+  riderRB: {fileID: 4193219781603289157}
   rightControllerB:
     m_UseReference: 0
     m_Action:
@@ -2837,7 +2902,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   rightControllerA:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Right Controller A
       m_Type: 0
@@ -2845,9 +2910,17 @@ MonoBehaviour:
       m_Id: 64bd4b87-905f-4f82-8003-84282d818799
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 29d431d5-9ae9-4b92-b830-fc64f5beb961
+        m_Path: 
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Right Controller A
+        m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -2312345087674482032, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
   frontLeft: {fileID: 4193219782370188692}
   frontRight: {fileID: 4193219782394134308}
   backLeft: {fileID: 4193219781582956873}
@@ -5835,6 +5908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4193219782736199961}
+  - component: {fileID: 653946936309687252}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -5857,9 +5931,23 @@ Transform:
   - {fileID: 4193219781241578787}
   - {fileID: 4193219782041234667}
   - {fileID: 4193219781816436776}
+  - {fileID: 3509610618883477758}
   m_Father: {fileID: 4193219780869617541}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653946936309687252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4193219782736199958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da536cc7d9d6c742852663d866266d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceTranform: {fileID: 169419026945476269}
 --- !u!1 &4193219782747073294
 GameObject:
   m_ObjectHideFlags: 0
