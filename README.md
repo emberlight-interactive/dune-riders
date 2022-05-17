@@ -157,3 +157,8 @@ When gas is provided for the last migration to the ring the camera fades black a
 - The honk and thumbs up thumbs down strategy is helpful
 - Quest 2 hardware can handle a procedural environment with a battle between 10 v 10 vehicle entities
 - How to recover from massive loss? (Maybe massive loss is not possible? Abundance of mercs bound only by gas limitations?, auto retreat, load last save?)
+
+### Marketing
+
+- Instagram marketing can co inside with start of Only Us marketing
+- Testing methodologies can be released in blog posts and on reddit to passively market game 
