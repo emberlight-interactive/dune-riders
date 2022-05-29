@@ -1,0 +1,2 @@
+- Utilize DOTween; a small tweener library
+- Set up Odin Inspector
