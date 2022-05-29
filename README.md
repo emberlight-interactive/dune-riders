@@ -61,7 +61,7 @@ flowchart
 
 **Drive**
 - b -> Accelerate
-- a -> break / reverse
+- a -> Break / Reverse
 - y -> Shoot
 - Tap x -> Swap weapon, Hold x -> retract weapon system
 - Retracted weapon system allows the player to travel faster
