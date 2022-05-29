@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Sirenix.OdinInspector;
 
 public class FireBall : MonoBehaviour
 {
-	[SerializeField] Rigidbody bulletPrefab;
-	[SerializeField] InputActionProperty leftControllerY;
+	[BoxGroup("Components"), SerializeField] Rigidbody bulletPrefab;
+	[BoxGroup("Components"), SerializeField] InputActionProperty leftControllerY;
 
     // Start is called before the first frame update
     void Start()
