@@ -1,0 +1,647 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7640162673779549869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2819965715491389366}
+  - component: {fileID: 5622778860048005559}
+  - component: {fileID: 2923435012188681036}
+  - component: {fileID: 2272174040653693191}
+  - component: {fileID: 6352752342365971074}
+  m_Layer: 0
+  m_Name: Watch Tower 1A (Reinforced)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2819965715491389366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640162673779549869}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3346696642618344245}
+  - {fileID: 8982699146705894455}
+  - {fileID: 3675332732410400804}
+  - {fileID: 892129453957744352}
+  - {fileID: 4424612276218150870}
+  - {fileID: 6983977899983678731}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5622778860048005559
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640162673779549869}
+  m_Mesh: {fileID: 4300000, guid: 945306c7e9f3bcc42bf8195a0e617098, type: 3}
+--- !u!23 &2923435012188681036
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640162673779549869}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 42e4ad510f345a24a91c0fc17f26a929, type: 2}
+  - {fileID: 2100000, guid: 66193d19020d9bd4d80aae3bb9a8b0f6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &2272174040653693191
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640162673779549869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 945306c7e9f3bcc42bf8195a0e617098, type: 3}
+--- !u!205 &6352752342365971074
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640162673779549869}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.022496104, y: 5.8080482, z: -0.07361889}
+  m_Size: 11.943203
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.048633076
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2923435012188681036}
+  m_Enabled: 1
+--- !u!1001 &16496707189923866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 890552363643042522, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Shanty 1C (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5281067
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3929138
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785814717363321806, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 892129453960168448}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c05c4747dbd7616418a192c1e7a6c4d6, type: 3}
+--- !u!4 &892129453957744352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 16496707189923866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &892129453960168448 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 890552363644970010, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 16496707189923866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3547853286214523180
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 890552363643042522, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Shanty 1C (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6618881
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.387085
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071099
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071037
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -269.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3695
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785814717363321806, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 4424612276220575030}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c05c4747dbd7616418a192c1e7a6c4d6, type: 3}
+--- !u!4 &4424612276218150870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3547853286214523180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4424612276220575030 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 890552363644970010, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3547853286214523180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4210833064773320496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 679627900168696628, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Small Shanty 1B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5771103
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.934
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.2516174
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842835481322261116, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 3675332732408632004}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc4907a51f2018b4ab78dc3764dc6b2a, type: 3}
+--- !u!4 &3675332732410400804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 679627900168204052, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4210833064773320496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3675332732408632004 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 679627900166434292, guid: dc4907a51f2018b4ab78dc3764dc6b2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4210833064773320496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5300865499851559318
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 3834956225319727489, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Shanty 1D
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5518951
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.6770859
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071078
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000020540651
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000021755695
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830654484484594053, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 8982699146708188887}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af07fcbd4ccb51f43ad9e4dab0b10882, type: 3}
+--- !u!4 &8982699146705894455 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3834956225319890337, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+    type: 3}
+  m_PrefabInstance: {fileID: 5300865499851559318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8982699146708188887 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3834956225321660225, guid: af07fcbd4ccb51f43ad9e4dab0b10882,
+    type: 3}
+  m_PrefabInstance: {fileID: 5300865499851559318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7833996492571462641
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 890552363643042522, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Shanty 1C (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5281067
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.3929138
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785814717363321806, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 6983977899981385707}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c05c4747dbd7616418a192c1e7a6c4d6, type: 3}
+--- !u!4 &6983977899983678731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 890552363643070202, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7833996492571462641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6983977899981385707 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 890552363644970010, guid: c05c4747dbd7616418a192c1e7a6c4d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7833996492571462641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8723604943895539052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2819965715491389366}
+    m_Modifications:
+    - target: {fileID: 6296492594263880313, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_Name
+      value: Wood Fence Shanty 1B (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6058884
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.201233
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.4030838
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710784
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 49591340412746845, guid: 89e1b1781adf2534a84a08999b14cd2e,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].renderers.Array.data[0].renderer
+      value: 
+      objectReference: {fileID: 3346696642620768725}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89e1b1781adf2534a84a08999b14cd2e, type: 3}
+--- !u!4 &3346696642618344245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6296492594264174169, guid: 89e1b1781adf2534a84a08999b14cd2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8723604943895539052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3346696642620768725 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6296492594261879993, guid: 89e1b1781adf2534a84a08999b14cd2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8723604943895539052}
+  m_PrefabAsset: {fileID: 0}
