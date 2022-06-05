@@ -6,6 +6,9 @@ namespace DuneRiders.Prototype
 {
 	public class FollowCommand : BaseCommand
 	{
-
+		public override void ExecuteCommand()
+		{
+			base.ExecuteCommand();
+		}
 	}
-}}
+}

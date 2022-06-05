@@ -6,6 +6,9 @@ namespace DuneRiders.Prototype
 {
 	public class StopCommand : BaseCommand
 	{
-
+		public override void ExecuteCommand()
+		{
+			base.ExecuteCommand();
+		}
 	}
 }

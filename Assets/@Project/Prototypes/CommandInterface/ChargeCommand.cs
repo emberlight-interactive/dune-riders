@@ -6,6 +6,9 @@ namespace DuneRiders.Prototype
 {
 	public class ChargeCommand : BaseCommand
 	{
-
+		public override void ExecuteCommand()
+		{
+			base.ExecuteCommand();
+		}
 	}
 }
