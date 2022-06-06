@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DuneRiders.Shared;
+using UnityEngine.InputSystem;
 
 public enum HandDecision
 {
@@ -20,7 +21,9 @@ public class HandDecisionTrigger : MonoBehaviour
 
 	[BoxGroup("Variables"), SerializeField] private float decisionRegisterAngle = 40;
 
-	[BoxGroup("Components"), SerializeField] private ControllerInputMonitor inputMonitor;
+	// [BoxGroup("Components"), SerializeField] private ControllerInputMonitor inputMonitor;
+	[BoxGroup("Components"), SerializeField] private InputActionProperty rightControllerTrigger;
+	[BoxGroup("Components"), SerializeField] private InputActionProperty rightControllerGrip;
 	[BoxGroup("Components"), SerializeField] private BoxCollider triggerArea;
 
 	private bool handInside = false;
@@ -30,6 +33,8 @@ public class HandDecisionTrigger : MonoBehaviour
 	{
 		triggerArea = GetComponent<BoxCollider>();
 		handDecision = HandDecision.None;
+		rightControllerTrigger.action.Enable();
+		rightControllerGrip.action.Enable();
 	}
 
 	public void SetInteractive(bool state)
@@ -58,7 +63,7 @@ public class HandDecisionTrigger : MonoBehaviour
 		if (interactive == false)
 			return;
 
-		if (c.GetComponent<Autohand.Hand>() != null && inputMonitor.rightControllerGrip.action.IsPressed() && inputMonitor.rightControllerTrigger.action.IsPressed())
+		if (c.GetComponent<Autohand.Hand>() != null && rightControllerGrip.action.IsPressed() && rightControllerTrigger.action.IsPressed())
 		{
 			Vector3 eulerAngles = c.gameObject.transform.rotation.eulerAngles;
 			float result = eulerAngles.z - Mathf.CeilToInt(eulerAngles.z / -360f) * 360f;
