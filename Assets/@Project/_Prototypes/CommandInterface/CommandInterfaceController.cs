@@ -29,5 +29,5 @@ namespace DuneRiders.Prototype
 		}
 	}
 
-	//Create a collider setup where a slippery physics object and move back and forth but freezes it when its not at mid position
+	//Create a collider setup where a slippery physics object and move back and forth but freezes it when its not at mid position 
 }
