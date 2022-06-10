@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778872835816796988, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
       propertyPath: recorderTracePath
-      value: Assets/@Project/_Prototypes/Rider/Scenes/InputTraces/PlayerRiderYesNoPlayback.inputtrace
+      value: Assets/@Project/_Prototypes/Rider/Prefabs/DialogueInteraction/Scenes/InputTraces/PlayerRiderYesNoPlayback.inputtrace
       objectReference: {fileID: 0}
     - target: {fileID: 7778872835816796989, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
       propertyPath: m_Name
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778872835816796989, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
@@ -406,11 +406,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a1b5673d74f06449ac32f35c942cf09, type: 3}
---- !u!4 &661527382 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4193219780702239065, guid: 0a1b5673d74f06449ac32f35c942cf09, type: 3}
-  m_PrefabInstance: {fileID: 661527381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &773504239
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,12 +513,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832947627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 1.017, z: 0.379}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 1.0170002, z: 0.379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 661527382}
-  m_RootOrder: 2
+  m_Father: {fileID: 1018491854}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &832947629
 AudioSource:
@@ -745,6 +740,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1018491854 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4193219781521826499, guid: 0a1b5673d74f06449ac32f35c942cf09, type: 3}
+  m_PrefabInstance: {fileID: 661527381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1064341057
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +777,7 @@ RectTransform:
   m_Children:
   - {fileID: 1537429752}
   m_Father: {fileID: 1423235990}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 113.328, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1038,7 +1038,6 @@ Transform:
   m_LocalPosition: {x: 0.52, y: 1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2128893075}
   - {fileID: 1064341058}
   m_Father: {fileID: 478707170}
   m_RootOrder: 2
@@ -1971,12 +1970,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128893074}
-  m_LocalRotation: {x: -0, y: 0.06353748, z: -0, w: 0.99797946}
-  m_LocalPosition: {x: 0.395, y: 4.064, z: -0.08}
+  m_LocalRotation: {x: -0, y: 0.06353745, z: -0, w: 0.9979795}
+  m_LocalPosition: {x: 0.39500153, y: 1.2840004, z: 0.43999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1423235990}
-  m_RootOrder: 0
+  m_Father: {fileID: 1018491854}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 7.286, z: 0}
 --- !u!65 &2128893076
 BoxCollider:
@@ -2008,6 +2007,7 @@ MonoBehaviour:
   emptyTriggerColor: {r: 0, g: 0, b: 1, a: 0.29411766}
   occupiedTriggerColor: {r: 1, g: 0.5451757, b: 0.015686274, a: 0.29411766}
   decisionRegisterAngle: 40
+  triggerArea: {fileID: 2128893076}
   rightControllerTrigger:
     m_UseReference: 1
     m_Action:
@@ -2032,4 +2032,3 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -4456888692727725139, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
-  triggerArea: {fileID: 2128893076}

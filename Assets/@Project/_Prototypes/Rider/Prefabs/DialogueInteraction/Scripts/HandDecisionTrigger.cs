@@ -21,10 +21,10 @@ public class HandDecisionTrigger : MonoBehaviour
 
 	[BoxGroup("Variables"), SerializeField] private float decisionRegisterAngle = 40;
 
-	// [BoxGroup("Components"), SerializeField] private ControllerInputMonitor inputMonitor;
-	[BoxGroup("Components"), SerializeField] private InputActionProperty rightControllerTrigger;
-	[BoxGroup("Components"), SerializeField] private InputActionProperty rightControllerGrip;
 	[BoxGroup("Components"), SerializeField] private BoxCollider triggerArea;
+
+	[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerTrigger;
+	[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerGrip;
 
 	private bool handInside = false;
 	private bool interactive = false;

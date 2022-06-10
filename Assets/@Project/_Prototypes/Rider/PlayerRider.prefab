@@ -2929,7 +2929,6 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   currentAcceleration: 0
-  currentBreakForce: 0
   currentTurnAngle: 15
 --- !u!1 &4193219781626483954
 GameObject:
@@ -6057,6 +6056,14 @@ PrefabInstance:
     - target: {fileID: 170961879060193854, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 202833977575866088, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
+      propertyPath: collisionTriggers.m_Bits
+      value: 4026531959
+      objectReference: {fileID: 0}
+    - target: {fileID: 202833979113013446, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
+      propertyPath: collisionTriggers.m_Bits
+      value: 4026531959
       objectReference: {fileID: 0}
     - target: {fileID: 338608795435787491, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
       propertyPath: m_Layer
