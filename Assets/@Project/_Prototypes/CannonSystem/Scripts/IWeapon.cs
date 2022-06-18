@@ -9,5 +9,6 @@ namespace DuneRiders.Prototype
 		public void Shoot();
 		public void Reload();
 		public float GetCooldown();
+		public float GetRange();
 	}
 }

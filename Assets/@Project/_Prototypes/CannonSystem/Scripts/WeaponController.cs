@@ -40,9 +40,9 @@ namespace DuneRiders.Prototype
 				weaponIndex--;
 			else
 				weaponIndex = weapons.Count - 1;
-
-			print(weaponIndex);
 		}
+
+		//TODO Add shoot weapon with specific weapon's cooldown
 
 		private IEnumerator EnableWeapon(BaseWeapon weapon)
 		{

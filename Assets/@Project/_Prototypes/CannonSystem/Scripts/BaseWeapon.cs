@@ -7,6 +7,8 @@ namespace DuneRiders.Prototype
 	public class BaseWeapon : MonoBehaviour, IWeapon
 	{
 		[SerializeField] private float cooldown;
+		[SerializeField] private float range;
+		[SerializeField] private AnimationCurve damageCurve;
 
 		public virtual void Shoot()
 		{
@@ -21,6 +23,11 @@ namespace DuneRiders.Prototype
 		public virtual float GetCooldown()
 		{
 			return cooldown;
+		}
+
+		public virtual float GetRange()
+		{
+			return range;
 		}
 	}
 }
