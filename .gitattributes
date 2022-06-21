@@ -125,6 +125,11 @@
 # Input Recordings
 *.inputtrace        filter=lfs diff=lfs merge=lfs -text
 
+## Mesh Assets
+
+**/Models/*.asset filter=lfs diff=lfs merge=lfs -text
+**/Models/*.asset.meta filter=lfs diff=lfs merge=lfs -text
+
 ## Packages and Auto Generated Content
 
 Assets/Procedural[[:space:]]Worlds/** filter=lfs diff=lfs merge=lfs -text
