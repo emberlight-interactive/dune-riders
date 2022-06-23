@@ -35,7 +35,7 @@ MonoBehaviour:
       m_metallic: 0
       m_smoothness: 0
       m_spawnCriteria: []
-      m_LayerGUID: 99a7d61b62d6231448bfa88841b3304d
+      m_LayerGUID: 44494fa13f16215459775ddea28a5401
       m_normalScale: 1
       m_diffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
       m_diffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
       m_metallic: 0
       m_smoothness: 0
       m_spawnCriteria: []
-      m_LayerGUID: a3158f88c3a1ef645aedb9e31d28e30b
+      m_LayerGUID: 0ba1027069108094ebd637e9ba2d195b
       m_normalScale: 1
       m_diffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
       m_diffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
@@ -83,14 +83,14 @@ MonoBehaviour:
   m_height: 10
   m_rotation: 0
   m_isWorldmapSpawner: 0
-  m_spawnRange: 512
+  m_spawnRange: 1000
   m_generateRandomSeed: 1
   m_randomSeed: 1969672816
   m_spawnDensity: 0.6
   m_resourcesPath: 
   m_spawnerRules:
   - m_name: Dirt
-    m_guid: d75e9acc-828e-4d25-acb3-020b40784112
+    m_guid: 5bb1b357-b620-4864-9f47-b06dcf728d64
     m_useExtendedSpawn: 0
     m_minRequiredFitness: 0.25
     m_minInstanceRequiredFitness: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_currInstanceCnt: 0
     m_activeInstanceCnt: 0
     m_inactiveInstanceCnt: 0
-    m_resourceSettingsFoldedOut: 1
+    m_resourceSettingsFoldedOut: 0
     m_isHelpActive: 0
     m_spawnedInstances: 0
     m_goSpawnTargetMode: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
   - m_name: Sand
-    m_guid: 9300f10c-c1a4-4f11-9787-eabddbb73e93
+    m_guid: d8c882af-30e7-4917-b85d-a06205bf087c
     m_useExtendedSpawn: 0
     m_minRequiredFitness: 0.25
     m_minInstanceRequiredFitness: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
       m_imageMaskLocation: 1
       m_strength: 1
       m_seaLevel: 0
-      m_maxWorldHeight: 102.564064
-      m_minWorldHeight: 43.12566
+      m_maxWorldHeight: 47.81323
+      m_minWorldHeight: 29.031693
       m_xOffSet: 0
       m_zOffSet: 0
       m_xOffSetScalar: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
       m_imageMaskLocation: 1
       m_strength: 1
       m_seaLevel: 0
-      m_maxWorldHeight: 102.564064
-      m_minWorldHeight: 43.12566
+      m_maxWorldHeight: 47.81323
+      m_minWorldHeight: 29.031693
       m_xOffSet: 0
       m_zOffSet: 0
       m_xOffSetScalar: 0
@@ -562,8 +562,8 @@ MonoBehaviour:
       m_imageMaskLocation: 1
       m_strength: 1
       m_seaLevel: 0
-      m_maxWorldHeight: 102.564064
-      m_minWorldHeight: 43.12566
+      m_maxWorldHeight: 47.81323
+      m_minWorldHeight: 29.031693
       m_xOffSet: 0
       m_zOffSet: 0
       m_xOffSetScalar: 0
@@ -652,7 +652,7 @@ MonoBehaviour:
       m_heightMaskType: 1
       m_heightMaskUnit: 0
       m_relativeHeightMin: -1.27
-      m_relativeHeightMax: 10
+      m_relativeHeightMax: 6
       m_absoluteHeightMin: 23.73
       m_absoluteHeightMax: 28.73
       m_seaLevelRelativeHeightMin: -109876.55
