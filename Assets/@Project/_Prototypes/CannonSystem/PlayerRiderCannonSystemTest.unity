@@ -288,58 +288,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
---- !u!1 &686141686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 686141687}
-  - component: {fileID: 686141688}
-  m_Layer: 0
-  m_Name: MachineGun (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &686141687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686141686}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2029569868}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &686141688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686141686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDebug: 1
-  rangeColor: {r: 0.6556604, g: 1, b: 0.65948635, a: 0.31764707}
-  weaponName: Machine Gun 3
-  cooldown: 0.5
-  activationTime: 1.5
-  deactivationTime: 1.5
-  range: 100
-  projectile: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!1 &805552478
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +315,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1200749888}
   m_Father: {fileID: 2029569868}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -389,9 +338,11 @@ MonoBehaviour:
   cooldown: 0.5
   activationTime: 1.5
   deactivationTime: 1.5
+  ammoCount: 100
   range: 100
-  projectile: {fileID: 0}
+  projectile: {fileID: 1101603947079655724, guid: d33e1acb67c376d4cbc36b30fcd4c3a6, type: 3}
   anim: {fileID: 0}
+  bulletOrigin: {fileID: 1200749888}
 --- !u!1001 &928629542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -449,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 406cc185d108bda429ffd732424af970, type: 3}
---- !u!1 &1624837444
+--- !u!1 &1200749887
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,50 +408,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1624837445}
-  - component: {fileID: 1624837446}
+  - component: {fileID: 1200749888}
   m_Layer: 0
-  m_Name: MachineGun (1)
+  m_Name: BulletOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1624837445
+--- !u!4 &1200749888
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624837444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1200749887}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.402, y: 2.152, z: -0.115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2029569868}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1624837446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624837444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDebug: 1
-  rangeColor: {r: 0.6556604, g: 1, b: 0.65948635, a: 0.31764707}
-  weaponName: Machine Gun 2
-  cooldown: 0.5
-  activationTime: 1.5
-  deactivationTime: 1.5
-  range: 100
-  projectile: {fileID: 0}
-  anim: {fileID: 0}
+  m_Father: {fileID: 805552479}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1932316678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,6 +606,6 @@ MonoBehaviour:
   isDebug: 1
   weapons:
   - {fileID: 805552480}
-  - {fileID: 1624837446}
-  - {fileID: 686141688}
+  - {fileID: 0}
+  - {fileID: 0}
   weaponChangePause: 0.5

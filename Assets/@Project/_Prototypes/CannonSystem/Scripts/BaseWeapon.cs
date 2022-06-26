@@ -16,7 +16,7 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Weapon Stats"), SerializeField] private float deactivationTime;
 		[BoxGroup("Weapon Stats"), SerializeField] private float ammoCount;
 		[BoxGroup("Weapon Stats"), SerializeField] private float range;
-		[BoxGroup("Weapon Stats"), SerializeField] private BaseProjectile projectile;
+		[BoxGroup("Weapon Stats"), SerializeField] internal BaseProjectile projectile;
 
 		[BoxGroup("Components"), SerializeField] private Animator anim;
 
