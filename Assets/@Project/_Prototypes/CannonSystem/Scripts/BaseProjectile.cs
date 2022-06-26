@@ -6,6 +6,6 @@ namespace DuneRiders.Prototype
 {
 	public class BaseProjectile : MonoBehaviour
 	{
-
+		
 	}
 }

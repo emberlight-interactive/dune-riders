@@ -331,14 +331,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  range: 0
-  damageCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  isDebug: 1
+  rangeColor: {r: 0.6556604, g: 1, b: 0.65948635, a: 0.31764707}
+  weaponName: Machine Gun 3
+  cooldown: 0.5
+  activationTime: 1.5
+  deactivationTime: 1.5
+  range: 100
+  projectile: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &805552478
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,32 +383,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  range: 0
-  damageCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0012953363
-      value: 0.9999999
-      inSlope: -1.0036572
-      outSlope: -1.0036572
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.000002
-      value: -0.002359286
-      inSlope: -1.0036572
-      outSlope: 0.05635779
-      tangentMode: 5
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  isDebug: 1
+  rangeColor: {r: 0.6556604, g: 1, b: 0.65948635, a: 0.31764707}
+  weaponName: Machine Gun 1
+  cooldown: 0.5
+  activationTime: 1.5
+  deactivationTime: 1.5
+  range: 100
+  projectile: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1001 &928629542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,14 +492,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  range: 0
-  damageCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  isDebug: 1
+  rangeColor: {r: 0.6556604, g: 1, b: 0.65948635, a: 0.31764707}
+  weaponName: Machine Gun 2
+  cooldown: 0.5
+  activationTime: 1.5
+  deactivationTime: 1.5
+  range: 100
+  projectile: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1001 &1932316678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -689,8 +674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405820b2c1ca4cd4f8655a6c4df3a758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebug: 1
   weapons:
   - {fileID: 805552480}
   - {fileID: 1624837446}
   - {fileID: 686141688}
-  weaponChangeTime: 0.5
+  weaponChangePause: 0.5

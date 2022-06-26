@@ -1,54 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.Prototype
 {
 	public class WeaponController : MonoBehaviour
 	{
-		[SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
-		[SerializeField] private float weaponChangeTime = .5f;
+		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
+
+		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
+		//? When the weapon changes how long does it wait before activating the next weapon?
+		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
 
 		private BaseWeapon currentWeapon;
 		private int weaponIndex = 0;
 		private bool weaponChanging = false;
 
+		//! Delete after testing
+		private bool debugAutoShoot = false;
+
 		private void Start()
 		{
 			currentWeapon = weapons[0];
-
-			StartCoroutine(EnableWeapon(currentWeapon));
+			StartCoroutine(EnableWeapon(0));
 		}
 
+		private void Update()
+		{
+			if (debugAutoShoot)
+				weapons[weaponIndex].Shoot();
+		}
+
+		[Button]
+		public void ToggleShootingTest()
+		{
+			debugAutoShoot = !debugAutoShoot;
+		}
+
+		[Button]
 		public void NextWeapon()
 		{
 			if (weaponChanging)
 				return;
 
+			int nextWeapon = 0;
+
 			if (weaponIndex + 1 <= weapons.Count - 1)
-				weaponIndex++;
+				nextWeapon = weaponIndex + 1;
 			else
-				weaponIndex = 0;
+				nextWeapon = 0;
+
+			StartCoroutine(EnableWeapon(nextWeapon));
 		}
 
+		[Button]
 		public void PreviousWeapon()
 		{
 			if (weaponChanging)
 				return;
 
+			int nextWeaponIndex = 0;
+
 			if (weaponIndex - 1 >= 0)
-				weaponIndex--;
+				nextWeaponIndex = weaponIndex - 1;
 			else
-				weaponIndex = weapons.Count - 1;
+				nextWeaponIndex = weapons.Count - 1;
+
+			StartCoroutine(EnableWeapon(weaponIndex));
 		}
 
-		//TODO Add shoot weapon with specific weapon's cooldown
-
-		private IEnumerator EnableWeapon(BaseWeapon weapon)
+		private IEnumerator EnableWeapon(int next)
 		{
+			if (isDebug)
+				Debug.Log("Changing weapons");
 			weaponChanging = true;
-			yield return new WaitForSeconds(weaponChangeTime);
+			weapons[weaponIndex].DeActivate();
+
+			//TODO Figure out how to set the gun to shoot and not shoot when active.
+
+			yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
+			weaponIndex = next;
+			weapons[weaponIndex].Activate();
+			yield return new WaitForSeconds(weapons[weaponIndex].GetActivationTime());
 			weaponChanging = false;
+			if (isDebug)
+				Debug.Log("Weapon changed to " + weapons[weaponIndex].GetWeaponName());
 		}
 	}
 }
