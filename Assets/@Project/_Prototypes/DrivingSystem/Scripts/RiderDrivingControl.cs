@@ -17,12 +17,12 @@ public class RiderDrivingControl : MonoBehaviour
 	[SerializeField] WheelCollider backLeft;
 	[SerializeField] WheelCollider backRight;
 
-	public float acceleration = 2500f;
-	public float breakingForce = 4000f;
-	public float maxTurnAngle = 20f;
+	public float acceleration;
+	public float breakingForce;
+	public float maxTurnAngle;
 
-	public float currentAcceleration = 0f;
-	public float currentTurnAngle = 15f;
+	float currentAcceleration = 0f;
+	float currentTurnAngle = 15f;
 
 	void Start() {
 		rightControllerB.action.Enable();
@@ -43,6 +43,8 @@ public class RiderDrivingControl : MonoBehaviour
 			Brake();
 		} else if (localVel.z < -10f && currentAcceleration > 0) {
 			Brake();
+		} else {
+			ReleaseBrake();
 		}
 
 		currentTurnAngle = maxTurnAngle * steeringWheel.GetValue();
@@ -55,5 +57,12 @@ public class RiderDrivingControl : MonoBehaviour
 		frontRight.brakeTorque = breakingForce;
 		backLeft.brakeTorque = breakingForce;
 		backRight.brakeTorque = breakingForce;
+	}
+
+	void ReleaseBrake() {
+		frontLeft.brakeTorque = 0;
+		frontRight.brakeTorque = 0;
+		backLeft.brakeTorque = 0;
+		backRight.brakeTorque = 0;
 	}
 }
