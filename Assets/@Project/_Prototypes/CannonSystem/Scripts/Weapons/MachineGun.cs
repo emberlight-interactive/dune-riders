@@ -20,5 +20,11 @@ namespace DuneRiders.Prototype
 		{
 			base.Reload();
 		}
+
+		private void OnDrawGizmos()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(bulletOrigin.position, .05f);
+		}
 	}
 }

@@ -13,7 +13,7 @@ namespace DuneRiders.Prototype
 		//? When the weapon changes how long does it wait before activating the next weapon?
 		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
 
-		private BaseWeapon currentWeapon;
+		private BaseWeapon currentWeapon = null;
 		private int weaponIndex = 0;
 		private bool weaponChanging = false;
 
@@ -22,7 +22,6 @@ namespace DuneRiders.Prototype
 
 		private void Start()
 		{
-			currentWeapon = weapons[0];
 			StartCoroutine(EnableWeapon(0));
 		}
 
@@ -67,25 +66,28 @@ namespace DuneRiders.Prototype
 			else
 				nextWeaponIndex = weapons.Count - 1;
 
-			StartCoroutine(EnableWeapon(weaponIndex));
+			StartCoroutine(EnableWeapon(nextWeaponIndex));
 		}
 
 		private IEnumerator EnableWeapon(int next)
 		{
-			if (isDebug)
-				Debug.Log("Changing weapons");
-			weaponChanging = true;
-			weapons[weaponIndex].DeActivate();
+			if (currentWeapon != null)
+			{
+				if (isDebug)
+					Debug.Log("Changing weapons");
+				weaponChanging = true;
+				weapons[weaponIndex].DeActivate();
+				yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
+			}
 
-			//TODO Figure out how to set the gun to shoot and not shoot when active.
-
-			yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			weaponIndex = next;
 			weapons[weaponIndex].Activate();
 			yield return new WaitForSeconds(weapons[weaponIndex].GetActivationTime());
+			currentWeapon = weapons[next];
 			weaponChanging = false;
 			if (isDebug)
 				Debug.Log("Weapon changed to " + weapons[weaponIndex].GetWeaponName());
 		}
 	}
+	//Not going backwards
 }

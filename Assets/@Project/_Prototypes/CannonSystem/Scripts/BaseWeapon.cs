@@ -47,12 +47,16 @@ namespace DuneRiders.Prototype
 		{
 			if (isDebug)
 				Debug.Log("BaseWeapon::Activate " + weaponName);
+
+			anim.SetTrigger("activate");
 		}
 
 		public void DeActivate()
 		{
 			if (isDebug)
 				Debug.Log("BaseWeapon::DeActivate " + weaponName);
+
+			anim.SetTrigger("deactivate");
 		}
 
 		public string GetWeaponName()
