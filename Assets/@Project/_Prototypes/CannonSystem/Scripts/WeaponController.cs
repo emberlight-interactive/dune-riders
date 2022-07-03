@@ -8,9 +8,9 @@ namespace DuneRiders.Prototype
 	public class WeaponController : MonoBehaviour
 	{
 		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
+		[BoxGroup("Debug"), SerializeField] private Color forwardLineColor = Color.green;
 
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
-		//? When the weapon changes how long does it wait before activating the next weapon?
 		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
 
 		private BaseWeapon currentWeapon = null;
@@ -88,6 +88,14 @@ namespace DuneRiders.Prototype
 			if (isDebug)
 				Debug.Log("Weapon changed to " + weapons[weaponIndex].GetWeaponName());
 		}
+
+		private void OnDrawGizmos()
+		{
+			if (isDebug)
+			{
+				Gizmos.color = Color.green;
+				Gizmos.DrawLine(transform.position, transform.forward * 100);
+			}
+		}
 	}
-	//Not going backwards
 }
