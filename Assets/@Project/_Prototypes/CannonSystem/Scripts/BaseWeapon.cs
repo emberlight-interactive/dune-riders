@@ -14,21 +14,36 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Weapon Stats"), SerializeField] private float cooldown;
 		[BoxGroup("Weapon Stats"), InfoBox("The activation and deactivation times should be equal to or greater than the animation time."), SerializeField] private float activationTime;
 		[BoxGroup("Weapon Stats"), SerializeField] private float deactivationTime;
-		[BoxGroup("Weapon Stats"), SerializeField] private float ammoCount;
+		[BoxGroup("Weapon Stats"), SerializeField] private int ammoCount;
+		[BoxGroup("Weapon Stats"), SerializeField] private int currentAmmo;
+		[BoxGroup("Weapon Stats"), SerializeField] private bool autoReload = true;
+		[BoxGroup("Weapon Stats"), SerializeField] private float reloadTime = 2.0f;
 		[BoxGroup("Weapon Stats"), SerializeField] private float range;
 		[BoxGroup("Weapon Stats"), SerializeField] internal BaseProjectile projectile;
 
+		[BoxGroup("Compoentnts"), SerializeField] private Transform projectileOrigin;
 		[BoxGroup("Components"), SerializeField] private Animator anim;
 
 		private float lastShotTime = 0;
+		private bool reloading = false;
 		private bool activated = false;
+
+		private void Start()
+		{
+			currentAmmo = ammoCount;
+		}
 
 		public virtual void Shoot()
 		{
-			if (Time.time - lastShotTime > cooldown)
+			if (currentAmmo > 0 && Time.time - lastShotTime > cooldown)
 			{
 				lastShotTime = Time.time;
-				print("Instance a projectile from " + weaponName);
+				currentAmmo--;
+				Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
+			}
+			else if (currentAmmo == 0 && autoReload && reloading == false)
+			{
+				Reload();
 			}
 
 			//TODO Add animation trigger.
@@ -38,6 +53,9 @@ namespace DuneRiders.Prototype
 
 		public virtual void Reload()
 		{
+			if (reloading == false)
+				StartCoroutine(ReloadRoutine());
+
 			//TODO Add animation trigger.
 			//TODO Add sound trigger.
 			//TODO Show ui 
@@ -84,10 +102,23 @@ namespace DuneRiders.Prototype
 			return deactivationTime;
 		}
 
+		private IEnumerator ReloadRoutine()
+		{
+			reloading = true;
+			yield return new WaitForSeconds(reloadTime);
+			currentAmmo = ammoCount;
+			reloading = false;
+
+			Debug.Log("reload complete");
+		}
+
 		private void OnDrawGizmos()
 		{
 			if (isDebug == false)
 				return;
+
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(projectileOrigin.position, .05f);
 
 			Gizmos.color = rangeColor;
 			Gizmos.DrawSphere(transform.position, range);

@@ -8,7 +8,7 @@ namespace DuneRiders.Prototype
 	{
 		private SpriteRenderer sr;
 		private bool flashing;
-		private int iterations = 5;
+		private int iterations = 3;
 		private float duration = .075f;
 		private Color startingColor;
 
@@ -16,10 +16,9 @@ namespace DuneRiders.Prototype
 		{
 			sr = GetComponent<SpriteRenderer>();
 			startingColor = sr.color;
-			OnHit();
 		}
 
-		private void OnHit()
+		public void OnHit()
 		{
 			if (flashing == false)
 				StartCoroutine(OnHitRoutine());

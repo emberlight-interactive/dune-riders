@@ -8,7 +8,7 @@ namespace DuneRiders.Prototype
 	public class WeaponController : MonoBehaviour
 	{
 		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
-		[BoxGroup("Debug"), SerializeField] private Color forwardLineColor = Color.green;
+		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color forwardLineColor = Color.green;
 
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
 		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
