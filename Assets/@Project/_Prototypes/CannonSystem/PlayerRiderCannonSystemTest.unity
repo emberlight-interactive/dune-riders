@@ -243,7 +243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107086661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.577, y: 0, z: 0}
+  m_LocalPosition: {x: -1.262, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 583938911}
@@ -909,17 +909,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDebug: 1
-  rangeColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 0}
+  rangeColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 0.25490198}
   weaponName: Rockets
   cooldown: 3
   activationTime: 0.5
   deactivationTime: 0.5
-  ammoCount: 0
+  ammoCount: 3
   currentAmmo: 0
   autoReload: 1
-  reloadTime: 2
+  reloadTime: 5
   range: 500
-  projectile: {fileID: 0}
+  projectile: {fileID: 6771065084069637183, guid: 8504a9503b396144baad1b15aa5ec422, type: 3}
   projectileOrigin: {fileID: 107086662}
   anim: {fileID: 619041755}
 --- !u!1 &742232436
@@ -2205,7 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405820b2c1ca4cd4f8655a6c4df3a758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 0
+  isDebug: 1
   forwardLineColor: {r: 0, g: 1, b: 0, a: 1}
   weapons:
   - {fileID: 1804540959}
@@ -2220,7 +2220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028289902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.637, z: 0}
+  m_LocalPosition: {x: 0.08, y: 3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 552204550}
