@@ -1,27 +1,3 @@
-using UnityEngine;
-
-namespace Pathfinding.RVO {
-	/// <summary>
-	/// One vertex in an obstacle.
-	/// This is a linked list and one vertex can therefore be used to reference the whole obstacle
-	/// </summary>
-	public class ObstacleVertex {
-		public bool ignore;
-
-		/// <summary>Position of the vertex</summary>
-		public Vector3 position;
-		public Vector2 dir;
-
-		/// <summary>Height of the obstacle in this vertex</summary>
-		public float height;
-
-		/// <summary>Collision layer for this obstacle</summary>
-		public RVOLayer layer = RVOLayer.DefaultObstacle;
-
-
-		/// <summary>Next vertex in the obstacle</summary>
-		public ObstacleVertex next;
-		/// <summary>Previous vertex in the obstacle</summary>
-		public ObstacleVertex prev;
-	}
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1ee9c2f1260d0200ade241b8dc416a8c03cb8161d56eba856be05504b8eed593
+size 734

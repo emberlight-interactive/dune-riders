@@ -1,31 +1,3 @@
-using UnityEditor;
-
-namespace Pathfinding {
-	[CustomEditor(typeof(RaycastModifier))]
-	[CanEditMultipleObjects]
-	public class RaycastModifierEditor : EditorBase {
-		protected override void Inspector () {
-			PropertyField("quality");
-
-			if (PropertyField("useRaycasting", "Use Physics Raycasting")) {
-				EditorGUI.indentLevel++;
-
-				PropertyField("use2DPhysics");
-				if (PropertyField("thickRaycast")) {
-					EditorGUI.indentLevel++;
-					FloatField("thickRaycastRadius", min: 0f);
-					EditorGUI.indentLevel--;
-				}
-
-				PropertyField("raycastOffset");
-				PropertyField("mask", "Layer Mask");
-				EditorGUI.indentLevel--;
-			}
-
-			PropertyField("useGraphRaycasting");
-			if (!FindProperty("useGraphRaycasting").boolValue && !FindProperty("useRaycasting").boolValue) {
-				EditorGUILayout.HelpBox("You should use either raycasting, graph raycasting or both, otherwise this modifier will not do anything", MessageType.Warning);
-			}
-		}
-	}
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:206682644f041467c7c8a17e4e94c7c71082e2e52ad8f47a490ecbebb85e3f06
+size 945
