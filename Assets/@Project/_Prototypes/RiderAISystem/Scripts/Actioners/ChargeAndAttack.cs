@@ -48,8 +48,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				if (allActiveRidersState) {
-
 				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(thisRidersEnemy);
 				if (allEnemyRiders.Count > 0) {
 					var enemyRiderToAttack = GetClosestRider(allEnemyRiders);
@@ -57,12 +55,12 @@ namespace DuneRiders.RiderAI.Actioners {
 					pathfinder.SearchPath();
 					turret.FireOnTarget(enemyRiderToAttack.rider);
 				}
-				}
 
 				yield return new WaitForSeconds(4f);
 			}
 		}
 
+		/// todo: Add condition to keep battle within range of player
 		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
 			var angleOfEnemyFromDirectionOfTravel = Vector3.Angle(positionOfEnemy.position - transform.position, transform.forward);
 			float angle2 = Vector3.Angle((positionOfEnemy.transform.position - transform.position), transform.right);

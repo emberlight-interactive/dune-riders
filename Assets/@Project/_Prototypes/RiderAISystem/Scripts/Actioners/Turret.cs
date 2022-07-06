@@ -5,6 +5,8 @@ using UnityEngine;
 namespace DuneRiders.RiderAI.Actioners {
 	public class Turret : MonoBehaviour
 	{
+		[SerializeField] Rigidbody bulletPrefab;
+		[SerializeField] Transform bulletSpawnPosition;
 		Rider riderCurrentlyTargetting;
 		public float turretTurnSpeed = 1;
 
@@ -16,11 +18,23 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		public void FireOnTarget(Rider rider, float yOffset = 0f) {
-			if (riderCurrentlyTargetting == rider) return;
-			if (riderCurrentlyTargetting == null) riderCurrentlyTargetting = rider;
+			riderCurrentlyTargetting = rider;
 			if (!riderCurrentlyTargetting.gameObject.activeSelf) {
 				riderCurrentlyTargetting = null;
 				return;
+			}
+		}
+
+		void Start() {
+			StartCoroutine(Gunner());
+		}
+
+		IEnumerator Gunner() {
+			while (true) {
+				yield return new WaitForSeconds(2f);
+				if (IsTurretAimedAtTarget()) {
+					FireVolley();
+				}
 			}
 		}
 
@@ -49,6 +63,31 @@ namespace DuneRiders.RiderAI.Actioners {
 			var newLocalRotation = new Quaternion();
 			newLocalRotation.eulerAngles = localRotation;
 			transform.localRotation = newLocalRotation;
+		}
+
+		void FireVolley() {
+			var ball = SimplePool.Spawn(bulletPrefab.gameObject, bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.rotation);
+			ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+			ball.GetComponent<Rigidbody>().velocity += bulletSpawnPosition.transform.forward * 50;
+			StartCoroutine(DespawnABullet(ball, 2f));
+
+		}
+
+		IEnumerator DespawnABullet(GameObject bullet, float delayInSeconds = 0f) {
+			yield return new WaitForSeconds(delayInSeconds);
+			SimplePool.Despawn(bullet);
+		}
+
+		bool IsTurretAimedAtTarget() {
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) {
+				var rider = hit.collider.gameObject.GetComponentInParent<Rider>();
+				if (rider) {
+					if (rider.gameObject.name == riderCurrentlyTargetting.gameObject.name) return true;
+				}
+			}
+
+			return false;
 		}
 	}
 }
