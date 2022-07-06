@@ -48,7 +48,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				Debug.Log(allActiveRidersState);
 				if (allActiveRidersState) {
 
 				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(thisRidersEnemy);
