@@ -10,22 +10,9 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		void Update()
 		{
-			if (!riderCurrentlyTargetting) return;
-
-			// Determine which direction to rotate towards
-			Vector3 targetDirection = riderCurrentlyTargetting.gameObject.transform.position - transform.position;
-
-			// The step size is equal to speed times frame time.
-			float singleStep = turretTurnSpeed * Time.deltaTime;
-
-			// Rotate the forward vector towards the target direction by one step
-			Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-
-			// Draw a ray pointing at our target in
-			Debug.DrawRay(transform.position, newDirection, Color.red);
-
-			// Calculate a rotation a step closer to the target and applies rotation to this object
-			transform.rotation = Quaternion.LookRotation(newDirection);
+			if (riderCurrentlyTargetting) {
+				IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting.gameObject.transform);
+			}
 		}
 
 		public void FireOnTarget(Rider rider, float yOffset = 0f) {
@@ -35,6 +22,33 @@ namespace DuneRiders.RiderAI.Actioners {
 				riderCurrentlyTargetting = null;
 				return;
 			}
+		}
+
+		void IncrementTurretBarrelTowardsTarget(Transform target) {
+			Vector3 targetDirection = target.position - transform.position;
+			float singleStep = turretTurnSpeed * Time.deltaTime;
+			Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+			Debug.DrawRay(transform.position, newDirection, Color.red);
+
+			var rotation = Quaternion.LookRotation(newDirection);
+			var rotationInEulerAngles = rotation.eulerAngles;
+			rotationInEulerAngles.x = 0;
+			rotationInEulerAngles.z = 0;
+
+			rotation.eulerAngles = rotationInEulerAngles;
+
+			transform.rotation = rotation;
+
+			var localRotation = transform.localRotation.eulerAngles;
+			if (localRotation.y < 270 && localRotation.y > 180) {
+				localRotation.y = 270;
+			} else if (localRotation.y > 90 && localRotation.y < 180) {
+				localRotation.y = 90;
+			}
+
+			var newLocalRotation = new Quaternion();
+			newLocalRotation.eulerAngles = localRotation;
+			transform.localRotation = newLocalRotation;
 		}
 	}
 }
