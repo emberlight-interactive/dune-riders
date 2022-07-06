@@ -2,39 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
+using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
-	[RequireComponent(typeof(RiderAI.State.AllActiveRidersState))]
+	[RequireComponent(typeof(AllActiveRidersState))]
+	[RequireComponent(typeof(HealthState))]
 	public class RobertRiderAI : MonoBehaviour
 	{
 		[SerializeField] Actioner chargeAndAttackAction;
+		[SerializeField] Actioner deathAction;
 		Actioner currentlyActiveActioner;
+		HealthState healthState;
+		int lastHealthState;
 		enum Command {Charge, Follow, Halt};
 
 		void Start()
 		{
+			healthState = GetComponent<HealthState>();
 			StartCoroutine(RunBehaviourTree());
+		}
+
+		void FixedUpdate() {
+			if (HaveUpdatesOccuredForPriorityStates()) {
+				ImmediatelyComputeDecision();
+			}
 		}
 
 		IEnumerator RunBehaviourTree()
 		{
 			while (true) {
-				if (EnemyIsInRange()) {
-					if (IsCurrentCommand(Command.Charge)) {
-						SetActionerActive(chargeAndAttackAction);
-					} else if (IsCurrentCommand(Command.Halt)) {
-						HaltAndAttack();
-					} else {
-						FollowPlayerAndAttack();
-					}
-				} else if (IsCurrentCommand(Command.Halt)) {
-					Halt();
-				} else {
-					FollowPlayer();
-				}
-
+				BehaviourTree();
 				yield return new WaitForSeconds(2.5f);
 			}
+		}
+
+		void BehaviourTree() {
+			if (RiderHasLostAllHealth()) {
+				SetActionerActive(deathAction);
+			} else if (EnemyIsInRange()) {
+				if (IsCurrentCommand(Command.Charge)) {
+					SetActionerActive(chargeAndAttackAction);
+				} else if (IsCurrentCommand(Command.Halt)) {
+					HaltAndAttack();
+				} else {
+					FollowPlayerAndAttack();
+				}
+			} else if (IsCurrentCommand(Command.Halt)) {
+				Halt();
+			} else {
+				FollowPlayer();
+			}
+		}
+
+		void ImmediatelyComputeDecision() {
+			BehaviourTree();
+		}
+
+		bool HaveUpdatesOccuredForPriorityStates() {
+			if (lastHealthState != healthState.health) {
+				lastHealthState = healthState.health;
+				return true;
+			}
+
+			return false;
 		}
 
 		void SetActionerActive(Actioner actioner) {
@@ -61,6 +91,10 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		bool IsCurrentCommand(Command command) {
 			if (command == Command.Charge) return true;
 			return false;
+		}
+
+		bool RiderHasLostAllHealth() {
+			return healthState.health <= 0;
 		}
 
 		#endregion

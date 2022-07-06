@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using DuneRiders.RiderAI.State;
 using System.Linq;
+using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(AllActiveRidersState))]

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5809143628386943924}
   - component: {fileID: 5809143628386943925}
   - component: {fileID: 5809143628386943914}
+  - component: {fileID: 5541839468573329225}
   m_Layer: 20
   m_Name: Cube
   m_TagString: Untagged
@@ -125,6 +126,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5541839468573329225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628386943912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7759d5eec8be3124e94f2491273a8971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthState: {fileID: 551168085378313780}
 --- !u!1 &5809143628806843924
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,9 +198,11 @@ GameObject:
   - component: {fileID: 5809143628830744128}
   - component: {fileID: 5809143628830744134}
   - component: {fileID: 5809143628830744135}
+  - component: {fileID: 551168085378313780}
   - component: {fileID: 5809143628830744129}
   - component: {fileID: 5809143628830744143}
   - component: {fileID: 5809143628830744140}
+  - component: {fileID: 315896023135117700}
   - component: {fileID: 5809143628830744141}
   - component: {fileID: 5809143628830744130}
   - component: {fileID: 1179979259012926657}
@@ -240,6 +256,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621e5094c4f05940a8a151a77e5bdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &551168085378313780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64b52c18d307cf4cb0abd60f9be21a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &5809143628830744129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeAndAttackAction: {fileID: 5809143628830744140}
+  deathAction: {fileID: 315896023135117700}
 --- !u!114 &5809143628830744140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +311,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 5809143628806843926}
   thisRidersEnemy: 1
+--- !u!114 &315896023135117700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1222b25fa620e4c46a54a60f16fe930f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5809143628830744141
 MonoBehaviour:
   m_ObjectHideFlags: 0

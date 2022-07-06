@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
 	public class Turret : MonoBehaviour
@@ -32,8 +33,10 @@ namespace DuneRiders.RiderAI.Actioners {
 		IEnumerator Gunner() {
 			while (true) {
 				yield return new WaitForSeconds(2f);
-				if (IsTurretAimedAtTarget()) {
-					FireVolley();
+				if (riderCurrentlyTargetting) {
+					if (IsTurretAimedAtTarget()) {
+						FireVolley();
+					}
 				}
 			}
 		}

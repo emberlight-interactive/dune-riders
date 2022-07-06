@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DuneRiders.RiderAI {
+namespace DuneRiders.RiderAI.Traits {
 	public class Rider : MonoBehaviour
 	{
 		public enum ChasisType {
