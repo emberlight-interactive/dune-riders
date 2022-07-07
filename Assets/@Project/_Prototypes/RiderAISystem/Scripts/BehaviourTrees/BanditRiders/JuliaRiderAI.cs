@@ -5,16 +5,16 @@ using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
+	/// todo: Add a parent class for behaviour trees (or specifically rider ai trees)
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
-	public class RobertRiderAI : MonoBehaviour
+	public class JuliaRiderAI : MonoBehaviour
 	{
 		[SerializeField] Actioner chargeAndAttackAction;
 		[SerializeField] Actioner deathAction;
 		Actioner currentlyActiveActioner;
 		HealthState healthState;
 		int lastHealthState;
-		enum Command {Charge, Follow, Halt};
 
 		void Start()
 		{
@@ -39,18 +39,12 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		void BehaviourTree() {
 			if (RiderHasLostAllHealth()) {
 				SetActionerActive(deathAction);
+			} else if (RiderHasLowHealth()) {
+				Flee();
 			} else if (EnemyIsInRange()) {
-				if (IsCurrentCommand(Command.Charge)) {
-					SetActionerActive(chargeAndAttackAction);
-				} else if (IsCurrentCommand(Command.Halt)) {
-					HaltAndAttack();
-				} else {
-					FollowPlayerAndAttack();
-				}
-			} else if (IsCurrentCommand(Command.Halt)) {
-				Halt();
+				SetActionerActive(chargeAndAttackAction);
 			} else {
-				FollowPlayer();
+				Traverse();
 			}
 		}
 
@@ -87,24 +81,20 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 			return true;
 		}
 
-
-		bool IsCurrentCommand(Command command) {
-			if (command == Command.Charge) return true;
-			return false;
-		}
-
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
+		}
+
+		bool RiderHasLowHealth() {
+			return false;
 		}
 
 		#endregion
 
 		#region Actions
 
-		void HaltAndAttack() {}
-		void FollowPlayerAndAttack() {}
-		void Halt() {}
-		void FollowPlayer() {}
+		void Flee() {}
+		void Traverse() {}
 
 		#endregion
 	}

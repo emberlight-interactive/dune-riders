@@ -35,13 +35,13 @@ namespace DuneRiders.RiderAI.State {
 		}
 
 		public List<RiderData> GetAllRidersOfAllegiance(Rider.Allegiance allegiance) {
-			List<RiderData> enemyRiderDataList = new List<RiderData>();
+			List<RiderData> targetRiderDataList = new List<RiderData>();
 			foreach (var riderData in riderDataList) {
 				if (riderData.rider.allegiance == allegiance) {
-					enemyRiderDataList.Add(riderData);
+					targetRiderDataList.Add(riderData);
 				}
 			}
-			return enemyRiderDataList;
+			return targetRiderDataList;
 		}
 
 		class AllActiveRidersGlobalState : MonoBehaviour
