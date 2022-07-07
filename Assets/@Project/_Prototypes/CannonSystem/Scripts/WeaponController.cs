@@ -17,27 +17,17 @@ namespace DuneRiders.Prototype
 		private int weaponIndex = 0;
 		private bool weaponChanging = false;
 
-		//! Delete after testing
-		private bool debugAutoShoot = false;
-
 		private void Start()
 		{
 			StartCoroutine(EnableWeapon(0));
 		}
 
-		private void Update()
+		public void Shoot()
 		{
-			if (debugAutoShoot)
+			if (weaponChanging == false)
 				weapons[weaponIndex].Shoot();
 		}
 
-		[Button]
-		public void ToggleShootingTest()
-		{
-			debugAutoShoot = !debugAutoShoot;
-		}
-
-		[Button]
 		public void NextWeapon()
 		{
 			if (weaponChanging)
@@ -53,7 +43,6 @@ namespace DuneRiders.Prototype
 			StartCoroutine(EnableWeapon(nextWeapon));
 		}
 
-		[Button]
 		public void PreviousWeapon()
 		{
 			if (weaponChanging)

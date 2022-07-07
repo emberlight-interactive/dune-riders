@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &10277003
 Transform:
   m_ObjectHideFlags: 0
@@ -156,6 +156,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &253687308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1391465606848286597, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_Name
+      value: WeaponController
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.68720907
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391465606848286619, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93b1b6a59b6b7c5419e1c31dd76659fb, type: 3}
 --- !u!1 &504092494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,24 +1206,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78067929e82ffa94bb77508fbbe99974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6119093443619386574, guid: 19be39a34ca99714faccba46ed0242f6, type: 3}
-  leftControllerY:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Left Controller Y
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 51768c59-87a7-436e-bc35-05e36bd98fdf
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 41312a3a-9304-40bf-b338-c2ef41cdfa7c
-        m_Path: <XRController>{LeftHand}/secondaryButton
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Left Controller Y
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
