@@ -25,15 +25,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605304771378}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children:
   - {fileID: 1391465605407081396}
   - {fileID: 1391465607016724502}
   - {fileID: 1391465607178956034}
-  m_Father: {fileID: 1391465606848286619}
-  m_RootOrder: 2
+  m_Father: {fileID: 1391465605371087341}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1391465605304771383
 MonoBehaviour:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cb2ed69a116f842b438ad230dd148a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 1
+  isDebug: 0
   rangeColor: {r: 1, g: 0.18431373, b: 0.18431373, a: 0.25490198}
   weaponName: Rockets
   cooldown: 3
@@ -108,7 +108,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1391465606594145526}
+  - {fileID: 1391465605304771377}
+  - {fileID: 1391465605411313053}
   m_Father: {fileID: 1391465606848286619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,13 +271,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605411313054}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children:
   - {fileID: 1391465606957645896}
-  m_Father: {fileID: 1391465606848286619}
-  m_RootOrder: 3
+  m_Father: {fileID: 1391465605371087341}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1391465605411313043
 MonoBehaviour:
@@ -288,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf97d9c417066054489c6ce46ba36db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 1
+  isDebug: 0
   rangeColor: {r: 0.8490566, g: 0.20425417, b: 0.20425417, a: 0.15686275}
   weaponName: Cannon
   cooldown: 3
@@ -436,13 +439,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465606594145527}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children:
   - {fileID: 1391465606788879742}
-  m_Father: {fileID: 1391465606848286619}
-  m_RootOrder: 1
+  m_Father: {fileID: 1391465605371087341}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1391465606594145524
 MonoBehaviour:
@@ -456,7 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd4ed0c182963f4ab82ca985af04130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 1
+  isDebug: 0
   rangeColor: {r: 1, g: 0.18396229, b: 0.18396229, a: 0.16862746}
   weaponName: Machine Gun 1
   cooldown: 0.1
@@ -600,9 +603,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391465605371087341}
-  - {fileID: 1391465606594145526}
-  - {fileID: 1391465605304771377}
-  - {fileID: 1391465605411313053}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -625,6 +625,27 @@ MonoBehaviour:
   - {fileID: 1391465605304771383}
   - {fileID: 1391465605411313043}
   weaponChangePause: 0.5
+  aimSensetivity: 20
+  aimInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Toggle Thumbstick
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: dbadc6ed-8351-4a28-8ab4-9e531ab66cab
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 8168fcef-5c95-4d0f-8d54-c9d236fb1d8c
+        m_Path: <XRController>{LeftHand}/thumbstick
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Toggle Thumbstick
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   nextWeaponInput:
     m_UseReference: 1
     m_Action:

@@ -11,9 +11,11 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
 		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color forwardLineColor = Color.green;
 
+		[BoxGroup("Components"), SerializeField] private GameObject weaponContainer;
+
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
-		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
 		[BoxGroup("Weapons & Variables"), SerializeField] private float aimSensetivity;
+		[BoxGroup("Weapons & Variables"), InfoBox("If the nextWeapon input is held longer than this, it will disable the weapon."), SerializeField] private float weaponChangeThreshold;
 
 		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty aimInput;
 		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty nextWeaponInput;
@@ -21,8 +23,11 @@ namespace DuneRiders.Prototype
 
 		private BaseWeapon currentWeapon = null;
 		private int weaponIndex = 0;
+		private bool weaponActive = false; //? change this after the play back is changed.
+
+		//weapon change input
 		private bool weaponChanging = false;
-		private bool weaponActive = false;
+		private float weaponChangeCurrentTick = 0;
 
 		private void Start()
 		{
@@ -35,16 +40,36 @@ namespace DuneRiders.Prototype
 
 		private void Update()
 		{
-			if (weaponActive)
+			if (nextWeaponInput.action.ReadValue<float>() > 0)
 			{
-				var input = aimInput.action.ReadValue<Vector2>();
-				transform.Rotate(input * (aimSensetivity * Time.deltaTime));
+				if (weaponActive == false)
+				{
+					weaponContainer.SetActive(true);
+					weaponActive = true;
+				}
+				weaponChangeCurrentTick += Time.deltaTime;
+			}
+			else if (weaponChangeCurrentTick > 0)
+			{
+				if (weaponActive && weaponChangeCurrentTick < weaponChangeThreshold)
+					NextWeapon();
+				else
+				{
+					Reset();
+					weaponChangeCurrentTick = 0;
+					weaponActive = false;
+				}
+
+				weaponChangeCurrentTick = 0;
 			}
 
-			if (nextWeaponInput.action.ReadValue<float>() > 0 && weaponChanging == false)
-				NextWeapon();
+			if (weaponActive == false)
+				return;
 
-			if (shootInput.action.ReadValue<float>() > 0)
+			if (aimInput.action.ReadValue<Vector2>() != Vector2.zero)
+				transform.Rotate(aimInput.action.ReadValue<Vector2>() * (aimSensetivity * Time.deltaTime));
+
+			if (weaponChanging == false && shootInput.action.ReadValue<float>() > 0)
 				Shoot();
 		}
 
@@ -101,12 +126,17 @@ namespace DuneRiders.Prototype
 				yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			}
 
-			weaponActive = true;
 			weaponIndex = next;
 			weapons[weaponIndex].Activate();
 			yield return new WaitForSeconds(weapons[weaponIndex].GetActivationTime());
 			currentWeapon = weapons[next];
 			weaponChanging = false;
+			weaponActive = true;
+		}
+
+		private void Reset()
+		{
+			weaponContainer.SetActive(false);
 		}
 
 		private void OnDrawGizmos()

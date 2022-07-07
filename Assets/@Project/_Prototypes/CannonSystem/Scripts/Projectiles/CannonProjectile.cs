@@ -18,7 +18,7 @@ namespace DuneRiders.Prototype
 		private void Start()
 		{
 			rb = GetComponent<Rigidbody>();
-			rb.AddForce(new Vector3(0, 0, initialForce), ForceMode.VelocityChange);
+			rb.AddForce(transform.position - transform.right * initialForce, ForceMode.VelocityChange);
 		}
 
 		private void Explode()
