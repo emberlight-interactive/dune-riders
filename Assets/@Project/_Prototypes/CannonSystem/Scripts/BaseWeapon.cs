@@ -37,6 +37,9 @@ namespace DuneRiders.Prototype
 		{
 			if (currentAmmo > 0 && Time.time - lastShotTime > cooldown)
 			{
+				if (isDebug)
+					Debug.Log("Shot " + weaponName);
+
 				lastShotTime = Time.time;
 				currentAmmo--;
 				Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);

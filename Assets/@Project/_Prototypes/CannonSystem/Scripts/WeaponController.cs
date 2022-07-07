@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.Prototype
@@ -13,17 +14,37 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
 		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
 
+		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty nextWeaponInput;
+		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty shootInput;
+		//Get the aim?
+
 		private BaseWeapon currentWeapon = null;
 		private int weaponIndex = 0;
 		private bool weaponChanging = false;
 
 		private void Start()
 		{
-			StartCoroutine(EnableWeapon(0));
+			shootInput.action.Enable();
+		}
+
+		//TODO maybe add a threshhold on next weapon click, swap weapons if under X time, otherwise put away completely.
+
+		private void Update()
+		{
+			if (nextWeaponInput.action.ReadValue<float>() > 0 && weaponChanging == false)
+			{
+				NextWeapon();
+			}
+
+			if (shootInput.action.ReadValue<float>() > 0)
+			{
+				Shoot();
+			}
 		}
 
 		public void Shoot()
 		{
+			print("shoot");
 			if (weaponChanging == false)
 				weapons[weaponIndex].Shoot();
 		}
@@ -66,11 +87,10 @@ namespace DuneRiders.Prototype
 
 		private IEnumerator EnableWeapon(int next)
 		{
+			weaponChanging = true;
+
 			if (currentWeapon != null)
 			{
-				if (isDebug)
-					Debug.Log("Changing weapons");
-				weaponChanging = true;
 				weapons[weaponIndex].DeActivate();
 				yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			}
@@ -80,8 +100,6 @@ namespace DuneRiders.Prototype
 			yield return new WaitForSeconds(weapons[weaponIndex].GetActivationTime());
 			currentWeapon = weapons[next];
 			weaponChanging = false;
-			if (isDebug)
-				Debug.Log("Weapon changed to " + weapons[weaponIndex].GetWeaponName());
 		}
 
 		private void OnDrawGizmos()

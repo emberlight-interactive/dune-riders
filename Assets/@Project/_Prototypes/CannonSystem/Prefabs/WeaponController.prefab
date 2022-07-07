@@ -625,6 +625,38 @@ MonoBehaviour:
   - {fileID: 1391465605304771383}
   - {fileID: 1391465605411313043}
   weaponChangePause: 0.5
+  nextWeaponInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Next Weapon Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f292d217-2d6c-466f-a60e-b7215902f1fe
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 4235571679551039572, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  shootInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Controller Y
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 63415b9c-9603-40f6-839e-40f4704276c3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 8cc294ab-b204-4ac9-838e-d983d6e510ce
+        m_Path: <XRController>{LeftHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Controller Y
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1 &1391465606957645897
 GameObject:
   m_ObjectHideFlags: 0
