@@ -13,17 +13,21 @@ namespace DuneRiders.Prototype
 
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
 		[BoxGroup("Weapons & Variables"), SerializeField] private float weaponChangePause = .5f;
+		[BoxGroup("Weapons & Variables"), SerializeField] private float aimSensetivity;
 
+		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty aimInput;
 		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty nextWeaponInput;
 		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty shootInput;
-		//Get the aim?
 
 		private BaseWeapon currentWeapon = null;
 		private int weaponIndex = 0;
 		private bool weaponChanging = false;
+		private bool weaponActive = false;
 
 		private void Start()
 		{
+			aimInput.action.Enable();
+			nextWeaponInput.action.Enable();
 			shootInput.action.Enable();
 		}
 
@@ -31,20 +35,21 @@ namespace DuneRiders.Prototype
 
 		private void Update()
 		{
-			if (nextWeaponInput.action.ReadValue<float>() > 0 && weaponChanging == false)
+			if (weaponActive)
 			{
-				NextWeapon();
+				var input = aimInput.action.ReadValue<Vector2>();
+				transform.Rotate(input * (aimSensetivity * Time.deltaTime));
 			}
 
+			if (nextWeaponInput.action.ReadValue<float>() > 0 && weaponChanging == false)
+				NextWeapon();
+
 			if (shootInput.action.ReadValue<float>() > 0)
-			{
 				Shoot();
-			}
 		}
 
 		public void Shoot()
 		{
-			print("shoot");
 			if (weaponChanging == false)
 				weapons[weaponIndex].Shoot();
 		}
@@ -87,6 +92,7 @@ namespace DuneRiders.Prototype
 
 		private IEnumerator EnableWeapon(int next)
 		{
+			weaponActive = false;
 			weaponChanging = true;
 
 			if (currentWeapon != null)
@@ -95,6 +101,7 @@ namespace DuneRiders.Prototype
 				yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			}
 
+			weaponActive = true;
 			weaponIndex = next;
 			weapons[weaponIndex].Activate();
 			yield return new WaitForSeconds(weapons[weaponIndex].GetActivationTime());
