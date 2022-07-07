@@ -28,6 +28,12 @@ namespace DuneRiders.Prototype
 				weapons[weaponIndex].Shoot();
 		}
 
+		public void SwitchToWeapon(int index)
+		{
+			if (weaponIndex - 1 <= weapons.Count)
+				StartCoroutine(EnableWeapon(index));
+		}
+
 		public void NextWeapon()
 		{
 			if (weaponChanging)
