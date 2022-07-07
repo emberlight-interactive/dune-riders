@@ -1,19 +1,3 @@
-namespace Pathfinding {
-	/// <summary>Added to editors of custom graph types</summary>
-	[System.AttributeUsage(System.AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-	public class CustomGraphEditorAttribute : System.Attribute {
-		/// <summary>Graph type which this is an editor for</summary>
-		public System.Type graphType;
-
-		/// <summary>Name displayed in the inpector</summary>
-		public string displayName;
-
-		/// <summary>Type of the editor for the graph</summary>
-		public System.Type editorType;
-
-		public CustomGraphEditorAttribute (System.Type t, string displayName) {
-			graphType = t;
-			this.displayName = displayName;
-		}
-	}
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d300bd719c871309e7bbb8a20152615cc98a11ba30befd2f61a7e55386239c56
+size 655
