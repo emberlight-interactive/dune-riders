@@ -72,8 +72,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			var ball = SimplePool.Spawn(bulletPrefab.gameObject, bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.rotation);
 			ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 			ball.GetComponent<Rigidbody>().velocity += bulletSpawnPosition.transform.forward * 50;
-			StartCoroutine(DespawnABullet(ball, 2f));
-
+			StartCoroutine(DespawnABullet(ball, 4f));
 		}
 
 		IEnumerator DespawnABullet(GameObject bullet, float delayInSeconds = 0f) {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI.Traits;
@@ -42,6 +43,12 @@ namespace DuneRiders.RiderAI.State {
 				}
 			}
 			return targetRiderDataList;
+		}
+
+		public RiderData GetClosestRiderFromList(List<RiderData> riders) {
+			return riders
+				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
+				.First();
 		}
 
 		class AllActiveRidersGlobalState : MonoBehaviour

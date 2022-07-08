@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
 using Pathfinding;
@@ -56,7 +56,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			while (true) {
 				var allEnemyRiders = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Bandits);
 				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = GetClosestRider(allEnemyRiders);
+					var enemyRiderToAttack = allActiveRiders.GetClosestRiderFromList(allEnemyRiders);
 					pathfinder.destination = FindBestFollowPosition();
 					pathfinder.SearchPath();
 					turret.FireOnTarget(enemyRiderToAttack.rider);
@@ -91,16 +91,8 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Vector3 FindBestFollowPosition() {
-			/// todo: Move to state helper collection
 			var averagePositionOfEnemy = averagePositionOfRiders.GetAverageWorldPositionOfRiders(Rider.Allegiance.Bandits);
-			var angleOfEnemyFromDirectionOfTravel = Vector3.Angle(averagePositionOfEnemy - player.transform.position, player.transform.forward);
-			float angle2 = Vector3.Angle((averagePositionOfEnemy - player.transform.position), player.transform.right);
-
-			if (angle2 > 90)
-			{
-				angleOfEnemyFromDirectionOfTravel = 360 - angleOfEnemyFromDirectionOfTravel;
-			}
-			///
+			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, averagePositionOfEnemy);
 
 			int positionOfThisRiderInGlobalIndex = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Player).FindIndex(
 				(riderData) => GameObject.ReferenceEquals(riderData.rider.gameObject, gameObject)
@@ -111,13 +103,6 @@ namespace DuneRiders.RiderAI.Actioners {
 			} else {
 				return columnFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
 			}
-		}
-
-		/// todo: Move to a states helper collection
-		AllActiveRidersState.RiderData GetClosestRider(List<AllActiveRidersState.RiderData> riders) {
-			return riders
-				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
-				.First();
 		}
 	}
 

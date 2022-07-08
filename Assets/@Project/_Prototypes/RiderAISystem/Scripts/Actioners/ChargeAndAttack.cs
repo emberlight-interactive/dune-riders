@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using System.Linq;
+using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
 
@@ -51,7 +51,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			while (true) {
 				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(thisRidersEnemy);
 				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = GetClosestRider(allEnemyRiders);
+					var enemyRiderToAttack = allActiveRidersState.GetClosestRiderFromList(allEnemyRiders);
 					pathfinder.destination = DetermineBestAttackPosition(enemyRiderToAttack.rider.gameObject.transform);
 					pathfinder.SearchPath();
 					turret.FireOnTarget(enemyRiderToAttack.rider);
@@ -63,16 +63,10 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		/// todo: Add condition to keep battle within range of player
 		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
-			var angleOfEnemyFromDirectionOfTravel = Vector3.Angle(positionOfEnemy.position - transform.position, transform.forward);
-			float angle2 = Vector3.Angle((positionOfEnemy.transform.position - transform.position), transform.right);
-
-			if (angle2 > 90)
-			{
-				angleOfEnemyFromDirectionOfTravel = 360 - angleOfEnemyFromDirectionOfTravel;
-			}
+			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);
 
 			float newAngleOfTravel = 0;
-			float dist = 30;
+			float dist = 60;
 
 			if (angleOfEnemyFromDirectionOfTravel > 60 && angleOfEnemyFromDirectionOfTravel < 180) {
 				// Strafe more right
@@ -92,12 +86,6 @@ namespace DuneRiders.RiderAI.Actioners {
    			var newPosition = transform.position + q * transform.forward * dist;
 
 			return newPosition;
-		}
-
-		AllActiveRidersState.RiderData GetClosestRider(List<AllActiveRidersState.RiderData> riders) {
-			return riders
-				.OrderBy(t=>(t.transform.position - worldSpaceState.transform.position).sqrMagnitude)
-				.First();
 		}
 	}
 }
