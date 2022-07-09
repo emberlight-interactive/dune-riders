@@ -24,6 +24,7 @@ namespace DuneRiders.RiderAI.Traits {
 		}
 
 		public Allegiance allegiance = Allegiance.Mercenary;
+		public Allegiance enemyAllegiance = Allegiance.Bandits;
 		public ChasisType chasisType = ChasisType.Heavy;
 		public GunType gunType = GunType.Cannon;
 	}

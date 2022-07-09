@@ -5,14 +5,15 @@ using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
-	/// todo: Add a parent class for behaviour trees (or specifically rider ai trees)
-	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
+	[RequireComponent(typeof(InCombatState))]
 	public class JuliaRiderAI : BehaviourTree
 	{
 		[SerializeField] Actioner chargeAndAttackAction;
+		[SerializeField] Actioner traverseAction;
 		[SerializeField] Actioner deathAction;
 		HealthState healthState;
+		InCombatState inCombatState;
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
 				(typeof(HealthState), "health", healthState)
@@ -22,41 +23,42 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		void Awake()
 		{
 			healthState = GetComponent<HealthState>();
+			inCombatState = GetComponent<InCombatState>();
 		}
 
 		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
 				SetActionerActive(deathAction);
+			} else if (RiderIsPastMaxDistanceFromPlayer()) {
+				DespawnMyself();
 			} else if (RiderHasLowHealth()) {
 				Flee();
-			} else if (EnemyIsInRange()) {
+			} else if (AmIEngagedInCombat()) {
 				SetActionerActive(chargeAndAttackAction);
 			} else {
-				Traverse();
+				SetActionerActive(traverseAction);
 			}
-		}
-
-		#region ConditionalChecks
-
-		bool EnemyIsInRange() {
-			return true;
-		}
-
-		bool RiderHasLostAllHealth() {
-			return healthState.health <= 0;
 		}
 
 		bool RiderHasLowHealth() {
 			return false;
 		}
 
-		#endregion
+		bool RiderIsPastMaxDistanceFromPlayer() {
+			return false;
+		}
 
-		#region Actions
+		bool AmIEngagedInCombat() {
+			return inCombatState.inCombat;
+		}
+
+		bool RiderHasLostAllHealth() {
+			return healthState.health <= 0;
+		}
+
+
 
 		void Flee() {}
-		void Traverse() {}
-
-		#endregion
+		void DespawnMyself() {}
 	}
 }

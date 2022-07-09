@@ -7,6 +7,7 @@ using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
+	[RequireComponent(typeof(Rider))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(WorldSpaceState))]
 	[RequireComponent(typeof(RichAI))]
@@ -18,16 +19,17 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Coroutine activeAction;
+		Rider rider;
 		RichAI pathfinder;
 		WorldSpaceState worldSpaceState;
 		AllActiveRidersState allActiveRidersState;
 		[SerializeField] Turret turret;
-		[SerializeField] Rider.Allegiance thisRidersEnemy;
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			worldSpaceState = GetComponent<WorldSpaceState>();
+			rider = GetComponent<Rider>();
 			if (!turret) Debug.LogError("Please assign a turret");
 		}
 
@@ -49,7 +51,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(thisRidersEnemy);
+				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance);
 				if (allEnemyRiders.Count > 0) {
 					var enemyRiderToAttack = allActiveRidersState.GetClosestRiderFromList(allEnemyRiders);
 					pathfinder.destination = DetermineBestAttackPosition(enemyRiderToAttack.rider.gameObject.transform);
