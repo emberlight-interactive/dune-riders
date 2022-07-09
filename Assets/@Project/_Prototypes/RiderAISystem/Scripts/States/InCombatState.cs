@@ -53,7 +53,7 @@ namespace DuneRiders.RiderAI.State {
 
 		bool AreThereAnyEnemiesInFiringRangeOfMe() {
 			var closestEnemyRider = allActiveRidersState.GetClosestRiderFromList(allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance));
-			if (Vector3.Distance(transform.position, closestEnemyRider.transform.position) < 150) return true;
+			if (Vector3.Distance(transform.position, closestEnemyRider.transform.position) < 200) return true;
 			return false;
 		}
 

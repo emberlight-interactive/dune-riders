@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]
-	public class Traverse : Actioner
+	[RequireComponent(typeof(AveragePositionOfRidersState))]
+	[RequireComponent(typeof(Rider))]
+	public class Flee : Actioner
 	{
 		Coroutine activeAction;
 		RichAI pathfinder;
-		Vector3 finalDestination;
+		AveragePositionOfRidersState ridersAveragePosition;
+		Rider rider;
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
 			get => _currentlyActive;
@@ -17,12 +22,13 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
+			ridersAveragePosition = GetComponent<AveragePositionOfRidersState>();
+			rider = GetComponent<Rider>();
 		}
 
 		public override void StartAction()
 		{
 			if (!currentlyActive) {
-				CalculateFinalDestination();
 				activeAction = StartCoroutine(Action());
 			}
 			_currentlyActive = true;
@@ -38,14 +44,16 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				pathfinder.destination = transform.position + (finalDestination - transform.position).normalized * 100;
+				pathfinder.destination = GetNewFleeDestination(90);
 				pathfinder.SearchPath();
 				yield return new WaitForSeconds(4f);
 			}
 		}
 
-		void CalculateFinalDestination() {
-			if (finalDestination == null) finalDestination = transform.position + (transform.forward * 3000);
+		Vector3 GetNewFleeDestination(float distance) {
+			var enemyRidersAveragePosition = ridersAveragePosition.GetAverageWorldPositionOfRiders(rider.enemyAllegiance);
+			var directionAwayFromEnemy = (transform.position - enemyRidersAveragePosition).normalized;
+			return transform.position + directionAwayFromEnemy * distance;
 		}
 	}
 }
