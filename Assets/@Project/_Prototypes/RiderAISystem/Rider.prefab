@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 5809143628830744140}
   - component: {fileID: 6435499141022287596}
   - component: {fileID: 5262239150456212204}
+  - component: {fileID: 1880663301664012116}
+  - component: {fileID: 2142855892727606432}
   - component: {fileID: 315896023135117700}
   - component: {fileID: 5809143628830744141}
   - component: {fileID: 5809143628830744130}
@@ -301,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeAndAttackAction: {fileID: 5809143628830744140}
   followPlayerAndAttackAction: {fileID: 5262239150456212204}
+  followAction: {fileID: 1880663301664012116}
   haltAndAttackAction: {fileID: 6435499141022287596}
   deathAction: {fileID: 315896023135117700}
   currentCommand: 2
@@ -343,8 +346,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba328913a45d9140a8f776525d503c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1880663301664012116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0302c37eb8b034fb553bca82a45958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   lineFormationPrefab: {fileID: 1047269978999775896, guid: 018a57e95cc15e54ab8b9f40d1ee014c, type: 3}
   columnFormationPrefab: {fileID: 1487142622358056805, guid: 46290a7abefe1b7469a2029e9608c7a1, type: 3}
+--- !u!114 &2142855892727606432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215b06c95555dcb4288c85cc36ceb0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   turret: {fileID: 5809143628806843926}
 --- !u!114 &315896023135117700
 MonoBehaviour:

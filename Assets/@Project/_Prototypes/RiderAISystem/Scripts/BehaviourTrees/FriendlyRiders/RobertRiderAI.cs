@@ -12,6 +12,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		enum Command {Charge, Follow, Halt};
 		[SerializeField] Actioner chargeAndAttackAction;
 		[SerializeField] Actioner followPlayerAndAttackAction;
+		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAndAttackAction;
 		[SerializeField] Actioner deathAction;
 		HealthState healthState;
@@ -41,7 +42,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 			} else if (IsCurrentCommand(Command.Halt)) {
 				Halt();
 			} else {
-				FollowPlayer();
+				SetActionerActive(followAction);
 			}
 		}
 
