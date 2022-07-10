@@ -9,7 +9,11 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		public override void StartAction()
 		{
-			gameObject.SetActive(false);
+			if (SimplePool.IsGameObjectFromPool(gameObject)) {
+				SimplePool.Despawn(gameObject);
+			} else {
+				gameObject.SetActive(false);
+			}
 		}
 
 		public override void EndAction() {}

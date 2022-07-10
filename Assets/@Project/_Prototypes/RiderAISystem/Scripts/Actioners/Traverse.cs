@@ -38,14 +38,18 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				pathfinder.destination = transform.position + (finalDestination - transform.position).normalized * 100;
+				pathfinder.destination = CalculatePositionAlongPathToFinalDestination();
 				pathfinder.SearchPath();
 				yield return new WaitForSeconds(4f);
 			}
 		}
 
 		void CalculateFinalDestination() {
-			if (finalDestination == null) finalDestination = transform.position + (transform.forward * 3000);
+			if (finalDestination == Vector3.zero) finalDestination = transform.position + (transform.forward * 3000);
+		}
+
+		Vector3 CalculatePositionAlongPathToFinalDestination(float distance = 100) {
+			return transform.position + (finalDestination - transform.position).normalized * distance;
 		}
 	}
 }
