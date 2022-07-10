@@ -10,6 +10,7 @@ namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(AveragePositionOfRidersState))]
 	[RequireComponent(typeof(RichAI))]
+	[RequireComponent(typeof(Rider))]
 	public class FollowPlayerAndAttack : Actioner
 	{
 		bool _currentlyActive = false;
@@ -19,6 +20,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		Coroutine activeAction;
 		Player player;
+		Rider rider;
 		[SerializeField] Formation lineFormationPrefab;
 		[SerializeField] Formation columnFormationPrefab;
 		[SerializeField] Turret turret;
@@ -33,6 +35,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			allActiveRiders = GetComponent<AllActiveRidersState>();
 			averagePositionOfRiders = GetComponent<AveragePositionOfRidersState>();
 			pathfinder = GetComponent<RichAI>();
+			rider = GetComponent<Rider>();
 			AttachFormationsToPlayer();
 		}
 
@@ -54,11 +57,11 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Bandits);
+				pathfinder.destination = FindBestFollowPosition(); // todo: Make halt and attack and follow and attack rotate to face enemy?
+				pathfinder.SearchPath();
+				var allEnemyRiders = allActiveRiders.GetAllRidersOfAllegiance(rider.enemyAllegiance);
 				if (allEnemyRiders.Count > 0) {
 					var enemyRiderToAttack = allActiveRiders.GetClosestRiderFromList(allEnemyRiders);
-					pathfinder.destination = FindBestFollowPosition();
-					pathfinder.SearchPath();
 					turret.FireOnTarget(enemyRiderToAttack.rider);
 				}
 				yield return new WaitForSeconds(4f);
@@ -79,7 +82,7 @@ namespace DuneRiders.RiderAI.Actioners {
 					GameObject formationGameObject = Instantiate(formationsToInstantiate[i].Item1.gameObject, player.gameObject.transform, false) as GameObject;
 					var formationTag = formationGameObject.AddComponent<FormationTag>();
 					formationTag.formationName = formationsToInstantiate[i].Item2;
-					formationGameObject.transform.localPosition = new Vector3(0, 0, -5);
+					formationGameObject.transform.localPosition = new Vector3(0, 0, -11);
 					formationTags.Add(formationTag);
 				}
 			}
@@ -91,10 +94,10 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Vector3 FindBestFollowPosition() {
-			var averagePositionOfEnemy = averagePositionOfRiders.GetAverageWorldPositionOfRiders(Rider.Allegiance.Bandits);
+			var averagePositionOfEnemy = averagePositionOfRiders.GetAverageWorldPositionOfRiders(rider.enemyAllegiance);
 			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, averagePositionOfEnemy);
 
-			int positionOfThisRiderInGlobalIndex = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Player).FindIndex(
+			int positionOfThisRiderInGlobalIndex = allActiveRiders.GetAllRidersOfAllegiance(rider.allegiance).FindIndex(
 				(riderData) => GameObject.ReferenceEquals(riderData.rider.gameObject, gameObject)
 			);
 

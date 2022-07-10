@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 5809143628830744129}
   - component: {fileID: 5809143628830744143}
   - component: {fileID: 5809143628830744140}
+  - component: {fileID: 6435499141022287596}
   - component: {fileID: 5262239150456212204}
   - component: {fileID: 315896023135117700}
   - component: {fileID: 5809143628830744141}
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allegiance: 0
+  enemyAllegiance: 1
   chasisType: 2
   gunType: 2
 --- !u!114 &5809143628830744135
@@ -299,7 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeAndAttackAction: {fileID: 5809143628830744140}
   followPlayerAndAttackAction: {fileID: 5262239150456212204}
+  haltAndAttackAction: {fileID: 6435499141022287596}
   deathAction: {fileID: 315896023135117700}
+  currentCommand: 2
 --- !u!114 &5809143628830744140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +317,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 5809143628806843926}
-  thisRidersEnemy: 1
+--- !u!114 &6435499141022287596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6942fafbd81a86f4a958055012cf4f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haltFormation: {fileID: 1047269978999775896, guid: 018a57e95cc15e54ab8b9f40d1ee014c, type: 3}
+  turret: {fileID: 5809143628806843926}
 --- !u!114 &5262239150456212204
 MonoBehaviour:
   m_ObjectHideFlags: 0

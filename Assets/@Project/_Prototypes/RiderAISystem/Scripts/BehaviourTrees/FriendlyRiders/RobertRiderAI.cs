@@ -12,9 +12,10 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		enum Command {Charge, Follow, Halt};
 		[SerializeField] Actioner chargeAndAttackAction;
 		[SerializeField] Actioner followPlayerAndAttackAction;
+		[SerializeField] Actioner haltAndAttackAction;
 		[SerializeField] Actioner deathAction;
 		HealthState healthState;
-		Command currentCommand = Command.Charge;
+		[SerializeField] Command currentCommand = Command.Halt; // todo: Add state that tracks player ??? Add to priority state
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
 				(typeof(HealthState), "health", healthState)
@@ -33,7 +34,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 				if (IsCurrentCommand(Command.Charge)) {
 					SetActionerActive(chargeAndAttackAction);
 				} else if (IsCurrentCommand(Command.Halt)) {
-					HaltAndAttack();
+					SetActionerActive(haltAndAttackAction);
 				} else {
 					SetActionerActive(followPlayerAndAttackAction);
 				}
@@ -64,7 +65,6 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 
 		#region Actions
 
-		void HaltAndAttack() {}
 		void Halt() {}
 		void FollowPlayer() {}
 
