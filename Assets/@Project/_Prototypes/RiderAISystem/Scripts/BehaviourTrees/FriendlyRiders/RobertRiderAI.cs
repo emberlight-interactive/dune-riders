@@ -13,6 +13,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		[SerializeField] Actioner chargeAndAttackAction;
 		[SerializeField] Actioner followPlayerAndAttackAction;
 		[SerializeField] Actioner followAction;
+		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner haltAndAttackAction;
 		[SerializeField] Actioner deathAction;
 		HealthState healthState;
@@ -40,18 +41,15 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 					SetActionerActive(followPlayerAndAttackAction);
 				}
 			} else if (IsCurrentCommand(Command.Halt)) {
-				Halt();
+				SetActionerActive(haltAction);
 			} else {
 				SetActionerActive(followAction);
 			}
 		}
 
-		#region ConditionalChecks
-
 		bool EnemyIsInRange() {
 			return true;
 		}
-
 
 		bool IsCurrentCommand(Command command) {
 			if (command == currentCommand) return true;
@@ -61,14 +59,5 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
 		}
-
-		#endregion
-
-		#region Actions
-
-		void Halt() {}
-		void FollowPlayer() {}
-
-		#endregion
 	}
 }

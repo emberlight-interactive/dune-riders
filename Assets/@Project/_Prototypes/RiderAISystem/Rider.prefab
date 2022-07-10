@@ -200,17 +200,18 @@ GameObject:
   - component: {fileID: 5809143628830744135}
   - component: {fileID: 551168085378313780}
   - component: {fileID: 5809143628830744129}
+  - component: {fileID: 8576314890636260573}
   - component: {fileID: 5809143628830744143}
   - component: {fileID: 5809143628830744140}
   - component: {fileID: 6435499141022287596}
   - component: {fileID: 5262239150456212204}
   - component: {fileID: 1880663301664012116}
+  - component: {fileID: 5334284438471281684}
   - component: {fileID: 2142855892727606432}
   - component: {fileID: 315896023135117700}
   - component: {fileID: 5809143628830744141}
   - component: {fileID: 5809143628830744130}
   - component: {fileID: 1179979259012926657}
-  - component: {fileID: 8576314890636260573}
   m_Layer: 20
   m_Name: Rider
   m_TagString: Untagged
@@ -289,6 +290,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riderDataList: []
   updateIntervalInSeconds: 6
+--- !u!114 &8576314890636260573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa67314e75dd0044895f22abdbded502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5809143628830744143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +317,7 @@ MonoBehaviour:
   chargeAndAttackAction: {fileID: 5809143628830744140}
   followPlayerAndAttackAction: {fileID: 5262239150456212204}
   followAction: {fileID: 1880663301664012116}
+  haltAction: {fileID: 5334284438471281684}
   haltAndAttackAction: {fileID: 6435499141022287596}
   deathAction: {fileID: 315896023135117700}
   currentCommand: 2
@@ -332,8 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6942fafbd81a86f4a958055012cf4f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haltFormation: {fileID: 1047269978999775896, guid: 018a57e95cc15e54ab8b9f40d1ee014c, type: 3}
-  turret: {fileID: 5809143628806843926}
 --- !u!114 &5262239150456212204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +372,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineFormationPrefab: {fileID: 1047269978999775896, guid: 018a57e95cc15e54ab8b9f40d1ee014c, type: 3}
   columnFormationPrefab: {fileID: 1487142622358056805, guid: 46290a7abefe1b7469a2029e9608c7a1, type: 3}
+--- !u!114 &5334284438471281684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b3f8aac326d4a4d9b9dfec3608abcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haltFormation: {fileID: 1047269978999775896, guid: 018a57e95cc15e54ab8b9f40d1ee014c, type: 3}
 --- !u!114 &2142855892727606432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,18 +507,6 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 0.5
   debug: 0
---- !u!114 &8576314890636260573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809143628830744132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa67314e75dd0044895f22abdbded502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5809143629955319923
 GameObject:
   m_ObjectHideFlags: 0
