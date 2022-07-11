@@ -10,7 +10,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		[SerializeField] Transform bulletSpawnPosition;
 		Rider riderCurrentlyTargetting;
 		public float turretTurnSpeed = 1;
-		public Quaternion originalRotation;
+		Quaternion originalRotation;
 
 		void Update()
 		{
