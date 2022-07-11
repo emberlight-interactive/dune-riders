@@ -30,12 +30,21 @@ namespace DuneRiders.RiderAI.State {
 
 		IEnumerator UpdateInCombatState() {
 			while (true) {
-				if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
-					inCombat = true;
-					yield break;
+				if (AreThereAnyEnemiesLeft()) {
+					if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
+						inCombat = true;
+					}
+				} else {
+					inCombat = false;
 				}
+
+
 				yield return new WaitForSeconds(2f);
 			}
+		}
+
+		bool AreThereAnyEnemiesLeft() {
+			return allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance).Count > 0;
 		}
 
 		bool AreAnyOfMyFriendsInCombat() {

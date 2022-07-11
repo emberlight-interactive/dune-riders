@@ -5,7 +5,7 @@ using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
-	[RequireComponent(typeof(AllActiveRidersState))]
+	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(HealthState))]
 	public class RobertRiderAI : BehaviourTree
 	{
@@ -17,6 +17,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		[SerializeField] Actioner haltAndAttackAction;
 		[SerializeField] Actioner deathAction;
 		HealthState healthState;
+		InCombatState inCombatState;
 		[SerializeField] Command currentCommand = Command.Halt; // todo: Add state that tracks player ??? Add to priority state
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
@@ -27,12 +28,13 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		void Awake()
 		{
 			healthState = GetComponent<HealthState>();
+			inCombatState = GetComponent<InCombatState>();
 		}
 
 		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
 				SetActionerActive(deathAction);
-			} else if (EnemyIsInRange()) {
+			} else if (AmIEngagedInCombat()) {
 				if (IsCurrentCommand(Command.Charge)) {
 					SetActionerActive(chargeAndAttackAction);
 				} else if (IsCurrentCommand(Command.Halt)) {
@@ -47,8 +49,8 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 			}
 		}
 
-		bool EnemyIsInRange() {
-			return true;
+		bool AmIEngagedInCombat() {
+			return inCombatState.inCombat;
 		}
 
 		bool IsCurrentCommand(Command command) {

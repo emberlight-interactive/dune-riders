@@ -29,7 +29,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 			}
 		}
 
-		protected void SetActionerActive(Actioner actioner) {
+		protected void SetActionerActive(Actioner actioner) { // todo: consider allows this method to manually set "active" states and leave whatever processing to the actioners
 			if (currentlyActiveActioner == null) {
 				currentlyActiveActioner = actioner;
 				currentlyActiveActioner.StartAction();

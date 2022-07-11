@@ -56,7 +56,7 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 
 		bool RiderIsPastMaxDistanceFromPlayer() {
 			if (!player) return false;
-			return Vector3.Distance(transform.position, player.transform.position) > 500;
+			return Vector3.Distance(transform.position, player.transform.position) > 1000;
 		}
 
 		bool AmIEngagedInCombat() {

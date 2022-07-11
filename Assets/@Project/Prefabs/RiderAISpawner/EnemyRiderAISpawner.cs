@@ -67,7 +67,7 @@ namespace DuneRiders {
 		Vector3 GetSpawnPosition(Side side) {
 			var rightOrLeftVector = (side == Side.Left ? -player.right : player.right);
 
-			return player.position + (player.forward * 400 * distanceMultiplier) + (rightOrLeftVector * 200 * distanceMultiplier);
+			return player.position + (player.forward * 400 * distanceMultiplier) + (rightOrLeftVector * 400 * distanceMultiplier);
 		}
 
 		Quaternion GetSpawnRotation(Side side) {

@@ -19,7 +19,7 @@ namespace DuneRiders {
 		void SetYAxisOfPositionToGroundLevel() {
 			RaycastHit hit;
 			if (Physics.Raycast(new Vector3(transform.position.x, 1000, transform.position.z), -Vector3.up, out hit)) {
-				transform.position = new Vector3(transform.position.x, hit.transform.position.y, transform.position.z);
+				transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
 			}
 		}
 	}
