@@ -10,11 +10,14 @@ namespace DuneRiders.RiderAI.Actioners {
 		[SerializeField] Transform bulletSpawnPosition;
 		Rider riderCurrentlyTargetting;
 		public float turretTurnSpeed = 1;
+		public Quaternion originalRotation;
 
 		void Update()
 		{
-			if (riderCurrentlyTargetting) {
+			if (riderCurrentlyTargetting && riderCurrentlyTargetting.gameObject.activeSelf) {
 				IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting.gameObject.transform);
+			} else {
+				ReturnTurretToDefaultPosition();
 			}
 		}
 
@@ -27,6 +30,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		void Start() {
+			originalRotation = transform.localRotation;
 			StartCoroutine(Gunner());
 		}
 
@@ -90,6 +94,11 @@ namespace DuneRiders.RiderAI.Actioners {
 			}
 
 			return false;
+		}
+
+		public void ReturnTurretToDefaultPosition() {
+			if (transform.localRotation == originalRotation) return;
+			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, originalRotation, 20.0f * Time.deltaTime);
 		}
 	}
 }
