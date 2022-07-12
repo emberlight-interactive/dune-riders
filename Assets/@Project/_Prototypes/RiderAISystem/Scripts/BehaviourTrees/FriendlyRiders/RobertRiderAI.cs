@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
 	[RequireComponent(typeof(InCombatState))]
+	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
+	[RequireComponent(typeof(Rider))]
 	public class RobertRiderAI : BehaviourTree
 	{
 		enum Command {Charge, Follow, Halt};
-		[SerializeField] Actioner chargeAndAttackAction;
-		[SerializeField] Actioner followPlayerAndAttackAction;
 		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAction;
-		[SerializeField] Actioner haltAndAttackAction;
+		[SerializeField] Actioner gunnerAction;
+		[SerializeField] Actioner chargeAction;
 		[SerializeField] Actioner deathAction;
+		Rider rider;
 		HealthState healthState;
 		InCombatState inCombatState;
+		AllActiveRidersState allActiveRidersState;
 		[SerializeField] Command currentCommand = Command.Halt; // todo: Add state that tracks player ??? Add to priority state
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
@@ -29,24 +33,36 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		{
 			healthState = GetComponent<HealthState>();
 			inCombatState = GetComponent<InCombatState>();
+			allActiveRidersState = GetComponent<AllActiveRidersState>();
+			rider = GetComponent<Rider>();
 		}
 
 		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
-				SetActionerActive(deathAction);
+				SetActionersActive(deathAction);
 			} else if (AmIEngagedInCombat()) {
 				if (IsCurrentCommand(Command.Charge)) {
-					SetActionerActive(chargeAndAttackAction);
+					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
 				} else if (IsCurrentCommand(Command.Halt)) {
-					SetActionerActive(haltAndAttackAction);
+					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
 				} else {
-					SetActionerActive(followPlayerAndAttackAction);
+					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+				}
+			} else if (IsCurrentCommand(Command.Charge)) {
+				if (DoAnyEnemyRidersExist()) {
+					SetActionersActive(chargeAction);
+				} else {
+					SetActionersActive(followAction);
 				}
 			} else if (IsCurrentCommand(Command.Halt)) {
-				SetActionerActive(haltAction);
+				SetActionersActive(haltAction);
 			} else {
-				SetActionerActive(followAction);
+				SetActionersActive(followAction);
 			}
+		}
+
+		bool DoAnyEnemyRidersExist() {
+			return allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance).Count > 0;
 		}
 
 		bool AmIEngagedInCombat() {

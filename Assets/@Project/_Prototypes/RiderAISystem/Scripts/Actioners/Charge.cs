@@ -9,9 +9,8 @@ using DuneRiders.RiderAI.Traits;
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(Rider))]
 	[RequireComponent(typeof(AllActiveRidersState))]
-	[RequireComponent(typeof(WorldSpaceState))]
 	[RequireComponent(typeof(RichAI))]
-	public class ChargeAndAttack : Actioner
+	public class Charge : Actioner
 	{
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
@@ -21,16 +20,12 @@ namespace DuneRiders.RiderAI.Actioners {
 		Coroutine activeAction;
 		Rider rider;
 		RichAI pathfinder;
-		WorldSpaceState worldSpaceState;
 		AllActiveRidersState allActiveRidersState;
-		[SerializeField] Turret turret;
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
-			worldSpaceState = GetComponent<WorldSpaceState>();
 			rider = GetComponent<Rider>();
-			if (!turret) Debug.LogError("Please assign a turret");
 		}
 
 		public override void StartAction()
@@ -56,7 +51,6 @@ namespace DuneRiders.RiderAI.Actioners {
 					var enemyRiderToAttack = allActiveRidersState.GetClosestRiderFromList(allEnemyRiders);
 					pathfinder.destination = DetermineBestAttackPosition(enemyRiderToAttack.rider.gameObject.transform);
 					pathfinder.SearchPath();
-					turret.FireOnTarget(enemyRiderToAttack.rider);
 				}
 
 				yield return new WaitForSeconds(4f);
@@ -64,6 +58,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		/// todo: Add condition to keep battle within range of player
+		/// todo: When far away literally charge them
 		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
 			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);
 

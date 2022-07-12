@@ -29,6 +29,10 @@ namespace DuneRiders.RiderAI.Actioners {
 			}
 		}
 
+		public void StopFiring() {
+			riderCurrentlyTargetting = null;
+		}
+
 		void Start() {
 			originalRotation = transform.localRotation;
 			StartCoroutine(Gunner());
@@ -79,7 +83,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			StartCoroutine(DespawnABullet(ball, 4f));
 		}
 
-		IEnumerator DespawnABullet(GameObject bullet, float delayInSeconds = 0f) {
+		IEnumerator DespawnABullet(GameObject bullet, float delayInSeconds = 0f) { // todo: Does not complete when rider dies
 			yield return new WaitForSeconds(delayInSeconds);
 			SimplePool.Despawn(bullet);
 		}
@@ -96,7 +100,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			return false;
 		}
 
-		public void ReturnTurretToDefaultPosition() {
+		void ReturnTurretToDefaultPosition() {
 			if (transform.localRotation == originalRotation) return;
 			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, originalRotation, 20.0f * Time.deltaTime);
 		}

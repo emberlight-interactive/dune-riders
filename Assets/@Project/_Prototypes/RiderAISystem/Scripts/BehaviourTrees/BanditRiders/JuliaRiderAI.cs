@@ -11,7 +11,8 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 	[RequireComponent(typeof(MoraleState))]
 	public class JuliaRiderAI : BehaviourTree
 	{
-		[SerializeField] Actioner chargeAndAttackAction;
+		[SerializeField] Actioner chargeAction;
+		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner traverseAction;
 		[SerializeField] Actioner fleeAction;
 		[SerializeField] Actioner deathAction;
@@ -36,17 +37,17 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 
 		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
-				SetActionerActive(deathAction);
+				SetActionersActive(deathAction);
 			} else if (RiderIsPastMaxDistanceFromPlayer()) {
-				SetActionerActive(despawnAction);
+				SetActionersActive(despawnAction);
 			} else if (RidersMoraleHasBeenDestroyed()) {
-				SetActionerActive(fleeAction);
+				SetActionersActive(fleeAction);
 			// todo: Have we brutalized the player enough to continue traversing as we were (player company size reduction, is player fleeing)
 			// Make sure code is set up for reengagement
 			} else if (AmIEngagedInCombat()) {
-				SetActionerActive(chargeAndAttackAction);
+				SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
 			} else {
-				SetActionerActive(traverseAction);
+				SetActionersActive(traverseAction);
 			}
 		}
 

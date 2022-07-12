@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.RiderAI.BehaviourTree {
 	public abstract class BehaviourTree : MonoBehaviour
 	{
-		Actioner currentlyActiveActioner;
+		[SerializeField, ReadOnly] protected List<Actioner> currentlyActiveActioners = new List<Actioner>();
 		protected abstract void ProcessBehaviourTree();
 		protected abstract (System.Type, string, System.Object)[] priorityStates {get;}
 		List<System.Object> priorityStatesCache = new List<System.Object>();
@@ -29,17 +30,49 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 			}
 		}
 
-		protected void SetActionerActive(Actioner actioner) { // todo: consider allows this method to manually set "active" states and leave whatever processing to the actioners
-			if (currentlyActiveActioner == null) {
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner == actioner && !currentlyActiveActioner.currentlyActive) {
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner != actioner) {
-				if (currentlyActiveActioner.currentlyActive) currentlyActiveActioner.EndAction();
+		protected void SetActionersActive(Actioner actioner) {
+			var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioner);
 
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
+			if (actionerFromActiveList == null) {
+				currentlyActiveActioners.Add(actioner);
+				actioner.StartAction();
+			} else if (!actionerFromActiveList.currentlyActive) {
+				actionerFromActiveList.StartAction();
+			}
+
+			if (currentlyActiveActioners.Count > 1) { // Clear all other actioners in list
+				currentlyActiveActioners.RemoveAll((thisActioner) => {
+					if (thisActioner != actioner) {
+						thisActioner.EndAction();
+						return true;
+					}
+
+					return false;
+				});
+			}
+		}
+
+		protected void SetActionersActive(Actioner[] actioners) {
+			for (int i = 0; i < actioners.Length; i++) { // Add + activate / reactivate existing deactivated actioners
+				var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioners[i]);
+
+				if (actionerFromActiveList == null) {
+					currentlyActiveActioners.Add(actioners[i]);
+					actioners[i].StartAction();
+				} else if (!actionerFromActiveList.currentlyActive) {
+					actionerFromActiveList.StartAction();
+				}
+			}
+
+			if (currentlyActiveActioners.Count > 1) { // Clear all other actioners not included in our added actioners array
+				currentlyActiveActioners.RemoveAll((thisActioner) => {
+					for (int i = 0; i < actioners.Length; i++) {
+						if (thisActioner == actioners[i]) return false;
+					}
+
+					thisActioner.EndAction();
+					return true;
+				});
 			}
 		}
 
