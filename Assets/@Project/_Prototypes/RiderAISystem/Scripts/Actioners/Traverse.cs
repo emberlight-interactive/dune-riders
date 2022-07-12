@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]

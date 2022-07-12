@@ -4,6 +4,7 @@ using UnityEngine;
 using Pathfinding;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]

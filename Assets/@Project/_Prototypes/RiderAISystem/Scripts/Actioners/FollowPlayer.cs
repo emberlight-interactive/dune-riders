@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.AI;
 using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;

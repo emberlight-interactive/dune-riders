@@ -4,8 +4,9 @@ using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
-namespace DuneRiders.RiderAI.BehaviourTree {
+namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]

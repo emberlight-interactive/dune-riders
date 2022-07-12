@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DuneRiders.RiderAI.Actioners;
 using Sirenix.OdinInspector;
 
-namespace DuneRiders.RiderAI.BehaviourTree {
+namespace DuneRiders.AI {
 	public abstract class BehaviourTree : MonoBehaviour
 	{
 		[SerializeField, ReadOnly] protected List<Actioner> currentlyActiveActioners = new List<Actioner>();
