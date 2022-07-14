@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6014906365217246293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8118817150739066549}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8118817150739066549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014906365217246293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054697552610490558}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9054697552066356517
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9054697552610490558}
   - component: {fileID: 9054697552610490559}
+  - component: {fileID: 909315779504378492}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -63,6 +94,7 @@ Transform:
   - {fileID: 9054697552066356518}
   - {fileID: 9054697553412895949}
   - {fileID: 9054697552910634794}
+  - {fileID: 8118817150739066549}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,6 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915e6cbedec1f2c49a71556e5e32cd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allegiance: 1
+  enemyAllegiance: 0
+--- !u!114 &909315779504378492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054697552610490557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb73aacaa3e22a4f9f91b0e2d425700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8118817150739066549}
 --- !u!1 &9054697552836240416
 GameObject:
   m_ObjectHideFlags: 0

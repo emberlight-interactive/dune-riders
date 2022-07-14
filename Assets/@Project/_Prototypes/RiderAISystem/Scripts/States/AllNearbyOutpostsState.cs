@@ -32,18 +32,27 @@ namespace DuneRiders.RiderAI.State {
 
 		public List<Outpost> GetAllOutpostsOfAllegiance(Allegiance allegiance) {
 			List<Outpost> targetOutpostList = new List<Outpost>();
-			foreach (var turret in outposts) {
-				if (turret.allegiance == allegiance) {
-					targetOutpostList.Add(turret);
+			foreach (var outpost in outposts) {
+				if (outpost.allegiance == allegiance) {
+					targetOutpostList.Add(outpost);
 				}
 			}
 			return targetOutpostList;
 		}
 
-		public Outpost GetClosestOutpostFromList(List<Outpost> turrets = null) {
-			return (turrets ?? outposts)
+		public Outpost GetClosestOutpostFromList(List<Outpost> outpostList = null) {
+			return (outpostList ?? outposts)
 				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
 				.First();
+		}
+
+		public Outpost GetClosestOutpostOfAllegiance(Allegiance allegiance) {
+			var outpostList = GetAllOutpostsOfAllegiance(allegiance);
+			if (outpostList.Count > 0) {
+				return GetClosestOutpostFromList(outpostList);
+			}
+
+			return null;
 		}
 
 		class AllNearbyOutpostsGlobalState : MonoBehaviour

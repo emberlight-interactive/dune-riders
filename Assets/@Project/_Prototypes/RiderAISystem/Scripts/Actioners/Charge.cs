@@ -45,7 +45,8 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform();
+				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform(true, true);
+				if (closestEnemyTransform == null) closestEnemyTransform = riderEnemiesState.GetClosestEnemyStructureTransform();
 
 				if (closestEnemyTransform) {
 					if (IsTypeOfTransformAnOutpost(closestEnemyTransform)) movementLongevityMultiplier = 2f;

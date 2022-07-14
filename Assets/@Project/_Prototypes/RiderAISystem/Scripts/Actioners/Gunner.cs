@@ -41,12 +41,15 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform(false);
+				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform(false, true);
 				if (closestEnemyTransform) {
 					turret.FireOnTarget(closestEnemyTransform);
+				} else {
+					var closestEnemyStructureTransform = riderEnemiesState.GetClosestEnemyStructureTransform();
+					if (closestEnemyStructureTransform) {
+						turret.FireOnTarget(closestEnemyStructureTransform);
+					}
 				}
-
-				// todo: get closest enemy outpost // if exist fire at it
 
 				yield return new WaitForSeconds(4f);
 			}

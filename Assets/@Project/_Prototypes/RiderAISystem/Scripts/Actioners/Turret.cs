@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Actioners {
 	public class Turret : MonoBehaviour
@@ -9,20 +9,26 @@ namespace DuneRiders.RiderAI.Actioners {
 		[SerializeField] Rigidbody bulletPrefab;
 		[SerializeField] Transform bulletSpawnPosition;
 		Transform riderCurrentlyTargetting;
+		Transform aimGuider;
 		public float turretTurnSpeed = 1;
 		Quaternion originalRotation;
 
 		void Update()
 		{
 			if (riderCurrentlyTargetting && riderCurrentlyTargetting.gameObject.activeSelf) {
-				IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting);
+				if (aimGuider) IncrementTurretBarrelTowardsTarget(aimGuider);
+				else IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting);
 			} else {
 				ReturnTurretToDefaultPosition();
 			}
 		}
 
 		public void FireOnTarget(Transform rider, float yOffset = 0f) {
+			var targetTransform = rider.GetComponent<TargetTransform>();
+			if (targetTransform) aimGuider = targetTransform.target;
+
 			riderCurrentlyTargetting = rider;
+
 			if (!riderCurrentlyTargetting.gameObject.activeSelf) {
 				riderCurrentlyTargetting = null;
 				return;
@@ -84,7 +90,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		void FireVolley() {
 			var ball = SimplePool.Spawn(bulletPrefab.gameObject, bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.rotation);
 			ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-			ball.GetComponent<Rigidbody>().velocity += bulletSpawnPosition.transform.forward * 50;
+			ball.GetComponent<Rigidbody>().velocity += bulletSpawnPosition.transform.forward * 100;
 			(Camera.main.gameObject.GetComponent<CoroutineParasite>() ?? Camera.main.gameObject.AddComponent<CoroutineParasite>()).StartCoroutine(DespawnABullet(ball, 4f));
 		}
 

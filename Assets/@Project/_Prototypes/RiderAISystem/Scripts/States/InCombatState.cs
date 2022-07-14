@@ -8,6 +8,7 @@ namespace DuneRiders.RiderAI.State {
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(AllActiveTurretsState))]
+	[RequireComponent(typeof(AllNearbyOutpostsState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(Rider))]
 	public class InCombatState : MonoBehaviour
@@ -16,6 +17,7 @@ namespace DuneRiders.RiderAI.State {
 
 		AllActiveRidersState allActiveRidersState;
 		AllActiveTurretsState allActiveTurretsState;
+		AllNearbyOutpostsState allNearbyOutpostsState;
 		HealthState healthState;
 		Rider rider;
 		float firingRangeOfThisRider = 200;
@@ -24,6 +26,7 @@ namespace DuneRiders.RiderAI.State {
 		{
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			allActiveTurretsState = GetComponent<AllActiveTurretsState>();
+			allNearbyOutpostsState = GetComponent<AllNearbyOutpostsState>();
 			healthState = GetComponent<HealthState>();
 			rider = GetComponent<Rider>();
 		}
@@ -38,6 +41,8 @@ namespace DuneRiders.RiderAI.State {
 					if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
 						inCombat = true;
 					}
+				} else if (AreAnyEnemyStructuresInRange()) {
+					inCombat = true;
 				} else {
 					inCombat = false;
 				}
@@ -98,6 +103,14 @@ namespace DuneRiders.RiderAI.State {
 
 		bool HaveITakenDamage() {
 			if (healthState.health < 100) return true;
+			return false;
+		}
+
+		bool AreAnyEnemyStructuresInRange() {
+			var closestEnemyOutpost = allNearbyOutpostsState.GetClosestOutpostOfAllegiance(rider.enemyAllegiance);
+			if (closestEnemyOutpost) {
+				if (Vector3.Distance(transform.position, closestEnemyOutpost.transform.position) < firingRangeOfThisRider * 2) return true;
+			}
 			return false;
 		}
 	}
