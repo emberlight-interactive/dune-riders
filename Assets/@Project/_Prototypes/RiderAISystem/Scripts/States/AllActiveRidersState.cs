@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.State {
 	[DisallowMultipleComponent]
@@ -35,7 +36,7 @@ namespace DuneRiders.RiderAI.State {
 			globalState.updateIntervalInSeconds = updateIntervalInSeconds;
 		}
 
-		public List<RiderData> GetAllRidersOfAllegiance(Rider.Allegiance allegiance) {
+		public List<RiderData> GetAllRidersOfAllegiance(Allegiance allegiance) {
 			List<RiderData> targetRiderDataList = new List<RiderData>();
 			foreach (var riderData in riderDataList) {
 				if (riderData.rider.allegiance == allegiance) {

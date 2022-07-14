@@ -5,12 +5,10 @@ using Pathfinding;
 using DuneRiders.AI;
 using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
-using DuneRiders.RiderAI.Traits;
-
+using DuneRiders.OutpostAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
-	[RequireComponent(typeof(Rider))]
-	[RequireComponent(typeof(AllActiveRidersState))]
+	[RequireComponent(typeof(RiderEnemiesState))]
 	[RequireComponent(typeof(RichAI))]
 	public class Charge : Actioner
 	{
@@ -19,15 +17,14 @@ namespace DuneRiders.RiderAI.Actioners {
 			get => _currentlyActive;
 		}
 
+		RiderEnemiesState riderEnemiesState;
 		Coroutine activeAction;
-		Rider rider;
 		RichAI pathfinder;
-		AllActiveRidersState allActiveRidersState;
+		float movementLongevityMultiplier = 1f;
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
-			allActiveRidersState = GetComponent<AllActiveRidersState>();
-			rider = GetComponent<Rider>();
+			riderEnemiesState = GetComponent<RiderEnemiesState>();
 		}
 
 		public override void StartAction()
@@ -48,15 +45,23 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance);
-				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = allActiveRidersState.GetClosestRiderFromList(allEnemyRiders);
-					pathfinder.destination = DetermineBestAttackPosition(enemyRiderToAttack.rider.gameObject.transform);
+				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform();
+
+				if (closestEnemyTransform) {
+					if (IsTypeOfTransformAnOutpost(closestEnemyTransform)) movementLongevityMultiplier = 2f;
+					else movementLongevityMultiplier = 1f;
+
+					pathfinder.destination = DetermineBestAttackPosition(closestEnemyTransform);
 					pathfinder.SearchPath();
 				}
 
-				yield return new WaitForSeconds(4f);
+				yield return new WaitForSeconds(4f * movementLongevityMultiplier);
 			}
+		}
+
+		bool IsTypeOfTransformAnOutpost(Transform transform) {
+			if (transform.GetComponent<Outpost>()) return true;
+			return false;
 		}
 
 		/// todo: Add condition to keep battle within range of player
@@ -65,7 +70,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);
 
 			float newAngleOfTravel = 0;
-			float dist = 60;
+			float dist = 60 * movementLongevityMultiplier;
 
 			if (angleOfEnemyFromDirectionOfTravel > 60 && angleOfEnemyFromDirectionOfTravel < 180) {
 				// Strafe more right

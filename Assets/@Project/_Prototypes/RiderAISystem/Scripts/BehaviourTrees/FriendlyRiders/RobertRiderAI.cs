@@ -11,7 +11,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(Rider))]
-	public class RobertRiderAI : BehaviourTree
+	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
 	{
 		enum Command {Charge, Follow, Halt};
 		[SerializeField] Actioner followAction;

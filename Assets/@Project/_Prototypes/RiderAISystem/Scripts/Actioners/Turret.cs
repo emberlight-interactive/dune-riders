@@ -8,20 +8,20 @@ namespace DuneRiders.RiderAI.Actioners {
 	{
 		[SerializeField] Rigidbody bulletPrefab;
 		[SerializeField] Transform bulletSpawnPosition;
-		Rider riderCurrentlyTargetting;
+		Transform riderCurrentlyTargetting;
 		public float turretTurnSpeed = 1;
 		Quaternion originalRotation;
 
 		void Update()
 		{
 			if (riderCurrentlyTargetting && riderCurrentlyTargetting.gameObject.activeSelf) {
-				IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting.gameObject.transform);
+				IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting);
 			} else {
 				ReturnTurretToDefaultPosition();
 			}
 		}
 
-		public void FireOnTarget(Rider rider, float yOffset = 0f) {
+		public void FireOnTarget(Transform rider, float yOffset = 0f) {
 			riderCurrentlyTargetting = rider;
 			if (!riderCurrentlyTargetting.gameObject.activeSelf) {
 				riderCurrentlyTargetting = null;
@@ -57,7 +57,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 			var rotation = Quaternion.LookRotation(newDirection);
 			var rotationInEulerAngles = rotation.eulerAngles;
-			rotationInEulerAngles.x = 0;
 			rotationInEulerAngles.z = 0;
 
 			rotation.eulerAngles = rotationInEulerAngles;
@@ -69,6 +68,12 @@ namespace DuneRiders.RiderAI.Actioners {
 				localRotation.y = 270;
 			} else if (localRotation.y > 90 && localRotation.y < 180) {
 				localRotation.y = 90;
+			}
+
+			if (localRotation.x < 310 && localRotation.x > 180) {
+				localRotation.x = 310;
+			} else if (localRotation.x > 0 && localRotation.x < 180) {
+				localRotation.x = 0;
 			}
 
 			var newLocalRotation = new Quaternion();
@@ -91,9 +96,12 @@ namespace DuneRiders.RiderAI.Actioners {
 		bool IsTurretAimedAtTarget() {
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) {
-				var rider = hit.collider.gameObject.GetComponentInParent<Rider>();
-				if (rider) {
-					if (rider.gameObject.name == riderCurrentlyTargetting.gameObject.name) return true;
+				GameObject currentGameObject = hit.collider.gameObject;
+				if(GameObject.ReferenceEquals(hit.collider.gameObject, riderCurrentlyTargetting.gameObject)) return true;
+
+				while (currentGameObject.transform.parent != null) {
+					currentGameObject = currentGameObject.transform.parent.gameObject;
+					if(GameObject.ReferenceEquals(currentGameObject, riderCurrentlyTargetting.gameObject)) return true;
 				}
 			}
 

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Traits {
+	[DisallowMultipleComponent]
 	public class Rider : MonoBehaviour
 	{
 		public enum ChasisType {
@@ -15,12 +17,6 @@ namespace DuneRiders.RiderAI.Traits {
 			MachineGun,
 			TripleMissileLauncher,
 			Cannon
-		}
-
-		public enum Allegiance {
-			Player,
-			Bandits,
-			Mercenary,
 		}
 
 		public Allegiance allegiance = Allegiance.Mercenary;

@@ -201,6 +201,8 @@ GameObject:
   - component: {fileID: 3562523250003362354}
   - component: {fileID: 551168085378313780}
   - component: {fileID: 5809143628830744129}
+  - component: {fileID: 500571657818708376}
+  - component: {fileID: 143559974258635668}
   - component: {fileID: 8576314890636260573}
   - component: {fileID: 5809143628830744143}
   - component: {fileID: 1880663301664012116}
@@ -302,6 +304,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riderDataList: []
   updateIntervalInSeconds: 6
+--- !u!114 &500571657818708376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29f8cd4a2ef35e428076055ed768f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outpostTurrets: []
+  updateIntervalInSeconds: 4
+--- !u!114 &143559974258635668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cb0c1b05003f14ab54e5da4f1b1fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8576314890636260573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23073cf871dd424b85c8ac51133d23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyActiveActioners: []
   followAction: {fileID: 1880663301664012116}
   haltAction: {fileID: 5334284438471281684}
   gunnerAction: {fileID: 2142855892727606432}

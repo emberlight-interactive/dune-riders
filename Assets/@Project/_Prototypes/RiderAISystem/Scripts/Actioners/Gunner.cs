@@ -6,8 +6,7 @@ using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.Actioners {
-	[RequireComponent(typeof(AllActiveRidersState))]
-	[RequireComponent(typeof(Rider))]
+	[RequireComponent(typeof(RiderEnemiesState))]
 	public class Gunner : Actioner
 	{
 		bool _currentlyActive = false;
@@ -17,12 +16,10 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		Coroutine activeAction;
 		[SerializeField] Turret turret;
-		Rider rider;
-		AllActiveRidersState allActiveRiders;
+		RiderEnemiesState riderEnemiesState;
 
 		void Awake() {
-			rider = GetComponent<Rider>();
-			allActiveRiders = GetComponent<AllActiveRidersState>();
+			riderEnemiesState = GetComponent<RiderEnemiesState>();
 		}
 
 		public override void StartAction()
@@ -36,6 +33,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		public override void EndAction() {
 			if (currentlyActive) {
 				StopCoroutine(activeAction);
+				turret.StopFiring();
 			}
 
 			_currentlyActive = false;
@@ -43,11 +41,13 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRiders.GetAllRidersOfAllegiance(rider.enemyAllegiance);
-				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = allActiveRiders.GetClosestRiderFromList(allEnemyRiders);
-					turret.FireOnTarget(enemyRiderToAttack.rider);
+				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform(false);
+				if (closestEnemyTransform) {
+					turret.FireOnTarget(closestEnemyTransform);
 				}
+
+				// todo: get closest enemy outpost // if exist fire at it
+
 				yield return new WaitForSeconds(4f);
 			}
 		}
