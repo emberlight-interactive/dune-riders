@@ -11,7 +11,12 @@ namespace DuneRiders.RiderAI.Actioners {
 		Transform riderCurrentlyTargetting;
 		Transform aimGuider;
 		public float turretTurnSpeed = 1;
+		public float fireRate = 1;
 		Quaternion originalRotation;
+
+		// Hacky af //
+		[SerializeField] float upperXBounds = 310;
+		[SerializeField] float lowerXBounds = 0;
 
 		void Update()
 		{
@@ -46,7 +51,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Gunner() {
 			while (true) {
-				yield return new WaitForSeconds(2f);
+				yield return new WaitForSeconds(2f / fireRate);
 				if (riderCurrentlyTargetting) {
 					if (IsTurretAimedAtTarget()) {
 						FireVolley();
@@ -76,10 +81,10 @@ namespace DuneRiders.RiderAI.Actioners {
 				localRotation.y = 90;
 			}
 
-			if (localRotation.x < 310 && localRotation.x > 180) {
-				localRotation.x = 310;
-			} else if (localRotation.x > 0 && localRotation.x < 180) {
-				localRotation.x = 0;
+			if (localRotation.x < upperXBounds && localRotation.x > 180) {
+				localRotation.x = upperXBounds;
+			} else if (localRotation.x > lowerXBounds && localRotation.x < 180) {
+				localRotation.x = lowerXBounds;
 			}
 
 			var newLocalRotation = new Quaternion();

@@ -68,7 +68,5 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
 		}
-
-		void DespawnMyself() {}
 	}
 }
