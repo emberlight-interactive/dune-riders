@@ -29,6 +29,8 @@ namespace DuneRiders.Prototype
 		private bool weaponChanging = false;
 		private float weaponChangeCurrentTick = 0;
 
+		private bool autoShoot = false;
+
 		private void Start()
 		{
 			aimInput.action.Enable();
@@ -40,6 +42,9 @@ namespace DuneRiders.Prototype
 
 		private void Update()
 		{
+			if (autoShoot)
+				Shoot();
+
 			if (nextWeaponInput.action.ReadValue<float>() > 0)
 			{
 				if (weaponActive == false)
@@ -85,6 +90,13 @@ namespace DuneRiders.Prototype
 				StartCoroutine(EnableWeapon(index));
 		}
 
+		[Button]
+		public void AutoShoot()
+		{
+			autoShoot = true;
+		}
+
+		[Button]
 		public void NextWeapon()
 		{
 			if (weaponChanging)

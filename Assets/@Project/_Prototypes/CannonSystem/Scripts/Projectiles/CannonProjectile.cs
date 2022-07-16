@@ -13,6 +13,9 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Projectile Stats"), SerializeField] private int initialForce = 100;
 		[BoxGroup("Projectile Stats"), SerializeField] private int explosiveRadius = 3;
 
+		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem explosionParticle;
+		[BoxGroup("Projectile Effects"), SerializeField] private float particleScale = 2;
+
 		private Rigidbody rb;
 
 		private void Start()
@@ -27,6 +30,9 @@ namespace DuneRiders.Prototype
 			for (int i = 0; i < hits.Length; i++)
 				if (hits[i].GetComponent<TestTarget>() != null)
 					hits[i].GetComponent<TestTarget>().OnHit();
+
+			var p = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * particleScale;
 
 			Destroy(gameObject);
 		}

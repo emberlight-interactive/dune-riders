@@ -13,6 +13,9 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Projectile Stats"), SerializeField] private float speed;
 		[BoxGroup("Projectile Stats"), SerializeField] private int explosiveRadius = 3;
 
+		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem explosionParticle;
+		[BoxGroup("Projectile Effects"), SerializeField] private float particleScale = 1;
+
 		private Rigidbody rb;
 
 		private void Start()
@@ -34,6 +37,9 @@ namespace DuneRiders.Prototype
 		private void OnCollisionEnter(Collision c)
 		{
 			Explode();
+
+			var p = Instantiate(explosionParticle, transform.position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * particleScale;
 		}
 
 		private void OnDrawGizmos()

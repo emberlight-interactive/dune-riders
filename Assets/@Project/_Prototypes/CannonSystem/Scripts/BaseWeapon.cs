@@ -21,7 +21,7 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Weapon Stats"), SerializeField] private float range;
 		[BoxGroup("Weapon Stats"), SerializeField] internal BaseProjectile projectile;
 
-		[BoxGroup("Compoentnts"), SerializeField] private Transform projectileOrigin;
+		[BoxGroup("Compoentnts"), SerializeField] internal Transform projectileOrigin;
 		[BoxGroup("Components"), SerializeField] private Animator anim;
 
 		private float lastShotTime = 0;
@@ -43,6 +43,7 @@ namespace DuneRiders.Prototype
 				lastShotTime = Time.time;
 				currentAmmo--;
 				Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
+				PlayGunEffect();
 			}
 			else if (currentAmmo == 0 && autoReload && reloading == false)
 			{
@@ -78,6 +79,11 @@ namespace DuneRiders.Prototype
 				Debug.Log("BaseWeapon::DeActivate " + weaponName);
 
 			anim.SetTrigger("deactivate");
+		}
+
+		public virtual void PlayGunEffect()
+		{
+
 		}
 
 		public string GetWeaponName()
