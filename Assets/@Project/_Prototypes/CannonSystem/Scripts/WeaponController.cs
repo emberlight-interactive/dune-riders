@@ -13,10 +13,12 @@ namespace DuneRiders.Prototype
 
 		[BoxGroup("Components"), SerializeField] private GameObject weaponContainer;
 		[BoxGroup("Components"), SerializeField] private Transform weaponBase;
+		[BoxGroup("Components"), SerializeField] private Transform weaponPivot;
 
 		[BoxGroup("Weapons & Variables"), SerializeField] private List<BaseWeapon> weapons = new List<BaseWeapon>();
 		[BoxGroup("Weapons & Variables"), SerializeField] private float aimSensetivity;
-		[BoxGroup("Weapons & Variables"), SerializeField] private int aimAngle = 45;
+		[BoxGroup("Weapons & Variables"), SerializeField] private int baseAngle = 45;
+		[BoxGroup("Weapons & Variables"), SerializeField] private int pivotAngle = 45;
 		[BoxGroup("Weapons & Variables"), InfoBox("If the nextWeapon input is held longer than this, it will disable the weapon."), SerializeField] private float weaponChangeThreshold;
 
 		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty aimInput;
@@ -76,17 +78,29 @@ namespace DuneRiders.Prototype
 			if (aimInput.action.ReadValue<Vector2>() != Vector2.zero)
 			{
 				var xRot = aimInput.action.ReadValue<Vector2>().x;
-				var yRot = aimInput.action.ReadValue<Vector2>().y;
 				var rotateAmount = xRot * (aimSensetivity * Time.deltaTime);
 
-				Vector3 currentRotation = this.transform.eulerAngles;
+				Vector3 currentRotation = weaponBase.transform.eulerAngles;
 				currentRotation.y = currentRotation.y % 360;
 
 				if (currentRotation.y > 180)
 					currentRotation.y -= 360f;
 
-				currentRotation.y = Mathf.Clamp(currentRotation.y + rotateAmount, -aimAngle / 2, aimAngle / 2);
-				this.transform.rotation = Quaternion.Euler(currentRotation);
+				currentRotation.y = Mathf.Clamp(currentRotation.y + rotateAmount, -baseAngle / 2, baseAngle / 2);
+				weaponBase.transform.rotation = Quaternion.Euler(currentRotation);
+
+				var yRot = aimInput.action.ReadValue<Vector2>().y;
+				var pivotRotAmount = yRot * (aimSensetivity * Time.deltaTime);
+
+				currentRotation = weaponPivot.transform.eulerAngles;
+				currentRotation.x = currentRotation.x % 360;
+
+				if (currentRotation.x > 180)
+					currentRotation.x -= 360f;
+
+				currentRotation.x = Mathf.Clamp(currentRotation.x + rotateAmount, -pivotAngle / 2, pivotAngle / 2);
+				weaponPivot.transform.rotation = Quaternion.Euler(currentRotation);
+
 			}
 
 			if (weaponChanging == false && shootInput.action.ReadValue<float>() > 0)
@@ -150,6 +164,7 @@ namespace DuneRiders.Prototype
 			if (currentWeapon != null)
 			{
 				weapons[weaponIndex].DeActivate();
+				weaponPivot.transform.localRotation = Quaternion.Euler(Vector3.zero);
 				yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			}
 
@@ -164,6 +179,7 @@ namespace DuneRiders.Prototype
 		private IEnumerator DeActivateWeapon()
 		{
 			weaponChanging = true;
+			weaponPivot.transform.localRotation = Quaternion.Euler(Vector3.zero);
 			weapons[weaponIndex].DeActivate();
 			yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
 			weaponActive = false;

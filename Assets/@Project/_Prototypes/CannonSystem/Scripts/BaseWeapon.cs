@@ -23,6 +23,7 @@ namespace DuneRiders.Prototype
 
 		[BoxGroup("Compoentnts"), SerializeField] internal Transform projectileOrigin;
 		[BoxGroup("Components"), SerializeField] private Animator anim;
+		[BoxGroup("Components"), SerializeField] private List<MeshRenderer> meshes;
 
 		private float lastShotTime = 0;
 		private bool reloading = false;
@@ -31,6 +32,8 @@ namespace DuneRiders.Prototype
 		private void Start()
 		{
 			currentAmmo = ammoCount;
+
+			meshes.ForEach((x) => x.enabled = false);
 		}
 
 		public virtual void Shoot()
@@ -70,6 +73,7 @@ namespace DuneRiders.Prototype
 			if (isDebug)
 				Debug.Log("BaseWeapon::Activate " + weaponName);
 
+			meshes.ForEach((x) => x.enabled = true);
 			anim.SetTrigger("activate");
 		}
 
@@ -79,6 +83,12 @@ namespace DuneRiders.Prototype
 				Debug.Log("BaseWeapon::DeActivate " + weaponName);
 
 			anim.SetTrigger("deactivate");
+			Invoke("DisableMesh", GetDeActivationTime());
+		}
+
+		private void DisableMesh()
+		{
+			meshes.ForEach((x) => x.enabled = false);
 		}
 
 		public virtual void PlayGunEffect()
