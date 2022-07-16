@@ -38,8 +38,6 @@ namespace DuneRiders.Prototype
 			shootInput.action.Enable();
 		}
 
-		//TODO maybe add a threshhold on next weapon click, swap weapons if under X time, otherwise put away completely.
-
 		private void Update()
 		{
 			if (autoShoot)
@@ -49,7 +47,7 @@ namespace DuneRiders.Prototype
 			{
 				if (weaponActive == false)
 				{
-					weaponContainer.SetActive(true);
+					NextWeapon();
 					weaponActive = true;
 				}
 				weaponChangeCurrentTick += Time.deltaTime;
@@ -60,7 +58,9 @@ namespace DuneRiders.Prototype
 					NextWeapon();
 				else
 				{
-					Reset();
+					if (weaponChanging == false)
+						StartCoroutine(DeActivateWeapon());
+
 					weaponChangeCurrentTick = 0;
 					weaponActive = false;
 				}
@@ -146,9 +146,13 @@ namespace DuneRiders.Prototype
 			weaponActive = true;
 		}
 
-		private void Reset()
+		private IEnumerator DeActivateWeapon()
 		{
-			weaponContainer.SetActive(false);
+			weaponChanging = true;
+			weapons[weaponIndex].DeActivate();
+			yield return new WaitForSeconds(weapons[weaponIndex].GetDeActivationTime());
+			weaponActive = false;
+			weaponActive = false;
 		}
 
 		private void OnDrawGizmos()
