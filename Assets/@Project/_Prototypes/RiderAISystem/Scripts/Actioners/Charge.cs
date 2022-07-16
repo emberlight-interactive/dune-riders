@@ -2,33 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using System.Linq;
+using DuneRiders.AI;
+using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
-using DuneRiders.RiderAI.Traits;
+using DuneRiders.OutpostAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
-	[RequireComponent(typeof(AllActiveRidersState))]
-	[RequireComponent(typeof(WorldSpaceState))]
+	[RequireComponent(typeof(RiderEnemiesState))]
 	[RequireComponent(typeof(RichAI))]
-	public class ChargeAndAttack : Actioner
+	public class Charge : Actioner
 	{
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
 			get => _currentlyActive;
 		}
 
+		RiderEnemiesState riderEnemiesState;
 		Coroutine activeAction;
 		RichAI pathfinder;
-		WorldSpaceState worldSpaceState;
-		AllActiveRidersState allActiveRidersState;
-		[SerializeField] Turret turret;
-		[SerializeField] Rider.Allegiance thisRidersEnemy;
+		float movementLongevityMultiplier = 1f;
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
-			allActiveRidersState = GetComponent<AllActiveRidersState>();
-			worldSpaceState = GetComponent<WorldSpaceState>();
-			if (!turret) Debug.LogError("Please assign a turret");
+			riderEnemiesState = GetComponent<RiderEnemiesState>();
 		}
 
 		public override void StartAction()
@@ -49,30 +45,33 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(thisRidersEnemy);
-				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = GetClosestRider(allEnemyRiders);
-					pathfinder.destination = DetermineBestAttackPosition(enemyRiderToAttack.rider.gameObject.transform);
+				var closestEnemyTransform = riderEnemiesState.GetClosestEnemyTransform(true, true);
+				if (closestEnemyTransform == null) closestEnemyTransform = riderEnemiesState.GetClosestEnemyStructureTransform();
+
+				if (closestEnemyTransform) {
+					if (IsTypeOfTransformAnOutpost(closestEnemyTransform)) movementLongevityMultiplier = 2f;
+					else movementLongevityMultiplier = 1f;
+
+					pathfinder.destination = DetermineBestAttackPosition(closestEnemyTransform);
 					pathfinder.SearchPath();
-					turret.FireOnTarget(enemyRiderToAttack.rider);
 				}
 
-				yield return new WaitForSeconds(4f);
+				yield return new WaitForSeconds(4f * movementLongevityMultiplier);
 			}
 		}
 
-		/// todo: Add condition to keep battle within range of player
-		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
-			var angleOfEnemyFromDirectionOfTravel = Vector3.Angle(positionOfEnemy.position - transform.position, transform.forward);
-			float angle2 = Vector3.Angle((positionOfEnemy.transform.position - transform.position), transform.right);
+		bool IsTypeOfTransformAnOutpost(Transform transform) {
+			if (transform.GetComponent<Outpost>()) return true;
+			return false;
+		}
 
-			if (angle2 > 90)
-			{
-				angleOfEnemyFromDirectionOfTravel = 360 - angleOfEnemyFromDirectionOfTravel;
-			}
+		/// todo: Add condition to keep battle within range of player
+		/// todo: When far away literally charge them
+		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
+			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);
 
 			float newAngleOfTravel = 0;
-			float dist = 30;
+			float dist = 60 * movementLongevityMultiplier;
 
 			if (angleOfEnemyFromDirectionOfTravel > 60 && angleOfEnemyFromDirectionOfTravel < 180) {
 				// Strafe more right
@@ -92,12 +91,6 @@ namespace DuneRiders.RiderAI.Actioners {
    			var newPosition = transform.position + q * transform.forward * dist;
 
 			return newPosition;
-		}
-
-		AllActiveRidersState.RiderData GetClosestRider(List<AllActiveRidersState.RiderData> riders) {
-			return riders
-				.OrderBy(t=>(t.transform.position - worldSpaceState.transform.position).sqrMagnitude)
-				.First();
 		}
 	}
 }

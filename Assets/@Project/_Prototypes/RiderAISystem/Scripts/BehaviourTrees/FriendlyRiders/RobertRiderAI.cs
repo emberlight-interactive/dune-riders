@@ -3,92 +3,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
-namespace DuneRiders.RiderAI.BehaviourTree {
+namespace DuneRiders.RiderAI.BehaviourTrees {
+	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
-	public class RobertRiderAI : MonoBehaviour
+	[RequireComponent(typeof(Rider))]
+	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
 	{
-		[SerializeField] Actioner chargeAndAttackAction;
-		[SerializeField] Actioner followPlayerAndAttackAction;
-		[SerializeField] Actioner deathAction;
-		Actioner currentlyActiveActioner;
-		HealthState healthState;
-		int lastHealthState;
 		enum Command {Charge, Follow, Halt};
-		Command currentCommand = Command.Charge;
+		[SerializeField] Actioner followAction;
+		[SerializeField] Actioner haltAction;
+		[SerializeField] Actioner gunnerAction;
+		[SerializeField] Actioner chargeAction;
+		[SerializeField] Actioner deathAction;
+		Rider rider;
+		HealthState healthState;
+		InCombatState inCombatState;
+		AllActiveRidersState allActiveRidersState;
+		[SerializeField] Command currentCommand = Command.Halt; // todo: Add state that tracks player ??? Add to priority state
+		protected override (System.Type, string, System.Object)[] priorityStates {
+			get => new (System.Type, string, System.Object)[] {
+				(typeof(HealthState), "health", healthState)
+			};
+		}
 
-		void Start()
+		void Awake()
 		{
 			healthState = GetComponent<HealthState>();
-			StartCoroutine(RunBehaviourTree());
+			inCombatState = GetComponent<InCombatState>();
+			allActiveRidersState = GetComponent<AllActiveRidersState>();
+			rider = GetComponent<Rider>();
 		}
 
-		void FixedUpdate() {
-			if (HaveUpdatesOccuredForPriorityStates()) {
-				ImmediatelyComputeDecision();
-			}
-		}
-
-		IEnumerator RunBehaviourTree()
-		{
-			while (true) {
-				BehaviourTree();
-				yield return new WaitForSeconds(2.5f);
-			}
-		}
-
-		void BehaviourTree() {
+		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
-				SetActionerActive(deathAction);
-			} else if (EnemyIsInRange()) {
+				SetActionersActive(deathAction);
+			} else if (AmIEngagedInCombat()) {
 				if (IsCurrentCommand(Command.Charge)) {
-					SetActionerActive(chargeAndAttackAction);
+					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
 				} else if (IsCurrentCommand(Command.Halt)) {
-					HaltAndAttack();
+					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
 				} else {
-					SetActionerActive(followPlayerAndAttackAction);
+					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+				}
+			} else if (IsCurrentCommand(Command.Charge)) {
+				if (DoAnyEnemyRidersExist()) { // todo: take into account our detection distance (add this to traits???) // what happens if one charges but not the others ???
+					SetActionersActive(chargeAction);
+				} else {
+					SetActionersActive(followAction);
 				}
 			} else if (IsCurrentCommand(Command.Halt)) {
-				Halt();
+				SetActionersActive(haltAction);
 			} else {
-				FollowPlayer();
+				SetActionersActive(followAction);
 			}
 		}
 
-		void ImmediatelyComputeDecision() {
-			BehaviourTree();
+		bool DoAnyEnemyRidersExist() {
+			return allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance).Count > 0;
 		}
 
-		bool HaveUpdatesOccuredForPriorityStates() {
-			if (lastHealthState != healthState.health) {
-				lastHealthState = healthState.health;
-				return true;
-			}
-
-			return false;
+		bool AmIEngagedInCombat() {
+			return inCombatState.inCombat;
 		}
-
-		void SetActionerActive(Actioner actioner) {
-			if (currentlyActiveActioner == null) {
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner == actioner && !currentlyActiveActioner.currentlyActive) {
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner != actioner) {
-				if (currentlyActiveActioner.currentlyActive) currentlyActiveActioner.EndAction();
-
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
-			}
-		}
-
-		#region ConditionalChecks
-
-		bool EnemyIsInRange() {
-			return true;
-		}
-
 
 		bool IsCurrentCommand(Command command) {
 			if (command == currentCommand) return true;
@@ -98,15 +78,5 @@ namespace DuneRiders.RiderAI.BehaviourTree {
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
 		}
-
-		#endregion
-
-		#region Actions
-
-		void HaltAndAttack() {}
-		void Halt() {}
-		void FollowPlayer() {}
-
-		#endregion
 	}
 }

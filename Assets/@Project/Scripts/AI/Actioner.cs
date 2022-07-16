@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DuneRiders.RiderAI.Actioners {
+namespace DuneRiders.AI {
 	public abstract class Actioner : MonoBehaviour
 	{
 		public abstract bool currentlyActive {get;}

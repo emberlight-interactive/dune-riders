@@ -3,99 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
-namespace DuneRiders.RiderAI.BehaviourTree {
-	/// todo: Add a parent class for behaviour trees (or specifically rider ai trees)
-	[RequireComponent(typeof(AllActiveRidersState))]
+namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(HealthState))]
-	public class JuliaRiderAI : MonoBehaviour
+	[RequireComponent(typeof(InCombatState))]
+	[RequireComponent(typeof(MoraleState))]
+	public class JuliaRiderAI : BehaviourTree
 	{
-		[SerializeField] Actioner chargeAndAttackAction;
+		[SerializeField] Actioner chargeAction;
+		[SerializeField] Actioner gunnerAction;
+		[SerializeField] Actioner traverseAction;
+		[SerializeField] Actioner fleeAction;
 		[SerializeField] Actioner deathAction;
-		Actioner currentlyActiveActioner;
+		[SerializeField] Actioner despawnAction;
 		HealthState healthState;
-		int lastHealthState;
+		InCombatState inCombatState;
+		MoraleState moraleState;
+		Player player;
+		protected override (System.Type, string, System.Object)[] priorityStates {
+			get => new (System.Type, string, System.Object)[] {
+				(typeof(HealthState), "health", healthState)
+			};
+		}
 
-		void Start()
+		void Awake()
 		{
 			healthState = GetComponent<HealthState>();
-			StartCoroutine(RunBehaviourTree());
+			moraleState = GetComponent<MoraleState>();
+			inCombatState = GetComponent<InCombatState>();
+			player = FindObjectOfType<Player>();
 		}
 
-		void FixedUpdate() {
-			if (HaveUpdatesOccuredForPriorityStates()) {
-				ImmediatelyComputeDecision();
-			}
-		}
-
-		IEnumerator RunBehaviourTree()
-		{
-			while (true) {
-				BehaviourTree();
-				yield return new WaitForSeconds(2.5f);
-			}
-		}
-
-		void BehaviourTree() {
+		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
-				SetActionerActive(deathAction);
-			} else if (RiderHasLowHealth()) {
-				Flee();
-			} else if (EnemyIsInRange()) {
-				SetActionerActive(chargeAndAttackAction);
+				SetActionersActive(deathAction);
+			} else if (RiderIsPastMaxDistanceFromPlayer()) {
+				SetActionersActive(despawnAction);
+			} else if (RidersMoraleHasBeenDestroyed()) {
+				SetActionersActive(fleeAction);
+			// todo: Have we brutalized the player enough to continue traversing as we were (player company size reduction, is player fleeing)
+			// Make sure code is set up for reengagement
+			} else if (AmIEngagedInCombat()) {
+				SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
 			} else {
-				Traverse();
+				SetActionersActive(traverseAction);
 			}
 		}
 
-		void ImmediatelyComputeDecision() {
-			BehaviourTree();
+		bool RidersMoraleHasBeenDestroyed() {
+			return moraleState.morale == MoraleState.MoraleOptions.Broken;
 		}
 
-		bool HaveUpdatesOccuredForPriorityStates() {
-			if (lastHealthState != healthState.health) {
-				lastHealthState = healthState.health;
-				return true;
-			}
-
-			return false;
+		bool RiderIsPastMaxDistanceFromPlayer() {
+			if (!player) return false;
+			return Vector3.Distance(transform.position, player.transform.position) > 1000;
 		}
 
-		void SetActionerActive(Actioner actioner) {
-			if (currentlyActiveActioner == null) {
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner == actioner && !currentlyActiveActioner.currentlyActive) {
-				currentlyActiveActioner.StartAction();
-			} else if (currentlyActiveActioner != actioner) {
-				if (currentlyActiveActioner.currentlyActive) currentlyActiveActioner.EndAction();
-
-				currentlyActiveActioner = actioner;
-				currentlyActiveActioner.StartAction();
-			}
-		}
-
-		#region ConditionalChecks
-
-		bool EnemyIsInRange() {
-			return true;
+		bool AmIEngagedInCombat() {
+			return inCombatState.inCombat;
 		}
 
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
 		}
-
-		bool RiderHasLowHealth() {
-			return false;
-		}
-
-		#endregion
-
-		#region Actions
-
-		void Flee() {}
-		void Traverse() {}
-
-		#endregion
 	}
 }

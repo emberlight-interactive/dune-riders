@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using DuneRiders.AI;
+using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
 using DuneRiders.RiderAI.Traits;
 using Pathfinding;
@@ -10,7 +11,8 @@ namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(AveragePositionOfRidersState))]
 	[RequireComponent(typeof(RichAI))]
-	public class FollowPlayerAndAttack : Actioner
+	[RequireComponent(typeof(Rider))]
+	public class FollowPlayer : Actioner
 	{
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
@@ -18,18 +20,20 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Coroutine activeAction;
-		Player player;
 		[SerializeField] Formation lineFormationPrefab;
 		[SerializeField] Formation columnFormationPrefab;
-		[SerializeField] Turret turret;
 		Formation lineFormation;
 		Formation columnFormation;
+		Player player;
+		Rider rider;
 		AllActiveRidersState allActiveRiders;
 		AveragePositionOfRidersState averagePositionOfRiders;
 		RichAI pathfinder;
 
 		void Awake() {
 			player = FindObjectOfType<Player>();
+			if (player == null) Debug.LogError("Object with Player component in scene is required");
+			rider = GetComponent<Rider>();
 			allActiveRiders = GetComponent<AllActiveRidersState>();
 			averagePositionOfRiders = GetComponent<AveragePositionOfRidersState>();
 			pathfinder = GetComponent<RichAI>();
@@ -54,13 +58,8 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Action() {
 			while (true) {
-				var allEnemyRiders = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Bandits);
-				if (allEnemyRiders.Count > 0) {
-					var enemyRiderToAttack = GetClosestRider(allEnemyRiders);
-					pathfinder.destination = FindBestFollowPosition();
-					pathfinder.SearchPath();
-					turret.FireOnTarget(enemyRiderToAttack.rider);
-				}
+				pathfinder.destination = FindBestFollowPosition(); // todo: Make halt and attack and follow and attack rotate to face enemy?
+				pathfinder.SearchPath();
 				yield return new WaitForSeconds(4f);
 			}
 		}
@@ -79,7 +78,7 @@ namespace DuneRiders.RiderAI.Actioners {
 					GameObject formationGameObject = Instantiate(formationsToInstantiate[i].Item1.gameObject, player.gameObject.transform, false) as GameObject;
 					var formationTag = formationGameObject.AddComponent<FormationTag>();
 					formationTag.formationName = formationsToInstantiate[i].Item2;
-					formationGameObject.transform.localPosition = new Vector3(0, 0, -5);
+					formationGameObject.transform.localPosition = new Vector3(0, 0, -11);
 					formationTags.Add(formationTag);
 				}
 			}
@@ -91,33 +90,19 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Vector3 FindBestFollowPosition() {
-			/// todo: Move to state helper collection
-			var averagePositionOfEnemy = averagePositionOfRiders.GetAverageWorldPositionOfRiders(Rider.Allegiance.Bandits);
-			var angleOfEnemyFromDirectionOfTravel = Vector3.Angle(averagePositionOfEnemy - player.transform.position, player.transform.forward);
-			float angle2 = Vector3.Angle((averagePositionOfEnemy - player.transform.position), player.transform.right);
+			var numberOfAliveEnemies = allActiveRiders.GetAllRidersOfAllegiance(rider.enemyAllegiance).Count;
+			var averagePositionOfEnemy = averagePositionOfRiders.GetAverageWorldPositionOfRiders(rider.enemyAllegiance);
+			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(player.transform, averagePositionOfEnemy);
 
-			if (angle2 > 90)
-			{
-				angleOfEnemyFromDirectionOfTravel = 360 - angleOfEnemyFromDirectionOfTravel;
-			}
-			///
-
-			int positionOfThisRiderInGlobalIndex = allActiveRiders.GetAllRidersOfAllegiance(Rider.Allegiance.Player).FindIndex(
+			int positionOfThisRiderInGlobalIndex = allActiveRiders.GetAllRidersOfAllegiance(rider.allegiance).FindIndex(
 				(riderData) => GameObject.ReferenceEquals(riderData.rider.gameObject, gameObject)
 			);
 
-			if (angleOfEnemyFromDirectionOfTravel > 330 || angleOfEnemyFromDirectionOfTravel < 30) {
+			if (numberOfAliveEnemies > 0 && (angleOfEnemyFromDirectionOfTravel > 330 || angleOfEnemyFromDirectionOfTravel < 30)) {
 				return lineFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
 			} else {
 				return columnFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
 			}
-		}
-
-		/// todo: Move to a states helper collection
-		AllActiveRidersState.RiderData GetClosestRider(List<AllActiveRidersState.RiderData> riders) {
-			return riders
-				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
-				.First();
 		}
 	}
 

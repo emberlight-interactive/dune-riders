@@ -194,4 +194,10 @@ public static class SimplePool {
 			pm.myPool.Despawn(obj);
 		}
 	}
+
+	static public bool IsGameObjectFromPool(GameObject obj) {
+		PoolMember pm = obj.GetComponent<PoolMember>();
+		if (pm == null) return false;
+		return true;
+	}
 }

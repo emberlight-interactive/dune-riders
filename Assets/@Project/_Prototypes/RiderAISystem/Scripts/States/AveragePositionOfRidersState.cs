@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Traits;
+using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.State {
 	[DisallowMultipleComponent]
@@ -15,12 +16,12 @@ namespace DuneRiders.RiderAI.State {
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 		}
 
-		public Vector3 GetAverageWorldPositionOfRiders(Rider.Allegiance? allegiance) {
+		public Vector3 GetAverageWorldPositionOfRiders(Allegiance? allegiance) {
 			List<AllActiveRidersState.RiderData> targetRiderGroup;
 			if (allegiance == null) {
 				targetRiderGroup = allActiveRidersState.riderDataList;
 			} else {
-			 	targetRiderGroup = allActiveRidersState.GetAllRidersOfAllegiance((Rider.Allegiance) allegiance);
+			 	targetRiderGroup = allActiveRidersState.GetAllRidersOfAllegiance((Allegiance) allegiance);
 			}
 
 			Vector3[] allRiderPositions = new Vector3[targetRiderGroup.Count];
