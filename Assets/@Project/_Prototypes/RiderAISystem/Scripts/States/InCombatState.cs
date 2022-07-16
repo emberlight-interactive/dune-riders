@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI.Traits;
 
@@ -21,6 +22,7 @@ namespace DuneRiders.RiderAI.State {
 		HealthState healthState;
 		Rider rider;
 		float firingRangeOfThisRider = 200;
+		float detectRange = 400;
 
 		void Awake()
 		{
@@ -35,9 +37,27 @@ namespace DuneRiders.RiderAI.State {
 			StartCoroutine(UpdateInCombatState());
 		}
 
+		void OnDrawGizmosDRAFT() {
+			GUIStyle style = new GUIStyle();
+
+			var labelPosition = transform.position;
+
+			Handles.color = Color.red;
+        	style.normal.textColor = Color.red;
+			labelPosition.y += 2;
+			Handles.Label(labelPosition, "[InCombatState] Firing range", style);
+        	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), firingRangeOfThisRider);
+
+			Handles.color = Color.blue;
+        	style.normal.textColor = Color.blue;
+			labelPosition.y += 2;
+			Handles.Label(labelPosition, "[InCombatState] Detection range", style);
+        	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), detectRange);
+		}
+
 		IEnumerator UpdateInCombatState() {
 			while (true) {
-				if (AreThereAnyEnemiesLeft()) {
+				if (AreThereAnyEnemiesLeft()) { // todo: Fix riders fighting riders then cross mapping the turrets
 					if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
 						inCombat = true;
 					}
@@ -109,7 +129,7 @@ namespace DuneRiders.RiderAI.State {
 		bool AreAnyEnemyStructuresInRange() {
 			var closestEnemyOutpost = allNearbyOutpostsState.GetClosestOutpostOfAllegiance(rider.enemyAllegiance);
 			if (closestEnemyOutpost) {
-				if (Vector3.Distance(transform.position, closestEnemyOutpost.transform.position) < firingRangeOfThisRider * 2) return true;
+				if (Vector3.Distance(transform.position, closestEnemyOutpost.transform.position) < detectRange) return true;
 			}
 			return false;
 		}

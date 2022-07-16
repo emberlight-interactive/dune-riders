@@ -50,7 +50,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 					SetActionersActive(new Actioner[] {followAction, gunnerAction});
 				}
 			} else if (IsCurrentCommand(Command.Charge)) {
-				if (DoAnyEnemyRidersExist()) {
+				if (DoAnyEnemyRidersExist()) { // todo: take into account our detection distance (add this to traits???) // what happens if one charges but not the others ???
 					SetActionersActive(chargeAction);
 				} else {
 					SetActionersActive(followAction);
