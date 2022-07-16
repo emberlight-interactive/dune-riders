@@ -8,7 +8,15 @@ namespace DuneRiders.GatheringSystem {
 		[SerializeField] Transform[] gatherableSpawnLocations;
 		[SerializeField] Gatherable gatherableToSpawn;
 
+		bool isGameClosing = false;
+
+		void OnApplicationQuit() {
+			isGameClosing = true;
+		}
+
 		void OnDisable() {
+			if (isGameClosing) return;
+
 			for (int i = 0; i < gatherableSpawnLocations.Length; i++) {
 				SimplePool.Spawn(gatherableToSpawn.gameObject, gatherableSpawnLocations[i].position, gatherableToSpawn.transform.rotation);
 			}

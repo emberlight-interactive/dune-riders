@@ -12,7 +12,7 @@ public enum HandDecision
 	None
 }
 
-public class HandDecisionTrigger : MonoBehaviour
+public class HandDecisionTrigger : MonoBehaviour // todo: Double tapping does not properly exit dialouge
 {
 	[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
 	[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private HandDecision handDecision;

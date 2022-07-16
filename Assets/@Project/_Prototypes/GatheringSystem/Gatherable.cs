@@ -46,7 +46,7 @@ namespace DuneRiders.GatheringSystem {
 
 			float step = gatherSpeed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, gatherer.transform.position, step);
-			transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), step / 2);
+			transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), step / 4);
 		}
 
 		private void OnTriggerEnter(Collider other) {

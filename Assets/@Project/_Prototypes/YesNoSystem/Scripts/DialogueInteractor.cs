@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(SphereCollider))]
 public class DialogueInteractor : MonoBehaviour
 {
 	[BoxGroup("Variables"), SerializeField] private float radius = 5;
@@ -27,6 +28,7 @@ public class DialogueInteractor : MonoBehaviour
 	{
 		interactionTrigger = GetComponent<SphereCollider>();
 		interactionTrigger.radius = radius;
+		interactionTrigger.isTrigger = true;
 	}
 
 	public void Interact()
