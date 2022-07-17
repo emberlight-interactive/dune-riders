@@ -10,7 +10,6 @@ public class DialogueText : MonoBehaviour
 {
 	[BoxGroup("Components"), SerializeField] private TextMeshProUGUI mainText;
 	[BoxGroup("Components"), SerializeField] private CanvasGroup canvasGroup;
-	[BoxGroup("Components"), SerializeField] private DialogueTarget target;
 
 	private bool busy = false;
 

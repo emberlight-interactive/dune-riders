@@ -1,24 +1,3 @@
-using UnityEditor;
-using UnityEngine;
-
-namespace Pathfinding {
-	[CustomEditor(typeof(Pathfinding.RVO.RVOSimulator))]
-	public class RVOSimulatorEditor : EditorBase {
-		protected override void Inspector () {
-			PropertyField("desiredSimulationFPS");
-			ClampInt("desiredSimulationFPS", 1);
-
-			EditorGUI.BeginDisabledGroup(Application.isPlaying);
-			PropertyField("movementPlane");
-			PropertyField("workerThreads");
-			if ((ThreadCount)FindProperty("workerThreads").intValue != ThreadCount.None) {
-				EditorGUI.indentLevel++;
-				PropertyField("doubleBuffering");
-				EditorGUI.indentLevel--;
-			}
-			EditorGUI.EndDisabledGroup();
-			PropertyField("symmetryBreakingBias");
-			PropertyField("drawObstacles");
-		}
-	}
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:98d778bbb61ffb9bce97bf8029e2f98ef2cf62e0105bd43870c5c59ea9e580de
+size 717
