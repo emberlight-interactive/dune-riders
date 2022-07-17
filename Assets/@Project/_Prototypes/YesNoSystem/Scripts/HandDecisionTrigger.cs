@@ -15,7 +15,7 @@ namespace DuneRiders.YesNoSystem {
 
 	public class HandDecisionTrigger : MonoBehaviour // todo: Double tapping does not properly exit dialouge
 	{
-		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
+		[BoxGroup("Debug"), SerializeField] public bool isDebug = true;
 		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private HandDecision handDecision;
 		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color emptyTriggerColor = Color.blue;
 		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color occupiedTriggerColor = Color.yellow;
