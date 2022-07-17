@@ -5,97 +5,99 @@ using Sirenix.OdinInspector;
 using DuneRiders.Shared;
 using UnityEngine.InputSystem;
 
-public enum HandDecision
-{
-	ThumbsUp,
-	ThumbsDown,
-	None
-}
-
-public class HandDecisionTrigger : MonoBehaviour // todo: Double tapping does not properly exit dialouge
-{
-	[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
-	[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private HandDecision handDecision;
-	[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color emptyTriggerColor = Color.blue;
-	[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color occupiedTriggerColor = Color.yellow;
-
-	[BoxGroup("Variables"), SerializeField] private float decisionRegisterAngle = 40;
-
-	[BoxGroup("Components"), SerializeField] private BoxCollider triggerArea;
-
-	[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerTrigger;
-	[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerGrip;
-
-	private bool handInside = false;
-	private bool interactive = false;
-
-	private void Start()
+namespace DuneRiders.YesNoSystem {
+	public enum HandDecision
 	{
-		triggerArea = GetComponent<BoxCollider>();
-		handDecision = HandDecision.None;
-		rightControllerTrigger.action.Enable();
-		rightControllerGrip.action.Enable();
+		ThumbsUp,
+		ThumbsDown,
+		None
 	}
 
-	public void SetInteractive(bool state)
+	public class HandDecisionTrigger : MonoBehaviour // todo: Double tapping does not properly exit dialouge
 	{
-		interactive = state;
-	}
+		[BoxGroup("Debug"), SerializeField] private bool isDebug = true;
+		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private HandDecision handDecision;
+		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color emptyTriggerColor = Color.blue;
+		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private Color occupiedTriggerColor = Color.yellow;
 
-	public HandDecision GetHandState()
-	{
-		return handDecision;
-	}
+		[BoxGroup("Variables"), SerializeField] private float decisionRegisterAngle = 40;
 
-	private void OnTriggerEnter(Collider c)
-	{
-		if (interactive == false)
-			return;
+		[BoxGroup("Components"), SerializeField] private BoxCollider triggerArea;
 
-		if (c.GetComponent<Autohand.Hand>() != null)
+		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerTrigger;
+		[BoxGroup("Input Actions"), SerializeField] private InputActionProperty rightControllerGrip;
+
+		private bool handInside = false;
+		private bool interactive = false;
+
+		private void Start()
 		{
-			handInside = true;
-		}
-	}
-
-	private void OnTriggerStay(Collider c)
-	{
-		if (interactive == false)
-			return;
-
-		if (c.GetComponent<Autohand.Hand>() != null && rightControllerGrip.action.IsPressed() && rightControllerTrigger.action.IsPressed())
-		{
-			Vector3 eulerAngles = c.gameObject.transform.rotation.eulerAngles;
-			float result = eulerAngles.z - Mathf.CeilToInt(eulerAngles.z / -360f) * 360f;
-
-			if (result > -decisionRegisterAngle / 2 && result < decisionRegisterAngle)
-				handDecision = HandDecision.ThumbsUp;
-			else if (result > 180 - decisionRegisterAngle / 2 && result < 180 + decisionRegisterAngle / 2)
-				handDecision = HandDecision.ThumbsDown;
-			else
-				handDecision = HandDecision.None;
-		}
-	}
-
-	private void OnTriggerExit(Collider c)
-	{
-		if (c.GetComponent<Autohand.Hand>() != null)
-		{
-			handInside = false;
+			triggerArea = GetComponent<BoxCollider>();
 			handDecision = HandDecision.None;
+			rightControllerTrigger.action.Enable();
+			rightControllerGrip.action.Enable();
 		}
-	}
 
-	private void OnDrawGizmos()
-	{
-		if (interactive == false)
-			return;
-
-		if (triggerArea != null)
+		public void SetInteractive(bool state)
 		{
-			Color c = handInside ? c = emptyTriggerColor : c = occupiedTriggerColor;
-			Gizmos.color = c;
-			Gizmos.DrawCube(transform.position, triggerArea.size);
+			interactive = state;
+		}
+
+		public HandDecision GetHandState()
+		{
+			return handDecision;
+		}
+
+		private void OnTriggerEnter(Collider c)
+		{
+			if (interactive == false)
+				return;
+
+			if (c.GetComponent<Autohand.Hand>() != null)
+			{
+				handInside = true;
+			}
+		}
+
+		private void OnTriggerStay(Collider c)
+		{
+			if (interactive == false)
+				return;
+
+			if (c.GetComponent<Autohand.Hand>() != null && rightControllerGrip.action.IsPressed() && rightControllerTrigger.action.IsPressed())
+			{
+				Vector3 eulerAngles = c.gameObject.transform.rotation.eulerAngles;
+				float result = eulerAngles.z - Mathf.CeilToInt(eulerAngles.z / -360f) * 360f;
+
+				if (result > -decisionRegisterAngle / 2 && result < decisionRegisterAngle)
+					handDecision = HandDecision.ThumbsUp;
+				else if (result > 180 - decisionRegisterAngle / 2 && result < 180 + decisionRegisterAngle / 2)
+					handDecision = HandDecision.ThumbsDown;
+				else
+					handDecision = HandDecision.None;
+			}
+		}
+
+		private void OnTriggerExit(Collider c)
+		{
+			if (c.GetComponent<Autohand.Hand>() != null)
+			{
+				handInside = false;
+				handDecision = HandDecision.None;
+			}
+		}
+
+		private void OnDrawGizmos()
+		{
+			if (interactive == false)
+				return;
+
+			if (triggerArea != null)
+			{
+				Color c = handInside ? c = emptyTriggerColor : c = occupiedTriggerColor;
+				Gizmos.color = c;
+				Gizmos.DrawCube(transform.position, triggerArea.size);
+			}
 		}
 	}
 }
