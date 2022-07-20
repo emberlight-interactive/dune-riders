@@ -98,10 +98,15 @@ namespace DuneRiders.RiderAI.Actioners {
 				(riderData) => GameObject.ReferenceEquals(riderData.rider.gameObject, gameObject)
 			);
 
-			if (numberOfAliveEnemies > 0 && (angleOfEnemyFromDirectionOfTravel > 330 || angleOfEnemyFromDirectionOfTravel < 30)) {
-				return lineFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
-			} else {
-				return columnFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
+			try {
+				if (numberOfAliveEnemies > 0 && (angleOfEnemyFromDirectionOfTravel > 330 || angleOfEnemyFromDirectionOfTravel < 30)) {
+					return lineFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
+				} else {
+					return columnFormation.formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
+				}
+			} catch (System.ArgumentOutOfRangeException exception) {
+				Debug.LogWarning("This rider is not moving for now as it was unable to find a suitable position to follow the player: " + exception);
+				return transform.position;
 			}
 		}
 	}

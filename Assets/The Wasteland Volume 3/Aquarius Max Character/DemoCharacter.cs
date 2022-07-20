@@ -32,12 +32,12 @@ namespace AquariusMax.Wasteland3
         Quaternion characterTargetRot;
         Quaternion cameraTargetRot;
 
-        bool isGrounded = true;
+        // bool isGrounded = true;
         bool isWalking = true;
         Vector2 moveInput = Vector2.zero;
         Vector3 move = Vector3.zero;
         bool jumpPressed = false;
-        bool isJumping = false;
+        // bool isJumping = false;
 
         CollisionFlags collisionFlags;
 
@@ -117,7 +117,7 @@ namespace AquariusMax.Wasteland3
                 {
                     move.y = jumpSpeed;
                     jumpPressed = false;
-                    isJumping = true;
+                    // isJumping = true;
                 }
             }
             else

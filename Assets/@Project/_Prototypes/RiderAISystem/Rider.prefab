@@ -217,6 +217,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6119093443619386574, guid: 19be39a34ca99714faccba46ed0242f6, type: 3}
   bulletSpawnPosition: {fileID: 1142541642}
   turretTurnSpeed: 1
+  fireRate: 1
+  upperXBounds: 310
+  lowerXBounds: 0
 --- !u!1 &5809143628830744132
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +410,7 @@ MonoBehaviour:
   gunnerAction: {fileID: 2142855892727606432}
   chargeAction: {fileID: 7456364413245128368}
   deathAction: {fileID: 315896023135117700}
-  currentCommand: 2
+  currentCommand: 1
 --- !u!114 &1880663301664012116
 MonoBehaviour:
   m_ObjectHideFlags: 0
