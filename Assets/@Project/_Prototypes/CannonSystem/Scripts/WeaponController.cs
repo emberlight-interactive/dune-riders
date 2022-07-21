@@ -98,7 +98,7 @@ namespace DuneRiders.Prototype
 				if (currentRotation.x > 180)
 					currentRotation.x -= 360f;
 
-				currentRotation.x = Mathf.Clamp(currentRotation.x + rotateAmount, -pivotAngle / 2, pivotAngle / 2);
+				currentRotation.x = Mathf.Clamp(currentRotation.x - pivotRotAmount, -pivotAngle / 2, pivotAngle / 2);
 				weaponPivot.transform.rotation = Quaternion.Euler(currentRotation);
 
 			}
