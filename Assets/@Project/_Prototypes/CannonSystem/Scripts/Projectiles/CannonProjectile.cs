@@ -21,7 +21,7 @@ namespace DuneRiders.Prototype
 		private void Start()
 		{
 			rb = GetComponent<Rigidbody>();
-			rb.AddForce(transform.position - transform.right * initialForce, ForceMode.VelocityChange);
+			rb.velocity += transform.forward * initialForce;
 		}
 
 		private void Explode()

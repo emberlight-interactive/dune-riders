@@ -80,26 +80,26 @@ namespace DuneRiders.Prototype
 				var xRot = aimInput.action.ReadValue<Vector2>().x;
 				var rotateAmount = xRot * (aimSensetivity * Time.deltaTime);
 
-				Vector3 currentRotation = weaponBase.transform.eulerAngles;
+				Vector3 currentRotation = weaponBase.transform.localEulerAngles;
 				currentRotation.y = currentRotation.y % 360;
 
 				if (currentRotation.y > 180)
 					currentRotation.y -= 360f;
 
 				currentRotation.y = Mathf.Clamp(currentRotation.y + rotateAmount, -baseAngle / 2, baseAngle / 2);
-				weaponBase.transform.rotation = Quaternion.Euler(currentRotation);
+				weaponBase.transform.localRotation = Quaternion.Euler(currentRotation);
 
 				var yRot = aimInput.action.ReadValue<Vector2>().y;
 				var pivotRotAmount = yRot * (aimSensetivity * Time.deltaTime);
 
-				currentRotation = weaponPivot.transform.eulerAngles;
+				currentRotation = weaponPivot.transform.localEulerAngles;
 				currentRotation.x = currentRotation.x % 360;
 
 				if (currentRotation.x > 180)
 					currentRotation.x -= 360f;
 
 				currentRotation.x = Mathf.Clamp(currentRotation.x - pivotRotAmount, -pivotAngle / 2, pivotAngle / 2);
-				weaponPivot.transform.rotation = Quaternion.Euler(currentRotation);
+				weaponPivot.transform.localRotation = Quaternion.Euler(currentRotation);
 
 			}
 

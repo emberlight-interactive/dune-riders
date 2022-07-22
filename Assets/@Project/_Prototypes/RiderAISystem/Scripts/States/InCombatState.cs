@@ -37,6 +37,7 @@ namespace DuneRiders.RiderAI.State {
 			StartCoroutine(UpdateInCombatState());
 		}
 
+		#if UNITY_EDITOR
 		void OnDrawGizmosDRAFT() {
 			GUIStyle style = new GUIStyle();
 
@@ -54,6 +55,7 @@ namespace DuneRiders.RiderAI.State {
 			Handles.Label(labelPosition, "[InCombatState] Detection range", style);
         	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), detectRange);
 		}
+		#endif
 
 		IEnumerator UpdateInCombatState() {
 			while (true) {

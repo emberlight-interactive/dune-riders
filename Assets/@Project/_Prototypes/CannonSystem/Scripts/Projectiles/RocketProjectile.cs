@@ -21,7 +21,7 @@ namespace DuneRiders.Prototype
 		private void Start()
 		{
 			rb = GetComponent<Rigidbody>();
-			rb.velocity = transform.position - transform.right * speed;
+			rb.velocity += transform.forward * speed;
 		}
 
 		private void Explode()

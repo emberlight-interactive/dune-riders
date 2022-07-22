@@ -21,7 +21,7 @@ namespace DuneRiders.Prototype
 		[BoxGroup("Weapon Stats"), SerializeField] private float range;
 		[BoxGroup("Weapon Stats"), SerializeField] internal BaseProjectile projectile;
 
-		[BoxGroup("Compoentnts"), SerializeField] internal Transform projectileOrigin;
+		[BoxGroup("Components"), SerializeField] internal Transform projectileOrigin;
 		[BoxGroup("Components"), SerializeField] private Animator anim;
 		[BoxGroup("Components"), SerializeField] private List<MeshRenderer> meshes;
 
@@ -65,7 +65,7 @@ namespace DuneRiders.Prototype
 
 			//TODO Add animation trigger.
 			//TODO Add sound trigger.
-			//TODO Show ui 
+			//TODO Show ui
 		}
 
 		public void Activate()

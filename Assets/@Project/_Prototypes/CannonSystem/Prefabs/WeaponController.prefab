@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -5243988174349660497, guid: 94e4b94c638bc6b43a940894a03b3364, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270901662476324907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.498}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391465606594145526}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605304771378}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.498}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5121530523240137101}
@@ -192,6 +192,10 @@ MonoBehaviour:
   projectile: {fileID: 6771065084069637183, guid: 8504a9503b396144baad1b15aa5ec422, type: 3}
   projectileOrigin: {fileID: 1391465605883409325}
   anim: {fileID: 1391465605304771376}
+  meshes:
+  - {fileID: 1391465607016724500}
+  - {fileID: 1391465605407081354}
+  - {fileID: 1391465607178956032}
   muzzleFlash:
   - {fileID: 5121530523258544511}
   - {fileID: 3726112731073226456}
@@ -346,7 +350,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605407081397}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -406,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605411313054}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.498}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391465606957645896}
@@ -440,6 +444,8 @@ MonoBehaviour:
   projectile: {fileID: 1038440861622668345, guid: 7bf3c9379a5913949a3a336d656962a9, type: 3}
   projectileOrigin: {fileID: 1391465605986777430}
   anim: {fileID: 1391465605411313052}
+  meshes:
+  - {fileID: 1391465606957645902}
   muzzleFlash: {fileID: 7872125175011957960}
 --- !u!95 &1391465605411313052
 Animator:
@@ -513,13 +519,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605883409326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
   m_LocalPosition: {x: -1.262, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1391465605407081396}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1391465605986777431
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,13 +549,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465605986777431}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
   m_LocalPosition: {x: -0.661, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1391465606957645896}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1391465606594145527
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465606594145527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.498}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1391465606788879742}
@@ -612,6 +618,8 @@ MonoBehaviour:
   projectile: {fileID: 1101603947079655724, guid: d33e1acb67c376d4cbc36b30fcd4c3a6, type: 3}
   projectileOrigin: {fileID: 1391465605756198376}
   anim: {fileID: 1391465606594145525}
+  meshes:
+  - {fileID: 1391465606788879740}
   bulletLine: {fileID: 7985805809273128602}
   lineDisplayDuration: 0.15
   muzzleFlash: {fileID: 7951852162650632847}
@@ -683,7 +691,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465606788879743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -765,12 +773,12 @@ MonoBehaviour:
   forwardLineColor: {r: 0, g: 1, b: 0, a: 1}
   weaponContainer: {fileID: 1391465605371087342}
   weaponBase: {fileID: 1391465605371087341}
-  weaponPivot: {fileID: 0}
+  weaponPivot: {fileID: 2833973619572141569}
   weapons:
   - {fileID: 1391465606594145524}
   - {fileID: 1391465605304771383}
   - {fileID: 1391465605411313043}
-  aimSensetivity: 75
+  aimSensetivity: 30
   baseAngle: 45
   pivotAngle: 45
   weaponChangeThreshold: 0.5
@@ -874,7 +882,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465606957645897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -955,7 +963,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465607016724503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1036,7 +1044,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391465607178956035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1490,6 +1498,14 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: lengthInSec
       value: 0.2
@@ -1605,6 +1621,14 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: lengthInSec
       value: 0.2
@@ -1612,6 +1636,14 @@ PrefabInstance:
     - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19904546, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: m_Materials.Array.size
@@ -1716,9 +1748,25 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19891858, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19894786, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19904546, guid: 8deb1def3de25b04b8371070fbb372fe, type: 3}
       propertyPath: m_Materials.Array.size
