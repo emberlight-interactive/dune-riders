@@ -10,10 +10,10 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
+	[RequireComponent(typeof(PlayerCommandState))]
 	[RequireComponent(typeof(Rider))]
 	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
 	{
-		enum Command {Charge, Follow, Halt};
 		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner gunnerAction;
@@ -23,9 +23,10 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		HealthState healthState;
 		InCombatState inCombatState;
 		AllActiveRidersState allActiveRidersState;
-		[SerializeField] Command currentCommand = Command.Halt; // todo: Add state that tracks player ??? Add to priority state
+		PlayerCommandState playerCommandState;
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
+				(typeof(PlayerCommandState), "command", playerCommandState),
 				(typeof(HealthState), "health", healthState)
 			};
 		}
@@ -35,6 +36,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			healthState = GetComponent<HealthState>();
 			inCombatState = GetComponent<InCombatState>();
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
+			playerCommandState = GetComponent<PlayerCommandState>();
 			rider = GetComponent<Rider>();
 		}
 
@@ -42,20 +44,20 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
 			} else if (AmIEngagedInCombat()) {
-				if (IsCurrentCommand(Command.Charge)) {
+				if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
 					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
-				} else if (IsCurrentCommand(Command.Halt)) {
+				} else if (IsCurrentCommand(PlayerCommandState.Command.Halt)) {
 					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
 				} else {
 					SetActionersActive(new Actioner[] {followAction, gunnerAction});
 				}
-			} else if (IsCurrentCommand(Command.Charge)) {
+			} else if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
 				if (DoAnyEnemyRidersExist()) { // todo: take into account our detection distance (add this to traits???) // what happens if one charges but not the others ???
 					SetActionersActive(chargeAction);
 				} else {
 					SetActionersActive(followAction);
 				}
-			} else if (IsCurrentCommand(Command.Halt)) {
+			} else if (IsCurrentCommand(PlayerCommandState.Command.Halt)) {
 				SetActionersActive(haltAction);
 			} else {
 				SetActionersActive(followAction);
@@ -70,8 +72,8 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			return inCombatState.inCombat;
 		}
 
-		bool IsCurrentCommand(Command command) {
-			if (command == currentCommand) return true;
+		bool IsCurrentCommand(PlayerCommandState.Command command) {
+			if (command == playerCommandState.command) return true;
 			return false;
 		}
 

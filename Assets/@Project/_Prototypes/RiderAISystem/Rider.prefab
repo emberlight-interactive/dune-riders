@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5809143628830744128}
   - component: {fileID: 5809143628830744134}
+  - component: {fileID: 8987067373733107124}
   - component: {fileID: 5809143628830744135}
   - component: {fileID: 3562523250003362354}
   - component: {fileID: 551168085378313780}
@@ -288,6 +289,19 @@ MonoBehaviour:
   enemyAllegiance: 1
   chasisType: 2
   gunType: 2
+--- !u!114 &8987067373733107124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29020bef012c9443a994c9f0feb9ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  command: 0
 --- !u!114 &5809143628830744135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +424,6 @@ MonoBehaviour:
   gunnerAction: {fileID: 2142855892727606432}
   chargeAction: {fileID: 7456364413245128368}
   deathAction: {fileID: 315896023135117700}
-  currentCommand: 1
 --- !u!114 &1880663301664012116
 MonoBehaviour:
   m_ObjectHideFlags: 0
