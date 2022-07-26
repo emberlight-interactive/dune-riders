@@ -7,10 +7,18 @@ namespace DuneRiders.GunSystem {
 	public class GunPacker : MonoBehaviour
 	{
 		[SerializeField] Transform barrel;
+		[SerializeField] Transform turretBase;
+		[SerializeField] float retractSpeed = 2f;
+		Vector3 barrelStartPosition;
+		Quaternion barrelStartRotation;
+		Quaternion turretBaseStartRotation;
 		GunState gunState;
 
 		void Awake() {
 			gunState = GetComponent<GunState>();
+			barrelStartPosition = barrel.localPosition;
+			barrelStartRotation = barrel.localRotation;
+			turretBaseStartRotation = turretBase.localRotation;
 		}
 
 		public void StartPack() {
@@ -21,18 +29,28 @@ namespace DuneRiders.GunSystem {
 		}
 
 		IEnumerator Pack() {
-			while (true) {
-				yield return new WaitForSeconds(0.5f);
-				ImmediatePack();
-				yield return new WaitForSeconds(0.5f);
-				SetGunStateToPacked();
-				yield break;
-				// yield return null;
+			foreach (var i in System.Linq.Enumerable.Range(0, 50)) {
+				Vector3 retractDirection = -barrel.forward;
+				retractDirection.y = 0;
+				barrel.position += (retractDirection.normalized * Time.fixedDeltaTime) * retractSpeed;
+				barrel.localRotation = Quaternion.RotateTowards(barrel.localRotation, barrelStartRotation, 20.0f * Time.fixedDeltaTime);
+				turretBase.localRotation = Quaternion.RotateTowards(turretBase.localRotation, turretBaseStartRotation, 20.0f * Time.fixedDeltaTime);
+				yield return new WaitForFixedUpdate();
 			}
+
+			ImmediatePack();
+			ResetPosition();
+			SetGunStateToPacked();
 		}
 
 		void ImmediatePack() {
 			barrel.gameObject.SetActive(false);
+		}
+
+		void ResetPosition() {
+			turretBase.localRotation = turretBaseStartRotation;
+			barrel.localPosition = barrelStartPosition;
+			barrel.localRotation = barrelStartRotation;
 		}
 
 		bool CanTheGunBePackedRightNow() {
