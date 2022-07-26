@@ -7,6 +7,7 @@ namespace DuneRiders.GunSystem {
 	public class MachineGunProjectile : MonoBehaviour
 	{
 		LineRenderer bulletLine;
+		[SerializeField] int directHitDamage = 2;
 
 		void Awake() {
 			bulletLine = GetComponent<LineRenderer>();
@@ -28,10 +29,18 @@ namespace DuneRiders.GunSystem {
 					Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
 				#endif
 
+				RegisterDamageOnObjectIfDamageable(hit);
+
 				bulletLine.positionCount = 2;
 				bulletLine.SetPosition(0, transform.position);
 				bulletLine.SetPosition(1, hit.point);
 				bulletLine.enabled = true;
+			}
+		}
+
+		void RegisterDamageOnObjectIfDamageable(RaycastHit hit) {
+			if (hit.collider.gameObject.GetComponent<Damageable>()) {
+				hit.collider.gameObject.GetComponent<Damageable>().Damage(directHitDamage);
 			}
 		}
 
