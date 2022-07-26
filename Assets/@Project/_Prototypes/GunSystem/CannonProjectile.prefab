@@ -112,7 +112,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5041203329349004666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420145a137d3ff54c906ff9ee8e7cb55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugExplosiveRadiusColor: {r: 0.9528302, g: 0.5363415, b: 0.5363415, a: 0.69411767}
+  initialForce: 100
+  explosiveRadius: 3
+  directHitDamage: 20
+  explosionParticle: {fileID: 19849376, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
+  particleScale: 7

@@ -38,12 +38,12 @@ namespace DuneRiders.GunSystem {
 				yield return new WaitForFixedUpdate();
 			}
 
-			ImmediatePack();
+			HideBarrel();
 			ResetPosition();
 			SetGunStateToPacked();
 		}
 
-		void ImmediatePack() {
+		void HideBarrel() {
 			barrel.gameObject.SetActive(false);
 		}
 
