@@ -13,8 +13,12 @@ namespace DuneRiders.GunSystem {
 		[BoxGroup("Projectile Stats"), SerializeField] private int explosiveRadius = 3;
 		[BoxGroup("Projectile Stats"), SerializeField] private int directHitDamage = 20;
 
+		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem launchParticle;
+		[BoxGroup("Projectile Effects"), SerializeField] private float launchParticleScale = 2;
+
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem explosionParticle;
-		[BoxGroup("Projectile Effects"), SerializeField] private float particleScale = 2;
+		[BoxGroup("Projectile Effects"), SerializeField] private float explosionParticleScale = 2;
+
 
 		Rigidbody rb;
 
@@ -24,6 +28,7 @@ namespace DuneRiders.GunSystem {
 
 		void OnEnable() {
 			rb.velocity += transform.forward * initialForce;
+			SpawnLaunchParticles();
 		}
 
 		void OnDisable() {
@@ -61,10 +66,20 @@ namespace DuneRiders.GunSystem {
 				}
 			}
 
-			var p = SimplePool.Spawn(explosionParticle.gameObject, transform.position, Quaternion.identity); // todo: Add that despawner to the simple pool
-			p.transform.localScale = Vector3.one * particleScale;
-
+			SpawnExplosionParticles();
 			SimplePool.Despawn(gameObject);
+		}
+
+		void SpawnExplosionParticles() {
+			var p = SimplePool.Spawn(explosionParticle.gameObject, transform.position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * explosionParticleScale;
+			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
+		}
+
+		void SpawnLaunchParticles() {
+			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * launchParticleScale;
+			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
 		}
 	}
 }
