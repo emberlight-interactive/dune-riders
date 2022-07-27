@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.GunSystem {
 	[RequireComponent(typeof(LineRenderer))]
@@ -9,13 +10,17 @@ namespace DuneRiders.GunSystem {
 		LineRenderer bulletLine;
 		[SerializeField] int directHitDamage = 2;
 
+		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem launchParticle;
+		[BoxGroup("Projectile Effects"), SerializeField] private float launchParticleScale = 2;
+
 		void Awake() {
 			bulletLine = GetComponent<LineRenderer>();
 		}
 
 		void OnEnable()
 		{
-			FireBullet(); // todo: "Particles" for the hit point could be a single 2D image since the profiles will be hyper ephemeral
+			FireBullet();
+			SpawnLaunchParticles(); // todo: "Particles" for the hit point could be a single 2D image since the profiles will be hyper ephemeral
 		}
 
 		void OnDisable() {
@@ -47,6 +52,12 @@ namespace DuneRiders.GunSystem {
 		void ResetBullet() {
 			bulletLine.positionCount = 0;
 			bulletLine.enabled = false;
+		}
+
+		void SpawnLaunchParticles() {
+			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * launchParticleScale;
+			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
 		}
 	}
 }
