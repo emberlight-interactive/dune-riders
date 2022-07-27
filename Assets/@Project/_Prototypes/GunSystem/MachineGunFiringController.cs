@@ -41,7 +41,7 @@ namespace DuneRiders.GunSystem {
 			foreach (var i in System.Linq.Enumerable.Range(0, maxFirableMachineGunBullets))
 			{
 				var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
-				(Camera.main.gameObject.GetComponent<CoroutineParasite>() ?? Camera.main.gameObject.AddComponent<CoroutineParasite>()).StartCoroutine(DespawnBullet(spawnedProjectile, .025f));
+				SimplePool.Despawn(spawnedProjectile, .025f);
 				bulletsFiredCounter++;
 				yield return new WaitForSeconds(.025f);
 			}
@@ -78,11 +78,6 @@ namespace DuneRiders.GunSystem {
 			yield return new WaitForSeconds((bulletsFiredCounter / 10) * coolDownMultiplier);
 			ResetBulletsFiredCounter();
 			gunState.state = GunState.State.Ready;
-		}
-
-		IEnumerator DespawnBullet(GameObject bullet, float delayInSeconds = 0f) { // todo: Move to the simple pool class and have a global PoolMemberDespawner object
-			yield return new WaitForSeconds(delayInSeconds);
-			SimplePool.Despawn(bullet);
 		}
 	}
 }

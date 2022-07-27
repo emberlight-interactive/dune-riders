@@ -31,7 +31,7 @@ namespace DuneRiders.GunSystem {
 
 		public void StartFiring() {
 			var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
-			(Camera.main.gameObject.GetComponent<CoroutineParasite>() ?? Camera.main.gameObject.AddComponent<CoroutineParasite>()).StartCoroutine(DespawnBullet(spawnedProjectile, 4f));
+			SimplePool.Despawn(spawnedProjectile, 4f);
 		}
 
 		public void StopFiring() {
@@ -61,11 +61,6 @@ namespace DuneRiders.GunSystem {
 		IEnumerator Reload(float timeToReload) {
 			yield return new WaitForSeconds(timeToReload);
 			gunState.state = GunState.State.Ready;
-		}
-
-		IEnumerator DespawnBullet(GameObject bullet, float delayInSeconds = 0f) {
-			yield return new WaitForSeconds(delayInSeconds);
-			SimplePool.Despawn(bullet);
 		}
 	}
 }

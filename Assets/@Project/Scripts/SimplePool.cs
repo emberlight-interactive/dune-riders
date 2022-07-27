@@ -28,9 +28,9 @@
 ///
 
 
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using UnityEngine;
 
 public static class SimplePool {
 
@@ -128,6 +128,15 @@ public static class SimplePool {
 	/// </summary>
 	class PoolMember : MonoBehaviour {
 		public Pool myPool;
+
+		public void DelayedDespawn(float secondsToDelay) {
+			StartCoroutine(DelayedDespawner(secondsToDelay));
+		}
+
+		IEnumerator DelayedDespawner(float secondsToDelay) {
+			yield return new WaitForSeconds(secondsToDelay);
+			myPool.Despawn(gameObject);
+		}
 	}
 
 	// All of our pools
@@ -184,14 +193,18 @@ public static class SimplePool {
 	/// <summary>
 	/// Despawn the specified gameobject back into its pool.
 	/// </summary>
-	static public void Despawn(GameObject obj) {
+	static public void Despawn(GameObject obj, float waitForSeconds = 0) {
 		PoolMember pm = obj.GetComponent<PoolMember>();
 		if(pm == null) {
 			Debug.Log ("Object '"+obj.name+"' wasn't spawned from a pool. Destroying it instead.");
 			GameObject.Destroy(obj);
 		}
 		else {
-			pm.myPool.Despawn(obj);
+			if (waitForSeconds > 0) {
+				pm.DelayedDespawn(waitForSeconds);
+			} else {
+				pm.myPool.Despawn(obj);
+			}
 		}
 	}
 
