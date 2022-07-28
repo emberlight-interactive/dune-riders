@@ -13,12 +13,22 @@ namespace DuneRiders.GunSystem {
 		[SerializeField] Transform projectileSpawnLocation;
 		[SerializeField] GameObject projectile;
 		Coroutine firingRoutine;
+		Coroutine coolDownRoutine;
 		GunState gunState;
-		int bulletsFiredCounter = 0;
+		public int bulletsFiredCounter = 0;
 
-		void Start() {
+		void Awake() {
 			shootInput.action.Enable();
 			gunState = GetComponent<GunState>();
+		}
+
+		void OnEnable() {
+			if (coolDownRoutine != null) {
+				StopCoroutine(coolDownRoutine);
+				coolDownRoutine = null;
+			}
+
+			coolDownRoutine = StartCoroutine(CoolDownSystem());
 		}
 
 		void Update() {
@@ -30,19 +40,18 @@ namespace DuneRiders.GunSystem {
 		}
 
 		public void StopFiring() {
-			UpdateGunStateToReloading();
 			StopCoroutine(firingRoutine);
-			StartCoroutine(CoolDown()); // todo: Cool down should only be needed once max fireable bullets reached
+			UpdateGunStateToReloading();
 		}
 
 		IEnumerator FireMachineGun() {
 			UpdateGunStateToFiring();
 
-			foreach (var i in System.Linq.Enumerable.Range(0, maxFirableMachineGunBullets))
+			foreach (var i in System.Linq.Enumerable.Range(0, (maxFirableMachineGunBullets + 1) - bulletsFiredCounter))
 			{
+				bulletsFiredCounter++;
 				var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
 				SimplePool.Despawn(spawnedProjectile, .025f);
-				bulletsFiredCounter++;
 				yield return new WaitForSeconds(.025f);
 			}
 
@@ -73,11 +82,44 @@ namespace DuneRiders.GunSystem {
 			bulletsFiredCounter = 0;
 		}
 
-		IEnumerator CoolDown() {
-			gunState.state = GunState.State.Reloading;
-			yield return new WaitForSeconds((bulletsFiredCounter / 10) * coolDownMultiplier);
-			ResetBulletsFiredCounter();
-			gunState.state = GunState.State.Ready;
+		bool IsFullCoolDownTriggered() {
+			return bulletsFiredCounter >= maxFirableMachineGunBullets;
+		}
+
+		// IEnumerator PartialReplenishment() {
+		// 	bool isFullCoolDownTriggered =
+		// 	while (true) {
+		// 		if (bulletsFiredCounter == maxFirableMachineGunBullets)
+		// 		while (bulletsFiredCounter > 0)
+		// 		yield return null;
+		// 	}
+		// 	yield return new WaitForSeconds()
+		// }
+
+		IEnumerator CoolDownSystem() {
+			bool isTheGunCurrentlyInCoolDown = false;
+			while (true) {
+				while (!IsTheGunCurrentlyFiring()) {
+					if (IsFullCoolDownTriggered()) {
+						gunState.state = GunState.State.Reloading;
+						isTheGunCurrentlyInCoolDown	= true;
+					} else if (isTheGunCurrentlyInCoolDown && bulletsFiredCounter == 0) {
+						gunState.state = GunState.State.Ready;
+						isTheGunCurrentlyInCoolDown	= false;
+					} else if (!isTheGunCurrentlyInCoolDown && gunState.state == GunState.State.Reloading) {
+						gunState.state = GunState.State.Ready;
+					}
+
+					if (bulletsFiredCounter > 0) {
+						yield return new WaitForSeconds(0.075f * coolDownMultiplier);
+						bulletsFiredCounter--;
+					} else {
+						yield return null;
+					}
+				}
+
+				yield return null;
+			}
 		}
 	}
 }
