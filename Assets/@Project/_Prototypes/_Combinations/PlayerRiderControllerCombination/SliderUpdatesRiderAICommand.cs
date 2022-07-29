@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.State;
 
-public class SliderUpdatesRiderAICommand : MonoBehaviour
-{
-	PlayerCommandState.PlayerCommandGlobalState globalCommandState;
-	[SerializeField] PlayerCommandState.Command commandToSet;
+namespace DuneRiders.PlayerRiderControllerCombination {
+	public class SliderUpdatesRiderAICommand : MonoBehaviour
+	{
+		PlayerCommandState.PlayerCommandGlobalState globalCommandState;
+		[SerializeField] PlayerCommandState.Command commandToSet;
 
-    void Start() {
-		globalCommandState = FindObjectOfType<PlayerCommandState.PlayerCommandGlobalState>();
-	}
+		void Start() {
+			globalCommandState = FindObjectOfType<PlayerCommandState.PlayerCommandGlobalState>();
+		}
 
-	public void UpdateRiderAICommand() {
-		globalCommandState.command = commandToSet;
+		public void UpdateRiderAICommand() {
+			globalCommandState.command = commandToSet;
+		}
 	}
 }

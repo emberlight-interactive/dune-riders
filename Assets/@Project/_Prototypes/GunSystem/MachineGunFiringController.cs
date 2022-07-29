@@ -86,16 +86,6 @@ namespace DuneRiders.GunSystem {
 			return bulletsFiredCounter >= maxFirableMachineGunBullets;
 		}
 
-		// IEnumerator PartialReplenishment() {
-		// 	bool isFullCoolDownTriggered =
-		// 	while (true) {
-		// 		if (bulletsFiredCounter == maxFirableMachineGunBullets)
-		// 		while (bulletsFiredCounter > 0)
-		// 		yield return null;
-		// 	}
-		// 	yield return new WaitForSeconds()
-		// }
-
 		IEnumerator CoolDownSystem() {
 			bool isTheGunCurrentlyInCoolDown = false;
 			while (true) {

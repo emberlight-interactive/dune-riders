@@ -15,7 +15,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		Coroutine activeAction;
-		[SerializeField] Turret turret;
+		public Turret turret;
 		RiderEnemiesState riderEnemiesState;
 
 		void Awake() {
