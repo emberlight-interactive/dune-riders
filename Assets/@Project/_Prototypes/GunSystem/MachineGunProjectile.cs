@@ -35,12 +35,17 @@ namespace DuneRiders.GunSystem {
 				#endif
 
 				RegisterDamageOnObjectIfDamageable(hit);
-
-				bulletLine.positionCount = 2;
-				bulletLine.SetPosition(0, transform.position);
-				bulletLine.SetPosition(1, hit.point);
-				bulletLine.enabled = true;
+				ShootTowards(hit.point);
 			}
+
+			ShootTowards(transform.position + (transform.forward * 500));
+		}
+
+		void ShootTowards(Vector3 position) {
+			bulletLine.positionCount = 2;
+			bulletLine.SetPosition(0, transform.position);
+			bulletLine.SetPosition(1, position);
+			bulletLine.enabled = true;
 		}
 
 		void RegisterDamageOnObjectIfDamageable(RaycastHit hit) {

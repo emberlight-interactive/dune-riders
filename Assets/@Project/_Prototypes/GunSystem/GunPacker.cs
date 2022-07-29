@@ -33,7 +33,7 @@ namespace DuneRiders.GunSystem {
 				Vector3 retractDirection = -barrel.forward;
 				retractDirection.y = 0;
 				barrel.position += (retractDirection.normalized * Time.fixedDeltaTime) * retractSpeed;
-				barrel.localRotation = Quaternion.RotateTowards(barrel.localRotation, barrelStartRotation, 20.0f * Time.fixedDeltaTime);
+				barrel.localRotation = Quaternion.RotateTowards(barrel.localRotation, barrelStartRotation, 50.0f * Time.fixedDeltaTime);
 				turretBase.localRotation = Quaternion.RotateTowards(turretBase.localRotation, turretBaseStartRotation, 20.0f * Time.fixedDeltaTime);
 				yield return new WaitForFixedUpdate();
 			}
