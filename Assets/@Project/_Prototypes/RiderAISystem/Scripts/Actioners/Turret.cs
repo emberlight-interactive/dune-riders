@@ -6,12 +6,10 @@ using DuneRiders.AI;
 namespace DuneRiders.RiderAI.Actioners {
 	public class Turret : MonoBehaviour
 	{
-		[SerializeField] Rigidbody bulletPrefab;
-		[SerializeField] Transform bulletSpawnPosition;
+		[SerializeField] TurretTrigger trigger;
 		Transform riderCurrentlyTargetting;
 		Transform aimGuider;
 		public float turretTurnSpeed = 1;
-		public float fireRate = 1;
 		Quaternion originalRotation;
 
 		// Hacky af //
@@ -51,12 +49,14 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Gunner() {
 			while (true) {
-				yield return new WaitForSeconds(2f / fireRate);
-				if (riderCurrentlyTargetting) {
-					if (IsTurretAimedAtTarget()) {
-						FireVolley();
-					}
+
+				if (riderCurrentlyTargetting && IsTurretAimedAtTarget()) {
+					trigger.PullTrigger();
+				} else {
+					trigger.ReleaseTrigger();
 				}
+
+				yield return null;
 			}
 		}
 
@@ -90,13 +90,6 @@ namespace DuneRiders.RiderAI.Actioners {
 			var newLocalRotation = new Quaternion();
 			newLocalRotation.eulerAngles = localRotation;
 			transform.localRotation = newLocalRotation;
-		}
-
-		void FireVolley() {
-			var ball = SimplePool.Spawn(bulletPrefab.gameObject, bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.rotation);
-			ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-			ball.GetComponent<Rigidbody>().velocity += bulletSpawnPosition.transform.forward * 100;
-			SimplePool.Despawn(ball, 4f);
 		}
 
 		bool IsTurretAimedAtTarget() {

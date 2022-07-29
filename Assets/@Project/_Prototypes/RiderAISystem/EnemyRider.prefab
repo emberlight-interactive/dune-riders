@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2408158444020885065}
   - component: {fileID: 2408158444020885064}
+  - component: {fileID: 1963087183225738530}
   m_Layer: 20
   m_Name: GunPivot
   m_TagString: Untagged
@@ -75,9 +76,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375edd669d2d4ca4d83a0e1061f8f96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 1963087183225738530}
+  turretTurnSpeed: 1
+  upperXBounds: 310
+  lowerXBounds: 0
+--- !u!114 &1963087183225738530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408158444020885066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6219430f40a9664396bd8062d8403e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6119093443619386574, guid: 19be39a34ca99714faccba46ed0242f6, type: 3}
   bulletSpawnPosition: {fileID: 8211546473790194964}
-  turretTurnSpeed: 1
+  timeToReload: 2
 --- !u!1 &2408158444031284762
 GameObject:
   m_ObjectHideFlags: 0
