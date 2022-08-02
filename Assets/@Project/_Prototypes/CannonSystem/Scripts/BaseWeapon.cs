@@ -27,7 +27,7 @@ namespace DuneRiders.Prototype
 
 		private float lastShotTime = 0;
 		private bool reloading = false;
-		private bool activated = false;
+		// private bool activated = false;
 
 		private void Start()
 		{

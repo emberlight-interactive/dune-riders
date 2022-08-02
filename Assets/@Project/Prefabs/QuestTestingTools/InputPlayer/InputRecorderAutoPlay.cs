@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace DuneRiders.Shared {
 	[RequireComponent(typeof(InputRecorder))]
@@ -9,7 +10,8 @@ namespace DuneRiders.Shared {
 	{
 		InputRecorder recorder;
 		public string recorderTracePath;
-		public bool playOnAwake = false;
+		[FormerlySerializedAs("playOnAwake")]
+		public bool playOnStart = false;
 
 		void Reset() {
 			recorder = GetComponent<InputRecorder>();
@@ -18,8 +20,8 @@ namespace DuneRiders.Shared {
 			recorder.startRecordingWhenEnabled = false;
 		}
 
-		void Awake() {
-			if (playOnAwake) {
+		void Start() {
+			if (playOnStart) {
 				recorder = GetComponent<InputRecorder>();
 				recorder.LoadCaptureFromFile(recorderTracePath);
 				recorder.StartReplay();

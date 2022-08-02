@@ -38,7 +38,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     [Tooltip("Can Icon show when is off screen?")]
     public bool OffScreen = true;
     public bool DestroyWithObject = true;
-    [Range(0, 5)] public float BorderOffScreen = 0.01f;
+    public float BorderOffScreen = 0.01f;
     [Range(1, 50)] public float OffScreenSize = 10;
     public bool isHoofdPunt = false;
     [Tooltip("Time before render/show item in minimap after instance")]
@@ -66,7 +66,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     public override Transform GetTarget
     {
         get => Target;
-    } 
+    }
     #endregion
 
     #region Private members
@@ -96,7 +96,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     void CreateIcon()
     {
@@ -139,10 +139,10 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public override void OnUpdateItem()
-    {    
+    {
         //If a component missing, return for avoid bugs.
         if (Target == null)
             return;
@@ -154,7 +154,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     void IconControl()
     {
@@ -251,7 +251,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     void StartEffect()
     {
@@ -288,7 +288,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="newTarget"></param>
     public override void SetTarget(Transform newTarget)
@@ -297,7 +297,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="ico"></param>
     public override void SetIcon(Sprite newIcon)
@@ -308,7 +308,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="newIconColor"></param>
     public override void SetIconColor(Color newIconColor)
@@ -332,7 +332,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public void HideCircleArea()
     {
@@ -343,7 +343,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="active"></param>
     public override void SetActiveIcon(bool active)
@@ -353,7 +353,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="active"></param>
     public override void SetActiveCircleArea(bool active)
@@ -397,7 +397,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public override void SetIconText(string text)
     {
@@ -406,7 +406,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="iconSettings"></param>
     public override void SetIconSettings(MiniMapIconSettings iconSettings)
@@ -432,7 +432,7 @@ public class bl_MiniMapEntity : bl_MiniMapEntityBase {
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public Vector3 TargetPosition
     {
