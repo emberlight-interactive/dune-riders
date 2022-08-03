@@ -925,7 +925,7 @@ MonoBehaviour:
   ShowCircleArea: 0
   CircleAreaRadius: 10
   CircleAreaColor: {r: 1, g: 1, b: 1, a: 0.9}
-  isInteractable: 1
+  isInteractable: 0
   interacableAction: 0
   InfoItem: Info Icon here
   keepTextAlwaysFacingUp: 0
@@ -938,6 +938,7 @@ MonoBehaviour:
   m_Effect: 2
   useCustomIconPrefab: 0
   CustomIconPrefab: {fileID: 0}
+  hideIconWhenGameObjectIsDisabled: 1
 --- !u!114 &6592213566240991311
 MonoBehaviour:
   m_ObjectHideFlags: 0
