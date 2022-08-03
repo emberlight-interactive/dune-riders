@@ -40,7 +40,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			rider = GetComponent<Rider>();
 		}
 
-		protected override void ProcessBehaviourTree() {
+		protected override void ProcessBehaviourTree() { // todo: Add a condition to respawn near player when an extreme distance away (typically when falling through the map)
 			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
 			} else if (AmIEngagedInCombat()) {

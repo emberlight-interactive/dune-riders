@@ -857,11 +857,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2408158444031284766, guid: 689bec17c1ae0194bb9c8e37502768dd, type: 3}
   m_PrefabInstance: {fileID: 8586625987976394493}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &494433703709651945 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8211546473790194964, guid: 689bec17c1ae0194bb9c8e37502768dd, type: 3}
-  m_PrefabInstance: {fileID: 8586625987976394493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6215721265738539239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2408158444031284762, guid: 689bec17c1ae0194bb9c8e37502768dd, type: 3}
@@ -870,6 +865,11 @@ GameObject:
 --- !u!1 &6215721266183912715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2408158444743019510, guid: 689bec17c1ae0194bb9c8e37502768dd, type: 3}
+  m_PrefabInstance: {fileID: 8586625987976394493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &494433703709651945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8211546473790194964, guid: 689bec17c1ae0194bb9c8e37502768dd, type: 3}
   m_PrefabInstance: {fileID: 8586625987976394493}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6215721265731244215 stripped
@@ -892,6 +892,41 @@ MonoBehaviour:
   cannon: {fileID: 5521258464967134531}
   tripleMissileLauncher: {fileID: 8742924786128811857}
   machineGun: {fileID: 8339902672335336309}
+--- !u!114 &4328446180788926990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215721265738539239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c838d8dd5a730614f9b990ff5ebfdbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  OffSet: {x: 0, y: 0, z: 0}
+  Icon: {fileID: 21300000, guid: e78ac29ac587d684bb07fd0c6017c1cf, type: 3}
+  DeathIcon: {fileID: 0}
+  IconColor: {r: 0.6784314, g: 0.19453345, b: 0.18431373, a: 0.9}
+  Size: 10
+  ShowCircleArea: 0
+  CircleAreaRadius: 10
+  CircleAreaColor: {r: 1, g: 1, b: 1, a: 0.9}
+  isInteractable: 1
+  interacableAction: 0
+  InfoItem: Info Icon here
+  keepTextAlwaysFacingUp: 0
+  OffScreen: 1
+  DestroyWithObject: 1
+  BorderOffScreen: -5
+  OffScreenSize: 10
+  isHoofdPunt: 0
+  RenderDelay: 0.3
+  m_Effect: 2
+  useCustomIconPrefab: 0
+  CustomIconPrefab: {fileID: 0}
+  hideIconWhenGameObjectIsDisabled: 1
 --- !u!114 &3207100358681729231
 MonoBehaviour:
   m_ObjectHideFlags: 0
