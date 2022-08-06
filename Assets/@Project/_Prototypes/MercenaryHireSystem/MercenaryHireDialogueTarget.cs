@@ -32,7 +32,7 @@ namespace DuneRiders.MercenaryHireSystem {
 		}
 
 		public override void YesResponse() {
-			if (gatherer.GetPreciousMetal(35)) {
+			if (gatherer.GetManager(Gatherer.SupportedResources.PreciousMetal).Take(35)) {
 				dummyRider.gameObject.SetActive(false);
 				SimplePool.Spawn(riderToSpawn.gameObject, dummyRider.position, dummyRider.rotation);
 				mercenaryInteractable.SetActive(false);

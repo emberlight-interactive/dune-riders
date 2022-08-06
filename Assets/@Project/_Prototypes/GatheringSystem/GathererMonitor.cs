@@ -16,7 +16,7 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		void Update() {
-			tmpro.text = "Precious Metal: " + gatherer.PreciousMetalAmount();
+			tmpro.text = "Precious Metal: " + gatherer.GetManager(Gatherer.SupportedResources.PreciousMetal).Amount();
 		}
 	}
 }

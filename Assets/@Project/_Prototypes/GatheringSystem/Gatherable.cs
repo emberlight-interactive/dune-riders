@@ -7,6 +7,8 @@ namespace DuneRiders.GatheringSystem {
 	{
 		Gatherer gatherer;
 		Vector3 restingDestination;
+		[SerializeField] Gatherer.SupportedResources resourceType;
+		public int amount = 5;
 		public float yOffsetOfRestingPlace = 2f;
 		public float moveSpeed = 1f;
 		public float gatherSpeed = 5f;
@@ -53,7 +55,7 @@ namespace DuneRiders.GatheringSystem {
 			var gathererComponent = other.GetComponentInParent<Gatherer>();
 
 			if (gathererComponent && !gathered) {
-				if (gathererComponent.AddPreciousMetal(5)) {
+				if (gathererComponent.GetManager(resourceType).Give(amount)) {
 					gatherer = gathererComponent;
 					gathered = true;
 				}

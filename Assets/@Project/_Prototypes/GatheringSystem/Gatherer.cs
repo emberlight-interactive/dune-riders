@@ -1,31 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
+using System.Linq;
+using System;
 
 namespace DuneRiders.GatheringSystem {
 	[RequireComponent(typeof(Rigidbody))]
 	public class Gatherer : MonoBehaviour
 	{
-		[SerializeField, ReadOnly] int preciousMetal = 0;
-		[SerializeField] int preciousMetalLimit = 300;
-
-		public bool AddPreciousMetal(int amount) {
-			if (preciousMetal + amount > preciousMetalLimit) return false;
-			else {
-				preciousMetal += amount;
-				return true;
-			}
+		public enum SupportedResources {
+			Fuel,
+			ScrapMetal,
+			PreciousMetal,
 		}
 
-		public bool GetPreciousMetal(int amount) {
-			if (preciousMetal - amount < 0) return false;
-			else {
-				preciousMetal -= amount;
-				return true;
-			}
-		}
+		[SerializeField] ResourceManager[] resourceManagers;
 
-		public int PreciousMetalAmount() { return preciousMetal; }
+		public ResourceManager GetManager(SupportedResources resourceType) {
+			if (resourceManagers == null) return null;
+			return resourceManagers.SingleOrDefault(item => item.ResourceType == resourceType);
+		}
 	}
 }
