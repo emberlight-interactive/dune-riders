@@ -5,6 +5,7 @@ using DuneRiders.GunSystem;
 using TMPro;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
+	[RequireComponent(typeof(TextMeshProUGUI))]
 	public class WeaponDisplayUpdater : MonoBehaviour
 	{
 		[SerializeField] GunState cannon;
@@ -14,7 +15,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		[SerializeField] TextMeshProUGUI gunStateText;
 		[SerializeField] GameObject gunStateBackground;
 
-		void Start() {
+		void Awake() {
 			gunNameText = GetComponent<TextMeshProUGUI>();
 		}
 
