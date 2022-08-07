@@ -32,14 +32,14 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		void UpdateDisplay(string weaponName, GunState state) {
-			gunNameText.SetText(weaponName);
-			gunStateText.SetText(GunStateToString(state));
+			gunNameText.text = weaponName;
+			gunStateText.text = GunStateToString(state);
 			gunStateBackground.SetActive(true);
 		}
 
 		void DisableDisplay() {
-			gunNameText.SetText("No Weapon");
-			gunStateText.SetText("");
+			gunNameText.text = "No Weapon";
+			gunStateText.text = "";
 			gunStateBackground.SetActive(false);
 		}
 

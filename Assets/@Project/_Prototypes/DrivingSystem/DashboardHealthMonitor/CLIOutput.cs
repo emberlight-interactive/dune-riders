@@ -40,12 +40,12 @@ namespace DuneRiders.DrivingSystem {
 				compiledOutput += cliLine + "\n";
 			}
 
-			cliOutput.SetText(compiledOutput);
+			cliOutput.text = compiledOutput;
 		}
 
 		public void ClearText() {
 			cliOutputLines.Clear();
-			cliOutput.SetText("");
+			cliOutput.text = "";
 		}
 	}
 }

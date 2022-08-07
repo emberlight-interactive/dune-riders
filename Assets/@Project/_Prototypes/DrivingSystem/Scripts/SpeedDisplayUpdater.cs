@@ -18,7 +18,7 @@ namespace DuneRiders.DrivingSystem {
 		void Update()
 		{
 			var kmH = Mathf.Abs(3.6f * rb.velocity.magnitude).ToString("0");
-			textMeshPro.SetText($"Speed\n{kmH} km/h");
+			textMeshPro.text = $"Speed\n{kmH} km/h";
 		}
 	}
 }
