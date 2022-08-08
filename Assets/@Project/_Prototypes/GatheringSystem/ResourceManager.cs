@@ -29,5 +29,6 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		public int Amount() { return resourceAmount; }
+		public int ResourceLimit() { return resourceLimit; }
 	}
 }
