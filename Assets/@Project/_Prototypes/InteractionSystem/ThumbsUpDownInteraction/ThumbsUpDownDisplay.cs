@@ -10,7 +10,6 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 		[SerializeField] private Image decisionProgressImage;
 		[SerializeField] private ThumbsUpDownResponseInterface thumbsUpDownResponseInterface;
 
-
 		void Update() {
 			if (thumbsUpDownResponseInterface.Active) {
 				decisionProgressCanvas.enabled = true;

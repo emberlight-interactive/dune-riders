@@ -41,8 +41,8 @@ namespace DuneRiders.InteractionSystem {
 			RegisterBehaviourCallbacks();
 		}
 
-		public void Initiate() { linkedBehaviour.Initiate(); }
-		public void ForceCancel() { linkedBehaviour.ForceCancel(); }
+		public abstract void Initiate();
+		public abstract void ForceCancel();
 
 		void LinkBehaviour() {
 			linkedBehaviour = MonoBehaviour.FindObjectOfType<TBehaviour>(true);

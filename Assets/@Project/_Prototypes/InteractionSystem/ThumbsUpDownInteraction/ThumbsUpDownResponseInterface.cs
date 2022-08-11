@@ -123,5 +123,8 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 
 	class ThumbsUpDownResponseRequester : ResponseRequester<bool, ThumbsUpDownResponseInterface> {
 		public ThumbsUpDownResponseRequester(HandleResult successCallback, HandleCancel cancelCallback) : base(successCallback, cancelCallback) {}
+
+		public override void Initiate() { linkedBehaviour.Initiate(); }
+		public override void ForceCancel() { linkedBehaviour.ForceCancel(); }
 	}
 }
