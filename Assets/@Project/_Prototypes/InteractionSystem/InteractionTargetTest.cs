@@ -26,7 +26,10 @@ namespace DuneRiders.InteractionSystem {
 			InitiateCurrentResponseRequester();
 		}
 
-		protected override void EndInteraction() {}
+		protected override void EndInteraction() {
+			currentNode.responseRequester.ForceCancel();
+			SetCurrentNodeToRoot();
+		}
 
 		void Awake() {
 			dialogueTextArea.text = "";
