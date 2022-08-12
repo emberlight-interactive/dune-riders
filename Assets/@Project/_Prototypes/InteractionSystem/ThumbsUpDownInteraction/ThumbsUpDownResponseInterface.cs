@@ -18,7 +18,6 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 		[SerializeField] float secondsToConfirmChoice = 1f;
 		[SerializeField, ReadOnly] float confirmationProgress = 0f;
 		public float ConfirmationProgress { get => confirmationProgress; }
-		Coroutine resultsLoader;
 
 		enum ThumbPosition {
 			Up,
@@ -32,13 +31,15 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 		void Awake() {
 			thumbsUpSpace = GetComponent<BoxCollider>();
 			thumbsUpSpace.isTrigger = true;
+			thumbsUpSpace.enabled = false;
 		}
 
-		public override void Initiate() { active = true; }
+		public override void Initiate() { active = true; thumbsUpSpace.enabled = true; }
 		public override void ForceCancel() { ShutDownInterface(); }
 
 		void ShutDownInterface(bool triggerCancelCallback = false) {
 			active = false;
+			thumbsUpSpace.enabled = false;
 			ClearResultsLoaderRoutine();
 			ResetConfirmationProgress();
 			if (triggerCancelCallback) HandleCancel();
@@ -49,7 +50,7 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 		void OnTriggerEnter(Collider c)
 		{
 			if (!Active) return;
-			if (c.GetComponent<Hand>() == rightHand) resultsLoader = StartCoroutine(ResultsLoader());
+			if (c.GetComponent<Hand>() == rightHand) StartCoroutine(ResultsLoader());
 		}
 
 		void OnTriggerExit(Collider c)
@@ -62,8 +63,7 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 		}
 
 		void ClearResultsLoaderRoutine() {
-			StopCoroutine(resultsLoader);
-			resultsLoader = null;
+			StopAllCoroutines();
 		}
 
 		IEnumerator ResultsLoader() {
