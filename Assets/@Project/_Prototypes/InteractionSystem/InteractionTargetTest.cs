@@ -10,15 +10,6 @@ using TMPro;
 namespace DuneRiders.InteractionSystem {
 	public class InteractionTargetTest : InteractionTarget
 	{
-		class Node {
-			public ResponseRequesterBase responseRequester;
-			public Node confirm;
-			public Node cancel;
-		}
-
-		Node interactionTreeRoot;
-		Node currentNode;
-
 		[SerializeField] TextMeshProUGUI dialogueTextArea;
 
 		protected override void StartInteraction() {
@@ -27,18 +18,16 @@ namespace DuneRiders.InteractionSystem {
 		}
 
 		protected override void EndInteraction() {
-			currentNode.responseRequester.ForceCancel();
+			ForceCancelCurrentResponseRequester();
 			SetCurrentNodeToRoot();
 		}
 
-		void Awake() {
+		void Start() {
 			dialogueTextArea.text = "";
-			BuildInteractionTree();
-			SetCurrentNodeToRoot();
 		}
 
-		void BuildInteractionTree() {
-			interactionTreeRoot =  new Node() {
+		protected override Node BuildInteractionTree() {
+			return new Node() {
 				responseRequester = new WaveResponseRequester(HandleWave, () => {}),
 
 				confirm = new Node {
@@ -64,28 +53,6 @@ namespace DuneRiders.InteractionSystem {
 					}
 				},
 			};
-		}
-
-		void SetCurrentNodeToRoot() {
-			currentNode = interactionTreeRoot;
-		}
-
-		void InitiateCurrentResponseRequester() {
-			currentNode.responseRequester.Initiate();
-		}
-
-		bool SetCurrentNodeToCancelNode() {
-			if (currentNode.cancel == null) return false;
-
-			currentNode = currentNode.cancel;
-			return true;
-		}
-
-		bool SetCurrentNodeToConfirmNode() {
-			if (currentNode.confirm == null) return false;
-
-			currentNode = currentNode.confirm;
-			return true;
 		}
 
 		void HandleWave(bool waved) {

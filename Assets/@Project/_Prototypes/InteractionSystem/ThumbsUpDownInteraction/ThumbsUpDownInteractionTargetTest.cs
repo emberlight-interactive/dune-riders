@@ -16,6 +16,8 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 			thumbs.Initiate();
 		}
 
+		protected override Node BuildInteractionTree() { return new Node(); }
+
 		protected override void EndInteraction() {}
 
 		void Start() {

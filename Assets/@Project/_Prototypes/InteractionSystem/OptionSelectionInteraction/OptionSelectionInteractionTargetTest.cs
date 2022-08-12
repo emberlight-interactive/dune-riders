@@ -17,6 +17,8 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 			optionSelection.Initiate();
 		}
 
+		protected override Node BuildInteractionTree() { return new Node(); }
+
 		protected override void EndInteraction() {}
 
 		void Start() {

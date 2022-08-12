@@ -17,6 +17,8 @@ namespace DuneRiders.InteractionSystem.RangeSelectionInteraction {
 			rangeSelector.Initiate();
 		}
 
+		protected override Node BuildInteractionTree() { return new Node(); }
+
 		protected override void EndInteraction() {}
 
 		void Start() {

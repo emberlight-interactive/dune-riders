@@ -18,6 +18,8 @@ namespace DuneRiders.InteractionSystem.WaveInteraction {
 
 		protected override void EndInteraction() {}
 
+		protected override Node BuildInteractionTree() { return new Node(); }
+
 		void Start() {
 			StartInteraction();
 		}
