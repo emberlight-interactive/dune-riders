@@ -4,14 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DuneRiders.InteractionSystem {
-	public class InteractionInitiator : MonoBehaviour {
-		InteractionTarget interactionTarget;
-	}
-
+	[RequireComponent(typeof(SphereCollider))]
 	public abstract class InteractionTarget : MonoBehaviour {
+		[SerializeField] Color activeInteractionAreaGizmoColor = Color.green;
+
+		SphereCollider interactionArea;
 		InteractionInitiator initiator;
 		protected abstract void StartInteraction();
 		protected abstract void EndInteraction();
+
+		void Awake() {
+			interactionArea = GetComponent<SphereCollider>();
+			interactionArea.isTrigger = true;
+		}
+
+		void OnDrawGizmos()
+		{
+			Color sphereColor = Color.red;
+			if (initiator) sphereColor = activeInteractionAreaGizmoColor;
+
+			Gizmos.color = sphereColor;
+			Gizmos.DrawWireSphere(transform.position, GetComponent<SphereCollider>().radius * transform.lossyScale.x);
+			Gizmos.color = new Color(sphereColor.r, sphereColor.g, sphereColor.b, .25f);
+			Gizmos.DrawSphere(transform.position, GetComponent<SphereCollider>().radius * transform.lossyScale.x);
+		}
 
 		public void StartInteractionWith(InteractionInitiator initiator) {
 			this.initiator = initiator;
