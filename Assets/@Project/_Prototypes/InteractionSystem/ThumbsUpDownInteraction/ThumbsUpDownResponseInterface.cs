@@ -87,6 +87,7 @@ namespace DuneRiders.InteractionSystem.ThumbsUpDownInteraction {
 			HandleResult(currentPosition == ThumbPosition.Up ? true : false);
 			ResetConfirmationProgress();
 			active = false;
+			thumbsUpSpace.enabled = false;
 		}
 
 		ThumbPosition GetHandOrientation() {

@@ -40,7 +40,7 @@ namespace DuneRiders.InteractionSystem {
 								else Nothing();
 							},
 							() => {},
-							new string[] { "Move Village", "Poggeta", "What y doing" }
+							new string[] { "Move Village", "Option 2", "Option 3" }
 						),
 
 						confirm = new Node {
@@ -58,7 +58,7 @@ namespace DuneRiders.InteractionSystem {
 		void HandleWave(bool waved) {
 			Debug.Log("Waved");
 			SetCurrentNodeToConfirmNode();
-			dialogueTextArea.text = "Do you thumbs up gang?";
+			dialogueTextArea.text = "Do you thumbs up?";
 			InitiateCurrentResponseRequester();
 		}
 
@@ -68,12 +68,12 @@ namespace DuneRiders.InteractionSystem {
 			if (thumbsUp) SetCurrentNodeToConfirmNode();
 			SetCurrentNodeToCancelNode();
 
-			dialogueTextArea.text = "What are we doing chief?";
+			dialogueTextArea.text = "What are we doing?";
 			InitiateCurrentResponseRequester();
 		}
 
 		void MoveVillage() {
-			dialogueTextArea.text = "Guess we movin the village, we need gas doe";
+			dialogueTextArea.text = "Guess we movin the village, how much gas?";
 			SetCurrentNodeToConfirmNode();
 			InitiateCurrentResponseRequester();
 		}
