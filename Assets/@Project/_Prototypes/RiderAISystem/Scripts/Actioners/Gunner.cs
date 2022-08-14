@@ -7,7 +7,7 @@ using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RiderEnemiesState))]
-	public class Gunner : Actioner
+	public class Gunner : Actioner // todo: add variance to range on weapons? or just damage?
 	{
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
