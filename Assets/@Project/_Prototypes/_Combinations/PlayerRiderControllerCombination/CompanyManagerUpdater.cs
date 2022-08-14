@@ -5,6 +5,7 @@ using UnityEngine;
 using DuneRiders.RiderTabletSystem;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
+using DuneRiders.Combinations;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	[RequireComponent(typeof(CompanyManagementDisplayController))]
@@ -50,7 +51,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 					armourType = ArmourTypeEnumConverter(riders[i].chasisType),
 					weaponType = WeaponTypeEnumConverter(riders[i].gunType),
 					health = riders[i].GetComponent<HealthState>().health,
-					// DisbandCallback disbandCallback;
+					disbandCallback = riders[i].GetComponent<DisbandRider>().Disband,
 				});
 			}
 

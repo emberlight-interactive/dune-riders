@@ -258,6 +258,8 @@ GameObject:
   - component: {fileID: 7456364413245128368}
   - component: {fileID: 5334284438471281684}
   - component: {fileID: 2142855892727606432}
+  - component: {fileID: 5128939193122605526}
+  - component: {fileID: 5016071827799240507}
   - component: {fileID: 315896023135117700}
   - component: {fileID: 5809143628830744141}
   - component: {fileID: 5809143628830744130}
@@ -439,6 +441,8 @@ MonoBehaviour:
   gunnerAction: {fileID: 2142855892727606432}
   chargeAction: {fileID: 7456364413245128368}
   deathAction: {fileID: 315896023135117700}
+  leaveAction: {fileID: 5128939193122605526}
+  despawnAction: {fileID: 5016071827799240507}
 --- !u!114 &1880663301664012116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +495,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 5809143628806843926}
+--- !u!114 &5128939193122605526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8779b645df9db418199c5ed68f1fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5016071827799240507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15193d1a843be0d4d9a497293b8edae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &315896023135117700
 MonoBehaviour:
   m_ObjectHideFlags: 0

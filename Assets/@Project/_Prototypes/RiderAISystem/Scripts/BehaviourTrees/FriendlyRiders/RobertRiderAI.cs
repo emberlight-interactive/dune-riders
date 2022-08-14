@@ -19,11 +19,14 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner chargeAction;
 		[SerializeField] Actioner deathAction;
+		[SerializeField] Actioner leaveAction;
+		[SerializeField] Actioner despawnAction;
 		Rider rider;
 		HealthState healthState;
 		InCombatState inCombatState;
 		AllActiveRidersState allActiveRidersState;
 		PlayerCommandState playerCommandState;
+		Player player;
 		protected override (System.Type, string, System.Object)[] priorityStates {
 			get => new (System.Type, string, System.Object)[] {
 				(typeof(PlayerCommandState), "command", playerCommandState),
@@ -38,10 +41,14 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			playerCommandState = GetComponent<PlayerCommandState>();
 			rider = GetComponent<Rider>();
+			player = FindObjectOfType<Player>();
 		}
 
 		protected override void ProcessBehaviourTree() { // todo: Add a condition to respawn near player when an extreme distance away (typically when falling through the map)
-			if (RiderHasLostAllHealth()) {
+			if (IsDisbanded()) {
+				if (RiderIsPastMaxDistanceFromPlayer()) SetActionersActive(despawnAction);
+				else SetActionersActive(leaveAction);
+			} else if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
 			} else if (AmIEngagedInCombat()) {
 				if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
@@ -79,6 +86,15 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
+		}
+
+		bool RiderIsPastMaxDistanceFromPlayer() {
+			if (!player) return false;
+			return Vector3.Distance(transform.position, player.transform.position) > 1000;
+		}
+
+		bool IsDisbanded() {
+			return (rider.allegiance != Allegiance.Player);
 		}
 	}
 }
