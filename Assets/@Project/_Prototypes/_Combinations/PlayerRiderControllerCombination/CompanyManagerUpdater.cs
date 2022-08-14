@@ -9,7 +9,7 @@ using DuneRiders.Combinations;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	[RequireComponent(typeof(CompanyManagementDisplayController))]
-	public class CompanyManagerUpdater : MonoBehaviour
+	public class CompanyManagerUpdater : MonoBehaviour // todo: When disbanding units the tile disappears but then might reappear again before disappearing (because of a mismatch between the updater enumerator)
 	{
 		CompanyManagementDisplayController companyManager;
 
