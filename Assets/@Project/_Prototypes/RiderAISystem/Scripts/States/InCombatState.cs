@@ -12,7 +12,7 @@ namespace DuneRiders.RiderAI.State {
 	[RequireComponent(typeof(AllNearbyOutpostsState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(Rider))]
-	public class InCombatState : MonoBehaviour
+	public class InCombatState : MonoBehaviour // todo: Rig up with EnemyAiEntitiesInRange
 	{
 		[ReadOnly] public bool inCombat = false;
 

@@ -13,7 +13,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(PlayerCommandState))]
 	[RequireComponent(typeof(Rider))]
 	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
-	{
+	{ // todo: All states and actioners need to have enumerators started and stopped in onenable and disable events since they are pooled
 		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner gunnerAction;
