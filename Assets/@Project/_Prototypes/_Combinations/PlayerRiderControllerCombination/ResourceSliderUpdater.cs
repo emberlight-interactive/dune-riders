@@ -13,17 +13,37 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		[SerializeField] TextMeshProUGUI burnRateText;
 		[SerializeField] string burnRateUnits = "L/h";
 		[SerializeField] BurnRateSystem burnRateSystem;
+		[SerializeField] bool oneTimeBurnRateResource;
 		[SerializeField] Gatherer.SupportedResources resourceTracked;
 		[SerializeField] Gatherer gatherer;
 		[SerializeField] Slider resourceSlider;
 
-		void Update() {
-			resourceSlider.value = GetTotalResourcesPercentage();
-			amountAndCapacityText.text = GetAmountAndCapacityFraction();
+		void OnEnable() {
+			StartCoroutine(UpdateSlider());
+		}
 
-			var burnRate = burnRateSystem.GetResourceBurnRate(GetBurnRateResourceTypeEquivalentEnum(resourceTracked));
-			if (burnRate > 0) burnRateText.text = GetBurnRateString(burnRate);
-			else burnRateText.text = "";
+		void OnDisable() {
+			StopAllCoroutines();
+		}
+
+		IEnumerator UpdateSlider() {
+			while (true) {
+				resourceSlider.value = GetTotalResourcesPercentage();
+				amountAndCapacityText.text = GetAmountAndCapacityFraction();
+
+				if (oneTimeBurnRateResource) {
+					var oneTimeBurnRateAmount = (int) burnRateSystem.GetOneTimeResourceCost(GetBurnRateResourceTypeEquivalentEnum(resourceTracked));
+
+					if (oneTimeBurnRateAmount > 0) burnRateText.text = $"-{oneTimeBurnRateAmount} {burnRateUnits}";
+					else burnRateText.text = "";
+				} else {
+					var burnRate = burnRateSystem.GetResourceBurnRate(GetBurnRateResourceTypeEquivalentEnum(resourceTracked));
+					if (burnRate > 0) burnRateText.text = GetBurnRateString(burnRate);
+					else burnRateText.text = "";
+				}
+
+				yield return new WaitForSeconds(1f);
+			}
 		}
 
 		float GetTotalResourcesPercentage() {

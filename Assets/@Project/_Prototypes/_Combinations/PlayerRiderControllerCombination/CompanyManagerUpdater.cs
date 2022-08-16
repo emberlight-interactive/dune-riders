@@ -6,6 +6,7 @@ using DuneRiders.RiderTabletSystem;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
 using DuneRiders.Combinations;
+using DuneRiders.RiderAICombination;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	[RequireComponent(typeof(CompanyManagementDisplayController))]
@@ -52,6 +53,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 					weaponType = WeaponTypeEnumConverter(riders[i].gunType),
 					health = riders[i].GetComponent<HealthState>().health,
 					disbandCallback = riders[i].GetComponent<DisbandRider>().Disband,
+					isBeingRepaired = riders[i].GetComponent<RepairSystem>().IsCurrentlyRepairing,
 				});
 			}
 

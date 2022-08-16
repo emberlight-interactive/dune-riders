@@ -30,7 +30,7 @@ namespace DuneRiders.RiderTabletSystem {
 			public WeaponType weaponType;
 			public int health;
 			public DisbandCallback disbandCallback;
-			// public bool isBeingRepaired;
+			public bool isBeingRepaired;
 		}
 
 		[SerializeField] TextMeshProUGUI title;
@@ -84,6 +84,7 @@ namespace DuneRiders.RiderTabletSystem {
 					availableTiles[i].armourIconography.sprite = GetIconForArmour(rider.armourType);
 					availableTiles[i].weaponIconography.sprite = GetIconForWeapon(rider.weaponType);
 					availableTiles[i].healthOverlay.fillAmount = HealthToDamageOverlay(rider.health);
+					availableTiles[i].repairImage.gameObject.SetActive(rider.isBeingRepaired);
 					i++;
 				}
 

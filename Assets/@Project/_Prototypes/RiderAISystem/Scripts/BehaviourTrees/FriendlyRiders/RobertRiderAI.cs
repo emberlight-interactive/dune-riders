@@ -93,7 +93,8 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			return Vector3.Distance(transform.position, player.transform.position) > 1000;
 		}
 
-		bool IsDisbanded() {
+		bool IsDisbanded() { // todo: Moving allegiance to mercenary for disbanding is gross and means combination scripts on friendly riders could still run on riders no longer associated with the player
+			// todo: A new type of rider "mercenary" should be made for each type of rider and simply replaces the disbanded rider when the disband functionality is called. These mercenaries can stand in place of the hiring spots??
 			return (rider.allegiance != Allegiance.Player);
 		}
 	}
