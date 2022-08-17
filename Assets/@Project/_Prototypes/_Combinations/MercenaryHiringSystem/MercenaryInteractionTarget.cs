@@ -14,7 +14,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 	{
 		Gatherer gatherer;
 
-		// todo: Add option for setting which mercenary can spawn and how that's decided
+		// todo: Add option for setting which mercenary can spawn and how that's decided (it might be decided by an external script which filles details on instantiation)
 
 		public GameObject mercenaryToHire;
 		public int mercenaryCost = 75;
