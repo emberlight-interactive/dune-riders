@@ -9,12 +9,14 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		PlayerCommandState.PlayerCommandGlobalState globalCommandState;
 		[SerializeField] PlayerCommandState.Command commandToSet;
 
-		void Start() {
-			globalCommandState = FindObjectOfType<PlayerCommandState.PlayerCommandGlobalState>();
+		public void UpdateRiderAICommand() {
+			if (globalCommandState == null) LinkToGlobalState();
+
+			globalCommandState.command = commandToSet;
 		}
 
-		public void UpdateRiderAICommand() {
-			globalCommandState.command = commandToSet;
+		void LinkToGlobalState() {
+			globalCommandState = FindObjectOfType<PlayerCommandState.PlayerCommandGlobalState>();
 		}
 	}
 }

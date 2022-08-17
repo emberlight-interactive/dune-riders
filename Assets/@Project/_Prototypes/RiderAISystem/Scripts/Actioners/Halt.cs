@@ -51,8 +51,12 @@ namespace DuneRiders.RiderAI.Actioners {
 				(riderData) => GameObject.ReferenceEquals(riderData.rider.gameObject, gameObject)
 			);
 
-			pathfinder.destination = formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
-			pathfinder.SearchPath();
+			try {
+				pathfinder.destination = formationPositions[positionOfThisRiderInGlobalIndex].transform.position;
+				pathfinder.SearchPath();
+			} catch (System.ArgumentOutOfRangeException exception) {
+				Debug.LogWarning("This rider is not moving for now as it was unable to find a suitable position to halt: " + exception);
+			}
 
 			SimplePool.Despawn(formation);
 		}

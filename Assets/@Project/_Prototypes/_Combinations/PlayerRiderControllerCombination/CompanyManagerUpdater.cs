@@ -2,10 +2,10 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.Combinations;
 using DuneRiders.RiderTabletSystem;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
-using DuneRiders.Combinations;
 using DuneRiders.RiderAICombination;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
@@ -28,7 +28,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		IEnumerator UpdateRiderList() {
 			while (true) {
-				var allCompanyRiders = GetAllCompanyRiders();
+				var allCompanyRiders = GlobalQuery.GetAllCompanyRiders();
 				companyManager.ridersToDisplay = RidersToRiderDisplayObjects(allCompanyRiders);
 
 				yield return new WaitForSeconds(1f);
