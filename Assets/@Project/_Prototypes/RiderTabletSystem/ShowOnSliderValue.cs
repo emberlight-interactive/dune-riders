@@ -19,7 +19,7 @@ namespace DuneRiders.RiderTabletSystem {
 		}
 
 		void Update() {
-			if (slider.value >= 0.7f) {
+			if (slider.value >= valueAtOrAboveToShow) {
 				text.text = textShowing;
 			} else {
 				text.text = "";

@@ -9,7 +9,7 @@ namespace DuneRiders.GatheringSystem {
 		[SerializeField] Gatherer.SupportedResources resourceType;
 		public Gatherer.SupportedResources ResourceType { get => resourceType; }
 
-		[SerializeField, ReadOnly] int resourceAmount = 0;
+		[SerializeField] int resourceAmount = 0;
 		[SerializeField] int resourceLimit = 10000;
 
 		public bool Take(int amount) {
