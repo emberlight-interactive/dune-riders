@@ -50,5 +50,9 @@ namespace DuneRiders.HomeVillageSystem {
 		public int GetCurrentFuelPerHourConsumption() {
 			return fuelPerHour * numberOfMigrations;
 		}
+
+		public float GetPercentageOfVillageFuelLeft() {
+			return (float) fuelResourceManager.Amount() / (float) fuelResourceManager.ResourceLimit();
+		}
 	}
 }

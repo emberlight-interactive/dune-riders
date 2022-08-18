@@ -33,7 +33,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		IEnumerator UpdateSlider() {
 			while (true) {
-				homeVillageFuelSlider.value = GetPercentageOfVillageFuelLeft();
+				homeVillageFuelSlider.value = homeVillageFuelManager.GetPercentageOfVillageFuelLeft();
 				amountAndCapacityText.text = homeVillageFuelManager.FuelResourceManager.Amount().ToString();
 
 				if (homeVillageFuelManager.GetCurrentFuelPerHourConsumption() > 0) burnRateText.text = GetBurnRateString(homeVillageFuelManager.GetCurrentFuelPerHourConsumption());
@@ -45,10 +45,6 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		string GetBurnRateString(float burnRate) {
 			return $"-{burnRate} {burnRateUnits}";
-		}
-
-		float GetPercentageOfVillageFuelLeft() {
-			return (float) homeVillageFuelManager.FuelResourceManager.Amount() / (float) homeVillageFuelManager.FuelResourceManager.ResourceLimit();
 		}
 	}
 }
