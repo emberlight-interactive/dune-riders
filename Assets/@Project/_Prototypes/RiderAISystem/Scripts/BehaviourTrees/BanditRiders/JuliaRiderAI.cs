@@ -22,10 +22,10 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		InCombatState inCombatState;
 		MoraleState moraleState;
 		Player player;
+
+		(System.Type, string, System.Object)[] _priorityStates;
 		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => new (System.Type, string, System.Object)[] {
-				(typeof(HealthState), "health", healthState)
-			};
+			get => _priorityStates;
 		}
 
 		void Awake()
@@ -34,6 +34,11 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			moraleState = GetComponent<MoraleState>();
 			inCombatState = GetComponent<InCombatState>();
 			player = FindObjectOfType<Player>();
+
+			_priorityStates = new (System.Type, string, System.Object)[] {
+				(typeof(HealthState), "health", healthState)
+			};
+
 		}
 
 		protected override void ProcessBehaviourTree() {

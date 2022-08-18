@@ -19,19 +19,15 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner chargeAction;
 		[SerializeField] Actioner deathAction;
-		[SerializeField] Actioner leaveAction;
-		[SerializeField] Actioner despawnAction;
 		Rider rider;
 		HealthState healthState;
 		InCombatState inCombatState;
 		AllActiveRidersState allActiveRidersState;
 		PlayerCommandState playerCommandState;
-		Player player;
+
+		(System.Type, string, System.Object)[] _priorityStates;
 		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => new (System.Type, string, System.Object)[] {
-				(typeof(PlayerCommandState), "command", playerCommandState),
-				(typeof(HealthState), "health", healthState)
-			};
+			get => _priorityStates;
 		}
 
 		void Awake()
@@ -41,14 +37,15 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			playerCommandState = GetComponent<PlayerCommandState>();
 			rider = GetComponent<Rider>();
-			player = FindObjectOfType<Player>();
+
+			_priorityStates = new (System.Type, string, System.Object)[] {
+				(typeof(PlayerCommandState), "command", playerCommandState),
+				(typeof(HealthState), "health", healthState)
+			};
 		}
 
 		protected override void ProcessBehaviourTree() { // todo: Add a condition to respawn near player when an extreme distance away (typically when falling through the map)
-			if (IsDisbanded()) {
-				if (RiderIsPastMaxDistanceFromPlayer()) SetActionersActive(despawnAction);
-				else SetActionersActive(leaveAction);
-			} else if (RiderHasLostAllHealth()) {
+			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
 			} else if (AmIEngagedInCombat()) {
 				if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
@@ -86,16 +83,6 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
-		}
-
-		bool RiderIsPastMaxDistanceFromPlayer() {
-			if (!player) return false;
-			return Vector3.Distance(transform.position, player.transform.position) > 1000;
-		}
-
-		bool IsDisbanded() { // todo: Moving allegiance to mercenary for disbanding is gross and means combination scripts on friendly riders could still run on riders no longer associated with the player
-			// todo: A new type of rider "mercenary" should be made for each type of rider and simply replaces the disbanded rider when the disband functionality is called. These mercenaries can stand in place of the hiring spots??
-			return (rider.allegiance != Allegiance.Player);
 		}
 	}
 }
