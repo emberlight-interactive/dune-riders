@@ -29,6 +29,7 @@ namespace DuneRiders.RiderAI.State {
 			AllActiveRidersGlobalState existingGlobalState = FindObjectOfType<AllActiveRidersGlobalState>();
 			if (existingGlobalState != null) {
 				globalState = existingGlobalState;
+				globalState.ForceStateUpdate();
 				return;
 			}
 
@@ -66,20 +67,27 @@ namespace DuneRiders.RiderAI.State {
 					_instance = this;
 				}
 
-				StartCoroutine(UpdateRiderInformation());
+				StartCoroutine(UpdateState());
 			}
 
 			[ReadOnly] public List<RiderData> riderDataList = new List<RiderData>();
 			[ReadOnly] public int updateIntervalInSeconds;
 
-			IEnumerator UpdateRiderInformation() {
-				while (true) {
-					var newListOfRiders = ScanAndReturnListofRiders();
-					riderDataList.Clear();
-					riderDataList.AddRange(newListOfRiders);
+			public void ForceStateUpdate() {
+				UpdateRiderInformation();
+			}
 
+			IEnumerator UpdateState() {
+				while (true) {
+					UpdateRiderInformation();
 					yield return new WaitForSeconds(updateIntervalInSeconds);
 				}
+			}
+
+			void UpdateRiderInformation() {
+				var newListOfRiders = ScanAndReturnListofRiders();
+				riderDataList.Clear();
+				riderDataList.AddRange(newListOfRiders);
 			}
 
 			List<RiderData> ScanAndReturnListofRiders() {
