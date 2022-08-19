@@ -96,9 +96,6 @@ namespace DuneRiders.RiderAICombination {
 			}
 
 			MakeRepairTransaction(resourcesToSpend, healthToReplenish);
-
-			// todo: Add repair icon to the rider health bar and add a field for this icon (show and hide it based on repairing state)
-			// Update the burn rate system to take into account scrap being consumed....
 		}
 
 		void MakeRepairTransaction(int resourcesToSpend, int healthToReplenish) {

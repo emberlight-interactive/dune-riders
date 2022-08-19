@@ -25,8 +25,8 @@ namespace DuneRiders.RiderAI.State {
 		[SerializeField] float labelYOffset = 1f;
 		[SerializeField] float rangeDistance = 400f;
 
-		List<(EntityType, Transform)> entitiesInSight = new List<(EntityType, Transform)>();
-		[SerializeField, ReadOnly] public List<(EntityType, Transform)> EntitiesInSight { get => entitiesInSight; }
+		List<(EntityType, Transform)> entitiesInRange = new List<(EntityType, Transform)>();
+		[SerializeField, ReadOnly] public List<(EntityType, Transform)> EntitiesInRange { get => entitiesInRange; }
 		[SerializeField, ReadOnly] int entityCount = 0;
 		public int EntityCount { get => entityCount; }
 
@@ -47,12 +47,12 @@ namespace DuneRiders.RiderAI.State {
 
 		IEnumerator UpdateState() {
 			while (true) {
-				var allEnemyRidersInSight = GetAllEnemyRidersInSight();
-				var allEnemyTurretsInSight = GetAllEnemyTurretsInSight();
-				entitiesInSight.Clear();
-				entitiesInSight.AddRange(allEnemyRidersInSight);
-				entitiesInSight.AddRange(allEnemyTurretsInSight);
-				entityCount = entitiesInSight.Count;
+				var allEnemyRidersInRange = GetAllEnemyRidersInRange();
+				var allEnemyTurretsInRange = GetAllEnemyTurretsInRange();
+				entitiesInRange.Clear();
+				entitiesInRange.AddRange(allEnemyRidersInRange);
+				entitiesInRange.AddRange(allEnemyTurretsInRange);
+				entityCount = entitiesInRange.Count;
 
 				yield return new WaitForSeconds(2f);
 			}
@@ -72,30 +72,30 @@ namespace DuneRiders.RiderAI.State {
 		}
 		#endif
 
-		List<(EntityType, Transform)> GetAllEnemyRidersInSight() {
-			var enemyRidersInSight = new List<(EntityType, Transform)>();
+		List<(EntityType, Transform)> GetAllEnemyRidersInRange() {
+			var enemyRidersInRange = new List<(EntityType, Transform)>();
 			var allEnemyRiders = allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance);
 
 			foreach (var rider in allEnemyRiders) {
 				if (Vector3.Distance(transform.position, rider.transform.position) <= rangeDistance) {
-					enemyRidersInSight.Add((EntityType.Rider, rider.transform));
+					enemyRidersInRange.Add((EntityType.Rider, rider.transform));
 				}
 			}
 
-			return enemyRidersInSight;
+			return enemyRidersInRange;
 		}
 
-		List<(EntityType, Transform)> GetAllEnemyTurretsInSight() {
-			var enemyTurretsInSight = new List<(EntityType, Transform)>();
+		List<(EntityType, Transform)> GetAllEnemyTurretsInRange() {
+			var enemyTurretsInRange = new List<(EntityType, Transform)>();
 			var allEnemyTurrets = allActiveTurretsState.GetAllTurretsOfAllegiance(rider.enemyAllegiance);
 
 			foreach (var turret in allEnemyTurrets) {
 				if (Vector3.Distance(transform.position, turret.transform.position) <= rangeDistance) {
-					enemyTurretsInSight.Add((EntityType.Turret, turret.transform));
+					enemyTurretsInRange.Add((EntityType.Turret, turret.transform));
 				}
 			}
 
-			return enemyTurretsInSight;
+			return enemyTurretsInRange;
 		}
 	}
 }

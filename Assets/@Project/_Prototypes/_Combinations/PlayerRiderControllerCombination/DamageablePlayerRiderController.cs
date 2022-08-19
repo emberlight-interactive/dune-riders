@@ -9,7 +9,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 	{
 		[SerializeField] DashboardHealthMonitor dashboardHealthMonitor;
 
-		int health = 100;
+		[SerializeField] int health = 100;
 
 		public override void Damage(int healthPoints)
 		{
@@ -19,6 +19,15 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		void UpdateMonitor() {
 			dashboardHealthMonitor.Health = health;
+		}
+
+		public void Heal(int healthPoints) {
+			health += healthPoints;
+			UpdateMonitor();
+		}
+
+		public int Health() {
+			return health;
 		}
 	}
 }

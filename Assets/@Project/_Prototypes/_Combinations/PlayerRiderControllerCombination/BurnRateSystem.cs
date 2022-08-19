@@ -15,6 +15,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		[SerializeField] UpkeepTracker upkeepTracker;
+		[SerializeField] PlayerRepairSystem playerRepairSystem;
 		List<RepairSystem> repairSystems = new List<RepairSystem>();
 
 		UpkeepTracker.UpkeepType GetUpkeepEquivalentEnum(ResourceType resourceType) {
@@ -45,6 +46,8 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 			foreach (var repairer in repairSystems) {
 				totalScrapToSpend += repairer.TotalResourcesRequiredToFullyRepair();
 			}
+
+			totalScrapToSpend += playerRepairSystem.TotalResourcesRequiredToFullyRepair();
 
 			return totalScrapToSpend;
 		}
