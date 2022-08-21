@@ -26,6 +26,14 @@ namespace DuneRiders.OutpostAI.Actioners {
 			outpostTurret = GetComponent<OutpostTurret>();
 		}
 
+		void OnEnable() {
+			if (currentlyActive) StartCoroutine(Action());
+		}
+
+		void OnDisable() {
+			StopAllCoroutines();
+		}
+
 		public override void StartAction()
 		{
 			if (!currentlyActive) {

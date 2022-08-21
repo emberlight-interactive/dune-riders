@@ -403,10 +403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fafab5a6081c54ebfc7d6ab13fee42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeType: Sight Range
-  debugColor: {r: 0, g: 0, b: 1, a: 1}
-  labelYOffset: 1
-  rangeDistance: 400
   enemyAllegiance: 0
   healAmount: 5
   healInterval: 4
@@ -438,6 +434,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riderDataList: []
   updateIntervalInSeconds: 4
+--- !u!114 &2395909813179954896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827187283282485157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e43dab35b038af4b984fee701c40d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeType: Sight Range
+  debugColor: {r: 0, g: 0, b: 1, a: 1}
+  labelYOffset: 1
+  rangeDistance: 400
 --- !u!114 &579296126
 MonoBehaviour:
   m_ObjectHideFlags: 0

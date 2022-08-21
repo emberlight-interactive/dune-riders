@@ -23,8 +23,12 @@ namespace DuneRiders.OutpostAI.State {
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 		}
 
-		void Start() {
+		void OnEnable() {
 			StartCoroutine(UpdateInCombatState());
+		}
+
+		void OnDisable() {
+			StopAllCoroutines();
 		}
 
 		IEnumerator UpdateInCombatState() {

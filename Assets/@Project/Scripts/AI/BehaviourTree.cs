@@ -10,9 +10,19 @@ namespace DuneRiders.AI {
 		protected abstract void ProcessBehaviourTree();
 		protected abstract (System.Type, string, System.Object)[] priorityStates {get;}
 		List<System.Object> priorityStatesCache = new List<System.Object>();
+		bool hasBeenDisabled = false;
 
 		void Start() {
 			StartCoroutine(BehaviourTreeCoroutine());
+		}
+
+		void OnEnable() {
+			if (hasBeenDisabled) StartCoroutine(BehaviourTreeCoroutine());
+		}
+
+		void OnDisable() {
+			StopAllCoroutines();
+			hasBeenDisabled = true;
 		}
 
 		void FixedUpdate() {

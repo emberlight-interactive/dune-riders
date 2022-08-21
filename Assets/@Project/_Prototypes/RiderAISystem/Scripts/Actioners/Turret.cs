@@ -44,7 +44,14 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		void Start() {
 			originalRotation = transform.localRotation;
+		}
+
+		void OnEnable() {
 			StartCoroutine(Gunner());
+		}
+
+		void OnDisable() {
+			StopAllCoroutines();
 		}
 
 		IEnumerator Gunner() {
