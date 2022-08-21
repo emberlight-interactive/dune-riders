@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DuneRiders.AI;
+using DuneRiders.BanditSpawnerSystem;
 
 namespace DuneRiders.OutpostAICombination {
 	[RequireComponent(typeof(RidersInRange))]
@@ -26,17 +26,23 @@ namespace DuneRiders.OutpostAICombination {
 			}
 		}
 
-		// EnemyRiderAISpawner enemyRiderAISpawner;
+		EnemyRiderAISpawner enemyRiderAISpawner;
 
 		CountdownManager countdownManager;
 		RidersInRange ridersInRange;
 
 		[SerializeField] TextMeshProUGUI countdownTimer;
+		[SerializeField] SpriteRenderer countdownIcon;
+		[SerializeField] SpriteRenderer warningIcon;
+
+
 		[SerializeField] float secondsUntilDefendersSpawn = 240;
 		[SerializeField] float secondsToTimerResetAfterAbsentRiders = 120;
 		[SerializeField] Allegiance enemyAllegiance = Allegiance.Player;
+		[SerializeField] GameObject defenseRider;
 
 		void Awake() {
+			enemyRiderAISpawner = FindObjectOfType<EnemyRiderAISpawner>();
 			ridersInRange = GetComponent<RidersInRange>();
 			countdownManager = new CountdownManager() {
 				timerMaxSeconds = secondsUntilDefendersSpawn,
@@ -56,13 +62,17 @@ namespace DuneRiders.OutpostAICombination {
 		}
 
 		IEnumerator DefenseCountdown() {
+			ToggleAlertTimer(true);
+
 			while (true) {
-				if (!countdownManager.paused && countdownManager.remainingSeconds > 0) {
+				if (!countdownManager.paused) {
 					if (countdownManager.remainingSeconds <= 0) {
 						countdownManager.remainingSeconds = 0;
 						UpdateTimerDisplay();
 
-						// Call defense
+						ToggleAlertTimer(false);
+						StartCoroutine(CallDefense());
+						yield break;
 					}
 
 					UpdateTimerDisplay();
@@ -97,8 +107,28 @@ namespace DuneRiders.OutpostAICombination {
 			}
 		}
 
+		IEnumerator CallDefense() {
+			StopCoroutine(LocalEnemiesAffectTimerPauseAndReset());
+
+			var secondsUntilAttackIsOver = secondsUntilDefendersSpawn * 2;
+
+			enemyRiderAISpawner.SpawnDefenseBandits(transform, defenseRider);
+			countdownManager.ResetCountdown();
+
+			yield return new WaitForSeconds(secondsUntilAttackIsOver);
+
+			StartCoroutine(LocalEnemiesAffectTimerPauseAndReset());
+			StartCoroutine(DefenseCountdown());
+		}
+
 		void UpdateTimerDisplay() {
 			countdownTimer.text = SecondsToTimerString(countdownManager.remainingSeconds);
+		}
+
+		void ToggleAlertTimer(bool showTimer) {
+			countdownTimer.transform.gameObject.SetActive(showTimer);
+			countdownIcon.transform.gameObject.SetActive(showTimer);
+			warningIcon.transform.gameObject.SetActive(!showTimer);
 		}
 
 		string SecondsToTimerString(float totalSeconds) {

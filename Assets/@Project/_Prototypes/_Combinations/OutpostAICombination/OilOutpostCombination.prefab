@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf82e268d72bd64684d0c8caa161501, type: 3}
---- !u!1001 &6818582194612405950
+--- !u!1001 &7985157722319018498
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -402,6 +402,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &827187283575975602 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8639540984701640167, guid: fa33f11d2d8e9d34699cbbca5636f773, type: 3}
+  m_PrefabInstance: {fileID: 8979916746300715861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1631277476574083765 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7655104015434172896, guid: fa33f11d2d8e9d34699cbbca5636f773, type: 3}
+  m_PrefabInstance: {fileID: 8979916746300715861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &415491235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,9 +484,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownTimer: {fileID: 827187284316810428}
+  countdownIcon: {fileID: 827187283575975602}
+  warningIcon: {fileID: 1631277476574083765}
   secondsUntilDefendersSpawn: 240
   secondsToTimerResetAfterAbsentRiders: 120
   enemyAllegiance: 0
+  defenseRider: {fileID: 6215721265738539239, guid: 7bdba1b1a9c95f44c8e42687c85ff7c4, type: 3}
 --- !u!114 &579296126
 MonoBehaviour:
   m_ObjectHideFlags: 0

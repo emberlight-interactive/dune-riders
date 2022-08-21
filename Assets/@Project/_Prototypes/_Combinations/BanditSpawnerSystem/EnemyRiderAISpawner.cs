@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace DuneRiders {
+namespace DuneRiders.BanditSpawnerSystem {
+	[RequireComponent(typeof(EnemiesInRangeOfPlayer))]
 	public class EnemyRiderAISpawner : MonoBehaviour
 	{
+		EnemiesInRangeOfPlayer enemiesInRangeOfPlayer;
+
 		[SerializeField] Transform player;
 		[SerializeField] SpawnFormation formation;
 		[SerializeField] float minSpawnTimeInSeconds = 180;
@@ -19,44 +22,65 @@ namespace DuneRiders {
 		enum Side {Left, Right};
 		enum SpawnDifficulty {VeryEasy, Easy, Medium, Hard};
 
+		void Awake() {
+			enemiesInRangeOfPlayer = GetComponent<EnemiesInRangeOfPlayer>();
+		}
+
 		void Start() {
 			StartCoroutine(Spawner());
 		}
 
-		// todo: How to delay while battle takes place??? //
 		IEnumerator Spawner() {
 			if (spawnImmediately) SpawnBanditsRealtiveToPlayer();
 			while (true) {
 				yield return new WaitForSeconds(GetWaitTimeInSeconds());
-				SpawnBanditsRealtiveToPlayer();
+				if (!enemiesInRangeOfPlayer.AreEnemiesInRangeOfPlayer()) SpawnBanditsRealtiveToPlayer();
 			}
 		}
 
 		void SpawnBanditsRealtiveToPlayer() {
 			float randomizer = Random.Range(0f, 1f);
 			int numberOfRidersToSpawn = NumberOfRidersToSpawn();
-				Side spawnSide;
+			Side spawnSide;
 
-				if (randomizer > 0.5f) {
-					spawnSide = Side.Right;
-				} else {
-					spawnSide = Side.Left;
-				}
+			if (randomizer > 0.5f) {
+				spawnSide = Side.Right;
+			} else {
+				spawnSide = Side.Left;
+			}
 
-				var spawnPosition = GetSpawnPosition(spawnSide);
-				var spawnRotation = GetSpawnRotation(spawnSide);
+			var spawnPosition = GetSpawnPosition(spawnSide);
+			var spawnRotation = GetSpawnRotation(spawnSide);
 
-				var formationInstance = SimplePool.Spawn(formation.gameObject, spawnPosition, spawnRotation).GetComponent<SpawnFormation>();
+			SpawnRiders(spawnPosition, spawnRotation, numberOfRidersToSpawn);
+		}
 
-				for (int i = 0; i < numberOfRidersToSpawn; i++) {
-					SimplePool.Spawn(
-						ridersToSpawn[Random.Range(0, ridersToSpawn.Count)],
-						formationInstance.formationPositions[i].transform.position,
-						spawnRotation
-					);
-				}
+		public void SpawnDefenseBandits(Transform positionToDefend, GameObject defenseRider = null) {
+			var spawnPosition = GetSpawnPosition(positionToDefend);
+			var toTheRescuePos = positionToDefend.position - spawnPosition;
+			var spawnRotation = Quaternion.LookRotation(toTheRescuePos);
+			spawnRotation.eulerAngles = new Vector3(
+				0,
+				spawnRotation.eulerAngles.y,
+				0
+			);
 
-				SimplePool.Despawn(formationInstance.gameObject);
+			SpawnRiders(spawnPosition, spawnRotation, maxRiders, defenseRider);
+		}
+
+		void SpawnRiders(Vector3 pos, Quaternion rot, int numberOfRiders, GameObject rider = null) {
+			var formationInstance = SimplePool.Spawn(formation.gameObject, pos, rot).GetComponent<SpawnFormation>();
+
+			for (int i = 0; i < numberOfRiders; i++) {
+				var riderToSpawn = (rider == null) ? ridersToSpawn[Random.Range(0, ridersToSpawn.Count)] : rider;
+				SimplePool.Spawn(
+					riderToSpawn,
+					formationInstance.formationPositions[i].transform.position,
+					rot
+				);
+			}
+
+			SimplePool.Despawn(formationInstance.gameObject);
 		}
 
 		float GetWaitTimeInSeconds() {
@@ -70,13 +94,17 @@ namespace DuneRiders {
 			return player.position + (player.forward * 400 * distanceMultiplier) + (rightOrLeftVector * 400 * distanceMultiplier);
 		}
 
+		Vector3 GetSpawnPosition(Transform relativeTo) {
+			return relativeTo.position + (relativeTo.forward * 400);
+		}
+
 		Quaternion GetSpawnRotation(Side side) {
 			var yAngleModifier = (side == Side.Left ? 90 : -90);
 			var rotation = player.rotation;
 			rotation.eulerAngles = new Vector3(
-				rotation.eulerAngles.x,
+				rotation.eulerAngles.x, // todo: 0?, player might be on an angle and could affect raycasts
 				rotation.eulerAngles.y + yAngleModifier,
-				rotation.z
+				rotation.z // todo: 0?, player might be on an angle and could affect raycasts
 			);
 			return rotation;
 		}

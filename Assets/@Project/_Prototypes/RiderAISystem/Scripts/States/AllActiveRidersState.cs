@@ -18,7 +18,7 @@ namespace DuneRiders.RiderAI.State {
 
 		AllActiveRidersGlobalState globalState;
 		[ReadOnly] public List<RiderData> riderDataList = new List<RiderData>();
-		[ReadOnly] public int updateIntervalInSeconds = 4;
+		[ReadOnly] public int updateIntervalInSeconds = 4; // todo: Going to give performance a hard time if one interval is set at 1 seconds and initializes the global state first
 
 		void Awake() {
 			InitializeGlobalState();

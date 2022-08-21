@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace DuneRiders {
+namespace DuneRiders.BanditSpawnerSystem {
 	public class SpawnFormationPosition : MonoBehaviour
 	{
 		void OnDrawGizmos() {
