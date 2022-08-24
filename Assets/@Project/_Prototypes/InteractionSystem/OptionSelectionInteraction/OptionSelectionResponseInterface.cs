@@ -40,6 +40,7 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 				optionButtons[i].SetText(optionStrings[i]);
 
 				var iSpentAnHourTryingToRealizeForLoopIntegersAreSomehowPassedByReferenceWithoutDoingThis = i;
+				optionButtons[i].GetButton().onClick.RemoveAllListeners();
 				optionButtons[i].GetButton().onClick.AddListener(() => HandleButtonPressed(optionStrings[iSpentAnHourTryingToRealizeForLoopIntegersAreSomehowPassedByReferenceWithoutDoingThis]));
 			}
 		}

@@ -6,7 +6,7 @@ using Autohand;
 namespace DuneRiders.CommandHonkSystem {
 	[RequireComponent(typeof(SphereCollider))]
 	public class HonkCommand : MonoBehaviour
-	{
+	{ // todo: First halt honk does not initiate, problem with AI or state changing?
 		SphereCollider honkArea;
 
 		[SerializeField] CommandSelector commandSelector;

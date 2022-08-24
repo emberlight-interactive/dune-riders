@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DuneRiders.GatheringSystem;
 using DuneRiders.InteractionSystem;
 using DuneRiders.InteractionSystem.WaveInteraction;
@@ -21,8 +22,13 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
 
+		[SerializeField] UnityEvent migrateVillage;
+
+		bool currentlyPreparingForMigration = false;
+		[HideInInspector] public bool nextMigrationTriggersWinCondition = false;
+
 		Gatherer gatherer;
-		string[] villageInteractionOptions = new string[] { "Transfer Fuel" };
+		string[] villageInteractionOptions = new string[] { "Transfer Fuel", "Migrate", "Ring City" };
 
 		void Start() {
 			gatherer = FindObjectOfType<Gatherer>();
@@ -31,7 +37,10 @@ namespace DuneRiders.HomeVillageSystem {
 
 		protected override void StartInteraction()
 		{
-			InitiateCurrentResponseRequester();
+			if (currentlyPreparingForMigration) {
+				SetPromptText("We're getting the village prepared, we'll meet you there");
+				SetInteractionSpotToActive();
+			} else InitiateCurrentResponseRequester();
 		}
 
 		protected override void EndInteraction()
@@ -47,7 +56,7 @@ namespace DuneRiders.HomeVillageSystem {
 				responseRequester = new WaveResponseRequester(StartVillageOptions, HandleCancel),
 
 				confirm = new Node {
-					responseRequester = new OptionSelectionResponseRequester(OptionSelected, HandleCancel, villageInteractionOptions),
+					responseRequester = new OptionSelectionResponseRequester(OptionSelected, HandleCancel, AvailableVillageOptions()),
 				}
 			};
 		}
@@ -69,12 +78,34 @@ namespace DuneRiders.HomeVillageSystem {
 			InitiateCurrentResponseRequester();
 		}
 
+		string[] AvailableVillageOptions() {
+			if (nextMigrationTriggersWinCondition) {
+				return new string[] { villageInteractionOptions[0], villageInteractionOptions[2] };
+			}
+
+			return new string[] { villageInteractionOptions[0], villageInteractionOptions[1] };
+		}
+
 		void OptionSelected(string option) {
 			if (option == villageInteractionOptions[0]) {
 				SetPromptText("How much Fuel would you like to give?");
 				SetCurrentNodeToCustom(FuelTransferInteractionTree());
 				InitiateCurrentResponseRequester();
+			} else if (option == villageInteractionOptions[1] || option == villageInteractionOptions[2]) {
+				AttemptMigration();
 			} else InteractionRestart();
+		}
+
+		void AttemptMigration() {
+			if (homeVillageFuelManager.Migrate()) {
+				if (nextMigrationTriggersWinCondition) SetPromptText("");
+				else SetPromptText("Great news! We'll get the village prepared and meet you there");
+				currentlyPreparingForMigration = true;
+				migrateVillage.Invoke();
+			} else {
+				SetPromptText("Unfortunately it looks like we don't have enough fuel");
+				StartCoroutine(DelayedInteractionRestart());
+			}
 		}
 
 		void FuelToTransfer(int value) {
@@ -127,6 +158,10 @@ namespace DuneRiders.HomeVillageSystem {
 			SetPromptText("");
 			SetInteractionSpotToIdle();
 			SetCurrentNodeToRoot();
+		}
+
+		public void MigrationFinished() {
+			currentlyPreparingForMigration = false;
 		}
 	}
 }

@@ -1111,6 +1111,7 @@ GameObject:
   - component: {fileID: 740880116}
   - component: {fileID: 740880119}
   - component: {fileID: 740880118}
+  - component: {fileID: 740880120}
   m_Layer: 0
   m_Name: InteractionTarget
   m_TagString: Untagged
@@ -1152,6 +1153,22 @@ MonoBehaviour:
   promptParent: {fileID: 228172191}
   promptCanvas: {fileID: 593026348}
   prompt: {fileID: 399226265}
+  migrateVillage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 740880120}
+        m_TargetAssemblyTypeName: DuneRiders.HomeVillageSystem.TestMigration, Assembly-CSharp
+        m_MethodName: StartMigration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  nextMigrationTriggersWinCondition: 0
 --- !u!135 &740880117
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1195,6 +1212,19 @@ MonoBehaviour:
   fuelResourceManager: {fileID: 740880118}
   fuelPerHour: 750
   numberOfMigrations: 1
+--- !u!114 &740880120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740880114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a4eea8350050640ba36dabbce35509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  homeVillageInteractionTarget: {fileID: 740880116}
 --- !u!1001 &863908401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1324,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731821385281, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731821385281, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1586,7 +1616,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &967281964
 GameObject:
@@ -1617,8 +1647,85 @@ Transform:
   m_Children:
   - {fileID: 2012239740}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &975600485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.949151
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.236396
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.9253993
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796986, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796987, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_SimulateOriginalTimingOnReplay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796988, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796988, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: playOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796988, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: recorderTracePath
+      value: Assets/@Project/_Prototypes/_Combinations/HomeVillageSystem/migrate-village.inputtrace
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796989, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_Name
+      value: InputPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778872835816796989, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 405b5297653367f4d8a98467cc4ca1cc, type: 3}
 --- !u!1 &1203935789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1878,7 +1985,7 @@ Transform:
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1404855523
 PrefabInstance:
@@ -1893,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1257076406645165953, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1257076406645165953, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2196,7 +2303,7 @@ Transform:
   m_LocalScale: {x: 8, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762552643
 GameObject:
@@ -2579,7 +2686,7 @@ Transform:
   m_Children:
   - {fileID: 1203935790}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1983892237
 PrefabInstance:
@@ -2996,5 +3103,5 @@ Transform:
   - {fileID: 225280357}
   - {fileID: 537601888}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}

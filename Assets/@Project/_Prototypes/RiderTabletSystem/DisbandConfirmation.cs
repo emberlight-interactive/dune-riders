@@ -16,6 +16,7 @@ namespace DuneRiders.RiderTabletSystem {
 		}
 
 		public void ConfirmDisbanding(CompanyManagementDisplayController.DisbandCallback disbandCallback, GameObject initiatingTile) {
+			yesButton.onClick.RemoveAllListeners();
 			yesButton.onClick.AddListener(() => {
 				disbandCallback();
 				initiatingTile.SetActive(false);
