@@ -34,6 +34,7 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 		void InitializeButtons(string[] optionStrings) {
 			for (int i = 0; i < optionStrings.Length; i++) {
 				if (i >= optionButtons.Count) break;
+				if (optionStrings[i] == null) break;
 
 				optionButtons[i].GetButton().gameObject.SetActive(true);
 				optionButtons[i].GetButton().enabled = true;

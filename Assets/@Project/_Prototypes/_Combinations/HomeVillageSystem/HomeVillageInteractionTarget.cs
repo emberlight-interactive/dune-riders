@@ -8,6 +8,7 @@ using DuneRiders.InteractionSystem.WaveInteraction;
 using DuneRiders.InteractionSystem.OptionSelectionInteraction;
 using DuneRiders.InteractionSystem.RangeSelectionInteraction;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.HomeVillageSystem {
 	public class HomeVillageInteractionTarget : InteractionTarget
@@ -25,10 +26,11 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] UnityEvent migrateVillage;
 
 		bool currentlyPreparingForMigration = false;
-		[HideInInspector] public bool nextMigrationTriggersWinCondition = false;
+		[ReadOnly] public bool nextMigrationTriggersWinCondition = false;
 
 		Gatherer gatherer;
 		string[] villageInteractionOptions = new string[] { "Transfer Fuel", "Migrate", "Ring City" };
+		string[] availableVillageInteractionOptions = new string[3];
 
 		void Start() {
 			gatherer = FindObjectOfType<Gatherer>();
@@ -56,7 +58,7 @@ namespace DuneRiders.HomeVillageSystem {
 				responseRequester = new WaveResponseRequester(StartVillageOptions, HandleCancel),
 
 				confirm = new Node {
-					responseRequester = new OptionSelectionResponseRequester(OptionSelected, HandleCancel, AvailableVillageOptions()),
+					responseRequester = new OptionSelectionResponseRequester(OptionSelected, HandleCancel, availableVillageInteractionOptions),
 				}
 			};
 		}
@@ -74,16 +76,19 @@ namespace DuneRiders.HomeVillageSystem {
 		void StartVillageOptions(bool waved) {
 			SetInteractionSpotToActive();
 			SetPromptText("Hello, what would you like to do?");
+			CompileAvailableVillageOptions();
 			SetCurrentNodeToConfirmNode();
 			InitiateCurrentResponseRequester();
 		}
 
-		string[] AvailableVillageOptions() {
+		void CompileAvailableVillageOptions() {
 			if (nextMigrationTriggersWinCondition) {
-				return new string[] { villageInteractionOptions[0], villageInteractionOptions[2] };
+				availableVillageInteractionOptions[0] = villageInteractionOptions[0];
+				availableVillageInteractionOptions[1] = villageInteractionOptions[2];
+			} else {
+				availableVillageInteractionOptions[0] = villageInteractionOptions[0];
+				availableVillageInteractionOptions[1] = villageInteractionOptions[1];
 			}
-
-			return new string[] { villageInteractionOptions[0], villageInteractionOptions[1] };
 		}
 
 		void OptionSelected(string option) {
