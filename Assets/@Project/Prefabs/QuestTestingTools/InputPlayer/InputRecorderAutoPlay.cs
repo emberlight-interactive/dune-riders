@@ -12,6 +12,7 @@ namespace DuneRiders.Shared {
 		public string recorderTracePath;
 		[FormerlySerializedAs("playOnAwake")]
 		public bool playOnStart = false;
+		bool started = false;
 
 		void Reset() {
 			recorder = GetComponent<InputRecorder>();
@@ -20,13 +21,15 @@ namespace DuneRiders.Shared {
 			recorder.startRecordingWhenEnabled = false;
 		}
 
-		void Start() {
-			if (playOnStart) {
+		void FixedUpdate() {
+			if (playOnStart && !started) {
 				recorder = GetComponent<InputRecorder>();
 				recorder.LoadCaptureFromFile(recorderTracePath);
 				recorder.StartReplay();
 
 				StartCoroutine("SetUpDevices");
+
+				started = true;
 			}
 		}
 
