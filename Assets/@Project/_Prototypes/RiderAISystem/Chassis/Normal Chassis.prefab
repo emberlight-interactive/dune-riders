@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 3563525492382646770}
   - component: {fileID: 8493347090384117625}
   - component: {fileID: 8382511009638709941}
+  - component: {fileID: 3563525492403430986}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -165,6 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84f01243b2ab534aa9024630de252c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3563525492403430986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563525492382646768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91de08a63a548b4fb783feebc2ff62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  banditsHullColor: {fileID: 2100000, guid: bf4fd4d6ad7baf945b8b4a0e80cd7219, type: 2}
 --- !u!1 &3563525493195051507
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057842346009699240}
-  - component: {fileID: 3563525492403430986}
+  - component: {fileID: 1803059460497140588}
   m_Layer: 0
   m_Name: TurretPrefabAttachPoint
   m_TagString: Untagged
@@ -434,7 +448,7 @@ Transform:
   m_Father: {fileID: 3563525493854485119}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3563525492403430986
+--- !u!114 &1803059460497140588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
