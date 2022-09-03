@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.Shared.DamageSystem;
 
 namespace DuneRiders.GunSystem {
 	public class DamageableTest : Damageable

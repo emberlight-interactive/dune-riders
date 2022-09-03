@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace DuneRiders.GunSystem {
+namespace DuneRiders.Shared.DamageSystem {
 	[RequireComponent(typeof(LineRenderer))]
 	public class MachineGunProjectile : MonoBehaviour
 	{

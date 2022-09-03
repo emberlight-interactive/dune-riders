@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.GunSystem;
 using DuneRiders.DrivingSystem;
+using DuneRiders.Shared.DamageSystem;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	public class DamageablePlayerRiderController : Damageable

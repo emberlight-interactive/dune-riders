@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.GunSystem;
 using DuneRiders.RiderAI.State;
+using DuneRiders.Shared.DamageSystem;
 
 namespace DuneRiders.RiderAICombination {
 	public class DamageableRiderAI : Damageable
