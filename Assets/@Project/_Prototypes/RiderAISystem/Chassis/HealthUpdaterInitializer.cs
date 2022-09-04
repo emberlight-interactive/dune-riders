@@ -4,14 +4,14 @@ using UnityEngine;
 using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI {
-	[RequireComponent(typeof(HealthStateUpdater))]
+	[RequireComponent(typeof(DamageableRiderAI))]
 	public class HealthUpdaterInitializer : MonoBehaviour
 	{
 		void Awake() {
-			var healthStateUpdater = GetComponent<HealthStateUpdater>();
-			if (!healthStateUpdater) return;
+			var damageableRiderAI = GetComponent<DamageableRiderAI>();
+			if (!damageableRiderAI) return;
 
-			healthStateUpdater.HealthState = GetComponentInParent<HealthState>();
+			damageableRiderAI.HealthState = GetComponentInParent<HealthState>();
 		}
 	}
 }

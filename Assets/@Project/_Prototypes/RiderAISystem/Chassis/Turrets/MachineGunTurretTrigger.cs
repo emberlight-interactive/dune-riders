@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 
-namespace DuneRiders.RiderAICombination {
-	[System.Obsolete()]
+namespace DuneRiders.RiderAI {
 	public class MachineGunTurretTrigger : TurretTrigger
 	{
 		[SerializeField] float coolDownMultiplier = 1f;

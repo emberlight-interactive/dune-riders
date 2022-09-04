@@ -4,6 +4,7 @@ using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 
 namespace DuneRiders.RiderAICombination {
+	[System.Obsolete()]
 	public class MissileLauncherTurretTrigger : TurretTrigger
 	{
 		[SerializeField] GameObject projectile;

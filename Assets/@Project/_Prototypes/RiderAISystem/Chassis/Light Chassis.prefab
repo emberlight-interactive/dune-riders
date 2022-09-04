@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 6047227057394350804}
   - component: {fileID: 6047227057394350803}
   - component: {fileID: 6047227057394350802}
-  - component: {fileID: 2464687899119022645}
   - component: {fileID: 2688004982351886333}
   - component: {fileID: 6047227058696529978}
+  - component: {fileID: 2179146959706270889}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -233,19 +233,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2464687899119022645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6047227057394350800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7759d5eec8be3124e94f2491273a8971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthState: {fileID: 0}
 --- !u!114 &2688004982351886333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,3 +258,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   banditsHullColor: {fileID: 2100000, guid: bf4fd4d6ad7baf945b8b4a0e80cd7219, type: 2}
+--- !u!114 &2179146959706270889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047227057394350800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7bb8c6d83782e43a08e472162b267b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthState: {fileID: 0}

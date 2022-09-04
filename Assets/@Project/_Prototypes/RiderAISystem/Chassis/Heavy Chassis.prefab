@@ -246,9 +246,9 @@ GameObject:
   - component: {fileID: 2017122928086005575}
   - component: {fileID: 2017122928086005574}
   - component: {fileID: 2017122928086005593}
-  - component: {fileID: 2017122928528409112}
-  - component: {fileID: 9025457662877327868}
   - component: {fileID: 2305574272711199713}
+  - component: {fileID: 8734466959345591483}
+  - component: {fileID: 7148095335968567331}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -332,31 +332,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2017122928528409112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017122928086005595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d84f01243b2ab534aa9024630de252c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9025457662877327868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2017122928086005595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7759d5eec8be3124e94f2491273a8971, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthState: {fileID: 0}
 --- !u!114 &2305574272711199713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +345,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   banditsHullColor: {fileID: 2100000, guid: bf4fd4d6ad7baf945b8b4a0e80cd7219, type: 2}
+--- !u!114 &8734466959345591483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017122928086005595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7bb8c6d83782e43a08e472162b267b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthState: {fileID: 0}
+--- !u!114 &7148095335968567331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017122928086005595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84f01243b2ab534aa9024630de252c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2017122928436384907
 GameObject:
   m_ObjectHideFlags: 0

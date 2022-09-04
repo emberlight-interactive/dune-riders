@@ -109,25 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375edd669d2d4ca4d83a0e1061f8f96c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 8611615676043548647}
+  trigger: {fileID: 478119962803428583}
   turretTurnSpeed: 1
   upperXBounds: 310
   lowerXBounds: 15
---- !u!114 &8611615676043548647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188212262600676516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6219430f40a9664396bd8062d8403e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6119093443619386574, guid: 19be39a34ca99714faccba46ed0242f6, type: 3}
-  bulletSpawnPosition: {fileID: 2045328415384980999}
-  timeToReload: 2
 --- !u!114 &1386260158138229099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +125,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1360aad2114dc46b7208aed6406583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &478119962803428583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188212262600676516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f8f2fe4ed109b43a1c8834e39253b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
+  projectileSpawnLocation: {fileID: 2045328415384980999}
+  timeToReload: 3

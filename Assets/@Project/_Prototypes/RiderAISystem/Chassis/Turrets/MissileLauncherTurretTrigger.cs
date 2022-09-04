@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 
-namespace DuneRiders.RiderAICombination {
-	[System.Obsolete()]
-	public class CannonTurretTrigger : TurretTrigger
+namespace DuneRiders.RiderAI {
+	public class MissileLauncherTurretTrigger : TurretTrigger
 	{
 		[SerializeField] GameObject projectile;
 		[SerializeField] Transform projectileSpawnLocation;
@@ -14,17 +13,22 @@ namespace DuneRiders.RiderAICombination {
 
 		public override void PullTrigger() {
 			if (!reloading) {
-				Fire();
+				StartCoroutine(FireMissiles());
 				reloading = true;
-				StartCoroutine(Reload());
 			}
 		}
 
 		public override void ReleaseTrigger() {}
 
-		void Fire() {
-			var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
-			SimplePool.Despawn(spawnedProjectile, 4f);
+		IEnumerator FireMissiles() {
+			foreach (var i in System.Linq.Enumerable.Range(0, 3))
+			{
+				var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
+				SimplePool.Despawn(spawnedProjectile, 4f);
+				yield return new WaitForSeconds(.2f);
+			}
+
+			StartCoroutine(Reload());
 		}
 
 		IEnumerator Reload() {
