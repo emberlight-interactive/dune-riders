@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 2408158444031284764}
   - component: {fileID: 7031639509648458911}
   - component: {fileID: 8933363014766221519}
+  - component: {fileID: 2607381311870836618}
   m_Layer: 20
   m_Name: EnemyRiderAIEntity
   m_TagString: Untagged
@@ -388,6 +389,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &2607381311870836618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408158444031284762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf95f5605496424b965b16efdf844dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayedDestroy: 1
+  minDelayedDestroyTime: 300
+  maxDelayedDestroyTime: 900
 --- !u!1 &2738030180830729210
 GameObject:
   m_ObjectHideFlags: 0
