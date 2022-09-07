@@ -35,14 +35,12 @@ namespace DuneRiders.POISystem {
 		ProceduralTools proceduralTools;
 		string transformHash;
 
-		POIGlobalState globalState;
 		[SerializeField, ReadOnly] POIState state;
 
 		void Awake() {
 			proceduralTools = new ProceduralTools(transform);
 			transformHash = proceduralTools.BuildTransformHash();
-			InitializeGlobalState();
-			InitializeLocalState();
+			InitializeState();
 			SpawnLootables();
 		}
 
@@ -59,24 +57,13 @@ namespace DuneRiders.POISystem {
 			var str = proceduralTools.BuildTransformHash();
 		}
 
-		void InitializeGlobalState() {
-			POIGlobalState existingGlobalState = FindObjectOfType<POIGlobalState>();
-			if (existingGlobalState != null) {
-				globalState = existingGlobalState;
-				return;
-			}
-
-			globalState = new GameObject("POIGlobalState").AddComponent<POIGlobalState>();
-		}
-
-		void InitializeLocalState() {
+		void InitializeState() {
 			var poiState = new POIState() {
 				transformHash = transformHash,
 				lootableStates = CompileLootableStates(),
 			};
 
-			globalState.AddState(poiState);
-			state = globalState.GetState(transformHash);
+			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state);
 		}
 
 		int GetNumberOfLootables() {
@@ -157,36 +144,6 @@ namespace DuneRiders.POISystem {
 			}
 		}
 
-		class POIGlobalState : MonoBehaviour
-		{
-			private static POIGlobalState _instance;
-			public static POIGlobalState Instance { get { return _instance; } }
-
-			private void Awake()
-			{
-				if (_instance != null && _instance != this)
-				{
-					Destroy(this.gameObject);
-				} else {
-					_instance = this;
-				}
-			}
-
-			[Serializable] public class POIStateDictionary : SerializableDictionary<string, POIState> {}
-			[ReadOnly] public POIStateDictionary poiStates = new POIStateDictionary();
-
-			/// <summary>
-			/// Idempotent state setter
-			/// </summary>
-			public void AddState(POIState poiState) {
-				if (!poiStates.ContainsKey(poiState.transformHash)) poiStates.Add(poiState.transformHash, poiState);
-			}
-
-			public POIState GetState(string transformHash) {
-				POIState poiState;
-				if (poiStates.TryGetValue(transformHash, out poiState)) return poiState;
-				else return null;
-			}
-		}
+		class POIGlobalState : GlobalStateGameObject<string, POIState> {}
 	}
 }
