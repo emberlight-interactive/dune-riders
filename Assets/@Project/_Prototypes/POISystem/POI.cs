@@ -1,6 +1,4 @@
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,13 +32,15 @@ namespace DuneRiders.POISystem {
 		[SerializeField] List<Lootable> lootables = new List<Lootable>();
 		[SerializeField] List<Transform> lootLocations = new List<Transform>();
 		[SerializeField] int minimumNumberOfLootables = 3;
+		ProceduralTools proceduralTools;
 		string transformHash;
 
 		POIGlobalState globalState;
 		[SerializeField, ReadOnly] POIState state;
 
 		void Awake() {
-			transformHash = BuildTransformHash();
+			proceduralTools = new ProceduralTools(transform);
+			transformHash = proceduralTools.BuildTransformHash();
 			InitializeGlobalState();
 			InitializeLocalState();
 			SpawnLootables();
@@ -56,7 +56,7 @@ namespace DuneRiders.POISystem {
 		}
 
 		void FixedUpdate() {
-			var str = BuildTransformHash();
+			var str = proceduralTools.BuildTransformHash();
 		}
 
 		void InitializeGlobalState() {
@@ -85,7 +85,7 @@ namespace DuneRiders.POISystem {
 			if (minimumNumberOfLootables >= lootLocations.Count) {
 				numberOfLootables = lootLocations.Count;
 			} else {
-				var additionalLootables = HashToRandInt(transformHash, lootLocations.Count - minimumNumberOfLootables);
+				var additionalLootables = proceduralTools.HashToRandInt(transformHash, lootLocations.Count - minimumNumberOfLootables);
 				numberOfLootables = additionalLootables + minimumNumberOfLootables;
 			}
 
@@ -98,7 +98,7 @@ namespace DuneRiders.POISystem {
 
 			if (numberOfLootables == 0 || lootables.Count == 0) return lootableStates;
 
-			string currentHash = HashString(transformHash);
+			string currentHash = proceduralTools.HashString(transformHash);
 			for (int i = 0; i < numberOfLootables; i++) {
 				lootableStates.Add(new LootableState {
 					lootable = SelectLootable(currentHash).gameObject,
@@ -106,7 +106,7 @@ namespace DuneRiders.POISystem {
 					locationRotation = lootLocations[i].rotation,
 				});
 
-				currentHash = HashString(currentHash);
+				currentHash = proceduralTools.HashString(currentHash);
 			}
 
 			return lootableStates;
@@ -114,7 +114,7 @@ namespace DuneRiders.POISystem {
 
 		Lootable SelectLootable(string seed) {
 			var combinedAvailabilityValues = lootables.Sum((lootable) => lootable.availabilityValue);
-			var randomNumber = HashToRandInt(seed, combinedAvailabilityValues);
+			var randomNumber = proceduralTools.HashToRandInt(seed, combinedAvailabilityValues);
 
 			int currentIteratedRange = 0;
 			foreach (var lootable in lootables) {
@@ -155,36 +155,6 @@ namespace DuneRiders.POISystem {
 					lootableState.harvested = true;
 				}
 			}
-		}
-
-		string BuildTransformHash() {
-			var transformSum = transform.position.x + transform.position.y + transform.position.z;
-			byte[] transformSumBytes = BitConverter.GetBytes(transformSum);
-
-			HashAlgorithm md5 = MD5.Create();
-			byte[] result = md5.ComputeHash(transformSumBytes);
-
-			return Encoding.UTF8.GetString(result);
-		}
-
-		int HashToRandInt(string hash, int maxRangeInclusive) {
-			if (maxRangeInclusive == 0) return 0;
-
-			var bytes = Encoding.UTF8.GetBytes(hash).Take(30);
-
-			int number = BitConverter.ToInt32(bytes.ToArray(), 0);
-
-			int rand = (number % maxRangeInclusive) + 1;
-			return rand;
-		}
-
-		string HashString(string strToHash) {
-			byte[] sumBytes = Encoding.Unicode.GetBytes(strToHash);
-
-			HashAlgorithm md5 = MD5.Create();
-			byte[] result = md5.ComputeHash(sumBytes);
-
-			return Encoding.UTF8.GetString(result);
 		}
 
 		class POIGlobalState : MonoBehaviour

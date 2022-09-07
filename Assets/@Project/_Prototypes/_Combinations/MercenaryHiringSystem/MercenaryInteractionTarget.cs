@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.RiderAI.Traits;
+using DuneRiders.RiderAI.State;
 using DuneRiders.GatheringSystem;
 using DuneRiders.Combinations;
 using DuneRiders.InteractionSystem;
@@ -13,11 +15,14 @@ namespace DuneRiders.MercenaryHiringSystem {
 	public class MercenaryInteractionTarget : InteractionTarget
 	{
 		Gatherer gatherer;
+		Mercenary mercenary;
 
-		// todo: Add option for setting which mercenary can spawn and how that's decided (it might be decided by an external script which filles details on instantiation)
+		GameObject mercenaryPlaceholder;
+		[SerializeField] Transform riderPlaceholderLocation;
 
-		public GameObject mercenaryToHire;
-		public int mercenaryCost = 75;
+		[SerializeField] Rider friendlyRiderPrefab;
+
+		[SerializeField] AvailableMercenaryProvider availableMercenaryProvider;
 
 		[SerializeField] GameObject interactionParent;
 
@@ -29,8 +34,6 @@ namespace DuneRiders.MercenaryHiringSystem {
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
 
-		[SerializeField] GameObject dummyRider;
-
 		[Serializable]
 		struct AvailableMercenaries {
 			GameObject Mercenary;
@@ -40,6 +43,8 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		void Start() {
 			gatherer = FindObjectOfType<Gatherer>();
+			InitMercenaryInfoForThisLocation();
+			InitMercenaryPlaceholder();
 			SetInteractionSpotToIdle();
 		}
 
@@ -75,7 +80,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 				SetPromptText("Looks like you have a full company, come back if you need us");
 				StartCoroutine(DelayedInteractionRestart());
 			} else {
-				SetPromptText($"Would you like us to join you for <color=yellow>{mercenaryCost}</color> precious metal?");
+				SetPromptText($"Would you like us to join you for <color=yellow>{mercenary.preciousMetalCost}</color> precious metal?");
 				SetCurrentNodeToConfirmNode();
 				InitiateCurrentResponseRequester();
 			}
@@ -83,9 +88,9 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		void ResponseToOffer(bool thumbsUp) {
 			if (thumbsUp) {
-				if (gatherer.GetManager(Gatherer.SupportedResources.PreciousMetal).Take(mercenaryCost)) {
-					dummyRider.SetActive(false);
-					SimplePool.Spawn(mercenaryToHire, dummyRider.transform.position, dummyRider.transform.rotation); // todo: We need to centralize the spawning and despawning of riders or opt for destroying and instantiating
+				if (gatherer.GetManager(Gatherer.SupportedResources.PreciousMetal).Take(mercenary.preciousMetalCost)) {
+					mercenaryPlaceholder.SetActive(false);
+					SpawnFriendlyRider();
 					interactionParent.SetActive(false);
 				} else {
 					SetPromptText("Sorry, it appears you do not have enough resources for payment");
@@ -136,6 +141,27 @@ namespace DuneRiders.MercenaryHiringSystem {
 			SetPromptText("");
 			SetInteractionSpotToIdle();
 			SetCurrentNodeToRoot();
+		}
+
+		void InitMercenaryInfoForThisLocation() {
+			mercenary = availableMercenaryProvider.GetMercenaryInformation();
+		}
+
+		void InitMercenaryPlaceholder() {
+			var mercenaryPrefab = availableMercenaryProvider.MercenaryPrefab;
+
+			mercenaryPrefab.chasisType = mercenary.chassis;
+			mercenaryPrefab.gunType = mercenary.gunType;
+			mercenaryPrefab.GetComponent<IsParkedState>().isParked = true;
+
+			mercenaryPlaceholder = Instantiate(mercenaryPrefab.gameObject, riderPlaceholderLocation);
+		}
+
+		void SpawnFriendlyRider() {
+			friendlyRiderPrefab.chasisType = mercenary.chassis;
+			friendlyRiderPrefab.gunType = mercenary.gunType;
+
+			Instantiate(friendlyRiderPrefab, riderPlaceholderLocation.position, riderPlaceholderLocation.rotation);
 		}
 	}
 }

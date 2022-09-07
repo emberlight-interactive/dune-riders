@@ -20,8 +20,7 @@ namespace DuneRiders.Combinations {
 			mercenaryToReplaceRider.gunType = rider.gunType;
 			mercenaryToReplaceRider.GetComponent<IsParkedState>().isParked = false;
 			gameObject.SetActive(false);
-			// todo: Investigate not pooling riders, so that we do not have to change static propertise like traits
-			SimplePool.Spawn(mercenaryToReplaceRider.gameObject, transform.position, transform.rotation);
+			Instantiate(mercenaryToReplaceRider.gameObject, transform.position, transform.rotation);
 		}
 	}
 }
