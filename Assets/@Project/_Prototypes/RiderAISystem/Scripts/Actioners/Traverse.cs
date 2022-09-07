@@ -6,7 +6,7 @@ using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]
-	public class Traverse : Actioner
+	public class Traverse : Actioner // todo: [Reminder] when we populate map and leave some areas unspawned it will leave holes in the path finding
 	{
 		Coroutine activeAction;
 		RichAI pathfinder;
