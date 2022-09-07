@@ -17,6 +17,8 @@ namespace DuneRiders.OutpostAICombination {
 		[SerializeField] int healAmount = 5;
 		[SerializeField] float healInterval = 4.0f;
 
+		bool finishedStart = false;
+
 		void Awake()
 		{
 			turrets = CompileTurretInfo();
@@ -24,6 +26,11 @@ namespace DuneRiders.OutpostAICombination {
 		}
 
 		void OnEnable() {
+			if (finishedStart) StartCoroutine(AutoHealLoop());
+		}
+
+		void Start() {
+			finishedStart = true;
 			StartCoroutine(AutoHealLoop());
 		}
 
@@ -57,7 +64,7 @@ namespace DuneRiders.OutpostAICombination {
 			var compiledList = new List<(OutpostTurret turret, int maxHealth)>();
 			var turrets = GetComponentsInChildren<OutpostTurret>();
 			for (int i = 0; i < turrets.Length; i++) {
-				compiledList.Add((turrets[i], turrets[i].GetComponent<HealthState>().health));
+				compiledList.Add((turrets[i], turrets[i].GetComponent<HealthState>().MaxHealth));
 			}
 
 			return compiledList.ToArray();

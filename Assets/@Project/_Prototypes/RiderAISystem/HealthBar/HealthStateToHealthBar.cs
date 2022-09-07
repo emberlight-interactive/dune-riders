@@ -9,14 +9,9 @@ namespace DuneRiders.RiderAI.HealthBar {
 	{
 		[SerializeField] HealthState healthState;
 		[SerializeField] Slider healthBar;
-		float initialHealthState;
-
-		void Start() {
-			initialHealthState = healthState.health;
-		}
 
 		void Update() {
-			healthBar.value = healthState.health / initialHealthState;
+			healthBar.value = (float) healthState.health / healthState.MaxHealth;
 		}
 	}
 }

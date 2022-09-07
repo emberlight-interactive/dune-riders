@@ -7,6 +7,13 @@ namespace DuneRiders.RiderAI.State {
 	[DisallowMultipleComponent]
 	public class HealthState : MonoBehaviour
 	{
-		[ReadOnly] public int health = 100;
+		[SerializeField] int maxHealth = 100;
+		public int MaxHealth { get => maxHealth; }
+
+		[ReadOnly] public int health;
+
+		void Awake() {
+			health = maxHealth;
+		}
 	}
 }

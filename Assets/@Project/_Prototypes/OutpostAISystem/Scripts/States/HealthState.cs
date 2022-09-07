@@ -15,13 +15,16 @@ namespace DuneRiders.OutpostAI.State {
 
 		[SerializeField, ReadOnly] TurretHealthState state;
 		ProceduralTools proceduralTools;
+		[SerializeField] int maxHealth = 100;
+		public int MaxHealth { get => maxHealth; }
+
 		public int health { get => state.health; set => state.health = value; }
 
 		void Awake() {
 			proceduralTools = new ProceduralTools(transform);
 			GlobalState.InitState<TurretHealthGlobalState, string, TurretHealthState>(
 				proceduralTools.BuildTransformHash(),
-				new TurretHealthState() { health = 100 },
+				new TurretHealthState() { health = maxHealth },
 				out state
 			);
 		}

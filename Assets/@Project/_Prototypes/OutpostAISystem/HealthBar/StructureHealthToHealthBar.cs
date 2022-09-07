@@ -8,14 +8,9 @@ namespace DuneRiders.OutpostAI {
 	{
 		[SerializeField] StructureHealth structureHealth;
 		[SerializeField] Slider healthBar;
-		float initialHealthState;
-
-		void Start() {
-			initialHealthState = structureHealth.health;
-		}
 
 		void Update() {
-			healthBar.value = structureHealth.health / initialHealthState;
+			healthBar.value = (float) structureHealth.health / structureHealth.MaxHealth;
 		}
 	}
 }

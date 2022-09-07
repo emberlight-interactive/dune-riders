@@ -13,6 +13,9 @@ namespace DuneRiders.OutpostAI {
 		}
 
 		[SerializeField, ReadOnly] StructureHealthState state;
+		[SerializeField] int maxHealth = 50;
+		public int MaxHealth { get => maxHealth; }
+
 		ProceduralTools proceduralTools;
 		public int health { get => state.health; set => state.health = value; }
 
@@ -20,7 +23,7 @@ namespace DuneRiders.OutpostAI {
 			proceduralTools = new ProceduralTools(transform);
 			GlobalState.InitState<StructureHealthGlobalState, string, StructureHealthState>(
 				proceduralTools.BuildTransformHash(),
-				new StructureHealthState() { health = 50 },
+				new StructureHealthState() { health = maxHealth },
 				out state
 			);
 		}
