@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
 using DuneRiders.GatheringSystem;
@@ -33,6 +34,8 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
+
+		public UnityEvent mercenaryHiredEvent = new UnityEvent();
 
 		[Serializable]
 		struct AvailableMercenaries {
@@ -89,9 +92,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 		void ResponseToOffer(bool thumbsUp) {
 			if (thumbsUp) {
 				if (gatherer.GetManager(Gatherer.SupportedResources.PreciousMetal).Take(mercenary.preciousMetalCost)) {
-					mercenaryPlaceholder.SetActive(false);
-					SpawnFriendlyRider();
-					interactionParent.SetActive(false);
+					AddMercenaryToParty();
 				} else {
 					SetPromptText("Sorry, it appears you do not have enough resources for payment");
 					StartCoroutine(DelayedInteractionRestart());
@@ -99,6 +100,13 @@ namespace DuneRiders.MercenaryHiringSystem {
 			} else {
 				InteractionRestart();
 			}
+		}
+
+		void AddMercenaryToParty() {
+			mercenaryPlaceholder.SetActive(false);
+			SpawnFriendlyRider();
+			mercenaryHiredEvent.Invoke();
+			interactionParent.SetActive(false);
 		}
 
 		void SetInteractionSpotToActive() {
