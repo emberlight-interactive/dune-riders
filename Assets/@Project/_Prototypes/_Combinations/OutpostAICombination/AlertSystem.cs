@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -8,6 +9,7 @@ namespace DuneRiders.OutpostAICombination {
 	[RequireComponent(typeof(RidersInRange))]
 	public class AlertSystem : MonoBehaviour
 	{
+		[Serializable]
 		class CountdownManager {
 			public float timerMaxSeconds;
 			public float remainingSeconds;
@@ -30,6 +32,7 @@ namespace DuneRiders.OutpostAICombination {
 
 		CountdownManager countdownManager;
 		RidersInRange ridersInRange;
+		ProceduralTools proceduralTools;
 
 		[SerializeField] TextMeshProUGUI countdownTimer;
 		[SerializeField] SpriteRenderer countdownIcon;
@@ -44,11 +47,17 @@ namespace DuneRiders.OutpostAICombination {
 		void Awake() {
 			enemyRiderAISpawner = FindObjectOfType<EnemyRiderAISpawner>();
 			ridersInRange = GetComponent<RidersInRange>();
-			countdownManager = new CountdownManager() {
-				timerMaxSeconds = secondsUntilDefendersSpawn,
-				remainingSeconds = secondsUntilDefendersSpawn,
-				paused = true,
-			};
+			proceduralTools = new ProceduralTools(transform);
+
+			GlobalState.InitState<CountdownManagerGlobalState, string, CountdownManager>(
+				proceduralTools.BuildTransformHash(),
+				new CountdownManager() {
+					timerMaxSeconds = secondsUntilDefendersSpawn,
+					remainingSeconds = secondsUntilDefendersSpawn,
+					paused = true,
+				},
+				out countdownManager
+			);
 		}
 
 		void OnEnable() {
@@ -150,5 +159,7 @@ namespace DuneRiders.OutpostAICombination {
 			if (seconds < 10 && seconds > 0) { return $"0{seconds}"; }
 			return "00";
 		}
+
+		class CountdownManagerGlobalState : GlobalStateGameObject<string, CountdownManager> {}
 	}
 }
