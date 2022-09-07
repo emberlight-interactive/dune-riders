@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.OutpostAI {
 	public class StructureHealth : MonoBehaviour
@@ -11,7 +12,7 @@ namespace DuneRiders.OutpostAI {
 			public int health;
 		}
 
-		StructureHealthState state;
+		[SerializeField, ReadOnly] StructureHealthState state;
 		ProceduralTools proceduralTools;
 		public int health { get => state.health; set => state.health = value; }
 
@@ -25,9 +26,6 @@ namespace DuneRiders.OutpostAI {
 		}
 
 		void FixedUpdate() {
-			// todo: Do the turrets still register after destruction ??
-			// Might need to create a "structure" state that monitors if it's host structure is deactivated
-			// and add that to the behaviour tree
 			if (health <= 0) gameObject.SetActive(false);
 		}
 

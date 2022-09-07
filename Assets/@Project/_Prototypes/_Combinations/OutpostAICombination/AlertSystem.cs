@@ -9,6 +9,7 @@ namespace DuneRiders.OutpostAICombination {
 	[RequireComponent(typeof(RidersInRange))]
 	public class AlertSystem : MonoBehaviour
 	{
+		// todo: Test loading and unloading outposts right after a defense raid is called
 		[Serializable]
 		class CountdownManager {
 			public float timerMaxSeconds;

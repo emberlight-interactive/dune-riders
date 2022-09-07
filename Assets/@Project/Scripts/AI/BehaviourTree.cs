@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace DuneRiders.AI {
 	{
 		[SerializeField, ReadOnly] protected List<Actioner> currentlyActiveActioners = new List<Actioner>();
 		protected abstract void ProcessBehaviourTree();
-		protected abstract (System.Type, string, System.Object)[] priorityStates {get;}
+		protected abstract (Type, string, System.Object)[] priorityStates {get;}
 		List<System.Object> priorityStatesCache = new List<System.Object>();
 		bool hasBeenDisabled = false;
 
@@ -89,7 +90,7 @@ namespace DuneRiders.AI {
 			// Populate cache with current values on first run //
 			if (priorityStates.Length != priorityStatesCache.Count) {
 				for (int i = 0; i < priorityStates.Length; i++) {
-					priorityStatesCache.Add(priorityStates[i].Item1.GetField(priorityStates[i].Item2).GetValue(priorityStates[i].Item3));
+					priorityStatesCache.Add(GetFieldOrPropertyValueFromTargetObject(priorityStates[i].Item1, priorityStates[i].Item2, priorityStates[i].Item3));
 				}
 
 				return false;
@@ -97,7 +98,7 @@ namespace DuneRiders.AI {
 
 			// On subsequent runs check if updates have happened to priority states //
 			for (int i = 0; i < priorityStates.Length; i++) {
-				var currentValue = priorityStates[i].Item1.GetField(priorityStates[i].Item2).GetValue(priorityStates[i].Item3);
+				var currentValue = GetFieldOrPropertyValueFromTargetObject(priorityStates[i].Item1, priorityStates[i].Item2, priorityStates[i].Item3);
 				var cachedValue = priorityStatesCache[i];
 
 				if (currentValue != cachedValue) {
@@ -107,6 +108,16 @@ namespace DuneRiders.AI {
 			}
 
 			return false;
+		}
+
+		object GetFieldOrPropertyValueFromTargetObject(Type type, string memberName, object targetObject) {
+			var fieldInfo = type.GetField(memberName);
+			if (fieldInfo != null) return fieldInfo.GetValue(targetObject);
+
+			var propertyInfo = type.GetProperty(memberName);
+			if (propertyInfo != null) return propertyInfo.GetValue(targetObject);
+
+			return default(object);
 		}
 	}
 }
