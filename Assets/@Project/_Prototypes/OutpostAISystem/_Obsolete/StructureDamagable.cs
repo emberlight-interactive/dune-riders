@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DuneRiders.OutpostAI {
+	[System.Obsolete]
 	public class StructureDamagable : MonoBehaviour
 	{
 		[SerializeField] StructureHealth structureHealth;

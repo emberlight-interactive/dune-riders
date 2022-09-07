@@ -73,7 +73,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 
 			for (int i = 0; i < numberOfRiders; i++) {
 				var riderToSpawn = (rider == null) ? ridersToSpawn[Random.Range(0, ridersToSpawn.Count)] : rider;
-				SimplePool.Spawn(
+				Instantiate(
 					riderToSpawn,
 					formationInstance.formationPositions[i].transform.position,
 					rot

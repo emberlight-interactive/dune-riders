@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DuneRiders.OutpostAI.State;
 
 namespace DuneRiders.OutpostAICombination {
+	[System.Obsolete]
 	public class HealthStateToHealthBar : MonoBehaviour
 	{
 		[SerializeField] HealthState healthState;

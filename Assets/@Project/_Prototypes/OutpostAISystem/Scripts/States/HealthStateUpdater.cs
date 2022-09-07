@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DuneRiders.OutpostAI.State {
+	[System.Obsolete]
 	public class HealthStateUpdater : MonoBehaviour
 	{
 		[SerializeField] HealthState healthState;

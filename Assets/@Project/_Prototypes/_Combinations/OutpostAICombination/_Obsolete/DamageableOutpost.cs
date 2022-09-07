@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.GunSystem;
-using DuneRiders.OutpostAI.State;
+using DuneRiders.OutpostAI;
 using DuneRiders.Shared.DamageSystem;
 
 namespace DuneRiders.OutpostAICombination {
-	public class DamageableOutpostTurret : Damageable
+	[System.Obsolete]
+	public class DamageableOutpost : Damageable
 	{
-		[SerializeField] HealthState healthState;
+		[SerializeField] StructureHealth healthState;
 
 		public override void Damage(int healthPoints)
 		{

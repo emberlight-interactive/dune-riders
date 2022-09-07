@@ -56,7 +56,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Gunner() {
 			while (true) {
-
 				if (riderCurrentlyTargetting && IsTurretAimedAtTarget()) {
 					trigger.PullTrigger();
 				} else {
