@@ -16,7 +16,7 @@ namespace DuneRiders {
 		}
 
 		public string BuildTransformHash() {
-			var transformSum = transform.position.x + transform.position.y + transform.position.z;
+			var transformSum = transform.localPosition.x + transform.localPosition.y + transform.localPosition.z;
 			byte[] transformSumBytes = BitConverter.GetBytes(transformSum);
 
 			HashAlgorithm md5 = MD5.Create();

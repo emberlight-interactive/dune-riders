@@ -41,10 +41,10 @@ namespace DuneRiders.POISystem {
 			proceduralTools = new ProceduralTools(transform);
 			transformHash = proceduralTools.BuildTransformHash();
 			InitializeState();
-			SpawnLootables();
 		}
 
 		void OnEnable() {
+			SpawnLootables();
 			StartCoroutine(UpdateStateOfLootables());
 		}
 
