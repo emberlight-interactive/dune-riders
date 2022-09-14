@@ -64,6 +64,18 @@ namespace DuneRiders.MercenaryHiringSystem {
 			state = globalState.GetState(transformHash);
 		}
 
+		#if UNITY_EDITOR
+		void OnDrawGizmos()
+		{
+			Color sphereColor = Color.magenta;
+
+			GUIStyle style = new GUIStyle();
+			style.normal.textColor = sphereColor;
+
+			Gizmos.DrawSphere(transform.position, 1);
+		}
+		#endif
+
 		class MercenaryHiringSpotGlobalState : MonoBehaviour
 		{
 			private static MercenaryHiringSpotGlobalState _instance;

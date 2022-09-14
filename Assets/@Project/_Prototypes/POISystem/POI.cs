@@ -17,8 +17,7 @@ namespace DuneRiders.POISystem {
 		[Serializable]
 		public class LootableState {
 			public bool harvested = false;
-			public Vector3 locationPosition;
-			public Quaternion locationRotation;
+			public int lootableLocationIndex = 0;
 			public GameObject lootable;
 			public GameObject spawnedLootable;
 		}
@@ -89,8 +88,7 @@ namespace DuneRiders.POISystem {
 			for (int i = 0; i < numberOfLootables; i++) {
 				lootableStates.Add(new LootableState {
 					lootable = SelectLootable(currentHash).gameObject,
-					locationPosition = lootLocations[i].position,
-					locationRotation = lootLocations[i].rotation,
+					lootableLocationIndex = i,
 				});
 
 				currentHash = proceduralTools.HashString(currentHash);
@@ -117,7 +115,7 @@ namespace DuneRiders.POISystem {
 			foreach (var lootableState in state.lootableStates) {
 				if (lootableState.harvested) continue;
 
-				lootableState.spawnedLootable = SimplePool.Spawn(lootableState.lootable, lootableState.locationPosition, lootableState.locationRotation);
+				lootableState.spawnedLootable = Instantiate(lootableState.lootable, lootLocations[lootableState.lootableLocationIndex]);
 			}
 		}
 
@@ -125,7 +123,7 @@ namespace DuneRiders.POISystem {
 			foreach (var lootableState in state.lootableStates) {
 				if (!lootableState.spawnedLootable) continue;
 
-				SimplePool.Despawn(lootableState.spawnedLootable);
+				Destroy(lootableState.spawnedLootable);
 			}
 		}
 

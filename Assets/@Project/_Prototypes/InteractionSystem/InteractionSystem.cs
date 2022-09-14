@@ -26,9 +26,6 @@ namespace DuneRiders.InteractionSystem {
 		void Awake() {
 			interactionArea = GetComponent<SphereCollider>();
 			interactionArea.isTrigger = true;
-
-			interactionTreeRoot = BuildInteractionTree();
-			SetCurrentNodeToRoot();
 		}
 
 		void OnDrawGizmos()
@@ -45,8 +42,15 @@ namespace DuneRiders.InteractionSystem {
 			}
 		}
 
+		void InitInteractionTree() {
+			interactionTreeRoot = BuildInteractionTree();
+			SetCurrentNodeToRoot();
+		}
+
 		public void StartInteractionWith(InteractionInitiator initiator) {
 			this.initiator = initiator;
+
+			InitInteractionTree();
 			StartInteraction();
 		}
 

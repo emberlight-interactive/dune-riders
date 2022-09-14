@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &236431563970000569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3780142022708767628}
+  m_Layer: 0
+  m_Name: GatherablePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3780142022708767628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236431563970000569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 0.25, z: -0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2216409329417194060}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4336805054154689596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2216409329417194060}
+  m_Layer: 0
+  m_Name: GatherableLocations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2216409329417194060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336805054154689596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3780142022708767628}
+  - {fileID: 2862491194655083171}
+  m_Father: {fileID: 9105309664306684731}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8981408279960683757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2862491194655083171}
+  m_Layer: 0
+  m_Name: GatherablePos (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2862491194655083171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981408279960683757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2216409329417194060}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5727540108926566433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +154,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3540042096229524251, guid: 9a737cb1f17931a4a8cb2439e8d52cb8, type: 3}
   m_PrefabInstance: {fileID: 5727540108926566433}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5123913190268959097
+--- !u!4 &9105309664306684731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3540042096229524250, guid: 9a737cb1f17931a4a8cb2439e8d52cb8, type: 3}
+  m_PrefabInstance: {fileID: 5727540108926566433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1830518191100051030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,6 +168,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 9105309664306684730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
+  m_Script: {fileID: 11500000, guid: c7816def7611f374688ff7665932c500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gatherableSpawnLocations:
+  - {fileID: 3780142022708767628}
+  - {fileID: 2862491194655083171}
+  gatherableToSpawn: {fileID: 1257076406645165952, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
+--- !u!114 &8289725925306169531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105309664306684730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a721853435e096a4d8ed80acd1955038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3162228991726096709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105309664306684730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb0bcc4fb47df54b833b4c4da67510c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1830518191100051030}
+        m_TargetAssemblyTypeName: DuneRiders.GatheringSystem.Breakable, Assembly-CSharp
+        m_MethodName: OpenBreakable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

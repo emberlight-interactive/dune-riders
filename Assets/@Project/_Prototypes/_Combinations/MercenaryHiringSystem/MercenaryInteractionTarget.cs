@@ -66,10 +66,10 @@ namespace DuneRiders.MercenaryHiringSystem {
 		protected override Node BuildInteractionTree()
 		{
 			return new Node {
-				responseRequester = new WaveResponseRequester(StartMercenaryNegotiation, HandleCancel),
+				responseRequester = new WaveResponseRequester(this.StartMercenaryNegotiation, this.HandleCancel),
 
 				confirm = new Node {
-					responseRequester = new ThumbsUpDownResponseRequester(ResponseToOffer, HandleCancel),
+					responseRequester = new ThumbsUpDownResponseRequester(this.ResponseToOffer, this.HandleCancel),
 				}
 			};
 		}
