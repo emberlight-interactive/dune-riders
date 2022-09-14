@@ -1841,7 +1841,7 @@ MonoBehaviour:
   backRight: {fileID: 4475551973430774430}
   acceleration: 900
   breakingForce: 450
-  maxTurnAngle: 15
+  maxTurnAngle: 45
 --- !u!114 &223255837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2417,6 +2417,14 @@ PrefabInstance:
     - target: {fileID: 6080117436386901627, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: m_Limits.max
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: m_Limits.min
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: m_ConnectedAnchor.x
