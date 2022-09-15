@@ -142,39 +142,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1323050850512670727, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
   m_PrefabInstance: {fileID: 2834749753208258211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7208448459055741865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631488140989997287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41bf148768ae3048bedc284bb87c768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repairCycleIntervalInSeconds: 4
-  resourcesPerHeavyChasisRepairCycle: 20
-  healthPerHeavyChasisRepairCycle: 6
-  resourcesPerNormalChasisRepairCycle: 10
-  healthPerNormalChasisRepairCycle: 3
-  resourcesPerLightChasisRepairCycle: 4
-  healthPerLightChasisRepairCycle: 2
-  riderRepairIcon: {fileID: 8702868879433698722}
---- !u!114 &9144092080521581326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631488140989997287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a165ea81d3acfa14bac9febb9197e373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mercenaryToReplaceRider: {fileID: 5809143628830744134, guid: b21ef7b6ed3d03a498bbc5161215ee23, type: 3}
 --- !u!114 &4823976815597980843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,3 +177,48 @@ MonoBehaviour:
   useCustomIconPrefab: 0
   CustomIconPrefab: {fileID: 0}
   hideIconWhenGameObjectIsDisabled: 1
+--- !u!114 &7208448459055741865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631488140989997287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c41bf148768ae3048bedc284bb87c768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repairCycleIntervalInSeconds: 4
+  resourcesPerHeavyChasisRepairCycle: 20
+  healthPerHeavyChasisRepairCycle: 6
+  resourcesPerNormalChasisRepairCycle: 10
+  healthPerNormalChasisRepairCycle: 3
+  resourcesPerLightChasisRepairCycle: 4
+  healthPerLightChasisRepairCycle: 2
+  riderRepairIcon: {fileID: 8702868879433698722}
+--- !u!114 &8524133974312986536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631488140989997287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9144092080521581326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631488140989997287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a165ea81d3acfa14bac9febb9197e373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mercenaryToReplaceRider: {fileID: 7172977316693519089, guid: 599a12f27e9850f43800c0503fdeef57, type: 3}

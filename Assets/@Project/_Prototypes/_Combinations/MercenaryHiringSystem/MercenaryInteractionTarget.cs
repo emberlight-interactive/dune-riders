@@ -47,7 +47,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 		void Start() {
 			gatherer = FindObjectOfType<Gatherer>();
 			InitMercenaryInfoForThisLocation();
-			InitMercenaryPlaceholder();
+			Invoke("InitMercenaryPlaceholder", 0.5f);
 			SetInteractionSpotToIdle();
 		}
 
