@@ -55,17 +55,17 @@ namespace DuneRiders.HomeVillageSystem {
 		protected override Node BuildInteractionTree()
 		{
 			return new Node {
-				responseRequester = new WaveResponseRequester(StartVillageOptions, HandleCancel),
+				responseRequester = new WaveResponseRequester(this.StartVillageOptions, this.HandleCancel),
 
 				confirm = new Node {
-					responseRequester = new OptionSelectionResponseRequester(OptionSelected, HandleCancel, availableVillageInteractionOptions),
+					responseRequester = new OptionSelectionResponseRequester(this.OptionSelected, this.HandleCancel, availableVillageInteractionOptions),
 				}
 			};
 		}
 
 		Node FuelTransferInteractionTree() {
 			return new Node {
-				responseRequester = new RangeSelectionResponseRequester(FuelToTransfer, HandleCancel, gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount()),
+				responseRequester = new RangeSelectionResponseRequester(this.FuelToTransfer, this.HandleCancel, gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount()),
 			};
 		}
 
@@ -117,7 +117,10 @@ namespace DuneRiders.HomeVillageSystem {
 			if (gatherer.GetManager(Gatherer.SupportedResources.Fuel).Take(value)) {
 				if (homeVillageFuelManager.FuelResourceManager.Give(value)) {
 					SetPromptText("Thank you for your help rider");
-				} else SetPromptText("It looks like we have no space for that");
+				} else {
+					gatherer.GetManager(Gatherer.SupportedResources.Fuel).Give(value);
+					SetPromptText("It looks like we have no space for that");
+				}
 			} else SetPromptText("It looks like you no longer have that amount of fuel");
 
 			StartCoroutine(DelayedInteractionRestart());

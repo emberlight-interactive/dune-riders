@@ -16,6 +16,14 @@ namespace DuneRiders.InteractionSystem {
 			GetComponent<Rigidbody>().useGravity = false;
 		}
 
+		void FixedUpdate() {
+			if (interactionTarget != null) {
+				if (interactionTarget.gameObject.activeInHierarchy == false) {
+					interactionTarget = null;
+				}
+			}
+		}
+
 		void OnDrawGizmos()
 		{
 			Gizmos.color = Color.magenta;
