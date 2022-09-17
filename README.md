@@ -161,4 +161,6 @@ When gas is provided for the last migration to the ring the camera fades black a
 ### Marketing
 
 - Instagram marketing can co inside with start of Only Us marketing
-- Testing methodologies can be released in blog posts and on reddit to passively market game 
+
+- Testing methodologies can be released in blog posts and on reddit to passively market game
+- Co-routine Performance combined with global instances to improve performance 
