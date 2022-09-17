@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.POISystem {
@@ -31,6 +32,10 @@ namespace DuneRiders.POISystem {
 		[SerializeField] List<Lootable> lootables = new List<Lootable>();
 		[SerializeField] List<Transform> lootLocations = new List<Transform>();
 		[SerializeField] int minimumNumberOfLootables = 3;
+
+		[SerializeField] UnityEvent poiTouched;
+		[SerializeField] UnityEvent poiExhausted;
+
 		ProceduralTools proceduralTools;
 		string transformHash;
 
@@ -45,6 +50,8 @@ namespace DuneRiders.POISystem {
 		void OnEnable() {
 			SpawnLootables();
 			StartCoroutine(UpdateStateOfLootables());
+			StartCoroutine(WatchPOITouchedEventTrigger());
+			StartCoroutine(WatchPOIExhaustedEventTrigger());
 		}
 
 		void OnDisable() {
@@ -130,8 +137,43 @@ namespace DuneRiders.POISystem {
 		IEnumerator UpdateStateOfLootables() {
 			while (true) {
 				UpdateHarvestedStateOfLootables();
-				yield return new WaitForSeconds(0.3f); // todo: Prevent "destroy" -> save and exit -> load -> destroy loop (very low priority)
+				yield return new WaitForSeconds(0.2f); // todo: Prevent "destroy" -> save and exit -> load -> destroy loop (very low priority)
 			}
+		}
+
+		IEnumerator WatchPOITouchedEventTrigger() {
+			while (true) {
+				if (IsPOIPartiallyLooted()) {
+					poiTouched?.Invoke();
+					yield break;
+				}
+				yield return new WaitForSeconds(0.2f);
+			}
+		}
+
+		IEnumerator WatchPOIExhaustedEventTrigger() {
+			while (true) {
+				if (IsPOIFullyLooted()) {
+					poiExhausted?.Invoke();
+					yield break;
+				}
+				yield return new WaitForSeconds(0.2f);
+			}
+		}
+
+		bool IsPOIPartiallyLooted() {
+			var hasALootableBeenHarvested = false;
+			var hasALootableRemainedUntouched = false;
+			foreach (var lootableState in state.lootableStates) {
+				if (lootableState.harvested) hasALootableBeenHarvested = true;
+				if (!lootableState.harvested) hasALootableRemainedUntouched = true;
+			}
+
+			return (hasALootableBeenHarvested && hasALootableRemainedUntouched);
+		}
+
+		bool IsPOIFullyLooted() {
+			return state.lootableStates.Find((lootableState) => lootableState.harvested == false) == null;
 		}
 
 		void UpdateHarvestedStateOfLootables() {

@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3511340698126769695}
   - component: {fileID: 3511340698126769694}
+  - component: {fileID: 5151205909281001825}
   m_Layer: 0
   m_Name: POI
   m_TagString: Untagged
@@ -96,9 +97,51 @@ MonoBehaviour:
   - {fileID: 4220712016274828318}
   - {fileID: 4220712014985635446}
   minimumNumberOfLootables: 4
+  poiTouched:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5151205909281001825}
+        m_TargetAssemblyTypeName: DuneRiders.POISystem.POITestEvents, Assembly-CSharp
+        m_MethodName: TouchedPOI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  poiExhausted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5151205909281001825}
+        m_TargetAssemblyTypeName: DuneRiders.POISystem.POITestEvents, Assembly-CSharp
+        m_MethodName: ExhaustedPOI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   state:
     transformHash: 
     lootableStates: []
+--- !u!114 &5151205909281001825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3511340698126769692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eac83da9fe9754d8b323d8d1a35c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3511340698214169674
 GameObject:
   m_ObjectHideFlags: 0

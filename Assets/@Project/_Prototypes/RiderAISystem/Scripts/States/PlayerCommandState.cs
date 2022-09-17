@@ -44,7 +44,7 @@ namespace DuneRiders.RiderAI.State {
 				}
 			}
 
-			[SerializeField] public PlayerCommandState.Command command = Command.Charge;
+			[SerializeField] public PlayerCommandState.Command command = Command.Follow;
 		}
 	}
 }
