@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gaia;
 
-namespace DuneRiders.Combinations {
+namespace DuneRiders {
 	public class ApplyFloatingPointFixWhenInContext : MonoBehaviour
 	{
 		void Awake() {

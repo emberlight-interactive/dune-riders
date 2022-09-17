@@ -44,8 +44,6 @@ namespace DuneRiders.Combinations {
 		}
 
         void Update() {
-			Debug.Log(gameObject.name + " " + terrainScene.m_regularLoadState);
-			Debug.Log(gameObject.name + " " + terrainScene.GetTerrainName());
             if (terrainScene.m_regularLoadState == LoadState.Loaded) {
                 WrapUpBulkComponentActivation();
             }
