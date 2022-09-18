@@ -49,7 +49,7 @@ namespace DuneRiders.Combinations {
             }
         }
 
-		bool HaveTerrainsAlreadyBeenLoadedIn() {
+		bool HaveTerrainsAlreadyBeenLoadedIn() { // todo: it seems this might be causing shit to fall through floors
 			return (TerrainLoaderManager.TerrainScenes.Find(x => x.RegularReferences.Count > 0 && x.m_regularLoadState == LoadState.Loaded) != null);
 		}
     }
