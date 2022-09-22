@@ -18,6 +18,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] List<GameObject> ridersToSpawn = new List<GameObject>();
 		[SerializeField] float distanceMultiplier = 1.0f;
 		[SerializeField] bool spawnImmediately = false;
+		[SerializeField] float startUpDelay = 0f;
 
 		enum Side {Left, Right};
 		enum SpawnDifficulty {VeryEasy, Easy, Medium, Hard};
@@ -31,6 +32,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		}
 
 		IEnumerator Spawner() {
+			yield return new WaitForSeconds(startUpDelay);
 			if (spawnImmediately) SpawnBanditsRealtiveToPlayer();
 			while (true) {
 				yield return new WaitForSeconds(GetWaitTimeInSeconds());
