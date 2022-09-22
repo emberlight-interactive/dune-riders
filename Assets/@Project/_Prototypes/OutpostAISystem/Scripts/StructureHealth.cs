@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.OutpostAI {
@@ -16,6 +17,8 @@ namespace DuneRiders.OutpostAI {
 		[SerializeField] int maxHealth = 50;
 		public int MaxHealth { get => maxHealth; }
 
+		public UnityEvent deathEvent = new UnityEvent();
+
 		ProceduralTools proceduralTools;
 		public int health { get => state.health; set => state.health = value; }
 
@@ -26,10 +29,19 @@ namespace DuneRiders.OutpostAI {
 				new StructureHealthState() { health = maxHealth },
 				out state
 			);
+
+			ManageDeathLol();
 		}
 
 		void FixedUpdate() {
-			if (health <= 0) gameObject.SetActive(false);
+			ManageDeathLol();
+		}
+
+		void ManageDeathLol() {
+			if (health <= 0) {
+				gameObject.SetActive(false);
+				deathEvent.Invoke();
+			}
 		}
 
 		class StructureHealthGlobalState : GlobalStateGameObject<string, StructureHealthState> {}

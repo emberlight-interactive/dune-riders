@@ -132,7 +132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5809143628830744130, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5809143628830744132, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
       propertyPath: m_Name
@@ -142,7 +142,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5809143628830744130, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
 --- !u!1 &8631488140989997287 stripped
 GameObject:
@@ -158,17 +159,6 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a23073cf871dd424b85c8ac51133d23f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8631488140989997281 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5809143628830744130, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
-  m_PrefabInstance: {fileID: 2834749753208258211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631488140989997287}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce11ea984e202491d9271f53021d8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3978698290954891874 stripped
@@ -187,6 +177,49 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1323050850512670727, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
   m_PrefabInstance: {fileID: 2834749753208258211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &379835561876162213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631488140989997287}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a537e4a79ea452e469e4c25da6738673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 2.9
+  height: 2
+  canMove: 1
+  maxSpeed: 58
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 0
+  enableRotation: 1
+  autoRepath:
+    mode: 1
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  acceleration: 14
+  rotationSpeed: 100
+  slowdownTime: 0.5
+  endReachedDistance: 0.1
+  wallForce: 3
+  wallDist: 1
+  funnelSimplification: 0
+  slowWhenNotFacingTarget: 0
+  animCompatibility: {fileID: 0}
+  graph: {fileID: 0}
 --- !u!114 &524760269338005641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentsToActivate:
-  - {fileID: 8631488140989997281}
+  - {fileID: 379835561876162213}
   - {fileID: 3978698290954891874}
   - {fileID: 8631488140989997292}
 --- !u!114 &4823976815597980843

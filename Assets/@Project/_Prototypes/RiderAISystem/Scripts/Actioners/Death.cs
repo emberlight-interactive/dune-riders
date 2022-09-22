@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.Actioners {
 	public class Death : Actioner
 	{
+		public UnityEvent deathEvent = new UnityEvent();
+
 		public override bool currentlyActive {get => false;}
 
 		public override void StartAction()
@@ -15,6 +18,8 @@ namespace DuneRiders.RiderAI.Actioners {
 			} else {
 				gameObject.SetActive(false);
 			}
+
+			deathEvent.Invoke();
 		}
 
 		public override void EndAction() {}

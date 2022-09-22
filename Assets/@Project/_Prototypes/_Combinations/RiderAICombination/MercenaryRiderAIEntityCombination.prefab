@@ -67,7 +67,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MercenaryRiderAIEntityCombination
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5809143628830744130, guid: b21ef7b6ed3d03a498bbc5161215ee23, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b21ef7b6ed3d03a498bbc5161215ee23, type: 3}
 --- !u!1 &7172977316693519091 stripped
 GameObject:
@@ -85,17 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c40ee5e832609479da0487c2bb731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7172977316693519093 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5809143628830744130, guid: b21ef7b6ed3d03a498bbc5161215ee23, type: 3}
-  m_PrefabInstance: {fileID: 3681043466556388535}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7172977316693519091}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce11ea984e202491d9271f53021d8b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2555108230826489974 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1179979259012926657, guid: b21ef7b6ed3d03a498bbc5161215ee23, type: 3}
@@ -105,18 +95,6 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4445645379785265392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7172977316693519091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &175908758467767628
@@ -132,6 +110,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentsToActivate:
-  - {fileID: 7172977316693519093}
+  - {fileID: 4817829030387288338}
   - {fileID: 2555108230826489974}
   - {fileID: 4248163170544072461}
+--- !u!114 &4445645379785265392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172977316693519091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4817829030387288338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172977316693519091}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a537e4a79ea452e469e4c25da6738673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+  radius: 2.9
+  height: 2
+  canMove: 1
+  maxSpeed: 58
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
+  orientation: 0
+  enableRotation: 1
+  autoRepath:
+    mode: 1
+    interval: 0.5
+    sensitivity: 10
+    maximumInterval: 2
+    visualizeSensitivity: 0
+  targetCompatibility: {fileID: 0}
+  acceleration: 14
+  rotationSpeed: 100
+  slowdownTime: 0.5
+  endReachedDistance: 0.1
+  wallForce: 3
+  wallDist: 1
+  funnelSimplification: 0
+  slowWhenNotFacingTarget: 0
+  animCompatibility: {fileID: 0}
+  graph: {fileID: 0}
