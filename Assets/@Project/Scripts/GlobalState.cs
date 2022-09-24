@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +11,21 @@ namespace DuneRiders {
 	/// </summary>
 	public class GlobalState
 	{
-		public static void InitState<TGlobalState, TKey, TState>(TKey key, TState state, out TState localState) where TGlobalState : GlobalStateGameObject<TKey, TState> {
+		public static void InitState<TGlobalState, TKey, TState>(TKey key, TState state, out TState localState, Type[] includeComponents = null) where TGlobalState : GlobalStateGameObject<TKey, TState> {
 			TGlobalState globalState;
 			TGlobalState existingGlobalState = MonoBehaviour.FindObjectOfType<TGlobalState>();
 			if (existingGlobalState != null) {
 				globalState = existingGlobalState;
 			} else {
-				globalState = new GameObject($"{typeof(TState).Name} [GlobalState]").AddComponent<TGlobalState>();
-			}
+				var globalStateObject = new GameObject($"{typeof(TState).Name} [GlobalState]");
+				globalState = globalStateObject.AddComponent<TGlobalState>();
 
+				if (includeComponents != null) {
+					foreach (var component in includeComponents) {
+						globalStateObject.AddComponent(component);
+					}
+				}
+			}
 
 			globalState.AddState(key, state);
 			localState = globalState.GetState(key);

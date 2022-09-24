@@ -5,7 +5,7 @@ using Pathfinding;
 using Pathfinding.Util;
 using Gaia;
 
-namespace DuneRiders {
+namespace DuneRiders.RiderAICombination {
 	public class FPFRichAI : RichAI
 	{
 		public LocalSpaceGraph graph;

@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 namespace DuneRiders.POISystem {
 	public class POI : MonoBehaviour
 	{
-		[System.Serializable]
+		[Serializable]
 		public class POIState {
 			public string transformHash;
 			public List<LootableState> lootableStates;
@@ -19,8 +19,7 @@ namespace DuneRiders.POISystem {
 		public class LootableState {
 			public bool harvested = false;
 			public int lootableLocationIndex = 0;
-			public GameObject lootable;
-			public GameObject spawnedLootable;
+			public string lootable;
 		}
 
 		[Serializable]
@@ -29,8 +28,10 @@ namespace DuneRiders.POISystem {
 			public int availabilityValue = 1;
 		}
 
-		[SerializeField] List<Lootable> lootables = new List<Lootable>();
+		[Serializable] public class LootablesDictionary : SerializableDictionary<string, Lootable> {}
+		[SerializeField] LootablesDictionary lootables = new LootablesDictionary();
 		[SerializeField] List<Transform> lootLocations = new List<Transform>();
+		[SerializeField, ReadOnly] Dictionary<int, GameObject> spawnedLootables = new Dictionary<int, GameObject>();
 		[SerializeField] int minimumNumberOfLootables = 3;
 
 		[SerializeField] UnityEvent poiTouched;
@@ -40,6 +41,7 @@ namespace DuneRiders.POISystem {
 		string transformHash;
 
 		[SerializeField, ReadOnly] POIState state;
+		[SerializeField] ComponentTypeProvider[] additionalGlobalStateComponents;
 
 		void Awake() {
 			proceduralTools = new ProceduralTools(transform);
@@ -69,7 +71,7 @@ namespace DuneRiders.POISystem {
 				lootableStates = CompileLootableStates(),
 			};
 
-			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state);
+			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state, additionalGlobalStateComponents.Select(providers => providers.Component).ToArray());
 		}
 
 		int GetNumberOfLootables() {
@@ -94,7 +96,7 @@ namespace DuneRiders.POISystem {
 			string currentHash = proceduralTools.HashString(transformHash);
 			for (int i = 0; i < numberOfLootables; i++) {
 				lootableStates.Add(new LootableState {
-					lootable = SelectLootable(currentHash).gameObject,
+					lootable = SelectLootable(currentHash),
 					lootableLocationIndex = i,
 				});
 
@@ -104,33 +106,33 @@ namespace DuneRiders.POISystem {
 			return lootableStates;
 		}
 
-		Lootable SelectLootable(string seed) {
-			var combinedAvailabilityValues = lootables.Sum((lootable) => lootable.availabilityValue);
+		string SelectLootable(string seed) {
+			var combinedAvailabilityValues = lootables.Sum((lootable) => lootable.Value.availabilityValue);
 			var randomNumber = proceduralTools.HashToRandInt(seed, combinedAvailabilityValues);
 
 			int currentIteratedRange = 0;
 			foreach (var lootable in lootables) {
-				currentIteratedRange += lootable.availabilityValue;
+				currentIteratedRange += lootable.Value.availabilityValue;
 
-				if (randomNumber <= currentIteratedRange) return lootable;
+				if (randomNumber <= currentIteratedRange) return lootable.Key;
 			}
 
-			return lootables[0];
+			return lootables.First().Key;
 		}
 
 		void SpawnLootables() {
 			foreach (var lootableState in state.lootableStates) {
 				if (lootableState.harvested) continue;
 
-				lootableState.spawnedLootable = Instantiate(lootableState.lootable, lootLocations[lootableState.lootableLocationIndex]);
+				spawnedLootables[lootableState.lootableLocationIndex] = Instantiate(lootables[lootableState.lootable].gameObject, lootLocations[lootableState.lootableLocationIndex]);
 			}
 		}
 
 		void DespawnLootables() {
-			foreach (var lootableState in state.lootableStates) {
-				if (!lootableState.spawnedLootable) continue;
+			foreach (var spawnedLootable in spawnedLootables) {
+				if (spawnedLootable.Value == null) continue;
 
-				Destroy(lootableState.spawnedLootable);
+				Destroy(spawnedLootable.Value);
 			}
 		}
 
@@ -178,7 +180,10 @@ namespace DuneRiders.POISystem {
 
 		void UpdateHarvestedStateOfLootables() {
 			foreach (var lootableState in state.lootableStates) {
-				if (lootableState.spawnedLootable == null || lootableState.spawnedLootable.activeSelf == false) {
+				if (
+					spawnedLootables.ContainsKey(lootableState.lootableLocationIndex)
+					&& (spawnedLootables[lootableState.lootableLocationIndex] == null
+					|| spawnedLootables[lootableState.lootableLocationIndex].activeSelf == false)) {
 					lootableState.harvested = true;
 				}
 			}

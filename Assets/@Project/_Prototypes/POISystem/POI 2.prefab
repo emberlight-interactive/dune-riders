@@ -46,12 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootables:
-  - gameObject: {fileID: 8789184430067747248, guid: 8b018af583d9abe4b888afe68fa73f3e, type: 3}
-    availabilityValue: 70
-  - gameObject: {fileID: 3540042096229524251, guid: 9a737cb1f17931a4a8cb2439e8d52cb8, type: 3}
-    availabilityValue: 20
-  - gameObject: {fileID: 5727326576967074331, guid: c0c384616b6e6ca4993aa0f51598fb32, type: 3}
-    availabilityValue: 10
+    keys:
+    - fuel
+    - scrapMetal
+    - preciousMetal
+    values:
+    - gameObject: {fileID: 8789184430067747248, guid: 8b018af583d9abe4b888afe68fa73f3e, type: 3}
+      availabilityValue: 70
+    - gameObject: {fileID: 3540042096229524251, guid: 9a737cb1f17931a4a8cb2439e8d52cb8, type: 3}
+      availabilityValue: 20
+    - gameObject: {fileID: 5727326576967074331, guid: c0c384616b6e6ca4993aa0f51598fb32, type: 3}
+      availabilityValue: 10
   lootLocations:
   - {fileID: 6370813189567820936}
   - {fileID: 9030373659452328931}
@@ -60,6 +65,12 @@ MonoBehaviour:
   - {fileID: 9030373659468355994}
   - {fileID: 9030373661029072340}
   minimumNumberOfLootables: 3
+  poiTouched:
+    m_PersistentCalls:
+      m_Calls: []
+  poiExhausted:
+    m_PersistentCalls:
+      m_Calls: []
   state:
     transformHash: 
     lootableStates: []
