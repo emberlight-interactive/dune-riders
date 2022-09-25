@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 106733139442545772}
   - component: {fileID: 106733139442545773}
   - component: {fileID: 106733139442545778}
+  - component: {fileID: 3193075966076986258}
   m_Layer: 0
   m_Name: BanditSpawner
   m_TagString: Untagged
@@ -52,14 +53,7 @@ MonoBehaviour:
   maxSpawnTimeInSeconds: 1200
   spawnDifficulty: 2
   maxRiders: 10
-  ridersToSpawn:
-  - {fileID: 2519467385551939636, guid: 2491c55e16d644948b41e3bbf47505b3, type: 3}
-  - {fileID: 2519467385551939636, guid: 4e11295b655f29f47bd49da0eaa4acee, type: 3}
-  - {fileID: 2519467385551939636, guid: 459c8fc5916ba6b488a3e290ce0a4cd1, type: 3}
-  - {fileID: 2519467385551939636, guid: 9dde671f623e0a54883f7afe006725ec, type: 3}
-  - {fileID: 2519467385551939636, guid: 80fd75f5933bbd049bddf39523fab8b4, type: 3}
-  - {fileID: 2519467385551939636, guid: 0aacc642f2ba2224cb12480b163a96ed, type: 3}
-  - {fileID: 2519467385551939636, guid: 23d0428dc1cd5e94a912a22bee7e7ea3, type: 3}
+  enemyRiderInstanceBuilder: {fileID: 3193075966076986258}
   distanceMultiplier: 1
   spawnImmediately: 0
   startUpDelay: 0
@@ -106,3 +100,16 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyAllegiance: 1
   rangeDistance: 600
+--- !u!114 &3193075966076986258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106733139442545777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf79c4b2294bb884da5e79dfc6525ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRiderPrefab: {fileID: 1781603190224703965, guid: d5ed244fec8ae544688ffed105ea883d, type: 3}

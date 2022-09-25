@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DuneRiders.RiderAI;
 
 namespace DuneRiders.BanditSpawnerSystem {
 	[RequireComponent(typeof(EnemiesInRangeOfPlayer))]
@@ -15,7 +16,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] float maxSpawnTimeInSeconds = 1200;
 		[SerializeField] SpawnDifficulty spawnDifficulty = SpawnDifficulty.Medium;
 		[SerializeField, ReadOnly] int maxRiders = 10;
-		[SerializeField] List<GameObject> ridersToSpawn = new List<GameObject>();
+		[SerializeField] EnemyRiderInstanceBuilder enemyRiderInstanceBuilder;
 		[SerializeField] float distanceMultiplier = 1.0f;
 		[SerializeField] bool spawnImmediately = false;
 		[SerializeField] float startUpDelay = 0f;
@@ -74,7 +75,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 			var formationInstance = SimplePool.Spawn(formation.gameObject, pos, rot).GetComponent<SpawnFormation>();
 
 			for (int i = 0; i < numberOfRiders; i++) {
-				var riderToSpawn = (rider == null) ? ridersToSpawn[Random.Range(0, ridersToSpawn.Count)] : rider;
+				var riderToSpawn = (rider == null) ? enemyRiderInstanceBuilder.GetRandomRider().gameObject : rider;
 				Instantiate(
 					riderToSpawn,
 					formationInstance.formationPositions[i].transform.position,

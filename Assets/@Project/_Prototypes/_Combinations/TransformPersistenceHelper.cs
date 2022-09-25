@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gaia;
 
-namespace DuneRiders.RiderAICombination {
-	public class RiderAIStatePersistence : MonoBehaviour
+namespace DuneRiders.Combinations {
+	public class TransformPersistenceHelper : MonoBehaviour
 	{
 		FloatingPointFix floatingPointFix;
 

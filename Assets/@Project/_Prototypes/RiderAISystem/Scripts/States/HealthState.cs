@@ -13,7 +13,7 @@ namespace DuneRiders.RiderAI.State {
 		[ReadOnly] public int health;
 
 		void Awake() {
-			health = maxHealth;
+			if (health == default(int)) health = maxHealth;
 		}
 	}
 }

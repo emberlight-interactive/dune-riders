@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,12 +21,12 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		MercenaryHiringSpotGlobalState globalState;
 		[SerializeField, ReadOnly] MercenaryHiringSpotState state;
+		[SerializeField] ComponentTypeProvider[] additionalGlobalStateComponents;
 
 		void Awake() {
 			proceduralTools = new ProceduralTools(transform);
 			transformHash = proceduralTools.BuildTransformHash();
-			InitializeGlobalState();
-			InitializeLocalState();
+			InitializeState();
 		}
 
 		void Start() {
@@ -44,24 +45,14 @@ namespace DuneRiders.MercenaryHiringSystem {
 			state.mercenaryHired = true;
 		}
 
-		void InitializeGlobalState() {
-			MercenaryHiringSpotGlobalState existingGlobalState = FindObjectOfType<MercenaryHiringSpotGlobalState>();
-			if (existingGlobalState != null) {
-				globalState = existingGlobalState;
-				return;
-			}
 
-			globalState = new GameObject("MercenaryHiringSpotGlobalState").AddComponent<MercenaryHiringSpotGlobalState>();
-		}
-
-		void InitializeLocalState() {
+		void InitializeState() {
 			var mercenaryHiringSpotState = new MercenaryHiringSpotState() {
 				transformHash = transformHash,
 				mercenaryHired = false,
 			};
 
-			globalState.AddState(mercenaryHiringSpotState);
-			state = globalState.GetState(transformHash);
+			GlobalState.InitState<MercenaryHiringSpotGlobalState, string, MercenaryHiringSpotState>(transformHash, mercenaryHiringSpotState, out state, additionalGlobalStateComponents.Select(providers => providers.Component).ToArray());
 		}
 
 		#if UNITY_EDITOR
@@ -76,36 +67,6 @@ namespace DuneRiders.MercenaryHiringSystem {
 		}
 		#endif
 
-		class MercenaryHiringSpotGlobalState : MonoBehaviour
-		{
-			private static MercenaryHiringSpotGlobalState _instance;
-			public static MercenaryHiringSpotGlobalState Instance { get { return _instance; } }
-
-			private void Awake()
-			{
-				if (_instance != null && _instance != this)
-				{
-					Destroy(this.gameObject);
-				} else {
-					_instance = this;
-				}
-			}
-
-			[Serializable] public class MercenaryHiringSpotStateDictionary : SerializableDictionary<string, MercenaryHiringSpotState> {}
-			[ReadOnly] public MercenaryHiringSpotStateDictionary mercHiringStates = new MercenaryHiringSpotStateDictionary();
-
-			/// <summary>
-			/// Idempotent state setter
-			/// </summary>
-			public void AddState(MercenaryHiringSpotState mercHiringState) {
-				if (!mercHiringStates.ContainsKey(mercHiringState.transformHash)) mercHiringStates.Add(mercHiringState.transformHash, mercHiringState);
-			}
-
-			public MercenaryHiringSpotState GetState(string transformHash) {
-				MercenaryHiringSpotState mercHiringState;
-				if (mercHiringStates.TryGetValue(transformHash, out mercHiringState)) return mercHiringState;
-				else return null;
-			}
-		}
+		class MercenaryHiringSpotGlobalState : GlobalStateGameObject<string, MercenaryHiringSpotState> {}
 	}
 }
