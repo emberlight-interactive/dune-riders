@@ -23,7 +23,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 		ProceduralTools proceduralTools;
 
 		void Awake() {
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 		}
 
 		public Mercenary GetMercenaryInformation() {

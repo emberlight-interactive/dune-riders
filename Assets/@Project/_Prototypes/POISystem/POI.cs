@@ -41,10 +41,9 @@ namespace DuneRiders.POISystem {
 		string transformHash;
 
 		[SerializeField, ReadOnly] POIState state;
-		[SerializeField] ComponentTypeProvider[] additionalGlobalStateComponents;
 
 		void Awake() {
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 			transformHash = proceduralTools.BuildTransformHash();
 			InitializeState();
 		}
@@ -71,7 +70,7 @@ namespace DuneRiders.POISystem {
 				lootableStates = CompileLootableStates(),
 			};
 
-			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state, additionalGlobalStateComponents.Select(providers => providers.Component).ToArray());
+			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state, new Type[] { typeof(POIGlobalStatePersistence) });
 		}
 
 		int GetNumberOfLootables() {
@@ -190,5 +189,6 @@ namespace DuneRiders.POISystem {
 		}
 
 		class POIGlobalState : GlobalStateGameObject<string, POIState> {}
+		class POIGlobalStatePersistence : GlobalStatePersistence<POIState> {}
 	}
 }

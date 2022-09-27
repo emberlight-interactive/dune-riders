@@ -21,10 +21,9 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		MercenaryHiringSpotGlobalState globalState;
 		[SerializeField, ReadOnly] MercenaryHiringSpotState state;
-		[SerializeField] ComponentTypeProvider[] additionalGlobalStateComponents;
 
 		void Awake() {
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 			transformHash = proceduralTools.BuildTransformHash();
 			InitializeState();
 		}
@@ -52,7 +51,12 @@ namespace DuneRiders.MercenaryHiringSystem {
 				mercenaryHired = false,
 			};
 
-			GlobalState.InitState<MercenaryHiringSpotGlobalState, string, MercenaryHiringSpotState>(transformHash, mercenaryHiringSpotState, out state, additionalGlobalStateComponents.Select(providers => providers.Component).ToArray());
+			GlobalState.InitState<MercenaryHiringSpotGlobalState, string, MercenaryHiringSpotState>(
+				transformHash,
+				mercenaryHiringSpotState,
+				out state,
+				new Type[] { typeof(MercenarySpotGlobalStatePersistence) }
+			);
 		}
 
 		#if UNITY_EDITOR
@@ -68,5 +72,6 @@ namespace DuneRiders.MercenaryHiringSystem {
 		#endif
 
 		class MercenaryHiringSpotGlobalState : GlobalStateGameObject<string, MercenaryHiringSpotState> {}
+		class MercenarySpotGlobalStatePersistence : GlobalStatePersistence<MercenaryHiringSpotState> {}
 	}
 }

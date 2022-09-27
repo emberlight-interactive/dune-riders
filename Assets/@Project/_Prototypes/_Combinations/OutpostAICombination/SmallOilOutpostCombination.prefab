@@ -649,14 +649,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
---- !u!1 &1923757963335498343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8137510354592687684, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+--- !u!4 &1298630685601572101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8671989612187203878, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
   m_PrefabInstance: {fileID: 7664195422511930403}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1923757963335498345 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8137510354592687690, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+--- !u!212 &534586846680588151 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7869911460451812180, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+  m_PrefabInstance: {fileID: 7664195422511930403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1923757963645881200 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8137510354819127123, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
   m_PrefabInstance: {fileID: 7664195422511930403}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1923757962235038078 stripped
@@ -670,19 +675,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &1923757963645881200 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8137510354819127123, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
-  m_PrefabInstance: {fileID: 7664195422511930403}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &534586846680588151 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7869911460451812180, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
-  m_PrefabInstance: {fileID: 7664195422511930403}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1298630685601572101 stripped
+--- !u!4 &1923757963335498345 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8671989612187203878, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8137510354592687690, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+  m_PrefabInstance: {fileID: 7664195422511930403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1923757963335498343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8137510354592687684, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
   m_PrefabInstance: {fileID: 7664195422511930403}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1662705489038422167
@@ -703,7 +703,7 @@ MonoBehaviour:
   secondsUntilDefendersSpawn: 240
   secondsToTimerResetAfterAbsentRiders: 120
   enemyAllegiance: 0
-  defenseRider: {fileID: 2713857173809106485, guid: d822bbaed9cc8bb41b75991ed329376e, type: 3}
+  enemyRiderInstanceBuilder: {fileID: 8079376966487222283}
 --- !u!114 &2340563150569369881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +733,26 @@ MonoBehaviour:
   enemyAllegiance: 0
   healAmount: 5
   healInterval: 4
+--- !u!114 &4218042439810651301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923757963335498343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a79f066eedae54faa35bdd69ceef64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gatherableSpawnLocations:
+  - {fileID: 1080455104054501498}
+  - {fileID: 5151865414808654052}
+  - {fileID: 5725243761466468773}
+  - {fileID: 6130170283971426636}
+  - {fileID: 1696494473873525801}
+  - {fileID: 5971273870512792516}
+  gatherableToSpawn: {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
 --- !u!114 &8361513146631423473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +783,7 @@ MonoBehaviour:
   debugColor: {r: 0, g: 0, b: 1, a: 1}
   labelYOffset: 1
   rangeDistance: 400
---- !u!114 &4218042439810651301
+--- !u!114 &8079376966487222283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,17 +792,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1923757963335498343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a79f066eedae54faa35bdd69ceef64, type: 3}
+  m_Script: {fileID: 11500000, guid: bf79c4b2294bb884da5e79dfc6525ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gatherableSpawnLocations:
-  - {fileID: 1080455104054501498}
-  - {fileID: 5151865414808654052}
-  - {fileID: 5725243761466468773}
-  - {fileID: 6130170283971426636}
-  - {fileID: 1696494473873525801}
-  - {fileID: 5971273870512792516}
-  gatherableToSpawn: {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
+  enemyRiderPrefab: {fileID: 1781603190224703965, guid: d5ed244fec8ae544688ffed105ea883d, type: 3}
 --- !u!1001 &8366955977592485128
 PrefabInstance:
   m_ObjectHideFlags: 0

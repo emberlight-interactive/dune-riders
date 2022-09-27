@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using DuneRiders.AI;
+using DuneRiders.RiderAI;
+using DuneRiders.RiderAI.Traits;
 using DuneRiders.BanditSpawnerSystem;
 
 namespace DuneRiders.OutpostAICombination {
 	[RequireComponent(typeof(RidersInRange))]
 	public class AlertSystem : MonoBehaviour
 	{
-		// todo: Test loading and unloading outposts right after a defense raid is called
 		[Serializable]
 		class CountdownManager {
 			public float timerMaxSeconds;
@@ -39,16 +40,15 @@ namespace DuneRiders.OutpostAICombination {
 		[SerializeField] SpriteRenderer countdownIcon;
 		[SerializeField] SpriteRenderer warningIcon;
 
-
 		[SerializeField] float secondsUntilDefendersSpawn = 240;
 		[SerializeField] float secondsToTimerResetAfterAbsentRiders = 120;
 		[SerializeField] Allegiance enemyAllegiance = Allegiance.Player;
-		[SerializeField] GameObject defenseRider;
+		[SerializeField] EnemyRiderInstanceBuilder enemyRiderInstanceBuilder;
 
 		void Awake() {
 			enemyRiderAISpawner = FindObjectOfType<EnemyRiderAISpawner>();
 			ridersInRange = GetComponent<RidersInRange>();
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 
 			GlobalState.InitState<CountdownManagerGlobalState, string, CountdownManager>(
 				proceduralTools.BuildTransformHash(),
@@ -57,12 +57,14 @@ namespace DuneRiders.OutpostAICombination {
 					remainingSeconds = secondsUntilDefendersSpawn,
 					paused = true,
 				},
-				out countdownManager
+				out countdownManager,
+				new Type[] { typeof(CountdownManagerGlobalStatePersistence) }
 			);
 		}
 
 		void OnEnable() {
 			UpdateTimerDisplay();
+			if (countdownManager.remainingSeconds <= 0) countdownManager.ResetCountdown();
 			StartCoroutine(LocalEnemiesAffectTimerPauseAndReset());
 			StartCoroutine(DefenseCountdown());
 		}
@@ -122,7 +124,10 @@ namespace DuneRiders.OutpostAICombination {
 
 			var secondsUntilAttackIsOver = secondsUntilDefendersSpawn * 2;
 
-			enemyRiderAISpawner.SpawnDefenseBandits(transform, defenseRider);
+			enemyRiderAISpawner.SpawnDefenseBandits(
+				transform,
+				enemyRiderInstanceBuilder.BuildRiderInstance(new EnemyRiderInstanceBuilder.RiderConfig { chasisType = Rider.ChasisType.Heavy, gunType = Rider.GunType.Cannon })
+			);
 			countdownManager.ResetCountdown();
 
 			yield return new WaitForSeconds(secondsUntilAttackIsOver);
@@ -162,5 +167,6 @@ namespace DuneRiders.OutpostAICombination {
 		}
 
 		class CountdownManagerGlobalState : GlobalStateGameObject<string, CountdownManager> {}
+		class CountdownManagerGlobalStatePersistence : GlobalStatePersistence<CountdownManager> {}
 	}
 }

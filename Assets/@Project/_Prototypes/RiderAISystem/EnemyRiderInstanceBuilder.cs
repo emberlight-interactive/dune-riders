@@ -5,9 +5,10 @@ using DuneRiders.AI;
 using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI {
+	// todo: I forsee this becoming a more generic "RiderInstanceBuilder"
 	public class EnemyRiderInstanceBuilder : MonoBehaviour
 	{
-		struct RiderConfig {
+		public struct RiderConfig {
 			public Rider.ChasisType chasisType;
 			public Rider.GunType gunType;
 		}
@@ -37,6 +38,15 @@ namespace DuneRiders.RiderAI {
 			enemyRiderPrefab.gunType = randomRiderConfig.gunType;
 
 			return enemyRiderPrefab;
+		}
+
+		public GameObject BuildRiderInstance(RiderConfig rider) {
+			enemyRiderPrefab.allegiance = allegiance;
+			enemyRiderPrefab.enemyAllegiance = enemyAllegiance;
+			enemyRiderPrefab.chasisType = rider.chasisType;
+			enemyRiderPrefab.gunType = rider.gunType;
+
+			return enemyRiderPrefab.gameObject;
 		}
 	}
 }

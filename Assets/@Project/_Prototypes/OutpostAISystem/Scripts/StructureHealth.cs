@@ -23,11 +23,12 @@ namespace DuneRiders.OutpostAI {
 		public int health { get => state.health; set => state.health = value; }
 
 		void Awake() {
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 			GlobalState.InitState<StructureHealthGlobalState, string, StructureHealthState>(
 				proceduralTools.BuildTransformHash(),
 				new StructureHealthState() { health = maxHealth },
-				out state
+				out state,
+				new Type[] { typeof(StructureHealthGlobalStatePersistence) }
 			);
 
 			ManageDeathLol();
@@ -45,5 +46,6 @@ namespace DuneRiders.OutpostAI {
 		}
 
 		class StructureHealthGlobalState : GlobalStateGameObject<string, StructureHealthState> {}
+		class StructureHealthGlobalStatePersistence : GlobalStatePersistence<StructureHealthState> {}
 	}
 }

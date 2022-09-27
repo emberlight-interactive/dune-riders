@@ -21,14 +21,16 @@ namespace DuneRiders.OutpostAI.State {
 		public int health { get => state.health; set => state.health = value; }
 
 		void Awake() {
-			proceduralTools = new ProceduralTools(transform);
+			proceduralTools = new ProceduralTools(transform, true);
 			GlobalState.InitState<TurretHealthGlobalState, string, TurretHealthState>(
 				proceduralTools.BuildTransformHash(),
 				new TurretHealthState() { health = maxHealth },
-				out state
+				out state,
+				new Type[] { typeof(TurretHealthGlobalStatePersistence) }
 			);
 		}
 
 		class TurretHealthGlobalState : GlobalStateGameObject<string, TurretHealthState> {}
+		class TurretHealthGlobalStatePersistence : GlobalStatePersistence<TurretHealthState> {}
 	}
 }

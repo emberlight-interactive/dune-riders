@@ -5,24 +5,25 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Linq;
 using UnityEngine;
-using Gaia;
 
 namespace DuneRiders {
 	public class ProceduralTools
 	{
 		Transform transform;
-		Vector3 originalPosition;
+		Vector3 position;
 
-		public ProceduralTools(Transform transform) {
+		public ProceduralTools(Transform transform, bool getPositionRelativeToRootGameObject = true) {
 			this.transform = transform;
 
-			var fpf = GameObject.FindObjectOfType<FloatingPointFix>();
-			if (fpf != null) originalPosition = fpf.ConvertToOriginalSpace(transform.position);
-			else originalPosition = transform.position;
+			if (getPositionRelativeToRootGameObject) {
+				position = transform.position - transform.root.position;
+			} else {
+				position = transform.position;
+			}
 		}
 
 		public string BuildTransformHash() {
-			var transformSum = originalPosition.x + originalPosition.y + originalPosition.z;
+			var transformSum = position.x + position.y + position.z;
 			byte[] transformSumBytes = BitConverter.GetBytes(transformSum);
 
 			HashAlgorithm md5 = MD5.Create();
