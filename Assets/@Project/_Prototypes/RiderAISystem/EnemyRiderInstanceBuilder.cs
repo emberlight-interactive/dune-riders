@@ -28,8 +28,6 @@ namespace DuneRiders.RiderAI {
 		};
 
 		public Rider GetRandomRider() {
-			Debug.Log(riderVariants.Count);
-			Debug.Log(Random.Range(0, riderVariants.Count));
 			var randomRiderConfig = riderVariants[Random.Range(0, riderVariants.Count)];
 
 			enemyRiderPrefab.allegiance = allegiance;
