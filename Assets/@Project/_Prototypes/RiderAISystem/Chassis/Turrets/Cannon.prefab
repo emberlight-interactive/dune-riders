@@ -113,18 +113,7 @@ MonoBehaviour:
   turretTurnSpeed: 1
   upperXBounds: 310
   lowerXBounds: 15
---- !u!114 &8368357407485630384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6352932089217980317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1360aad2114dc46b7208aed6406583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  weaponRange: 550
 --- !u!114 &3423686729685163525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +129,15 @@ MonoBehaviour:
   projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
   projectileSpawnLocation: {fileID: 6504162116331309966}
   timeToReload: 2
+--- !u!114 &8368357407485630384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352932089217980317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1360aad2114dc46b7208aed6406583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

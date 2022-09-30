@@ -65,7 +65,6 @@ namespace DuneRiders.RiderAI.Actioners {
 			return false;
 		}
 
-		/// todo: Add condition to keep battle within range of player
 		/// todo: When far away literally charge them
 		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
 			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.AI;
+using UnityEditor;
 
 namespace DuneRiders.RiderAI.Actioners {
 	public class Turret : MonoBehaviour
@@ -15,6 +16,7 @@ namespace DuneRiders.RiderAI.Actioners {
 		// Hacky af //
 		[SerializeField] float upperXBounds = 310;
 		[SerializeField] float lowerXBounds = 0;
+		[SerializeField] float weaponRange = 350;
 
 		void Update()
 		{
@@ -56,7 +58,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		IEnumerator Gunner() {
 			while (true) {
-				if (riderCurrentlyTargetting && IsTurretAimedAtTarget()) {
+				if (riderCurrentlyTargetting && IsTurretAimedAtTarget() && IsTargetWithinWeaponRange()) {
 					trigger.PullTrigger();
 				} else {
 					trigger.ReleaseTrigger();
@@ -65,6 +67,20 @@ namespace DuneRiders.RiderAI.Actioners {
 				yield return null;
 			}
 		}
+
+		#if UNITY_EDITOR
+		void OnDrawGizmos() {
+			GUIStyle style = new GUIStyle();
+
+			var labelPosition = transform.position;
+
+			Handles.color = Color.black;
+        	style.normal.textColor = Color.black;
+			labelPosition.y += 1f;
+			Handles.Label(labelPosition, "Weapon Range", style);
+        	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), weaponRange);
+		}
+		#endif
 
 		void IncrementTurretBarrelTowardsTarget(Transform target) {
 			Vector3 targetDirection = target.position - transform.position;
@@ -111,6 +127,10 @@ namespace DuneRiders.RiderAI.Actioners {
 			}
 
 			return false;
+		}
+
+		bool IsTargetWithinWeaponRange() {
+			return (Vector3.Distance(transform.position, riderCurrentlyTargetting.position) <= weaponRange);
 		}
 
 		void ReturnTurretToDefaultPosition() {
