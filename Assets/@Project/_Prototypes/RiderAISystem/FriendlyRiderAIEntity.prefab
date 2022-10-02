@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 1179979259012926657}
   - component: {fileID: 4618878134759628251}
   - component: {fileID: 2985463968252159311}
+  - component: {fileID: 6012949990464592181}
   m_Layer: 20
   m_Name: FriendlyRiderAIEntity
   m_TagString: Untagged
@@ -341,6 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1222b25fa620e4c46a54a60f16fe930f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5809143628830744141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +470,19 @@ MonoBehaviour:
   delayedDestroy: 1
   minDelayedDestroyTime: 300
   maxDelayedDestroyTime: 900
+--- !u!114 &6012949990464592181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141d2122ff141d34288d44d989b66e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabInstanceKey: 
 --- !u!1001 &7849540777166874748
 PrefabInstance:
   m_ObjectHideFlags: 0
