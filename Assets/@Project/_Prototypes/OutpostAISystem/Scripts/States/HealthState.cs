@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.OutpostAI.State {
 	[DisallowMultipleComponent]
@@ -26,11 +27,10 @@ namespace DuneRiders.OutpostAI.State {
 				proceduralTools.BuildTransformHash(),
 				new TurretHealthState() { health = maxHealth },
 				out state,
-				new Type[] { typeof(TurretHealthGlobalStatePersistence) }
+				new Type[] { typeof(LoadLocalComponentsOnAwake) }
 			);
 		}
 
 		class TurretHealthGlobalState : GlobalStateGameObject<string, TurretHealthState> {}
-		class TurretHealthGlobalStatePersistence : GlobalStatePersistence<TurretHealthState> {}
 	}
 }

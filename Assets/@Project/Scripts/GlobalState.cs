@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders {
 	/// <summary>
@@ -32,7 +33,7 @@ namespace DuneRiders {
 		}
 	}
 
-	public class GlobalStateGameObject<TKey, TState> : MonoBehaviour {
+	public class GlobalStateGameObject<TKey, TState> : MonoBehaviour, IPersistent {
 		private static GlobalStateGameObject<TKey, TState> _instance;
 		public static GlobalStateGameObject<TKey, TState> Instance { get { return _instance; } }
 
@@ -48,6 +49,7 @@ namespace DuneRiders {
 
 		[Serializable] public class GlobalStateDictionary : SerializableDictionary<TKey, TState> {}
 		[ReadOnly] public GlobalStateDictionary states = new GlobalStateDictionary();
+		string persistenceKey = $"{typeof(TState).Name}GlobalState";
 
 		/// <summary>
 		/// Idempotent state setter
@@ -60,6 +62,25 @@ namespace DuneRiders {
 			TState state;
 			if (states.TryGetValue(key, out state)) return state;
 			else return default(TState);
+		}
+
+		public bool DisablePersistence { get => false; }
+
+        public void Save(IPersistenceUtil persistUtil) {
+			persistUtil.Save<Dictionary<TKey, TState>>(persistenceKey, (Dictionary<TKey, TState>) states);
+		}
+
+        public void Load(IPersistenceUtil persistUtil) {
+			var loadedDictionary = persistUtil.Load<Dictionary<TKey, TState>>(persistenceKey);
+
+			if (loadedDictionary != default(Dictionary<TKey, TState>)) {
+				var stateDictionary = new GlobalStateDictionary();
+				foreach(var elem in loadedDictionary) {
+					stateDictionary.Add(elem.Key, elem.Value);
+				}
+
+				states = stateDictionary;
+			}
 		}
 	}
 }

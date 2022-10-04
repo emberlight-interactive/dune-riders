@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3128173081264996448}
   - component: {fileID: 3128173081264997279}
   - component: {fileID: 6713718368279295982}
+  - component: {fileID: 896833591356031714}
   m_Layer: 0
   m_Name: MigrationWaypoint
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWaypoint: {fileID: 0}
+  uniqueIdentifier: df0d8a44-09e4-4a02-ac87-3f58cc22f7fc
 --- !u!114 &6713718368279295982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,3 +59,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &896833591356031714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128173081264996449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 24c36935-26ce-4bb2-8151-51832e7bb8bd

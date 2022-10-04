@@ -3,29 +3,26 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DuneRiders.Shared.PersistenceSystem;
 
-namespace DuneRiders.PersistenceSystemCombination {
+namespace DuneRiders.Shared.PersistenceSystem {
 	public abstract class InstancePersister : MonoBehaviour {
 		[SerializeField] GameObject prefab;
 		protected abstract string PrefabNickName { get; }
 
 		[Serializable]
 		class InstanceSerializable {
-			public int instanceId;
-			public string prefabInstanceKey;
+			public string uniqueIdentifier;
 		}
 
 		public abstract GameObject[] GetAllPrefabInstances();
 
-		public void SaveInstances(PersistenceTool persistenceTool) {
+		public void SaveInstances(IPersistenceUtil persistenceTool) {
 			var instances = GetAllPrefabInstances();
 			List<InstanceSerializable> instancesToSave = new List<InstanceSerializable>();
 
 			foreach (var instance in instances) {
 				instancesToSave.Add(new InstanceSerializable {
-					instanceId = instance.GetInstanceID(),
-					prefabInstanceKey = instance.GetComponent<PrefabInstanceTag>()?.prefabInstanceKey,
+					uniqueIdentifier = instance.GetComponent<UniqueIdentifier>().uniqueIdentifier,
 				});
 			}
 
@@ -33,24 +30,24 @@ namespace DuneRiders.PersistenceSystemCombination {
 			persistenceTool.Save(PrefabNickName, instancesToSave.ToArray());
 		}
 
-		public void LoadInstances(PersistenceTool persistenceTool) {
+		public void LoadInstances(IPersistenceUtil persistenceTool) {
 			var currentInstances = GetAllPrefabInstances();
 			var loadedInstances = persistenceTool.Load<InstanceSerializable[]>(PrefabNickName);
 
 			foreach(var loadedInstance in loadedInstances) {
-				var currentInstance = currentInstances.Where((instance) => instance.GetInstanceID() == loadedInstance.instanceId).FirstOrDefault();
+				var currentInstance = currentInstances.Where((instance) => instance.GetComponent<UniqueIdentifier>().uniqueIdentifier == loadedInstance.uniqueIdentifier).FirstOrDefault();
 				if (currentInstance != default(GameObject)) {
-					if (currentInstance.GetComponent<PrefabInstanceTag>() != null) {
-						currentInstance.GetComponent<PrefabInstanceTag>().prefabInstanceKey = loadedInstance.prefabInstanceKey;
+					if (currentInstance.GetComponent<UniqueIdentifier>() != null) {
+						currentInstance.GetComponent<UniqueIdentifier>().uniqueIdentifier = loadedInstance.uniqueIdentifier;
 					}
 
 					continue;
 				}
 
 				var gm = Instantiate(prefab);
-				var prefabInstanceTag = gm.GetComponent<PrefabInstanceTag>();
+				var uniqueIdentifier = gm.GetComponent<UniqueIdentifier>();
 
-				if (prefabInstanceTag != null) prefabInstanceTag.prefabInstanceKey = loadedInstance.prefabInstanceKey;
+				if (uniqueIdentifier != null) uniqueIdentifier.uniqueIdentifier = loadedInstance.uniqueIdentifier;
 			}
 		}
 	}

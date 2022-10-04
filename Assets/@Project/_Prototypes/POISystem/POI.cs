@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.POISystem {
 	public class POI : MonoBehaviour
@@ -70,7 +71,7 @@ namespace DuneRiders.POISystem {
 				lootableStates = CompileLootableStates(),
 			};
 
-			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state, new Type[] { typeof(POIGlobalStatePersistence) });
+			GlobalState.InitState<POIGlobalState, string, POIState>(transformHash, poiState, out state, new Type[] { typeof(LoadLocalComponentsOnAwake) });
 		}
 
 		int GetNumberOfLootables() {
@@ -189,6 +190,5 @@ namespace DuneRiders.POISystem {
 		}
 
 		class POIGlobalState : GlobalStateGameObject<string, POIState> {}
-		class POIGlobalStatePersistence : GlobalStatePersistence<POIState> {}
 	}
 }

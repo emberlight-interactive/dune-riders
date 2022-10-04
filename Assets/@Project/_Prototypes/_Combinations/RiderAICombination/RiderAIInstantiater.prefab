@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4796913539741001357}
-  - component: {fileID: 8470650122821355497}
   - component: {fileID: 7632162330116114777}
   - component: {fileID: 5871864798646748581}
+  - component: {fileID: 1045356562413789565}
   m_Layer: 0
   m_Name: RiderAIInstantiater
   m_TagString: Untagged
@@ -33,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8470650122821355497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2442620769698255556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 141d2122ff141d34288d44d989b66e91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7632162330116114777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5176c7d820abf3c4598e925058aec1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disablePersistence: 0
   allegiance: 2
   enemyAllegiance: 1
   chasisType: 2
@@ -76,3 +65,16 @@ MonoBehaviour:
   mercenaryPrefab: {fileID: 7172977316693519089, guid: 599a12f27e9850f43800c0503fdeef57, type: 3}
   friendlyPrefab: {fileID: 8631488140989997285, guid: 74dd59558d00de54187535ad33716c50, type: 3}
   enemyPrefab: {fileID: 1781603190224703965, guid: d5ed244fec8ae544688ffed105ea883d, type: 3}
+--- !u!114 &1045356562413789565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442620769698255556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 5287c138-af60-427e-be22-45d3c07b3862

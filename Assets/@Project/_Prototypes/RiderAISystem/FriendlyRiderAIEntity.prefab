@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1179979259012926657}
   - component: {fileID: 4618878134759628251}
   - component: {fileID: 2985463968252159311}
-  - component: {fileID: 6012949990464592181}
+  - component: {fileID: 8653267453047125489}
   m_Layer: 20
   m_Name: FriendlyRiderAIEntity
   m_TagString: Untagged
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5176c7d820abf3c4598e925058aec1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disablePersistence: 0
   allegiance: 0
   enemyAllegiance: 1
   chasisType: 2
@@ -470,7 +471,7 @@ MonoBehaviour:
   delayedDestroy: 1
   minDelayedDestroyTime: 300
   maxDelayedDestroyTime: 900
---- !u!114 &6012949990464592181
+--- !u!114 &8653267453047125489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,10 +480,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5809143628830744132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 141d2122ff141d34288d44d989b66e91, type: 3}
+  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabInstanceKey: 
+  uniqueIdentifier: 4cb385e0-483e-4cba-baa2-a236ed9b1568
 --- !u!1001 &7849540777166874748
 PrefabInstance:
   m_ObjectHideFlags: 0

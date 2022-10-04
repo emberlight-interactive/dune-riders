@@ -5,7 +5,6 @@ using UnityEngine;
 using DuneRiders.AI;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.Shared.PersistenceSystem;
-using DuneRiders.PersistenceSystemCombination;
 
 namespace DuneRiders.RiderAICombination {
 	public class RiderAIInstantiater : MonoBehaviour
@@ -15,11 +14,11 @@ namespace DuneRiders.RiderAICombination {
 		[SerializeField] Rider enemyPrefab;
 
 		Rider rider;
-		PrefabInstanceTag prefabInstanceTag;
+		UniqueIdentifier uniqueIdentifier;
 
 		void Awake() {
 			rider = GetComponent<Rider>();
-			prefabInstanceTag = GetComponent<PrefabInstanceTag>();
+			uniqueIdentifier = GetComponent<UniqueIdentifier>();
 		}
 
 		void Start() {
@@ -29,7 +28,7 @@ namespace DuneRiders.RiderAICombination {
 			DestroyImmediate(rider);
 
 			var gm = Instantiate(riderPrefab.gameObject);
-			gm.GetComponent<PrefabInstanceTag>().prefabInstanceKey = prefabInstanceTag.prefabInstanceKey;
+			gm.GetComponent<UniqueIdentifier>().uniqueIdentifier = uniqueIdentifier.uniqueIdentifier;
 			gm.AddComponent<LoadLocalComponentsOnAwake>();
 
 			Destroy(gameObject);

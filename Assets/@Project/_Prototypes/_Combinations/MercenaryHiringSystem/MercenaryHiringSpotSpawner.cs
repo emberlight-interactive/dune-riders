@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.MercenaryHiringSystem {
 	[Serializable]
@@ -55,7 +56,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 				transformHash,
 				mercenaryHiringSpotState,
 				out state,
-				new Type[] { typeof(MercenarySpotGlobalStatePersistence) }
+				new Type[] { typeof(LoadLocalComponentsOnAwake) }
 			);
 		}
 
@@ -72,6 +73,5 @@ namespace DuneRiders.MercenaryHiringSystem {
 		#endif
 
 		class MercenaryHiringSpotGlobalState : GlobalStateGameObject<string, MercenaryHiringSpotState> {}
-		class MercenarySpotGlobalStatePersistence : GlobalStatePersistence<MercenaryHiringSpotState> {}
 	}
 }

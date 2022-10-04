@@ -1,18 +1,28 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DuneRiders.HomeVillageSystem;
 using DuneRiders.RiderAI.Shared;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.VillageMigrationSystem {
-	public class VillageMigrationManager : MonoBehaviour
+	public class VillageMigrationManager : MonoBehaviour, IPersistent
 	{
+		[Serializable]
+		class VillageMigrationManagerSerializable {
+			public string waypointUniqueIdentifier;
+		}
+
 		[SerializeField] HomeVillageInteractionTarget homeVillageInteractionTarget;
 		[SerializeField] VillageMigrationWaypoint currentWaypoint;
 		[SerializeField] Transform player;
 		[SerializeField] float distanceFromPlayerForJump = 100f;
 		[SerializeField] UnityEvent winEvent;
+		public bool DisablePersistence { get => false; }
+		string persistenceKey = "VillageMigrationManager";
 
 		bool isCurrentlyMigrating = false;
 
@@ -85,6 +95,17 @@ namespace DuneRiders.VillageMigrationSystem {
 
 		void TriggerWinEvent() {
 			winEvent.Invoke();
+		}
+
+		public void Save(IPersistenceUtil persistUtil) {
+			persistUtil.Save(persistenceKey, new VillageMigrationManagerSerializable {
+				waypointUniqueIdentifier = currentWaypoint.GetComponent<UniqueIdentifier>().uniqueIdentifier,
+			});
+		}
+
+        public void Load(IPersistenceUtil persistUtil) {
+			var loadedVillageMigrationManager = persistUtil.Load<VillageMigrationManagerSerializable>(persistenceKey);
+			currentWaypoint = FindObjectsOfType<VillageMigrationWaypoint>().Where((instance) => instance.GetComponent<UniqueIdentifier>().uniqueIdentifier == loadedVillageMigrationManager.waypointUniqueIdentifier).FirstOrDefault();
 		}
 	}
 }

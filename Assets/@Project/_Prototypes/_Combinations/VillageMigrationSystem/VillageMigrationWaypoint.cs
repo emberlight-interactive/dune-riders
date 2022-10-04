@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 namespace DuneRiders.VillageMigrationSystem {
+	[RequireComponent(typeof(UniqueIdentifier))]
 	public class VillageMigrationWaypoint : MonoBehaviour
 	{
 		public VillageMigrationWaypoint nextWaypoint;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.AI;
 using DuneRiders.RiderAI.Traits;
-using DuneRiders.PersistenceSystemCombination;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.RiderAICombination {
 	public class RiderAIInstancePersister : InstancePersister

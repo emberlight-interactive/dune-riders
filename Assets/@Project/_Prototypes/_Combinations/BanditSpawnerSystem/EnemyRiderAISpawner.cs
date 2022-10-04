@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.BanditSpawnerSystem {
 	[RequireComponent(typeof(EnemiesInRangeOfPlayer))]
-	public class EnemyRiderAISpawner : MonoBehaviour
+	public class EnemyRiderAISpawner : MonoBehaviour, IPersistent
 	{
 		EnemiesInRangeOfPlayer enemiesInRangeOfPlayer;
 
@@ -20,6 +21,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] float distanceMultiplier = 1.0f;
 		[SerializeField] bool spawnImmediately = false;
 		[SerializeField] float startUpDelay = 0f;
+		public bool DisablePersistence { get => false; }
 
 		enum Side {Left, Right};
 		enum SpawnDifficulty {VeryEasy, Easy, Medium, Hard};
@@ -125,6 +127,13 @@ namespace DuneRiders.BanditSpawnerSystem {
 				default:
 					throw new System.ArgumentOutOfRangeException();
 			}
+		}
+
+		public void Save(IPersistenceUtil persistUtil) {}
+
+        public void Load(IPersistenceUtil persistUtil) {
+			// Spawn immediately typically means "when the game first starts"
+			spawnImmediately = false;
 		}
 	}
 }

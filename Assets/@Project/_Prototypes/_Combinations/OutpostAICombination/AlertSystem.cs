@@ -6,6 +6,7 @@ using DuneRiders.AI;
 using DuneRiders.RiderAI;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.BanditSpawnerSystem;
+using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.OutpostAICombination {
 	[RequireComponent(typeof(RidersInRange))]
@@ -58,7 +59,7 @@ namespace DuneRiders.OutpostAICombination {
 					paused = true,
 				},
 				out countdownManager,
-				new Type[] { typeof(CountdownManagerGlobalStatePersistence) }
+				new Type[] { typeof(LoadLocalComponentsOnAwake) }
 			);
 		}
 
@@ -167,6 +168,5 @@ namespace DuneRiders.OutpostAICombination {
 		}
 
 		class CountdownManagerGlobalState : GlobalStateGameObject<string, CountdownManager> {}
-		class CountdownManagerGlobalStatePersistence : GlobalStatePersistence<CountdownManager> {}
 	}
 }

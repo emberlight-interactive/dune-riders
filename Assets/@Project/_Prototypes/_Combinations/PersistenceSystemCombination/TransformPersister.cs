@@ -35,8 +35,8 @@ namespace DuneRiders.Shared.PersistenceSystem {
 
 		string GetPersistenceKey() {
 			if (usePrefabInstanceKeyInstead) {
-				if (GetComponent<PrefabInstanceTag>() != null) {
-					return GetComponent<PrefabInstanceTag>().prefabInstanceKey;
+				if (GetComponent<UniqueIdentifier>() != null) {
+					return GetComponent<UniqueIdentifier>().uniqueIdentifier;
 				} else {
 					Debug.LogError("No prefab instance key exists");
 					return this.persistenceKey;

@@ -6,7 +6,7 @@ using DuneRiders.AI;
 using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.RiderAI.Traits {
-	[RequireComponent(typeof(PrefabInstanceTag))]
+	[RequireComponent(typeof(UniqueIdentifier))]
 	[DisallowMultipleComponent]
 	public class Rider : MonoBehaviour, IPersistent
 	{
@@ -63,7 +63,7 @@ namespace DuneRiders.RiderAI.Traits {
 		}
 
 		string PersistenceKey() {
-			return $"Rider-{GetComponent<PrefabInstanceTag>().prefabInstanceKey}";
+			return $"Rider-{GetComponent<UniqueIdentifier>().uniqueIdentifier}";
 		}
 	}
 }
