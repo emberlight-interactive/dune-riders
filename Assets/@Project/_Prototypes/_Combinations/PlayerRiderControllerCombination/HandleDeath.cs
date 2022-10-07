@@ -9,10 +9,10 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		[SerializeField] float fadeOutTime = 4f;
 		[SerializeField] ParticleSystem smoke;
 		[SerializeField] Material burntMetalMateral;
+		[SerializeField] SceneTransitioner sceneTransitioner;
 		[SerializeField] List<MeshRenderer> riderMeshes = new List<MeshRenderer>();
 		[SerializeField] List<OVRScreenFade> faders = new List<OVRScreenFade>();
 		[SerializeField] List<WheelCollider> wheelColliders = new List<WheelCollider>();
-
 
 		public void BurnMetal() {
 			foreach (var riderMesh in riderMeshes) {
@@ -37,13 +37,13 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 			}
 		}
 
-		public void ReloadScene() {
-			StartCoroutine(ReloadSceneRoutine());
+		public void LoadFailScene() {
+			StartCoroutine(LoadFailSceneRoutine());
 		}
 
-		IEnumerator ReloadSceneRoutine() {
+		IEnumerator LoadFailSceneRoutine() {
 			yield return new WaitForSeconds(5f);
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			sceneTransitioner.LoadNextScene();
 		}
 	}
 }

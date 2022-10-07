@@ -23,7 +23,8 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
 
-		[SerializeField] UnityEvent migrateVillage;
+		[SerializeField] UnityEvent migrateVillage = new UnityEvent();
+		[SerializeField] UnityEvent fuelSuccessfullyTransferred = new UnityEvent();
 
 		bool currentlyPreparingForMigration = false;
 		[ReadOnly] public bool nextMigrationTriggersWinCondition = false;
@@ -117,6 +118,7 @@ namespace DuneRiders.HomeVillageSystem {
 			if (gatherer.GetManager(Gatherer.SupportedResources.Fuel).Take(value)) {
 				if (homeVillageFuelManager.FuelResourceManager.Give(value)) {
 					SetPromptText("Thank you for your help rider");
+					fuelSuccessfullyTransferred.Invoke();
 				} else {
 					gatherer.GetManager(Gatherer.SupportedResources.Fuel).Give(value);
 					SetPromptText("It looks like we have no space for that");

@@ -8,19 +8,23 @@ namespace DuneRiders.Combinations {
     public class EnableComponentsOnTerrainLoad : MonoBehaviour
     {
         TerrainScene terrainScene;
+		FloatingPointFix floatingPointFix;
+		Vector3 originalPosition;
         public List<MonoBehaviour> componentsToActivate = new List<MonoBehaviour>();
 
 		void Awake() {
 			var sessionManager = GaiaSessionManager.GetSessionManager(false, false);
-			if (sessionManager == null || HaveTerrainsAlreadyBeenLoadedIn()) {
-				WrapUpBulkComponentActivation();
-			}
+			floatingPointFix = FindObjectOfType<FloatingPointFix>();
+
+			if (sessionManager == null) WrapUpBulkComponentActivation();
 		}
 
         void Start() {
+			InitOriginalPosition();
+
             if (TerrainLoaderManager.TerrainScenes.Count > 0) {
                 foreach (TerrainScene p in TerrainLoaderManager.TerrainScenes) {
-                    if (p.m_bounds.Contains(transform.position)){
+                    if (p.m_bounds.Contains(originalPosition)){
                         terrainScene = p;
 						break;
                     }
@@ -49,8 +53,9 @@ namespace DuneRiders.Combinations {
             }
         }
 
-		bool HaveTerrainsAlreadyBeenLoadedIn() { // todo: it seems this might be causing shit to fall through floors
-			return (TerrainLoaderManager.TerrainScenes.Find(x => x.RegularReferences.Count > 0 && x.m_regularLoadState == LoadState.Loaded) != null);
+		void InitOriginalPosition() {
+			if (floatingPointFix == null) originalPosition = transform.position;
+			else originalPosition = floatingPointFix.ConvertToOriginalSpace(transform.position);
 		}
     }
 }

@@ -29,6 +29,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("PlayerCommandGlobalState").AddComponent<PlayerCommandGlobalState>();
+			globalState.gameObject.AddComponent<LoadLocalComponentsOnAwake>();
 		}
 
 		public class PlayerCommandGlobalState : MonoBehaviour, IPersistent

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DuneRiders.GatheringSystem;
 using DuneRiders.Shared.PersistenceSystem;
 
@@ -14,6 +15,7 @@ namespace DuneRiders.HomeVillageSystem {
 		}
 
 		[SerializeField] ResourceManager fuelResourceManager;
+		[SerializeField] UnityEvent villageOutOfFuel = new UnityEvent();
 		public ResourceManager FuelResourceManager { get => fuelResourceManager; }
 		public int fuelPerHour = 750;
 		public int numberOfMigrations = 1;
@@ -51,7 +53,7 @@ namespace DuneRiders.HomeVillageSystem {
 
 				var fuelPerMinute = GetCurrentFuelPerHourConsumption() / 60;
 				if (!fuelResourceManager.Take(fuelPerMinute)) {
-					// todo: game over
+					villageOutOfFuel.Invoke();
 				}
 			}
 		}

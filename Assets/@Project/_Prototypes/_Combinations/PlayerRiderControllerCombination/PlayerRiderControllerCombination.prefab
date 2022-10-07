@@ -1222,7 +1222,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6611218502763006489}
         m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
           Assembly-CSharp
-        m_MethodName: ReloadScene
+        m_MethodName: LoadFailScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1247,6 +1247,7 @@ MonoBehaviour:
   fadeOutTime: 4
   smoke: {fileID: 531037637942269156}
   burntMetalMateral: {fileID: 2100000, guid: 2eff5398c0f214c4baa6bd1541da8990, type: 2}
+  sceneTransitioner: {fileID: 0}
   riderMeshes:
   - {fileID: 8528036752811970139}
   - {fileID: 8817732339200667531}
@@ -1313,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6cbecb563c3944bb73a7f63cfcf793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_activateDelay: 2
+  m_activateDelay: 0
   m_componentsToActivate: []
 --- !u!114 &1720653419093017946
 MonoBehaviour:
@@ -1424,7 +1425,7 @@ MonoBehaviour:
       y: 0
       z: 0
   m_loadMode: 3
-  m_isSelected: 1
+  m_isSelected: 0
   m_beingDragged: 0
   m_minRefreshDistance: 100
   m_maxRefreshDistance: 2000

@@ -66,6 +66,7 @@ namespace DuneRiders {
 
 		public bool DisablePersistence { get => false; }
 
+		// todo: takes away flexibility for modification
         public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save<Dictionary<TKey, TState>>(persistenceKey, (Dictionary<TKey, TState>) states);
 		}

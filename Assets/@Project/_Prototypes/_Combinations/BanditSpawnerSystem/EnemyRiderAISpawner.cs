@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI;
 using DuneRiders.Shared.PersistenceSystem;
@@ -21,6 +22,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] float distanceMultiplier = 1.0f;
 		[SerializeField] bool spawnImmediately = false;
 		[SerializeField] float startUpDelay = 0f;
+		[SerializeField] UnityEvent roamingEnemyBanditsSpawned = new UnityEvent();
 		public bool DisablePersistence { get => false; }
 
 		enum Side {Left, Right};
@@ -58,6 +60,8 @@ namespace DuneRiders.BanditSpawnerSystem {
 			var spawnRotation = GetSpawnRotation(spawnSide);
 
 			SpawnRiders(spawnPosition, spawnRotation, numberOfRidersToSpawn);
+
+			roamingEnemyBanditsSpawned.Invoke();
 		}
 
 		public void SpawnDefenseBandits(Transform positionToDefend, GameObject defenseRider = null) {
