@@ -15,5 +15,6 @@ namespace DuneRiders.Shared.PersistenceSystem {
 		public void Save<T>(string key, T data);
 		public T Load<T>(string key);
 		public void Delete(string key);
+		public bool SaveFileExists();
 	}
 }

@@ -6,8 +6,14 @@ using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders.PersistenceSystemCombination {
 	public class PersistenceTool : IPersistenceUtil {
+		bool saveFileExists = false;
+
 		public PersistenceTool() {
-			ES3Settings.defaultSettings.path = UnityEngine.Object.FindObjectOfType<GameManager>().persistenceFileName;
+			var persistenceFileName = UnityEngine.Object.FindObjectOfType<GameManager>().persistenceFileName;
+			if (ES3.FileExists(persistenceFileName)) {
+				ES3Settings.defaultSettings.path = persistenceFileName;
+				saveFileExists = true;
+			}
 		}
 
 		public void Save<T>(string key, T data) {
@@ -21,6 +27,8 @@ namespace DuneRiders.PersistenceSystemCombination {
 		public void Delete(string key) {
 			ES3.DeleteKey(key);
 		}
+
+		public bool SaveFileExists() { return saveFileExists; }
 	}
 
 	[DefaultExecutionOrder(-100)]

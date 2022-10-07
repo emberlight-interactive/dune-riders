@@ -20,9 +20,18 @@ namespace DuneRiders.Shared.PersistenceSystem {
 		}
 
 		public void LoadGame() {
-			LoadInstances();
+			if (!persistenceTool.SaveFileExists()) return;
 
-			IPersistent[] persistentClasses = FindObjectsOfType<MonoBehaviour>().OfType<IPersistent>().ToArray();
+			LoadInstances();
+			LoadPersistentClasses(FindObjectsOfType<MonoBehaviour>().OfType<IPersistent>().ToArray());
+		}
+
+		public void LoadThisObjectAndChildren(MonoBehaviour monoBehaviour) {
+			if (!persistenceTool.SaveFileExists()) return;
+			LoadPersistentClasses(monoBehaviour.GetComponentsInChildren<MonoBehaviour>().OfType<IPersistent>().ToArray());
+		}
+
+		void LoadPersistentClasses(IPersistent[] persistentClasses) {
 			foreach (IPersistent persistentClass in persistentClasses) {
 				if (persistentClass.DisablePersistence) continue;
 				persistentClass.Load(persistenceTool);
