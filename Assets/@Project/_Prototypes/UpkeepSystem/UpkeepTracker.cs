@@ -5,7 +5,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.UpkeeperSystem {
-	public class UpkeepTracker : MonoBehaviour // todo: When we build the burn rate cycle add increases by the upkeep to the next cycle
+	public class UpkeepTracker : MonoBehaviour
 	{
 		public enum UpkeepType {
 			Fuel,

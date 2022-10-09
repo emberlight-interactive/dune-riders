@@ -49,9 +49,9 @@ namespace DuneRiders.HomeVillageSystem {
 
 		IEnumerator FuelConsumption() {
 			while (true) {
-				yield return new WaitForSeconds(60f);
+				yield return new WaitForSeconds(10f); // todo: Could exit and reload rapidly to cheat?
 
-				var fuelPerMinute = GetCurrentFuelPerHourConsumption() / 60;
+				var fuelPerMinute = GetCurrentFuelPerHourConsumption() / 360f;
 				if (!fuelResourceManager.Take(fuelPerMinute)) {
 					villageOutOfFuel.Invoke();
 				}
@@ -63,7 +63,7 @@ namespace DuneRiders.HomeVillageSystem {
 		}
 
 		public float GetPercentageOfVillageFuelLeft() {
-			return (float) fuelResourceManager.Amount() / (float) fuelResourceManager.ResourceLimit();
+			return fuelResourceManager.Amount() / fuelResourceManager.ResourceLimit();
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {

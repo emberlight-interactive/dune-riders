@@ -51,7 +51,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		string GetAmountAndCapacityFraction() {
-			return $"<b>{gatherer.GetManager(resourceTracked).Amount()}</b>/{gatherer.GetManager(resourceTracked).ResourceLimit()}";
+			return $"<b>{(int) gatherer.GetManager(resourceTracked).Amount()}</b>/{(int) gatherer.GetManager(resourceTracked).ResourceLimit()}";
 		}
 
 		string GetBurnRateString(float burnRate) {

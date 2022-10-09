@@ -66,7 +66,7 @@ namespace DuneRiders.HomeVillageSystem {
 
 		Node FuelTransferInteractionTree() {
 			return new Node {
-				responseRequester = new RangeSelectionResponseRequester(this.FuelToTransfer, this.HandleCancel, gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount()),
+				responseRequester = new RangeSelectionResponseRequester(this.FuelToTransfer, this.HandleCancel, Mathf.FloorToInt(gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount())),
 			};
 		}
 

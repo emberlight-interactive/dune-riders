@@ -18,7 +18,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		void Update() {
-			fuelText.text = $"{gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount()} L";
+			fuelText.text = $"{(int) gatherer.GetManager(Gatherer.SupportedResources.Fuel).Amount()} L";
 			fuelBurnRateText.text = $"-{burnRateSystem.GetResourceBurnRate(BurnRateSystem.ResourceType.Fuel)} L/h";
 		}
 	}

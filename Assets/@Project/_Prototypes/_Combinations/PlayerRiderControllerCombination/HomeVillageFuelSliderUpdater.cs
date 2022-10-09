@@ -34,7 +34,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		IEnumerator UpdateSlider() {
 			while (true) {
 				homeVillageFuelSlider.value = homeVillageFuelManager.GetPercentageOfVillageFuelLeft();
-				amountAndCapacityText.text = homeVillageFuelManager.FuelResourceManager.Amount().ToString();
+				amountAndCapacityText.text = ((int) homeVillageFuelManager.FuelResourceManager.Amount()).ToString();
 
 				if (homeVillageFuelManager.GetCurrentFuelPerHourConsumption() > 0) burnRateText.text = GetBurnRateString(homeVillageFuelManager.GetCurrentFuelPerHourConsumption());
 				else burnRateText.text = "";

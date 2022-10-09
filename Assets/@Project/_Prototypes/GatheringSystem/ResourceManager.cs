@@ -10,7 +10,7 @@ namespace DuneRiders.GatheringSystem {
 	{
 		[Serializable]
 		class ResourceManagerSerializable {
-			public int resourceAmount;
+			public float resourceAmount;
 		}
 
 		[SerializeField] Gatherer.SupportedResources resourceType;
@@ -18,10 +18,10 @@ namespace DuneRiders.GatheringSystem {
 		public bool DisablePersistence { get => false; }
 		[SerializeField] string persistenceKey;
 
-		[SerializeField] int resourceAmount = 0;
-		[SerializeField] int resourceLimit = 10000;
+		[SerializeField] float resourceAmount = 0;
+		[SerializeField] float resourceLimit = 10000;
 
-		public bool Take(int amount) {
+		public bool Take(float amount) {
 			if (resourceAmount - amount < 0) return false;
 			else {
 				resourceAmount -= amount;
@@ -29,7 +29,7 @@ namespace DuneRiders.GatheringSystem {
 			}
 		}
 
-		public bool Give(int amount) {
+		public bool Give(float amount) {
 			if (resourceAmount + amount > resourceLimit) return false;
 			else {
 				resourceAmount += amount;
@@ -37,9 +37,9 @@ namespace DuneRiders.GatheringSystem {
 			}
 		}
 
-		public int Amount() { return resourceAmount; }
-		public int ResourceLimit() { return resourceLimit; }
-		public int RemainingCapacity() { return resourceLimit - resourceAmount; }
+		public float Amount() { return resourceAmount; }
+		public float ResourceLimit() { return resourceLimit; }
+		public float RemainingCapacity() { return resourceLimit - resourceAmount; }
 
         public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save<ResourceManagerSerializable>(persistenceKey, new ResourceManagerSerializable {
