@@ -785,13 +785,14 @@ GameObject:
   - component: {fileID: 1401416700}
   - component: {fileID: 1401416702}
   - component: {fileID: 1401416701}
+  - component: {fileID: 1401416703}
   m_Layer: 5
   m_Name: Title (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1401416700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -908,6 +909,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401416699}
   m_CullTransparentMesh: 1
+--- !u!114 &1401416703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401416699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95332dd6ba574754d8ee2a0946753c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587571013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,8 +1043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af03b15d44788341961a2b073249b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistenceKey: GameManager
   persistenceFileName: SaveFile1.es3
   gasBonusesUsed: 0
+  maxAllowedGasBonuses: 3
+  applyGasBonusOnMainSceneLoad: 0
 --- !u!4 &1998394727
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,10 +1512,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3205305332811715064}
+        m_TargetAssemblyTypeName: DuneRiders.BonusGasSystem.PrimeMainSceneForGasBonus,
+          Assembly-CSharp
+        m_MethodName: ApplyGasBonusOnMainSceneLoad
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1508,17 +1525,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3205305332047655707}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 276904535}
+        m_TargetAssemblyTypeName: DuneRiders.SceneTransitioner, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &3205305332811715060
 MonoBehaviour:
@@ -1573,13 +1590,53 @@ GameObject:
   - component: {fileID: 3205305332811715058}
   - component: {fileID: 3205305332811715059}
   - component: {fileID: 3205305332811715060}
+  - component: {fileID: 3205305332811715063}
+  - component: {fileID: 3205305332811715065}
+  - component: {fileID: 3205305332811715064}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &3205305332811715063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205305332811715062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95332dd6ba574754d8ee2a0946753c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3205305332811715064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205305332811715062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575d7de8da13628458f7c06ed7c74ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3205305332811715065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3205305332811715062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d222f7c4e2870604cbdd520b5724c88e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manuallyClickButton: 0
 --- !u!222 &3205305333599374651
 CanvasRenderer:
   m_ObjectHideFlags: 0
