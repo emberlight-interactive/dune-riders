@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using DuneRiders.PersistenceSystemCombination;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	public class PauseMenuActions : MonoBehaviour
 	{
-		// todo: when using airlink to save and quit it can break airlink when testing again by seizing the camera and hands
+		[SerializeField] AutoSaver autoSaver;
+
+		public bool savingEnabled = true;
+
 		public void SaveAndQuit() {
+			if (savingEnabled) autoSaver.TriggerSaveGame();
+
 			#if UNITY_EDITOR
-				EditorApplication.ExecuteMenuItem("Edit/Play");
+				Debug.Log("Application Exited");
 			#else
 				Application.Quit();
 			#endif
