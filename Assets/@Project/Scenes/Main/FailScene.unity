@@ -786,6 +786,7 @@ GameObject:
   - component: {fileID: 1401416702}
   - component: {fileID: 1401416701}
   - component: {fileID: 1401416703}
+  - component: {fileID: 1401416704}
   m_Layer: 5
   m_Name: Title (1)
   m_TagString: Untagged
@@ -921,6 +922,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95332dd6ba574754d8ee2a0946753c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1401416704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401416699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3104ad3a724ea224b89df64e9a51d4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587571013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistenceKey: GameManager
   persistenceFileName: SaveFile1.es3
-  gasBonusesUsed: 0
+  gasBonusesUsed: 3
   maxAllowedGasBonuses: 3
   applyGasBonusOnMainSceneLoad: 0
 --- !u!4 &1998394727
