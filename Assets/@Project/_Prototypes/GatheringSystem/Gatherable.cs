@@ -12,6 +12,7 @@ namespace DuneRiders.GatheringSystem {
 		public float yOffsetOfRestingPlace = 2f;
 		public float moveSpeed = 1f;
 		public float gatherSpeed = 5f;
+		public float rarityValue = 1f;
 		bool gathered = false;
 
 		void OnEnable() {

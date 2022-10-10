@@ -752,7 +752,22 @@ MonoBehaviour:
   - {fileID: 6130170283971426636}
   - {fileID: 1696494473873525801}
   - {fileID: 5971273870512792516}
-  gatherableToSpawn: {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
+  gatherablesToSpawn:
+  - {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
+  increaseRareProbabilityMultipler: 0
+--- !u!114 &8079376966487222283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923757963335498343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf79c4b2294bb884da5e79dfc6525ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRiderPrefab: {fileID: 1781603190224703965, guid: d5ed244fec8ae544688ffed105ea883d, type: 3}
 --- !u!114 &8361513146631423473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,19 +798,6 @@ MonoBehaviour:
   debugColor: {r: 0, g: 0, b: 1, a: 1}
   labelYOffset: 1
   rangeDistance: 400
---- !u!114 &8079376966487222283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923757963335498343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf79c4b2294bb884da5e79dfc6525ff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyRiderPrefab: {fileID: 1781603190224703965, guid: d5ed244fec8ae544688ffed105ea883d, type: 3}
 --- !u!1001 &8366955977592485128
 PrefabInstance:
   m_ObjectHideFlags: 0

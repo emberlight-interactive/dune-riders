@@ -285,7 +285,11 @@ MonoBehaviour:
   - {fileID: 7314081134965802291}
   - {fileID: 6801916244373543810}
   - {fileID: 7289377194732767351}
-  gatherableToSpawn: {fileID: 1257076406645165952, guid: 251220e9b1eb55b4ca2a0123e17a9f60, type: 3}
+  gatherablesToSpawn:
+  - {fileID: 1257076406645165952, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
+  - {fileID: 1257076406645165952, guid: 251220e9b1eb55b4ca2a0123e17a9f60, type: 3}
+  - {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
+  increaseRareProbabilityMultipler: 0
 --- !u!114 &719968417301309089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,3 +410,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePrefabInstanceKeyInstead: 1
   persistenceKey: 
+--- !u!114 &8330172938624151608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781603190224703967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f4261985dcdc740aba8ea4438df7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
