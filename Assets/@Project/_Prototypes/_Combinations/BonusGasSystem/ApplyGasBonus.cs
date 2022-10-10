@@ -25,7 +25,7 @@ namespace DuneRiders.BonusGasSystem {
 			var resourceManagers = new ResourceManager[] { playerFuelManager, villageFuelManager };
 			foreach (var resourceManager in resourceManagers) {
 				var thirdOfFuel = resourceManager.ResourceLimit() / 3;
-				if (resourceManager.Amount() < thirdOfFuel) resourceManager.Give(thirdOfFuel);
+				if (resourceManager.Amount() < thirdOfFuel) resourceManager.Give(thirdOfFuel - resourceManager.Amount());
 			}
 		}
 

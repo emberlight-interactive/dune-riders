@@ -5,6 +5,7 @@ using UnityEngine;
 using DuneRiders.Shared.PersistenceSystem;
 
 namespace DuneRiders {
+	[DefaultExecutionOrder(-200)]
 	public class GameManager : MonoBehaviour, IPersistent {
 		[Serializable]
 		class GameManagerSerializable {

@@ -11,9 +11,10 @@ namespace DuneRiders.PersistenceSystemCombination {
 		public PersistenceTool() {
 			var persistenceFileName = UnityEngine.Object.FindObjectOfType<GameManager>().persistenceFileName;
 			if (ES3.FileExists(persistenceFileName)) {
-				ES3Settings.defaultSettings.path = persistenceFileName;
 				saveFileExists = true;
 			}
+
+			ES3Settings.defaultSettings.path = persistenceFileName;
 		}
 
 		public void Save<T>(string key, T data) {
