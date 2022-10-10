@@ -14,7 +14,7 @@ namespace DuneRiders {
 		private static GameManager instance;
 		public static GameManager Instance { get { return instance; } }
 		public bool DisablePersistence { get => false; }
-		public string persistenceKey = "GameManager";
+		string persistenceKey = "GameManager";
 
 		public string persistenceFileName = "SaveFile1.es3";
 		public int gasBonusesUsed = 0;
