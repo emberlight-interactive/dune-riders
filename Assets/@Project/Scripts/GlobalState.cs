@@ -68,7 +68,7 @@ namespace DuneRiders {
 
 		// todo: takes away flexibility for modification
         public void Save(IPersistenceUtil persistUtil) {
-			persistUtil.Save<Dictionary<TKey, TState>>(persistenceKey, (Dictionary<TKey, TState>) states);
+			persistUtil.Save(persistenceKey, new Dictionary<TKey, TState>(states));
 		}
 
         public void Load(IPersistenceUtil persistUtil) {

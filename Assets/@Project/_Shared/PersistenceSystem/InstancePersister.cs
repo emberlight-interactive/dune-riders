@@ -16,7 +16,7 @@ namespace DuneRiders.Shared.PersistenceSystem {
 
 		public abstract GameObject[] GetAllPrefabInstances();
 
-		public void SaveInstances(IPersistenceUtil persistenceTool) {
+		List<InstanceSerializable> CompileSerializableInstances() {
 			var instances = GetAllPrefabInstances();
 			List<InstanceSerializable> instancesToSave = new List<InstanceSerializable>();
 
@@ -26,11 +26,22 @@ namespace DuneRiders.Shared.PersistenceSystem {
 				});
 			}
 
-			persistenceTool.Delete(PrefabNickName);
+			return instancesToSave;
+		}
+
+		public void SaveInstances(IPersistenceUtilInternal persistenceTool) {
+			var instancesToSave = CompileSerializableInstances();
+
 			persistenceTool.Save(PrefabNickName, instancesToSave.ToArray());
 		}
 
-		public void LoadInstances(IPersistenceUtil persistenceTool) {
+		public void PrimeInstancesForAsyncSave(IPersistenceUtilInternal persistenceTool) {
+			var instancesToSave = CompileSerializableInstances();
+
+			persistenceTool.PrimeObjectForAsyncSave(PrefabNickName, instancesToSave.ToArray());
+		}
+
+		public void LoadInstances(IPersistenceUtilInternal persistenceTool) {
 			var currentInstances = GetAllPrefabInstances();
 			var loadedInstances = persistenceTool.Load<InstanceSerializable[]>(PrefabNickName);
 

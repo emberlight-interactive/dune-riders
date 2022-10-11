@@ -7,6 +7,7 @@ namespace DuneRiders.PersistenceSystemCombination {
 	public class AutoSaver : MonoBehaviour
 	{
 		[SerializeField] float autoSaveCycleTime = 15 * 60;
+		[SerializeField] Canvas savingIndicator;
 		PersistenceManager persistenceManager;
 
 		void Awake() {
@@ -22,8 +23,17 @@ namespace DuneRiders.PersistenceSystemCombination {
 		}
 
 		public void TriggerSaveGame() {
-			persistenceManager.SaveGame();
+			ShowSavingIndicator();
+			persistenceManager.SaveGameAsync(() => HideSavingIndicator());
 			RestartAutoSaverLoop();
+		}
+
+		void ShowSavingIndicator() {
+			savingIndicator.enabled = true;
+		}
+
+		void HideSavingIndicator() {
+			savingIndicator.enabled = false;
 		}
 
 		IEnumerator AutoSaveLoop() {
