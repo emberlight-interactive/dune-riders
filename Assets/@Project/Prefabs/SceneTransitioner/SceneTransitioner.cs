@@ -8,9 +8,12 @@ namespace DuneRiders {
 	{
 		[SerializeField] bool loadAdditively = false;
 		[SerializeField] string sceneToLoad;
+		[SerializeField] Material loadingSkyBox;
 
 		public void LoadNextScene() {
-			SceneManager.LoadScene(sceneToLoad, loadAdditively ? LoadSceneMode.Additive : LoadSceneMode.Single);
+			ChangeSceneSkyBox();
+			RenderNothingButSkybox();
+			SceneManager.LoadSceneAsync(sceneToLoad, loadAdditively ? LoadSceneMode.Additive : LoadSceneMode.Single);
 		}
 
 		public bool manuallyTransitionSceneButton = false;
@@ -19,6 +22,17 @@ namespace DuneRiders {
 			if (manuallyTransitionSceneButton) {
 				manuallyTransitionSceneButton = false;
 				LoadNextScene();
+			}
+		}
+
+		void ChangeSceneSkyBox() {
+			RenderSettings.skybox = loadingSkyBox;
+		}
+
+		void RenderNothingButSkybox() {
+			var cameras = FindObjectsOfType<Camera>();
+			foreach(var camera in cameras) {
+				camera.cullingMask = 0;
 			}
 		}
 	}
