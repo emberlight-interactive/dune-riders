@@ -113,18 +113,7 @@ MonoBehaviour:
   turretTurnSpeed: 1
   upperXBounds: 310
   lowerXBounds: 15
---- !u!114 &1386260158138229099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188212262600676516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1360aad2114dc46b7208aed6406583, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  weaponRange: 350
 --- !u!114 &478119962803428583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +126,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f8f2fe4ed109b43a1c8834e39253b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
   projectileSpawnLocation: {fileID: 2045328415384980999}
   timeToReload: 3
+--- !u!114 &1386260158138229099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188212262600676516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1360aad2114dc46b7208aed6406583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2445380584877026369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188212262600676516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf7b15cbe47eb48b4d94e1277c9b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendlyRiderProjectile: {fileID: 7652282523342019264, guid: a8a67fb61845fef49940b4702e6dcf6a, type: 3}
+  enemyRiderProjectile: {fileID: 9083832442330745693, guid: 4ff126c38f85cae42a6d441bf5e90e14, type: 3}

@@ -4,12 +4,17 @@ using UnityEngine;
 using DuneRiders.RiderAI.Actioners;
 
 namespace DuneRiders.RiderAI {
+	[RequireComponent(typeof(ProjectileProvider))]
 	public class CannonTurretTrigger : TurretTrigger
 	{
-		[SerializeField] GameObject projectile;
+		ProjectileProvider projectileProvider;
 		[SerializeField] Transform projectileSpawnLocation;
 		[SerializeField] float timeToReload = 2f;
 		bool reloading = false;
+
+		void Awake() {
+			projectileProvider = GetComponent<ProjectileProvider>();
+		}
 
 		public override void PullTrigger() {
 			if (!reloading) {
@@ -22,7 +27,7 @@ namespace DuneRiders.RiderAI {
 		public override void ReleaseTrigger() {}
 
 		void Fire() {
-			var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
+			var spawnedProjectile = SimplePool.Spawn(projectileProvider.Projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
 			SimplePool.Despawn(spawnedProjectile, 4f);
 		}
 

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace DuneRiders.Shared.DamageSystem {
 	[RequireComponent(typeof(Rigidbody))]
-	public class CannonProjectile : MonoBehaviour
+	public class CannonProjectile : Projectile
 	{
 		[BoxGroup("Debug"), SerializeField] private Color debugExplosiveRadiusColor = Color.red;
 
@@ -18,7 +18,6 @@ namespace DuneRiders.Shared.DamageSystem {
 
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem explosionParticle;
 		[BoxGroup("Projectile Effects"), SerializeField] private float explosionParticleScale = 2;
-
 
 		Rigidbody rb;
 
@@ -51,7 +50,7 @@ namespace DuneRiders.Shared.DamageSystem {
 		private void Explode(Collision collision)
 		{
 			var collisionObjectDamagable = collision.gameObject.GetComponent<Damageable>();
-			if (collisionObjectDamagable != null) {
+			if (collisionObjectDamagable != null && CanDamage(collisionObjectDamagable)) {
 				collisionObjectDamagable.Damage(directHitDamage);
 			}
 
@@ -60,9 +59,10 @@ namespace DuneRiders.Shared.DamageSystem {
 			for (int i = 0; i < hits.Length; i++) {
 				if (GameObject.ReferenceEquals(collision.gameObject, hits[i].gameObject)) continue;
 
-				if (hits[i].GetComponent<Damageable>() != null) {
+				var damageableComponent = hits[i].GetComponent<Damageable>();
+				if (damageableComponent != null) {
 					var hitDistance = Vector3.Distance(transform.position, hits[i].transform.position);
-					hits[i].GetComponent<Damageable>().Damage(Mathf.CeilToInt(directHitDamage / (hitDistance < 1 ? 1 : hitDistance)));
+					if (CanDamage(damageableComponent)) damageableComponent.Damage(Mathf.CeilToInt(directHitDamage / (hitDistance < 1 ? 1 : hitDistance)));
 				}
 			}
 

@@ -24,9 +24,10 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		public override void Damage(int healthPoints)
 		{
+			var prevHealth = health;
 			health -= healthPoints;
 			UpdateMonitor();
-			HandleZeroHealthPoints();
+			if (prevHealth > 0 && health <= 0) HandleZeroHealthPoints();
 		}
 
 		void UpdateMonitor() {

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace DuneRiders.Shared.DamageSystem {
 	[RequireComponent(typeof(LineRenderer))]
-	public class MachineGunProjectile : MonoBehaviour
+	public class MachineGunProjectile : Projectile
 	{
 		LineRenderer bulletLine;
 		[SerializeField] int directHitDamage = 2;
@@ -49,8 +49,9 @@ namespace DuneRiders.Shared.DamageSystem {
 		}
 
 		void RegisterDamageOnObjectIfDamageable(RaycastHit hit) {
-			if (hit.collider.gameObject.GetComponent<Damageable>()) {
-				hit.collider.gameObject.GetComponent<Damageable>().Damage(directHitDamage);
+			var damageableComponent = hit.collider.gameObject.GetComponent<Damageable>();
+			if (damageableComponent != null) {
+				if (CanDamage(damageableComponent)) damageableComponent.Damage(directHitDamage);
 			}
 		}
 
