@@ -9,12 +9,12 @@ using DuneRiders.PlayerRiderControllerCombination;
 
 namespace DuneRiders.RiderAICombination {
 	[RequireComponent(typeof(Rider))]
-	[RequireComponent(typeof(InCombatState))]
+	[RequireComponent(typeof(EntitiesWithinGroupsDetectionRange))]
 	[RequireComponent(typeof(HealthState))]
 	public class RepairSystem : MonoBehaviour
 	{
 		Rider rider;
-		InCombatState inCombatState;
+		EntitiesWithinGroupsDetectionRange entitiesWithinGroupsDetectionRange;
 		HealthState healthState;
 
 		Gatherer gatherer;
@@ -45,7 +45,7 @@ namespace DuneRiders.RiderAICombination {
 
 		void Awake() {
 			rider = GetComponent<Rider>();
-			inCombatState = GetComponent<InCombatState>();
+			entitiesWithinGroupsDetectionRange = GetComponent<EntitiesWithinGroupsDetectionRange>();
 			healthState = GetComponent<HealthState>();
 			gatherer = FindObjectOfType<Gatherer>();
 			burnRateSystem = FindObjectOfType<BurnRateSystem>();
@@ -64,7 +64,7 @@ namespace DuneRiders.RiderAICombination {
 
 		IEnumerator RepairCycle() {
 			while (true) {
-				if (!IsRiderInCombat() && IsRiderDamaged() && IsRiderInParty() && AreAnyResourcesAvailable()) {
+				if (!AreAnyEnemiesInDetectionRange() && IsRiderDamaged() && IsRiderInParty() && AreAnyResourcesAvailable()) {
 					isCurrentlyRepairing = true;
 					ProcessChasisRepairCycle(rider.chasisType);
 				} else {
@@ -145,8 +145,8 @@ namespace DuneRiders.RiderAICombination {
 			return gatherer.GetManager(Gatherer.SupportedResources.ScrapMetal).Amount() > 0;
 		}
 
-		bool IsRiderInCombat() {
-			return inCombatState.inCombat;
+		bool AreAnyEnemiesInDetectionRange() {
+			return entitiesWithinGroupsDetectionRange.areAnyEnemyEntitiesWithinDetectionRange;
 		}
 	}
 }

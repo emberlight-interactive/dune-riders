@@ -20,8 +20,11 @@ namespace DuneRiders {
 
 		public static void ApplyNewGuid(UniqueIdentifier uniqueIdentifier) {
 			uniqueIdentifier.uniqueIdentifier = Guid.NewGuid().ToString();
+
+			#if UNITY_EDITOR
 			PrefabUtility.RecordPrefabInstancePropertyModifications(uniqueIdentifier);
 			EditorUtility.SetDirty(uniqueIdentifier);
+			#endif
 		}
 	}
 
@@ -43,6 +46,7 @@ namespace DuneRiders {
 		}
 	}
 
+	#if UNITY_EDITOR
 	[CustomEditor(typeof(UniqueIdentifier))]
 	public class UniqueIdentifierEditor : Editor {
 		void OnEnable()
@@ -51,4 +55,5 @@ namespace DuneRiders {
 			GuidAssigner.DetectAndApplyGuid(uniqueIdentifier);
 		}
 	}
+	#endif
 }

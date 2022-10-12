@@ -23,7 +23,7 @@ namespace DuneRiders.RiderAI.State {
 		[SerializeField] string rangeType = "Sight Range";
 		[SerializeField] Color debugColor = Color.blue;
 		[SerializeField] float labelYOffset = 1f;
-		[SerializeField] float rangeDistance = 400f;
+		[SerializeField] float rangeDistance = 550f;
 
 		List<(EntityType, Transform)> entitiesInRange = new List<(EntityType, Transform)>();
 		[SerializeField, ReadOnly] public List<(EntityType, Transform)> EntitiesInRange { get => entitiesInRange; }

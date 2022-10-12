@@ -7,13 +7,14 @@ using DuneRiders.RiderAI.Traits;
 using DuneRiders.AI;
 
 namespace DuneRiders.RiderAI.BehaviourTrees {
-	[RequireComponent(typeof(InCombatState))]
+	[RequireComponent(typeof(Rider))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(PlayerCommandState))]
-	[RequireComponent(typeof(Rider))]
+	[RequireComponent(typeof(EntitiesWithinGroupsDetectionRange))]
+	[RequireComponent(typeof(PlayerHasDrawnWeapon))]
 	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
-	{ // todo: All states and actioners need to have enumerators started and stopped in onenable and disable events since they are pooled
+	{
 		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner gunnerAction;
@@ -21,9 +22,10 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		[SerializeField] Actioner deathAction;
 		Rider rider;
 		HealthState healthState;
-		InCombatState inCombatState;
 		AllActiveRidersState allActiveRidersState;
 		PlayerCommandState playerCommandState;
+		EntitiesWithinGroupsDetectionRange entitiesWithinGroupsDetectionRange;
+		PlayerHasDrawnWeapon playerHasDrawnWeapon;
 
 		(System.Type, string, System.Object)[] _priorityStates;
 		protected override (System.Type, string, System.Object)[] priorityStates {
@@ -32,11 +34,12 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		void Awake()
 		{
+			rider = GetComponent<Rider>();
 			healthState = GetComponent<HealthState>();
-			inCombatState = GetComponent<InCombatState>();
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			playerCommandState = GetComponent<PlayerCommandState>();
-			rider = GetComponent<Rider>();
+			entitiesWithinGroupsDetectionRange = GetComponent<EntitiesWithinGroupsDetectionRange>();
+			playerHasDrawnWeapon = GetComponent<PlayerHasDrawnWeapon>();
 
 			_priorityStates = new (System.Type, string, System.Object)[] {
 				(typeof(PlayerCommandState), "command", playerCommandState),
@@ -47,22 +50,28 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		protected override void ProcessBehaviourTree() { // todo: Add a condition to respawn near player when an extreme distance away (typically when falling through the map)
 			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
-			} else if (AmIEngagedInCombat()) {
-				if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
-					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
-				} else if (IsCurrentCommand(PlayerCommandState.Command.Halt)) {
-					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
-				} else {
-					SetActionersActive(new Actioner[] {followAction, gunnerAction});
-				}
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
-				if (DoAnyEnemyRidersExist()) { // todo: take into account our detection distance (add this to traits???) // what happens if one charges but not the others ???
-					SetActionersActive(chargeAction);
+				if (AreAnyEnemiesInDetectionRange()) {
+					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
 				} else {
 					SetActionersActive(followAction);
 				}
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Halt)) {
-				SetActionersActive(haltAction);
+				if (AreAnyEnemiesInDetectionRange() && IsPlayerWeaponDrawn()) {
+					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
+				} else if (AreAnyEnemiesInThreatRange()) {
+					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
+				} else {
+					SetActionersActive(haltAction);
+				}
+			} else if (IsCurrentCommand(PlayerCommandState.Command.Follow)) {
+				if (AreAnyEnemiesInDetectionRange() && IsPlayerWeaponDrawn()) {
+					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+				} else if (AreAnyEnemiesInThreatRange()) {
+					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+				} else {
+					SetActionersActive(followAction);
+				}
 			} else {
 				SetActionersActive(followAction);
 			}
@@ -72,8 +81,16 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			return allActiveRidersState.GetAllRidersOfAllegiance(rider.enemyAllegiance).Count > 0;
 		}
 
-		bool AmIEngagedInCombat() {
-			return inCombatState.inCombat;
+		bool IsPlayerWeaponDrawn() {
+			return playerHasDrawnWeapon.isPlayerWeaponDrawn;
+		}
+
+		bool AreAnyEnemiesInDetectionRange() {
+			return entitiesWithinGroupsDetectionRange.areAnyEnemyEntitiesWithinDetectionRange;
+		}
+
+		bool AreAnyEnemiesInThreatRange() {
+			return entitiesWithinGroupsDetectionRange.areAnyEnemyEntitiesWithinThreatRange;
 		}
 
 		bool IsCurrentCommand(PlayerCommandState.Command command) {

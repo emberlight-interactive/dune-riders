@@ -40,9 +40,11 @@ namespace DuneRiders.RiderAI.State {
 			return targetTurretList;
 		}
 
-		public OutpostTurret GetClosestTurretFromList(List<OutpostTurret> turrets = null) {
+		public OutpostTurret GetClosestTurretFromList(List<OutpostTurret> turrets = null, Vector3? relativePosition = null) {
+			var selectedRelativePosition = relativePosition ?? transform.position;
+
 			return (turrets ?? outpostTurrets)
-				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
+				.OrderBy(t=>(t.transform.position - selectedRelativePosition).sqrMagnitude)
 				.First();
 		}
 

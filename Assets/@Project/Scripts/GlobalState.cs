@@ -12,7 +12,7 @@ namespace DuneRiders {
 	/// </summary>
 	public class GlobalState
 	{
-		public static void InitState<TGlobalState, TKey, TState>(TKey key, TState state, out TState localState, Type[] includeComponents = null) where TGlobalState : GlobalStateGameObject<TKey, TState> {
+		public static void InitState<TGlobalState, TKey, TState>(TKey key, TState state, out TState localState, Type[] includeComponents = null, bool disablePersistence = false) where TGlobalState : GlobalStateGameObject<TKey, TState> {
 			TGlobalState globalState;
 			TGlobalState existingGlobalState = MonoBehaviour.FindObjectOfType<TGlobalState>();
 			if (existingGlobalState != null) {
@@ -20,6 +20,7 @@ namespace DuneRiders {
 			} else {
 				var globalStateObject = new GameObject($"{typeof(TState).Name} [GlobalState]");
 				globalState = globalStateObject.AddComponent<TGlobalState>();
+				globalState.DisablePersistence = disablePersistence;
 
 				if (includeComponents != null) {
 					foreach (var component in includeComponents) {
@@ -64,7 +65,8 @@ namespace DuneRiders {
 			else return default(TState);
 		}
 
-		public bool DisablePersistence { get => false; }
+		bool disablePersistence = false;
+		public bool DisablePersistence { get => disablePersistence; set => disablePersistence = value; }
 
 		// todo: takes away flexibility for modification
         public void Save(IPersistenceUtil persistUtil) {
