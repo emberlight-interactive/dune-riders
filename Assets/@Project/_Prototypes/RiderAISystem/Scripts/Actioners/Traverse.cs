@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using DuneRiders.AI;
+using DuneRiders.RiderAI.State;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]
-	public class Traverse : Actioner // todo: [Reminder] when we populate map and leave some areas unspawned it will leave holes in the path finding
+	[RequireComponent(typeof(RiderSpeedState))]
+	public class Traverse : Actioner
 	{
 		Coroutine activeAction;
+		RiderSpeedState riderSpeedState;
 		RichAI pathfinder;
 		Vector3 finalDestination;
+		float originalSpeed;
 		bool _currentlyActive = false;
 		public override bool currentlyActive {
 			get => _currentlyActive;
@@ -18,12 +22,15 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		void Awake() {
 			pathfinder = GetComponent<RichAI>();
+			riderSpeedState = GetComponent<RiderSpeedState>();
+			originalSpeed = pathfinder.maxSpeed;
 		}
 
 		public override void StartAction()
 		{
 			if (!currentlyActive) {
 				CalculateFinalDestination();
+				SetTraverseSpeed();
 				activeAction = StartCoroutine(Action());
 			}
 			_currentlyActive = true;
@@ -31,6 +38,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		public override void EndAction() {
 			if (currentlyActive) {
+				RevertToOriginalSpeed();
 				StopCoroutine(activeAction);
 			}
 
@@ -43,6 +51,14 @@ namespace DuneRiders.RiderAI.Actioners {
 				pathfinder.SearchPath();
 				yield return new WaitForSeconds(4f);
 			}
+		}
+
+		void SetTraverseSpeed() {
+			pathfinder.maxSpeed = riderSpeedState.traverseSpeed;
+		}
+
+		void RevertToOriginalSpeed() {
+			pathfinder.maxSpeed = originalSpeed;
 		}
 
 		void CalculateFinalDestination() {

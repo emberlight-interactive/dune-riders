@@ -71,7 +71,6 @@ namespace DuneRiders.Shared.PersistenceSystem {
 		void PerformSaveOperationOnAllPersistentClasses(IPersistenceUtil persistenceUtil) {
 			var persistentClasses = GetAllPersistentClasses();
 			foreach (IPersistent persistentClass in persistentClasses) {
-				if (persistentClass.DisablePersistence) continue;
 				persistentClass.Save(persistenceUtil);
 			}
 		}
@@ -91,7 +90,6 @@ namespace DuneRiders.Shared.PersistenceSystem {
 
 		void LoadPersistentClasses(IPersistent[] persistentClasses) {
 			foreach (IPersistent persistentClass in persistentClasses) {
-				if (persistentClass.DisablePersistence) continue;
 				persistentClass.Load(persistenceTool);
 			}
 		}
@@ -114,7 +112,9 @@ namespace DuneRiders.Shared.PersistenceSystem {
 			}
 		}
 
-		IPersistent[] GetAllPersistentClasses() { return FindObjectsOfType<MonoBehaviour>().OfType<IPersistent>().ToArray(); }
+		IPersistent[] GetAllPersistentClasses() {
+			return FindObjectsOfType<MonoBehaviour>().OfType<IPersistent>().Where((persistentClass) => persistentClass.DisablePersistence == false).ToArray();
+		}
 
 		[SerializeField] bool asyncSaveGame;
 		[SerializeField] bool saveGame;

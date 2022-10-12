@@ -5,11 +5,14 @@ using Pathfinding;
 using DuneRiders.AI;
 using DuneRiders.RiderAI.Shared;
 using DuneRiders.RiderAI.State;
+using DuneRiders.RiderAI.Traits;
 using DuneRiders.OutpostAI.Traits;
 
 namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RiderEnemiesState))]
 	[RequireComponent(typeof(RichAI))]
+	[RequireComponent(typeof(RiderSpeedState))]
+	[RequireComponent(typeof(Rider))]
 	public class Charge : Actioner
 	{
 		bool _currentlyActive = false;
@@ -17,19 +20,28 @@ namespace DuneRiders.RiderAI.Actioners {
 			get => _currentlyActive;
 		}
 
+		Rider rider;
 		RiderEnemiesState riderEnemiesState;
+		RiderSpeedState riderSpeedState;
 		Coroutine activeAction;
 		RichAI pathfinder;
+		float originalSpeed;
+		float originalAcceleration;
 		float movementLongevityMultiplier = 1f;
 
 		void Awake() {
+			rider = GetComponent<Rider>();
 			pathfinder = GetComponent<RichAI>();
 			riderEnemiesState = GetComponent<RiderEnemiesState>();
+			riderSpeedState = GetComponent<RiderSpeedState>();
+			originalSpeed = pathfinder.maxSpeed;
+			originalAcceleration = pathfinder.acceleration;
 		}
 
 		public override void StartAction()
 		{
 			if (!currentlyActive) {
+				SetTraverseSpeed();
 				activeAction = StartCoroutine(Action());
 			}
 			_currentlyActive = true;
@@ -37,6 +49,7 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		public override void EndAction() {
 			if (currentlyActive) {
+				RevertToOriginalSpeed();
 				StopCoroutine(activeAction);
 			}
 
@@ -60,13 +73,26 @@ namespace DuneRiders.RiderAI.Actioners {
 			}
 		}
 
+		void SetTraverseSpeed() {
+			var riderSpeed = riderSpeedState.GetRiderSpeed(rider.chasisType);
+			pathfinder.maxSpeed = riderSpeed.speed;
+			pathfinder.acceleration = riderSpeed.acceleration;
+		}
+
+		void RevertToOriginalSpeed() {
+			pathfinder.maxSpeed = originalSpeed;
+			pathfinder.acceleration = originalAcceleration;
+		}
+
 		bool IsTypeOfTransformAnOutpost(Transform transform) {
 			if (transform.GetComponent<Outpost>()) return true;
 			return false;
 		}
 
-		/// todo: When far away literally charge them
 		Vector3 DetermineBestAttackPosition(Transform positionOfEnemy) {
+			// When far away literally charge them
+			if (Vector3.Distance(transform.position, positionOfEnemy.position) > 250) return positionOfEnemy.position;
+
 			var angleOfEnemyFromDirectionOfTravel = UtilityMethods.GetAngleOfTargetFromCurrentDirection(transform, positionOfEnemy.position);
 
 			float newAngleOfTravel = 0;

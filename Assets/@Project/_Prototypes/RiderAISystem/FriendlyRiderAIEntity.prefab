@@ -55,16 +55,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5809143628830744128}
+  - component: {fileID: 8653267453047125489}
   - component: {fileID: 5809143628830744134}
+  - component: {fileID: 393569185490974151}
   - component: {fileID: 8987067373733107124}
   - component: {fileID: 5809143628830744135}
-  - component: {fileID: 3562523250003362354}
   - component: {fileID: 551168085378313780}
   - component: {fileID: 5809143628830744129}
   - component: {fileID: 500571657818708376}
   - component: {fileID: 143559974258635668}
   - component: {fileID: 8576314890636260573}
   - component: {fileID: 5764858139583023775}
+  - component: {fileID: 8272870781977448185}
+  - component: {fileID: 8719444701080706797}
   - component: {fileID: 5809143628830744143}
   - component: {fileID: 1880663301664012116}
   - component: {fileID: 7456364413245128368}
@@ -78,7 +81,6 @@ GameObject:
   - component: {fileID: 1179979259012926657}
   - component: {fileID: 4618878134759628251}
   - component: {fileID: 2985463968252159311}
-  - component: {fileID: 8653267453047125489}
   m_Layer: 20
   m_Name: FriendlyRiderAIEntity
   m_TagString: Untagged
@@ -102,6 +104,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8653267453047125489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 4cb385e0-483e-4cba-baa2-a236ed9b1568
 --- !u!114 &5809143628830744134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +134,25 @@ MonoBehaviour:
   enemyAllegiance: 1
   chasisType: 2
   gunType: 2
+--- !u!114 &393569185490974151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e139e15d741c4cb4b9ef7bdd731eb31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traverseSpeed: 29
+  heavyChasisChargeSpeed: 39
+  heavyChasisChargeAcceleration: 8
+  normalChasisChargeSpeed: 49
+  normalChasisChargeAcceleration: 11
+  lightChasisChargeSpeed: 58
+  lightChasisChargeAcceleration: 14
 --- !u!114 &8987067373733107124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,19 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1621e5094c4f05940a8a151a77e5bdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3562523250003362354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809143628830744132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7baf49ea00e9978418d729eb8527692d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inCombat: 0
 --- !u!114 &551168085378313780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +258,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outposts: []
   updateIntervalInSeconds: 4
+--- !u!114 &8272870781977448185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39df5a5a59f86a40873cf2325e51743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8719444701080706797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08afe617c9891094fb8b34e078279ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5809143628830744143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +452,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
-  acceleration: 18
+  acceleration: 14
   rotationSpeed: 80
   slowdownTime: 0.3
   endReachedDistance: 0.2
@@ -471,19 +516,6 @@ MonoBehaviour:
   delayedDestroy: 1
   minDelayedDestroyTime: 300
   maxDelayedDestroyTime: 900
---- !u!114 &8653267453047125489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809143628830744132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueIdentifier: 4cb385e0-483e-4cba-baa2-a236ed9b1568
 --- !u!1001 &7849540777166874748
 PrefabInstance:
   m_ObjectHideFlags: 0

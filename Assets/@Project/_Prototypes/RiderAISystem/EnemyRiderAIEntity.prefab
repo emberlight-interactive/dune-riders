@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2408158444031284766}
   - component: {fileID: 2408158444031284760}
+  - component: {fileID: 6412085429910579440}
   - component: {fileID: 2408158444031284761}
   - component: {fileID: 8526266781482362474}
   - component: {fileID: 2408158444031284767}
@@ -31,6 +32,7 @@ GameObject:
   - component: {fileID: 7031639509648458911}
   - component: {fileID: 8933363014766221519}
   - component: {fileID: 2607381311870836618}
+  - component: {fileID: 6636203549456123377}
   m_Layer: 20
   m_Name: EnemyRiderAIEntity
   m_TagString: Untagged
@@ -71,6 +73,25 @@ MonoBehaviour:
   enemyAllegiance: 0
   chasisType: 2
   gunType: 2
+--- !u!114 &6412085429910579440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408158444031284762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e139e15d741c4cb4b9ef7bdd731eb31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traverseSpeed: 29
+  heavyChasisChargeSpeed: 39
+  heavyChasisChargeAcceleration: 8
+  normalChasisChargeSpeed: 49
+  normalChasisChargeAcceleration: 11
+  lightChasisChargeSpeed: 49
+  lightChasisChargeAcceleration: 14
 --- !u!114 &2408158444031284761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +430,19 @@ MonoBehaviour:
   delayedDestroy: 1
   minDelayedDestroyTime: 300
   maxDelayedDestroyTime: 900
+--- !u!114 &6636203549456123377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408158444031284762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd99fdf1ee4a248968d07fa7a0c2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: dd892bef-6ac8-4862-bd95-81bac63d39b6
 --- !u!1 &2738030180830729210
 GameObject:
   m_ObjectHideFlags: 0
