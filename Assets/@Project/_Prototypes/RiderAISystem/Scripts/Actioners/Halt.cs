@@ -12,6 +12,7 @@ namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(RichAI))]
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(Rider))]
+	[RequireComponent(typeof(UniqueIdentifier))]
 	public class Halt : Actioner, IPersistent
 	{
 		[Serializable]
@@ -25,7 +26,6 @@ namespace DuneRiders.RiderAI.Actioners {
 			get => _currentlyActive;
 		}
 		public bool DisablePersistence { get => false; }
-		string persistenceKey = "HaltActioner";
 
 		[SerializeField] Formation haltFormation;
 		Player player;
@@ -84,17 +84,21 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {
-			persistUtil.Save(persistenceKey, new HaltSerializable {
+			persistUtil.Save(GetPersistenceKey(), new HaltSerializable {
 				destinationPositionDifference = pathfinder.destination - transform.position,
 				_currentlyActive = this._currentlyActive,
 			});
 		}
 
         public void Load(IPersistenceUtil persistUtil) {
-			var loadedHalt = persistUtil.Load<HaltSerializable>(persistenceKey);
+			var loadedHalt = persistUtil.Load<HaltSerializable>(GetPersistenceKey());
 			destinationPositionDifference = loadedHalt.destinationPositionDifference;
 
 			if (loadedHalt._currentlyActive) useDestinationPositionDifference = true;
+		}
+
+		string GetPersistenceKey() {
+			return $"HaltActioner-{GetComponent<UniqueIdentifier>().uniqueIdentifier}";
 		}
 	}
 }
