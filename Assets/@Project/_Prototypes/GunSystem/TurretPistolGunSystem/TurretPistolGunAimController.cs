@@ -46,18 +46,19 @@ namespace DuneRiders.GunSystem {
 			var targetRotation = Quaternion.LookRotation(targetDirection);
 			var rotation = Quaternion.Slerp(weaponBarrelXPivot.rotation, targetRotation, stepSpeed);
 
-			var rotationInEulerAngles = rotation.eulerAngles;
-			rotationInEulerAngles.z = weaponBarrelXPivot.rotation.eulerAngles.z;
-			rotationInEulerAngles.y = weaponBarrelXPivot.rotation.eulerAngles.y;
+			weaponBarrelXPivot.rotation = rotation;
 
-			if (rotationInEulerAngles.x >= 180 && rotationInEulerAngles.x <= weaponBarrelXPivotBounds.lowerBounds) {
-				rotationInEulerAngles.x = weaponBarrelXPivotBounds.lowerBounds;
-			} else if (rotationInEulerAngles.x < 180 && rotationInEulerAngles.x >= weaponBarrelXPivotBounds.upperBounds) {
-				rotationInEulerAngles.x = weaponBarrelXPivotBounds.upperBounds;
+			var angles = weaponBarrelXPivot.localEulerAngles;
+			angles.z = 0;
+			angles.y = 0;
+
+			if (weaponBarrelXPivot.localEulerAngles.x >= 180 && weaponBarrelXPivot.localEulerAngles.x <= weaponBarrelXPivotBounds.lowerBounds) {
+				angles.x = weaponBarrelXPivotBounds.lowerBounds;
+			} else if (weaponBarrelXPivot.localEulerAngles.x < 180 && weaponBarrelXPivot.localEulerAngles.x >= weaponBarrelXPivotBounds.upperBounds) {
+				angles.x = weaponBarrelXPivotBounds.upperBounds;
 			}
 
-			rotation.eulerAngles = rotationInEulerAngles;
-			weaponBarrelXPivot.rotation = rotation;
+			weaponBarrelXPivot.localEulerAngles = angles;
 		}
 
 		void IncrementTurretBaseTowardsTarget(Vector3 target) {
@@ -66,18 +67,19 @@ namespace DuneRiders.GunSystem {
 			var targetRotation = Quaternion.LookRotation(targetDirection);
 			var rotation = Quaternion.Slerp(weaponBaseYPivot.rotation, targetRotation, stepSpeed);
 
-			var rotationInEulerAngles = rotation.eulerAngles;
-			rotationInEulerAngles.z = weaponBaseYPivot.rotation.eulerAngles.z;
-			rotationInEulerAngles.x = weaponBaseYPivot.rotation.eulerAngles.x;
+			weaponBaseYPivot.rotation = rotation;
 
-			if (rotationInEulerAngles.y >= 180 && rotationInEulerAngles.y <= weaponBaseYPivotBounds.lowerBounds) {
-				rotationInEulerAngles.y = weaponBaseYPivotBounds.lowerBounds;
-			} else if (rotationInEulerAngles.y < 180 && rotationInEulerAngles.y >= weaponBaseYPivotBounds.upperBounds) {
-				rotationInEulerAngles.y = weaponBaseYPivotBounds.upperBounds;
+			var angles = weaponBaseYPivot.localEulerAngles;
+			angles.z = 0;
+			angles.x = 0;
+
+			if (weaponBaseYPivot.localEulerAngles.y >= 180 && weaponBaseYPivot.localEulerAngles.y <= weaponBaseYPivotBounds.lowerBounds) {
+				angles.y = weaponBaseYPivotBounds.lowerBounds;
+			} else if (weaponBaseYPivot.localEulerAngles.y < 180 && weaponBaseYPivot.localEulerAngles.y >= weaponBaseYPivotBounds.upperBounds) {
+				angles.y = weaponBaseYPivotBounds.upperBounds;
 			}
 
-			rotation.eulerAngles = rotationInEulerAngles;
-			weaponBaseYPivot.rotation = rotation;
+			weaponBaseYPivot.localEulerAngles = angles;
 		}
 
 		float RotationDifference(Vector3 target) {

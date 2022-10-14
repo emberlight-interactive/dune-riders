@@ -982,13 +982,69 @@ PrefabInstance:
       value: 266.578
       objectReference: {fileID: 0}
     - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
       propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1072744162}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1072744162}
     - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
       propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1072744162}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1072744162}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleWeaponIsHolstered
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ToggleWeaponIsHolstered
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DuneRiders.GunSystem.TurretPistolGunSwapController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DuneRiders.GunSystem.TurretPistolGunSwapController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnPlace.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520341257433246184, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
+      propertyPath: OnRemove.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9047720026538367983, guid: 7b1b5f95fa905a54393142d5dfdd4d0e, type: 3}
       propertyPath: onSqueeze.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -13,16 +13,20 @@ namespace DuneRiders.GunSystem {
 		[SerializeField] Transform offsetDiffA;
 		[SerializeField] Transform offsetDiffB;
 
-		public Vector3 GetPointedAtPosition() {
-			var getStartingRaycastPosition = GetStartingRaycastPosition();
+		[SerializeField] bool matchRotation;
+		[SerializeField] Transform transformRotationToMatch;
 
-			Debug.DrawRay(getStartingRaycastPosition, barrelTip.forward * maxRange, Color.red, 1);
+		public Vector3 GetPointedAtPosition() {
+			var startingRaycastPosition = GetStartingRaycastPosition();
+			var startingRaycastForwardVector = GetStartingRaycastForwardVector();
+
+			Debug.DrawRay(startingRaycastPosition, startingRaycastForwardVector * maxRange, Color.red, 1);
 
 			RaycastHit hit;
-			if (Physics.Raycast(getStartingRaycastPosition, barrelTip.forward, out hit, maxRange, layer)) {
+			if (Physics.Raycast(startingRaycastPosition, startingRaycastForwardVector, out hit, maxRange, layer)) {
 				return hit.point;
 			} else {
-				return getStartingRaycastPosition + (barrelTip.forward * maxRange);
+				return startingRaycastPosition + (startingRaycastForwardVector * maxRange);
 			}
 		}
 
@@ -32,6 +36,14 @@ namespace DuneRiders.GunSystem {
 			var offset = offsetDiffB.position - offsetDiffA.position;
 
 			return barrelTip.position + offset;
+		}
+
+		Vector3 GetStartingRaycastForwardVector() {
+			if (matchRotation) {
+				return transformRotationToMatch.rotation * barrelTip.forward;
+			} else {
+				return barrelTip.forward;
+			}
 		}
 	}
 }

@@ -16,28 +16,46 @@ namespace DuneRiders.GunSystem {
 
 		[SerializeField] List<Gun> gunsToSwapBetween = new List<Gun>();
 		[SerializeField] InputActionProperty gunTransitionButton;
+		[HideInInspector] public bool turretPistolIsHolstered = false;
 
 		void Start() {
 			gunTransitionButton.action.Enable();
 
 			gunTransitionButton.action.performed += context =>
 			{
-				if (context.interaction is TapInteraction) {
+				if (!turretPistolIsHolstered && context.interaction is TapInteraction) {
 					ToggleWeapons();
 				}
 			};
+
+			InvokeRepeating(nameof(DetectAndPackWeaponsWhenGunIsHolstered), 0f, 1f);
+			InvokeRepeating(nameof(DetectAndUnPackWeaponsWhenGunIsUnHolstered), 0f, 1f);
 		}
 
 		public void ToggleWeapons() {
 			if (AreAnyGunGameObjectsActive()) {
-				StartCoroutine(SwapWeapon());
+				if (gameObject.activeInHierarchy) StartCoroutine(SwapWeapon());
 			} else {
-				StartCoroutine(UnpackFirstWeapon());
+				if (gameObject.activeInHierarchy) StartCoroutine(UnpackFirstWeapon());
 			}
 		}
 
-		public void PackGuns() {
-			StartCoroutine(PackWeapon());
+		public void WeaponIsUnHolstered() {
+			turretPistolIsHolstered = false;
+		}
+
+		public void WeaponIsHolstered() {
+			turretPistolIsHolstered = true;
+		}
+
+		void DetectAndPackWeaponsWhenGunIsHolstered() {
+			var activeGun = GetCurrentlyActiveGun();
+			if (turretPistolIsHolstered && activeGun != null) StartCoroutine(PackWeapon());
+		}
+
+		void DetectAndUnPackWeaponsWhenGunIsUnHolstered() {
+			var activeGun = GetCurrentlyActiveGun();
+			if (!turretPistolIsHolstered && activeGun == null) ToggleWeapons();
 		}
 
 		IEnumerator UnpackFirstWeapon() {

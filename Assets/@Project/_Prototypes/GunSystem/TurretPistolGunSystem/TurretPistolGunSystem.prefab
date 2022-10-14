@@ -76,6 +76,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
+  turretPistolIsHolstered: 0
 --- !u!1001 &2372350717400825214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,6 +214,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3678296075493152417, guid: 2011a426f5c772c4dbdd8097e1b37762, type: 3}
   m_PrefabInstance: {fileID: 2372350717400825214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &817590665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434298222279795080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32cb2c91730d19448b75a5ea36f2ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolDownMultiplier: 1
+  maxFirableMachineGunBullets: 20
+  projectileSpawnLocation: {fileID: 1434298222383868895}
+  projectile: {fileID: 1794581736181503391, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
+  bulletsFiredCounter: 0
 --- !u!114 &817590667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,28 +249,11 @@ MonoBehaviour:
   turretPistol: {fileID: 0}
   indicateAimStatus: {fileID: 0}
   weaponBaseYPivotBounds:
-    lowerBounds: 300
-    upperBounds: 60
+    lowerBounds: 270
+    upperBounds: 90
   weaponBarrelXPivotBounds:
     lowerBounds: 345
     upperBounds: 12
---- !u!114 &817590665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434298222279795080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e32cb2c91730d19448b75a5ea36f2ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDownMultiplier: 1
-  maxFirableMachineGunBullets: 20
-  projectileSpawnLocation: {fileID: 1434298222383868895}
-  projectile: {fileID: 1794581736181503391, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
-  bulletsFiredCounter: 0
 --- !u!1001 &4840036526333451944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,6 +391,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5822280420636186255, guid: 81589019d2f63f145a7613b3073b1587, type: 3}
   m_PrefabInstance: {fileID: 4840036526333451944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &975778150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434298221640617123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c152e9b72c51840bdf93beef699eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToReload: 3
+  projectileSpawnLocation: {fileID: 1434298222712326183}
+  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
 --- !u!114 &975778152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,26 +424,11 @@ MonoBehaviour:
   turretPistol: {fileID: 0}
   indicateAimStatus: {fileID: 0}
   weaponBaseYPivotBounds:
-    lowerBounds: 300
-    upperBounds: 60
+    lowerBounds: 270
+    upperBounds: 90
   weaponBarrelXPivotBounds:
     lowerBounds: 345
     upperBounds: 12
---- !u!114 &975778150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434298221640617123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c152e9b72c51840bdf93beef699eb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToReload: 3
-  projectileSpawnLocation: {fileID: 1434298222712326183}
-  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
 --- !u!1001 &6826100152896153833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,6 +566,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5574483606427020516, guid: 7a6efabe7ef7cb54a954576e99e5c9d3, type: 3}
   m_PrefabInstance: {fileID: 6826100152896153833}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &285876118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434298223192364558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35facc74bfcac2e468ded5ce2d0f334b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToReload: 2
+  projectileSpawnLocation: {fileID: 1434298221622936589}
+  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
 --- !u!114 &285876120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,23 +599,8 @@ MonoBehaviour:
   turretPistol: {fileID: 0}
   indicateAimStatus: {fileID: 0}
   weaponBaseYPivotBounds:
-    lowerBounds: 300
-    upperBounds: 60
+    lowerBounds: 270
+    upperBounds: 90
   weaponBarrelXPivotBounds:
     lowerBounds: 345
     upperBounds: 12
---- !u!114 &285876118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434298223192364558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35facc74bfcac2e468ded5ce2d0f334b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToReload: 2
-  projectileSpawnLocation: {fileID: 1434298221622936589}
-  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
