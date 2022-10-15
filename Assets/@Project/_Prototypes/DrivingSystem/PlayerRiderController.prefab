@@ -1795,46 +1795,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steeringWheel: {fileID: 4475551973738709744}
   riderRB: {fileID: 4475551973249319759}
-  rightControllerB:
+  rightControllerTrigger:
     m_UseReference: 0
     m_Action:
-      m_Name: Right Controller B
+      m_Name: Right Controller Trigger
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: c5ab5fb4-f627-4a67-a854-8c170560b8ae
+      m_Id: 96898a82-5b5c-4b6c-8fba-d3b4ab3be7d0
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 60d07276-094d-4fd5-98bf-0d8d91a04f20
-        m_Path: <XRController>{RightHand}/secondaryButton
+        m_Id: 765fca22-3a09-40ca-b467-8de1fb9070e9
+        m_Path: <XRController>{RightHand}/trigger
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Right Controller B
+        m_Action: Right Controller Trigger
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 8650556816782149517, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  leftControllerTrigger:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Controller Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a9a82807-cc79-4f4b-8578-c70fb1b837a7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 71ab796f-d5ee-4f0d-b1c5-dcd490ad856b
+        m_Path: <XRController>{LeftHand}/trigger
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Controller Trigger
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  rightControllerA:
-    m_UseReference: 1
+  leftControllerY:
+    m_UseReference: 0
     m_Action:
-      m_Name: Right Controller A
+      m_Name: Left Controller Y
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 64bd4b87-905f-4f82-8003-84282d818799
+      m_Id: a597a1d3-56e9-450c-a788-2a8d18aeda67
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 29d431d5-9ae9-4b92-b830-fc64f5beb961
-        m_Path: 
+        m_Id: d7269219-6c3c-4cbc-8539-141c998842bf
+        m_Path: <XRController>{LeftHand}/secondaryButton
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Right Controller A
+        m_Action: Left Controller Y
         m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: -2312345087674482032, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+    m_Reference: {fileID: -4456888692727725139, guid: ea9500ae32862c949b420c59682d02ed, type: 3}
+  leftControllerX:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Left Controller X
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b81d6251-c701-4508-8ff0-7fbe423128a9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 5a36c1f5-e3d9-4c42-8b38-a07428192d27
+        m_Path: <XRController>{LeftHand}/primaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Left Controller X
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   frontLeft: {fileID: 4475551973312224610}
   frontRight: {fileID: 4475551973530733507}
   backLeft: {fileID: 4475551974035675225}
@@ -2441,6 +2481,46 @@ PrefabInstance:
     - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: jointBreakForce
       value: 7500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4475551973249319756}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4475551973249319756}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WheelGrabbed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WheelReleased
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RiderDrivingControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RiderDrivingControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2971872867599283050, guid: b3f6639619f99eb44b9076569785de46, type: 3}
