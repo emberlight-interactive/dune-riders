@@ -51,7 +51,7 @@ namespace DuneRiders.Shared.DamageSystem {
 		}
 
 		void SpawnLaunchParticles() {
-			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, Quaternion.identity);
+			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, transform.rotation);
 			p.transform.localScale = Vector3.one * launchParticleScale;
 			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
 		}
