@@ -4,27 +4,30 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.Shared.DamageSystem {
-	[RequireComponent(typeof(LineRenderer))]
+	[RequireComponent(typeof(AudioSource))]
 	public class MachineGunProjectile : Projectile
 	{
-		LineRenderer bulletLine;
 		[SerializeField] int directHitDamage = 2;
 
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem launchParticle;
 		[BoxGroup("Projectile Effects"), SerializeField] private float launchParticleScale = 2;
+		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem landParticle;
+		[BoxGroup("Projectile Effects"), SerializeField] private float landParticleScale = 2;
+
+		[BoxGroup("Audio"), SerializeField] private AudioClip explosionNoise;
+		[BoxGroup("Audio"), SerializeField] private AudioClip launchNoise;
+
+		AudioSource audioSource;
 
 		void Awake() {
-			bulletLine = GetComponent<LineRenderer>();
+			audioSource = GetComponent<AudioSource>();
 		}
 
 		void OnEnable()
 		{
 			FireBullet();
-			SpawnLaunchParticles(); // todo: "Particles" for the hit point could be a single 2D image since the profiles will be hyper ephemeral
-		}
-
-		void OnDisable() {
-			ResetBullet();
+			SpawnLaunchParticles();
+			PlayLaunchAudio();
 		}
 
 		void FireBullet() {
@@ -35,17 +38,9 @@ namespace DuneRiders.Shared.DamageSystem {
 				#endif
 
 				RegisterDamageOnObjectIfDamageable(hit);
-				ShootTowards(hit.point);
+				SpawnLandParticle(hit.point);
+				PlayExplosionAudio(hit.point);
 			}
-
-			ShootTowards(transform.position + (transform.forward * 500));
-		}
-
-		void ShootTowards(Vector3 position) {
-			bulletLine.positionCount = 2;
-			bulletLine.SetPosition(0, transform.position);
-			bulletLine.SetPosition(1, position);
-			bulletLine.enabled = true;
 		}
 
 		void RegisterDamageOnObjectIfDamageable(RaycastHit hit) {
@@ -55,15 +50,24 @@ namespace DuneRiders.Shared.DamageSystem {
 			}
 		}
 
-		void ResetBullet() {
-			bulletLine.positionCount = 0;
-			bulletLine.enabled = false;
-		}
-
 		void SpawnLaunchParticles() {
 			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, Quaternion.identity);
 			p.transform.localScale = Vector3.one * launchParticleScale;
 			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
+		}
+
+		void SpawnLandParticle(Vector3 position) {
+			var p = SimplePool.Spawn(landParticle.gameObject, position, Quaternion.identity);
+			p.transform.localScale = Vector3.one * landParticleScale;
+			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
+		}
+
+		void PlayLaunchAudio() {
+			AudioSource.PlayClipAtPoint(launchNoise, transform.position);
+		}
+
+		void PlayExplosionAudio(Vector3 position) {
+			AudioSource.PlayClipAtPoint(explosionNoise, position);
 		}
 	}
 }

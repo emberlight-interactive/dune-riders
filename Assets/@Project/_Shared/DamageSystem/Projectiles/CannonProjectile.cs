@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace DuneRiders.Shared.DamageSystem {
 	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(AudioSource))]
 	public class CannonProjectile : Projectile
 	{
 		[BoxGroup("Debug"), SerializeField] private Color debugExplosiveRadiusColor = Color.red;
@@ -19,15 +20,21 @@ namespace DuneRiders.Shared.DamageSystem {
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem explosionParticle;
 		[BoxGroup("Projectile Effects"), SerializeField] private float explosionParticleScale = 2;
 
+		[BoxGroup("Audio"), SerializeField] private AudioClip explosionNoise;
+		[BoxGroup("Audio"), SerializeField] private AudioClip launchNoise;
+
 		Rigidbody rb;
+		AudioSource audioSource;
 
 		void Awake() {
 			rb = GetComponent<Rigidbody>();
+			audioSource = GetComponent<AudioSource>();
 		}
 
 		void OnEnable() {
 			rb.velocity += transform.forward * initialForce;
 			SpawnLaunchParticles();
+			PlayLaunchAudio();
 		}
 
 		void OnDisable() {
@@ -67,6 +74,7 @@ namespace DuneRiders.Shared.DamageSystem {
 			}
 
 			SpawnExplosionParticles();
+			PlayExplosionAudio();
 			SimplePool.Despawn(gameObject);
 		}
 
@@ -77,9 +85,17 @@ namespace DuneRiders.Shared.DamageSystem {
 		}
 
 		void SpawnLaunchParticles() {
-			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, Quaternion.identity);
+			var p = SimplePool.Spawn(launchParticle.gameObject, transform.position, transform.rotation);
 			p.transform.localScale = Vector3.one * launchParticleScale;
 			SimplePool.Despawn(p, p.GetComponent<ParticleSystem>().main.duration);
+		}
+
+		void PlayLaunchAudio() {
+			AudioSource.PlayClipAtPoint(launchNoise, transform.position);
+		}
+
+		void PlayExplosionAudio() {
+			AudioSource.PlayClipAtPoint(explosionNoise, transform.position);
 		}
 	}
 }
