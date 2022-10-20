@@ -15,7 +15,7 @@ namespace DuneRiders {
 		public ProceduralTools(Transform transform, bool getPositionRelativeToRootGameObject = true) {
 			this.transform = transform;
 
-			if (getPositionRelativeToRootGameObject) {
+			if (getPositionRelativeToRootGameObject && transform.position != transform.root.position) {
 				position = transform.position - transform.root.position;
 			} else {
 				position = transform.position;
