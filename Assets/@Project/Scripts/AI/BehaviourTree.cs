@@ -41,16 +41,7 @@ namespace DuneRiders.AI {
 		}
 
 		protected void SetActionersActive(Actioner actioner) {
-			var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioner);
-
-			if (actionerFromActiveList == null) {
-				currentlyActiveActioners.Add(actioner);
-				actioner.StartAction();
-			} else if (!actionerFromActiveList.currentlyActive) {
-				actionerFromActiveList.StartAction();
-			}
-
-			if (currentlyActiveActioners.Count > 1) { // Clear all other actioners in list
+			if (currentlyActiveActioners.Count >= 1) { // Clear all other actioners in list
 				currentlyActiveActioners.RemoveAll((thisActioner) => {
 					if (thisActioner != actioner) {
 						thisActioner.EndAction();
@@ -60,9 +51,29 @@ namespace DuneRiders.AI {
 					return false;
 				});
 			}
+
+			var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioner);
+
+			if (actionerFromActiveList == null) {
+				currentlyActiveActioners.Add(actioner);
+				actioner.StartAction();
+			} else if (!actionerFromActiveList.currentlyActive) {
+				actionerFromActiveList.StartAction();
+			}
 		}
 
 		protected void SetActionersActive(Actioner[] actioners) {
+			if (currentlyActiveActioners.Count >= 1) { // Clear all other actioners not included in our added actioners array
+				currentlyActiveActioners.RemoveAll((thisActioner) => {
+					for (int i = 0; i < actioners.Length; i++) {
+						if (thisActioner == actioners[i]) return false;
+					}
+
+					thisActioner.EndAction();
+					return true;
+				});
+			}
+
 			for (int i = 0; i < actioners.Length; i++) { // Add + activate / reactivate existing deactivated actioners
 				var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioners[i]);
 
@@ -72,17 +83,6 @@ namespace DuneRiders.AI {
 				} else if (!actionerFromActiveList.currentlyActive) {
 					actionerFromActiveList.StartAction();
 				}
-			}
-
-			if (currentlyActiveActioners.Count > 1) { // Clear all other actioners not included in our added actioners array
-				currentlyActiveActioners.RemoveAll((thisActioner) => {
-					for (int i = 0; i < actioners.Length; i++) {
-						if (thisActioner == actioners[i]) return false;
-					}
-
-					thisActioner.EndAction();
-					return true;
-				});
 			}
 		}
 

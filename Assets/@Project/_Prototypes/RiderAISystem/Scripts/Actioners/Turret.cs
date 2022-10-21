@@ -1,30 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.AI;
 using UnityEditor;
+using DuneRiders.Shared;
 
 namespace DuneRiders.RiderAI.Actioners {
+	[RequireComponent(typeof(BaseBarrelRotation))]
 	public class Turret : MonoBehaviour
 	{
 		[SerializeField] TurretTrigger trigger;
+		[SerializeField] float weaponRange = 350;
+		BaseBarrelRotation baseBarrelRotation;
 		Transform riderCurrentlyTargetting;
 		Transform aimGuider;
-		public float turretTurnSpeed = 1;
-		Quaternion originalRotation;
 
-		// Hacky af //
-		[SerializeField] float upperXBounds = 310;
-		[SerializeField] float lowerXBounds = 0;
-		[SerializeField] float weaponRange = 350;
+		void Awake() {
+			baseBarrelRotation = GetComponent<BaseBarrelRotation>();
+		}
 
 		void Update()
 		{
 			if (riderCurrentlyTargetting && riderCurrentlyTargetting.gameObject.activeSelf) {
-				if (aimGuider) IncrementTurretBarrelTowardsTarget(aimGuider);
-				else IncrementTurretBarrelTowardsTarget(riderCurrentlyTargetting);
+				Transform target;
+
+				if (aimGuider) target = aimGuider;
+				else target = riderCurrentlyTargetting;
+
+				baseBarrelRotation.target = target;
 			} else {
-				ReturnTurretToDefaultPosition();
+				baseBarrelRotation.target = null;
 			}
 		}
 
@@ -42,10 +48,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		public void StopFiring() {
 			riderCurrentlyTargetting = null;
-		}
-
-		void Start() {
-			originalRotation = transform.localRotation;
 		}
 
 		void OnEnable() {
@@ -82,38 +84,6 @@ namespace DuneRiders.RiderAI.Actioners {
 		}
 		#endif
 
-		void IncrementTurretBarrelTowardsTarget(Transform target) {
-			Vector3 targetDirection = target.position - transform.position;
-			float singleStep = turretTurnSpeed * Time.deltaTime;
-			Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-			Debug.DrawRay(transform.position, newDirection, Color.red);
-
-			var rotation = Quaternion.LookRotation(newDirection);
-			var rotationInEulerAngles = rotation.eulerAngles;
-			rotationInEulerAngles.z = 0;
-
-			rotation.eulerAngles = rotationInEulerAngles;
-
-			transform.rotation = rotation;
-
-			var localRotation = transform.localRotation.eulerAngles;
-			if (localRotation.y < 270 && localRotation.y > 180) {
-				localRotation.y = 270;
-			} else if (localRotation.y > 90 && localRotation.y < 180) {
-				localRotation.y = 90;
-			}
-
-			if (localRotation.x < upperXBounds && localRotation.x > 180) {
-				localRotation.x = upperXBounds;
-			} else if (localRotation.x > lowerXBounds && localRotation.x < 180) {
-				localRotation.x = lowerXBounds;
-			}
-
-			var newLocalRotation = new Quaternion();
-			newLocalRotation.eulerAngles = localRotation;
-			transform.localRotation = newLocalRotation;
-		}
-
 		bool IsTurretAimedAtTarget() {
 			RaycastHit hit;
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) {
@@ -131,11 +101,6 @@ namespace DuneRiders.RiderAI.Actioners {
 
 		bool IsTargetWithinWeaponRange() {
 			return (Vector3.Distance(transform.position, riderCurrentlyTargetting.position) <= weaponRange);
-		}
-
-		void ReturnTurretToDefaultPosition() {
-			if (transform.localRotation == originalRotation) return;
-			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, originalRotation, 20.0f * Time.deltaTime);
 		}
 	}
 }
