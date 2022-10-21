@@ -202,6 +202,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6940168703270194846, guid: 16a7218869e04534ebb004e5191e5f88, type: 3}
   m_PrefabInstance: {fileID: 8840618316245405775}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &530062959239004782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9073353532808499745, guid: 16a7218869e04534ebb004e5191e5f88, type: 3}
+  m_PrefabInstance: {fileID: 8840618316245405775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8293374578057583991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 695757462413643064, guid: 16a7218869e04534ebb004e5191e5f88, type: 3}
+  m_PrefabInstance: {fileID: 8840618316245405775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7665540550641569180 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1211845434445225427, guid: 16a7218869e04534ebb004e5191e5f88, type: 3}
@@ -232,6 +242,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthState: {fileID: 0}
+--- !u!114 &1169247747236315003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530062959239004782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4fb5a9752030c4a9cc7ea56f6f8a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 4800
 --- !u!114 &5272233700669717146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +269,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   banditsHullColor: {fileID: 2100000, guid: b4f96f62580d02648870d455a93bc91a, type: 2}
   firstMaterial: 1
+--- !u!114 &299159051047650039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293374578057583991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4fb5a9752030c4a9cc7ea56f6f8a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 4800
