@@ -12,7 +12,14 @@ namespace DuneRiders.RiderAI {
 		[SerializeField] bool firstMaterial = false;
 
 		void Awake() {
-			if (GetComponentInParent<Rider>().allegiance == AI.Allegiance.Bandits) {
+			var rider = GetComponentInParent<Rider>();
+			if (!rider) return;
+
+			ModifyMaterialBasedOnRiderAllegiance(rider);
+		}
+
+		void ModifyMaterialBasedOnRiderAllegiance(Rider rider) {
+			if (rider.allegiance == AI.Allegiance.Bandits) {
 				if (firstMaterial) {
 					Material[] mats = GetComponent<MeshRenderer>().materials;
 					mats[0] = banditsHullColor;

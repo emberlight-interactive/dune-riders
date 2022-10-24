@@ -13,6 +13,8 @@ namespace DuneRiders.RiderAI {
 
 		void Awake() {
 			InitParentContextSource();
+			if (!parentContextSource) return;
+
 			InstantiateTurretHere();
 		}
 
