@@ -61,10 +61,6 @@ namespace DuneRiders.POISystem {
 			DespawnLootables();
 		}
 
-		void FixedUpdate() {
-			var str = proceduralTools.BuildTransformHash();
-		}
-
 		void InitializeState() {
 			var poiState = new POIState() {
 				transformHash = transformHash,
