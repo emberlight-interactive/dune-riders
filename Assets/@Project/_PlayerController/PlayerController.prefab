@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 636617931, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe48b67ad0f28c74b80e3ff6e43b4c01, type: 2}
+    - target: {fileID: 974916350, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2116d65d997e8741aaccf294e481211, type: 2}
+    - target: {fileID: 1575676137, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe48b67ad0f28c74b80e3ff6e43b4c01, type: 2}
+    - target: {fileID: 1626143648, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2116d65d997e8741aaccf294e481211, type: 2}
     - target: {fileID: 196497920694862013, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -63,6 +79,14 @@ PrefabInstance:
       propertyPath: layer.m_Bits
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 3350549274339389952, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2116d65d997e8741aaccf294e481211, type: 2}
+    - target: {fileID: 3350549274949700654, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2116d65d997e8741aaccf294e481211, type: 2}
     - target: {fileID: 3395973213855612963, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -79,6 +103,14 @@ PrefabInstance:
       propertyPath: collisionTriggers.m_Bits
       value: 4026531959
       objectReference: {fileID: 0}
+    - target: {fileID: 6809362241269466275, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe48b67ad0f28c74b80e3ff6e43b4c01, type: 2}
+    - target: {fileID: 6809362242940959373, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe48b67ad0f28c74b80e3ff6e43b4c01, type: 2}
     - target: {fileID: 7668830299185360540, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -219,6 +251,79 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7668830300499184784, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
   m_PrefabInstance: {fileID: 5910273157381852472}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &237290544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064686241454495610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d7410a3a-dee0-43e6-973c-089fd6b35608
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 539bfa03-399c-46b7-8c5d-c6512a522bea
+        m_Path: <XRController>{RightHand}/devicePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 688ab4a7-99b3-4986-b7a4-9912e6177031
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: b512506f-26d4-4f24-8b9c-16387822e343
+        m_Path: <XRController>{RightHand}/deviceRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_HasMigratedActions: 1
 --- !u!114 &1539012722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,79 +444,6 @@ MonoBehaviour:
       - m_Name: 
         m_Id: c6ef2296-4235-428c-8a19-c6f1e22518bb
         m_Path: <XRHMD>/deviceRotation
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Rotation Input
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_PositionAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  m_RotationAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  m_HasMigratedActions: 1
---- !u!114 &237290544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4064686241454495610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackingType: 0
-  m_UpdateType: 0
-  m_PositionInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Position Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: d7410a3a-dee0-43e6-973c-089fd6b35608
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 539bfa03-399c-46b7-8c5d-c6512a522bea
-        m_Path: <XRController>{RightHand}/devicePosition
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Position Input
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_RotationInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Rotation Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 688ab4a7-99b3-4986-b7a4-9912e6177031
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: b512506f-26d4-4f24-8b9c-16387822e343
-        m_Path: <XRController>{RightHand}/deviceRotation
         m_Interactions: 
         m_Processors: 
         m_Groups: 
