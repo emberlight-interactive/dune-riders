@@ -50,26 +50,26 @@ namespace DuneRiders.Shared {
 		Texture2D controllersLeftToggleUp;
 
 		void OnEnable() {
-			controllersImage = Resources.Load<Texture2D>("oculus-controllers");
-			controllersRightTriggerImage = Resources.Load<Texture2D>("oculus-controllers-right-trigger");
-			controllersRightGripImage = Resources.Load<Texture2D>("oculus-controllers-right-grip");
-			controllersRightBImage = Resources.Load<Texture2D>("oculus-controllers-b");
-			controllersRightAImage = Resources.Load<Texture2D>("oculus-controllers-a");
-			controllersRightToggleClick = Resources.Load<Texture2D>("oculus-controllers-right-toggle-click");
-			controllersRightToggleRight = Resources.Load<Texture2D>("oculus-controllers-right-toggle-right");
-			controllersRightToggleDown = Resources.Load<Texture2D>("oculus-controllers-right-toggle-down");
-			controllersRightToggleLeft = Resources.Load<Texture2D>("oculus-controllers-right-toggle-left");
-			controllersRightToggleUp = Resources.Load<Texture2D>("oculus-controllers-right-toggle-up");
+			controllersImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers");
+			controllersRightTriggerImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-trigger");
+			controllersRightGripImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-grip");
+			controllersRightBImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-b");
+			controllersRightAImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-a");
+			controllersRightToggleClick = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-toggle-click");
+			controllersRightToggleRight = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-toggle-right");
+			controllersRightToggleDown = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-toggle-down");
+			controllersRightToggleLeft = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-toggle-left");
+			controllersRightToggleUp = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-right-toggle-up");
 
-			controllersLeftTriggerImage = Resources.Load<Texture2D>("oculus-controllers-left-trigger");
-			controllersLeftGripImage = Resources.Load<Texture2D>("oculus-controllers-left-grip");
-			controllersLeftYImage = Resources.Load<Texture2D>("oculus-controllers-Y");
-			controllersLeftXImage = Resources.Load<Texture2D>("oculus-controllers-X");
-			controllersLeftToggleClick = Resources.Load<Texture2D>("oculus-controllers-left-toggle-click");
-			controllersLeftToggleRight = Resources.Load<Texture2D>("oculus-controllers-left-toggle-right");
-			controllersLeftToggleDown = Resources.Load<Texture2D>("oculus-controllers-left-toggle-down");
-			controllersLeftToggleLeft = Resources.Load<Texture2D>("oculus-controllers-left-toggle-left");
-			controllersLeftToggleUp = Resources.Load<Texture2D>("oculus-controllers-left-toggle-up");
+			controllersLeftTriggerImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-trigger");
+			controllersLeftGripImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-grip");
+			controllersLeftYImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-Y");
+			controllersLeftXImage = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-X");
+			controllersLeftToggleClick = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-toggle-click");
+			controllersLeftToggleRight = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-toggle-right");
+			controllersLeftToggleDown = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-toggle-down");
+			controllersLeftToggleLeft = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-toggle-left");
+			controllersLeftToggleUp = Resources.Load<Texture2D>("OculusControllerInputOverlays/oculus-controllers-left-toggle-up");
 		}
 
 		void OnGUI() {
