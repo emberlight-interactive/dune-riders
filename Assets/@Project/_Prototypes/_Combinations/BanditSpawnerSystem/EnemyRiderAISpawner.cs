@@ -17,6 +17,8 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] float minSpawnTimeInSeconds = 180;
 		[SerializeField] float maxSpawnTimeInSeconds = 1200;
 		[SerializeField] SpawnDifficulty spawnDifficulty = SpawnDifficulty.Medium;
+		[SerializeField] bool getSpawnDifficultyFromPositions = false;
+		[SerializeField] List<SpawnerDifficultyPos> spawnerDifficultyPositions = new List<SpawnerDifficultyPos>();
 		[SerializeField, ReadOnly] int maxRiders = 10;
 		[SerializeField] EnemyRiderInstanceBuilder enemyRiderInstanceBuilder;
 		[SerializeField] float distanceMultiplier = 1.0f;
@@ -26,7 +28,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		public bool DisablePersistence { get => false; }
 
 		enum Side {Left, Right};
-		enum SpawnDifficulty {VeryEasy, Easy, Medium, Hard};
+		public enum SpawnDifficulty {VeryEasy, Easy, Medium, Hard};
 
 		void Awake() {
 			enemiesInRangeOfPlayer = GetComponent<EnemiesInRangeOfPlayer>();
@@ -119,7 +121,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		}
 
 		int NumberOfRidersToSpawn() {
-			switch (spawnDifficulty) {
+			switch (GetSpawnDifficulty()) {
 				case SpawnDifficulty.VeryEasy:
 					return (int) ((float) maxRiders * 0.2f);
 				case SpawnDifficulty.Easy:
@@ -138,6 +140,27 @@ namespace DuneRiders.BanditSpawnerSystem {
         public void Load(IPersistenceUtil persistUtil) {
 			// Spawn immediately typically means "when the game first starts"
 			spawnImmediately = false;
+		}
+
+		SpawnDifficulty GetSpawnDifficulty() {
+			if (!getSpawnDifficultyFromPositions) return spawnDifficulty;
+			else {
+				(float distance, SpawnDifficulty spawnDifficulty) closestSpawnPosition = (default(float), default(SpawnDifficulty));
+				foreach (var spawnPos in spawnerDifficultyPositions) {
+					if (closestSpawnPosition == default((float, SpawnDifficulty))) {
+						closestSpawnPosition.distance = Vector3.Distance(player.position, spawnPos.transform.position);
+						closestSpawnPosition.spawnDifficulty = spawnPos.spawnDifficulty;
+					} else {
+						var distance = Vector3.Distance(player.position, spawnPos.transform.position);
+						if (distance < closestSpawnPosition.distance) {
+							closestSpawnPosition.distance = distance;
+							closestSpawnPosition.spawnDifficulty = spawnPos.spawnDifficulty;
+						}
+					}
+				}
+
+				return closestSpawnPosition.spawnDifficulty;
+			}
 		}
 	}
 }
