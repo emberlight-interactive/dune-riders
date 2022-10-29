@@ -7,14 +7,14 @@ using DuneRiders.RiderAI.Traits;
 namespace DuneRiders.RiderAI {
 	public class ProjectileProvider : MonoBehaviour
 	{
-		[SerializeField] GameObject friendlyRiderProjectile;
-		[SerializeField] GameObject enemyRiderProjectile;
+		[SerializeField] protected GameObject friendlyRiderProjectile;
+		[SerializeField] protected GameObject enemyRiderProjectile;
 		Rider rider;
 
 		void Awake() {
 			rider = GetComponentInParent<Rider>();
 		}
 
-		public GameObject Projectile { get => rider.allegiance == Allegiance.Player ? friendlyRiderProjectile : enemyRiderProjectile; }
+		public virtual GameObject Projectile { get => rider.allegiance == Allegiance.Player ? friendlyRiderProjectile : enemyRiderProjectile; }
 	}
 }

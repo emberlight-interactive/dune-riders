@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1813127320291196407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914417099490896361}
+  m_Layer: 0
+  m_Name: DefaultTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914417099490896361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813127320291196407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 1.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7281532465285589193}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1623827219341999496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11,6 +41,14 @@ PrefabInstance:
       propertyPath: turret
       value: 
       objectReference: {fileID: 2249479840978209175}
+    - target: {fileID: 5763969116338362000, guid: 12050d021e1df1741899b852712000b0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763969116338362000, guid: 12050d021e1df1741899b852712000b0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8168645098009091120, guid: 12050d021e1df1741899b852712000b0, type: 3}
       propertyPath: m_Name
       value: PlatformedTurretCombination
@@ -61,9 +99,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12050d021e1df1741899b852712000b0, type: 3}
+--- !u!4 &7281532465285589193 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8324285375852778817, guid: 12050d021e1df1741899b852712000b0, type: 3}
+  m_PrefabInstance: {fileID: 1623827219341999496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4300732298672227482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3253775405120043282, guid: 12050d021e1df1741899b852712000b0, type: 3}
+  m_PrefabInstance: {fileID: 1623827219341999496}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4292002367127731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1623479276987399483, guid: 12050d021e1df1741899b852712000b0, type: 3}
+  m_PrefabInstance: {fileID: 1623827219341999496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4292002367127728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1623479276987399480, guid: 12050d021e1df1741899b852712000b0, type: 3}
   m_PrefabInstance: {fileID: 1623827219341999496}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1561347643851223238 stripped
@@ -71,6 +124,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 226300556788387150, guid: 12050d021e1df1741899b852712000b0, type: 3}
   m_PrefabInstance: {fileID: 1623827219341999496}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2109666967926489705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292002367127731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5a8ea343596d24890ff65c30046922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponBaseYPivot: {fileID: 4292002367127728}
+  weaponBarrelXPivot: {fileID: 4300732298672227482}
+  weaponBaseYPivotBounds:
+    lowerBounds: 270
+    upperBounds: 90
+  weaponBarrelXPivotBounds:
+    lowerBounds: 15
+    upperBounds: 25
+  rotationSpeed: 1
+  target: {fileID: 0}
+  defaultTarget: {fileID: 914417099490896361}
 --- !u!114 &2249479840978209175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,9 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 6979883287882690541}
-  turretTurnSpeed: 1.4
-  upperXBounds: 310
-  lowerXBounds: 70
+  weaponRange: 350
 --- !u!114 &6979883287882690541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +173,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f8f2fe4ed109b43a1c8834e39253b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
   projectileSpawnLocation: {fileID: 1561347643851223238}
   timeToReload: 3
+--- !u!114 &9042393942018153220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4292002367127731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724e49f595299cc4da91850fb3499b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendlyRiderProjectile: {fileID: 9165695629280413228, guid: f7bee4a7ee3991749b067debcd92bf03, type: 3}
+  enemyRiderProjectile: {fileID: 9165695629280413228, guid: f7bee4a7ee3991749b067debcd92bf03, type: 3}

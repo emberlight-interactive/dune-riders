@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1386260158138229099}
   - component: {fileID: 2445380584877026369}
   - component: {fileID: 5578707161534600098}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2045328415384980999}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4765747665112552701}
   - component: {fileID: 3918428289650920024}
   - component: {fileID: 1312187968224682758}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4722475051998204864}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: TripleMissileLancher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4859202756118170413}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: RestPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,6 +296,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4722475051998204864}
     m_Modifications:
     - target: {fileID: 72433960370676539, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 72433960370676539, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -322,6 +326,10 @@ PrefabInstance:
     - target: {fileID: 1223189540480449528, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413255003988794831, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2461519459220754465, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_RootOrder
@@ -371,9 +379,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 2705187442510574842, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191644301340781055, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3191644301340781055, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935228344759923627, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751046810419272362, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883811222798017450, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
@@ -409,6 +437,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1188212262600676517}
     m_Modifications:
     - target: {fileID: 72433960370676539, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 72433960370676539, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -435,6 +467,10 @@ PrefabInstance:
     - target: {fileID: 1223189540480449528, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413255003988794831, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1413255003988794831, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_IsActive
@@ -488,6 +524,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileLauncher (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2705187442510574842, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2868407784659850877, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -511,6 +551,22 @@ PrefabInstance:
     - target: {fileID: 2868407784659850877, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191644301340781055, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935228344759923627, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751046810419272362, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883811222798017450, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5212733721298678231, guid: b8eab30b082a62541a63587a0d548e88, type: 3}
