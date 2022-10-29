@@ -25,6 +25,7 @@ namespace DuneRiders.Shared.DamageSystem {
 
 		void OnEnable()
 		{
+			ApplyRandomRotation();
 			FireBullet();
 			SpawnLaunchParticles();
 			PlayLaunchAudio();

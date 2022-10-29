@@ -32,6 +32,7 @@ namespace DuneRiders.Shared.DamageSystem {
 		}
 
 		void OnEnable() {
+			ApplyRandomRotation();
 			rb.velocity += transform.forward * initialForce;
 			SpawnLaunchParticles();
 			PlayLaunchAudio();
