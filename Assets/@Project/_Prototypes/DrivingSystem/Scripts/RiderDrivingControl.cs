@@ -25,6 +25,7 @@ public class RiderDrivingControl : MonoBehaviour
 	public float acceleration;
 	public float breakingForce;
 	public float maxTurnAngle;
+	public float speedEffectOnTurnAngle = 0f;
 
 	float currentAcceleration = 0f;
 	float currentTurnAngle = 15f;
@@ -42,8 +43,7 @@ public class RiderDrivingControl : MonoBehaviour
 		frontLeft.motorTorque = currentAcceleration;
 		frontRight.motorTorque = currentAcceleration;
 
-		var velocity = riderRB.velocity;
-		var localVel = transform.InverseTransformDirection(velocity);
+		var localVel = LocalVelocity();
 
 		if (localVel.z > 10f && currentAcceleration < 0)
 		{
@@ -54,7 +54,7 @@ public class RiderDrivingControl : MonoBehaviour
 			ReleaseBrake();
 		}
 
-		currentTurnAngle = maxTurnAngle * steeringWheel.GetValue();
+		currentTurnAngle = GetTurnAngle() * steeringWheel.GetValue();
 		frontLeft.steerAngle = currentTurnAngle;
 		frontRight.steerAngle = currentTurnAngle;
 	}
@@ -95,5 +95,13 @@ public class RiderDrivingControl : MonoBehaviour
 	public void WheelReleased(Hand hand, Grabbable grabbable) {
 		if (hand.left) leftHandHoldingWheel = false;
 		else rightHandHoldingWheel = false;
+	}
+
+	Vector3 LocalVelocity() {
+		return transform.InverseTransformDirection(riderRB.velocity);
+	}
+
+	float GetTurnAngle() {
+		return maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z);
 	}
 }
