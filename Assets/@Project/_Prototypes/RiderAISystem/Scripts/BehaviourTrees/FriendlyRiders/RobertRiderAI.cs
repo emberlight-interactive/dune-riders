@@ -13,19 +13,21 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(PlayerCommandState))]
 	[RequireComponent(typeof(EntitiesWithinGroupsDetectionRange))]
 	[RequireComponent(typeof(PlayerHasDrawnWeapon))]
-	public class RobertRiderAI : BehaviourTree // todo: Be mindful of RVO shoving riders off pathfinding meshes
+	public class RobertRiderAI : BehaviourTree
 	{
 		[SerializeField] Actioner followAction;
 		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner chargeAction;
 		[SerializeField] Actioner deathAction;
+		[SerializeField] Actioner teleportNearPlayerAction;
 		Rider rider;
 		HealthState healthState;
 		AllActiveRidersState allActiveRidersState;
 		PlayerCommandState playerCommandState;
 		EntitiesWithinGroupsDetectionRange entitiesWithinGroupsDetectionRange;
 		PlayerHasDrawnWeapon playerHasDrawnWeapon;
+		Player player;
 
 		(System.Type, string, System.Object)[] _priorityStates;
 		protected override (System.Type, string, System.Object)[] priorityStates {
@@ -40,6 +42,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			playerCommandState = GetComponent<PlayerCommandState>();
 			entitiesWithinGroupsDetectionRange = GetComponent<EntitiesWithinGroupsDetectionRange>();
 			playerHasDrawnWeapon = GetComponent<PlayerHasDrawnWeapon>();
+			player = FindObjectOfType<Player>();
 
 			_priorityStates = new (System.Type, string, System.Object)[] {
 				(typeof(PlayerCommandState), "command", playerCommandState),
@@ -47,9 +50,11 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			};
 		}
 
-		protected override void ProcessBehaviourTree() { // todo: Add a condition to respawn near player when an extreme distance away (typically when falling through the map)
+		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
+			} else if (RiderIsPastMaxDistanceFromPlayer()) {
+				SetActionersActive(teleportNearPlayerAction);
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
 				if (AreAnyEnemiesInDetectionRange()) {
 					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
@@ -100,6 +105,11 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
+		}
+
+		bool RiderIsPastMaxDistanceFromPlayer() {
+			if (!player) return false;
+			return Vector3.Distance(transform.position, player.transform.position) > 1000;
 		}
 	}
 }

@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 5128939193122605526}
   - component: {fileID: 5016071827799240507}
   - component: {fileID: 315896023135117700}
+  - component: {fileID: 2718716329369017372}
   - component: {fileID: 5809143628830744141}
   - component: {fileID: 5809143628830744130}
   - component: {fileID: 1179979259012926657}
@@ -300,6 +301,7 @@ MonoBehaviour:
   gunnerAction: {fileID: 2142855892727606432}
   chargeAction: {fileID: 7456364413245128368}
   deathAction: {fileID: 315896023135117700}
+  teleportNearPlayerAction: {fileID: 2718716329369017372}
 --- !u!114 &1880663301664012116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +393,18 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2718716329369017372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5fffb559329a849bb838dbb004f3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5809143628830744141
 MonoBehaviour:
   m_ObjectHideFlags: 0
