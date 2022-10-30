@@ -53,7 +53,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		protected override void ProcessBehaviourTree() {
 			if (RiderHasLostAllHealth()) {
 				SetActionersActive(deathAction);
-			} else if (RiderIsPastMaxDistanceFromPlayer()) {
+			} else if (RiderIsPastMaxDistanceFromPlayer() && !IsCurrentCommand(PlayerCommandState.Command.Halt)) {
 				SetActionersActive(teleportNearPlayerAction);
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
 				if (AreAnyEnemiesInDetectionRange()) {
@@ -109,7 +109,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		bool RiderIsPastMaxDistanceFromPlayer() {
 			if (!player) return false;
-			return Vector3.Distance(transform.position, player.transform.position) > 1000;
+			return Vector3.Distance(transform.position, player.transform.position) > 1200;
 		}
 	}
 }

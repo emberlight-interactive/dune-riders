@@ -13,10 +13,10 @@ namespace DuneRiders.Combinations {
         public List<MonoBehaviour> componentsToActivate = new List<MonoBehaviour>();
 
 		void Awake() {
-			var sessionManager = GaiaSessionManager.GetSessionManager(false, false);
+			var terrainManager = GaiaUtils.GetTerrainLoaderManagerObject(false);
 			floatingPointFix = FindObjectOfType<FloatingPointFix>();
 
-			if (sessionManager == null) WrapUpBulkComponentActivation();
+			if (terrainManager == null) WrapUpBulkComponentActivation();
 		}
 
         void Start() {

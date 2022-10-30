@@ -13,7 +13,7 @@ namespace DuneRiders.RiderAI.Actioners {
 	[RequireComponent(typeof(AllActiveRidersState))]
 	[RequireComponent(typeof(Rider))]
 	[RequireComponent(typeof(UniqueIdentifier))]
-	public class Halt : Actioner, IPersistent
+	public class Halt : Actioner, IPersistent // todo: Make the halt put down an invisible formation prefab that has fpf and persist the fpf position and the riders target node in that prefab
 	{
 		[Serializable]
 		class HaltSerializable {
@@ -48,12 +48,15 @@ namespace DuneRiders.RiderAI.Actioners {
 		{
 			if (!currentlyActive) {
 				MoveToHaltPosition();
+				StartCoroutine(DisablePathfindingWhenDestinationReached());
 			}
 
 			_currentlyActive = true;
 		}
 
 		public override void EndAction() {
+			StopAllCoroutines();
+			pathfinder.enabled = true;
 			_currentlyActive = false;
 		}
 
@@ -81,6 +84,18 @@ namespace DuneRiders.RiderAI.Actioners {
 			}
 
 			SimplePool.Despawn(formation);
+		}
+
+		IEnumerator DisablePathfindingWhenDestinationReached() {
+			yield return null;
+
+			while (true) {
+				if (pathfinder.reachedEndOfPath) {
+					pathfinder.enabled = false;
+				}
+
+				yield return new WaitForSeconds(0.5f);
+			}
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {

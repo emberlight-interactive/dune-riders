@@ -7,12 +7,12 @@ using DuneRiders.PersistenceSystemCombination;
 namespace DuneRiders.PlayerRiderControllerCombination {
 	public class PauseMenuActions : MonoBehaviour
 	{
-		[SerializeField] AutoSaver autoSaver;
+		[SerializeField] PersistenceManager persistenceManager;
 
 		public bool savingEnabled = true;
 
 		public void SaveAndQuit() {
-			if (savingEnabled) autoSaver.TriggerSaveGame();
+			if (savingEnabled) persistenceManager.SaveGame();
 
 			#if UNITY_EDITOR
 				Debug.Log("Application Exited");
