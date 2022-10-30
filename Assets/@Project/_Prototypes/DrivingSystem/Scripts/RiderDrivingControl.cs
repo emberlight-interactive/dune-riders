@@ -102,6 +102,6 @@ public class RiderDrivingControl : MonoBehaviour
 	}
 
 	float GetTurnAngle() {
-		return maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z);
+		return Mathf.Max(maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z), 1);
 	}
 }
