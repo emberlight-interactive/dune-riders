@@ -17,6 +17,8 @@ namespace DuneRiders.Shared.DamageSystem {
 		[BoxGroup("Audio"), SerializeField] private AudioClip explosionNoise;
 		[BoxGroup("Audio"), SerializeField] private AudioClip launchNoise;
 
+		[SerializeField] float maxProjectileDistance = 0f;
+
 		AudioSource audioSource;
 
 		void Awake() {
@@ -26,14 +28,14 @@ namespace DuneRiders.Shared.DamageSystem {
 		void OnEnable()
 		{
 			ApplyRandomRotation();
-			FireBullet();
 			SpawnLaunchParticles();
+			FireBullet();
 			PlayLaunchAudio();
 		}
 
 		void FireBullet() {
 			RaycastHit hit;
-			if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) {
+			if (Physics.Raycast(transform.position, transform.forward, out hit, maxProjectileDistance == 0 ? Mathf.Infinity : maxProjectileDistance)) {
 				#if UNITY_EDITOR
 					Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.yellow);
 				#endif

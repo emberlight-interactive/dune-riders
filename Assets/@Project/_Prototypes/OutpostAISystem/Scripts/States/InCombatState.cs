@@ -15,7 +15,7 @@ namespace DuneRiders.OutpostAI.State {
 
 		OutpostTurret outpostTurret;
 		AllActiveRidersState allActiveRidersState;
-		float firingRangeOfThisTurret = 220;
+		float firingRangeOfThisTurret = 550;
 
 		void Awake()
 		{

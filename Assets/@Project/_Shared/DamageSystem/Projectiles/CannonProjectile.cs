@@ -23,6 +23,8 @@ namespace DuneRiders.Shared.DamageSystem {
 		[BoxGroup("Audio"), SerializeField] private AudioClip explosionNoise;
 		[BoxGroup("Audio"), SerializeField] private AudioClip launchNoise;
 
+		[SerializeField] float maxProjectileDistance = 0f;
+
 		Rigidbody rb;
 		AudioSource audioSource;
 
@@ -35,6 +37,7 @@ namespace DuneRiders.Shared.DamageSystem {
 			ApplyRandomRotation();
 			rb.velocity += transform.forward * initialForce;
 			SpawnLaunchParticles();
+			StartMaxDistanceCheck();
 			PlayLaunchAudio();
 		}
 
@@ -97,6 +100,15 @@ namespace DuneRiders.Shared.DamageSystem {
 
 		void PlayExplosionAudio() {
 			AudioSource.PlayClipAtPoint(explosionNoise, transform.position);
+		}
+
+		void StartMaxDistanceCheck() {
+			if (maxProjectileDistance == 0) return;
+			Invoke(nameof(DisableProjectileAfterMaxDistance), maxProjectileDistance / initialForce);
+		}
+
+		void DisableProjectileAfterMaxDistance() {
+			SimplePool.Despawn(gameObject);
 		}
 	}
 }
