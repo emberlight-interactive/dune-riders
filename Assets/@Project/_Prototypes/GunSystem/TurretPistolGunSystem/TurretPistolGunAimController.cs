@@ -41,7 +41,7 @@ namespace DuneRiders.GunSystem {
 		}
 
 		void IncrementTurretBarrelTowardsTarget(Vector3 target) {
-			float stepSpeed = GetAimSensitivity(target) * Time.deltaTime;
+			float stepSpeed = aimSensitivity * Time.deltaTime;
 			var targetDirection = (target - weaponBarrelXPivot.position).normalized;
 			var targetRotation = Quaternion.LookRotation(targetDirection);
 			var rotation = Quaternion.Slerp(weaponBarrelXPivot.rotation, targetRotation, stepSpeed);
@@ -62,7 +62,7 @@ namespace DuneRiders.GunSystem {
 		}
 
 		void IncrementTurretBaseTowardsTarget(Vector3 target) {
-			float stepSpeed = GetAimSensitivity(target) * Time.deltaTime;
+			float stepSpeed = aimSensitivity * Time.deltaTime;
 			var targetDirection = (target - weaponBaseYPivot.position).normalized;
 			var targetRotation = Quaternion.LookRotation(targetDirection);
 			var rotation = Quaternion.Slerp(weaponBaseYPivot.rotation, targetRotation, stepSpeed);
@@ -98,16 +98,6 @@ namespace DuneRiders.GunSystem {
 				indicateAimStatus.UpdateAimStatus(IndicateAimStatus.AimStatus.AlmostFinishedAiming);
 			} else {
 				indicateAimStatus.UpdateAimStatus(IndicateAimStatus.AimStatus.Aiming);
-			}
-		}
-
-		float GetAimSensitivity(Vector3 target) {
-			var rotationDifference = RotationDifference(target);
-
-			if (rotationDifference <= 2f) {
-				return aimSensitivity / 4;
-			} else {
-				return aimSensitivity;
 			}
 		}
 	}
