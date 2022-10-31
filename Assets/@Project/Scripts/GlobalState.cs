@@ -19,6 +19,7 @@ namespace DuneRiders {
 				globalState = existingGlobalState;
 			} else {
 				var globalStateObject = new GameObject($"{typeof(TState).Name} [GlobalState]");
+				BubbleGameObjectToActiveScene.BubbleUp(globalStateObject);
 				globalState = globalStateObject.AddComponent<TGlobalState>();
 				globalState.DisablePersistence = disablePersistence;
 

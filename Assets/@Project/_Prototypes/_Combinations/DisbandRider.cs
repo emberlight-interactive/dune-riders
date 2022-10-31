@@ -20,7 +20,8 @@ namespace DuneRiders.Combinations {
 			mercenaryToReplaceRider.gunType = rider.gunType;
 			mercenaryToReplaceRider.GetComponent<IsParkedState>().isParked = false;
 			gameObject.SetActive(false);
-			Instantiate(mercenaryToReplaceRider.gameObject, transform.position, transform.rotation);
+			var go = Instantiate(mercenaryToReplaceRider.gameObject, transform.position, transform.rotation);
+			BubbleGameObjectToActiveScene.BubbleUp(go);
 		}
 	}
 }

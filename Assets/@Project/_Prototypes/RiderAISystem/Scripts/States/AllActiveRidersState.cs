@@ -34,6 +34,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("AllActiveRidersGlobalState").AddComponent<AllActiveRidersGlobalState>();
+			BubbleGameObjectToActiveScene.BubbleUp(globalState.gameObject);
 			globalState.updateIntervalInSeconds = updateIntervalInSeconds;
 		}
 

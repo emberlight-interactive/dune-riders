@@ -24,6 +24,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("EntitiesWithinGroupsDetectionRangeGlobalState").AddComponent<EntitiesWithinGroupsDetectionRangeGlobalState>();
+			BubbleGameObjectToActiveScene.BubbleUp(globalState.gameObject);
 		}
 
 		[RequireComponent(typeof(AveragePositionOfRidersState))]

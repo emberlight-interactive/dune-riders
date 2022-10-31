@@ -55,10 +55,10 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 			});
 		}
 
-		// todo: does loading the halt command twice move it to new halt positions?
 		public void Load(IPersistenceUtil persistUtil) {
 			var loadedDamageablePlayerRiderController = persistUtil.Load<DamageablePlayerRiderControllerSerializable>(persistenceKey);
 			health = loadedDamageablePlayerRiderController.health;
+			UpdateMonitor();
 		}
 	}
 }

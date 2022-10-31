@@ -29,6 +29,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("PlayerCommandGlobalState").AddComponent<PlayerCommandGlobalState>();
+			BubbleGameObjectToActiveScene.BubbleUp(globalState.gameObject);
 			globalState.gameObject.AddComponent<LoadLocalComponentsOnAwake>();
 		}
 

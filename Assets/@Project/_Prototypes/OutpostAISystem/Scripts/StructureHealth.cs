@@ -32,17 +32,17 @@ namespace DuneRiders.OutpostAI {
 				new Type[] { typeof(LoadLocalComponentsOnAwake) }
 			);
 
-			ManageDeathLol();
+			ManageDeathLol(true);
 		}
 
 		void FixedUpdate() {
 			ManageDeathLol();
 		}
 
-		void ManageDeathLol() {
+		void ManageDeathLol(bool ignoreEvents = false) {
 			if (health <= 0) {
 				gameObject.SetActive(false);
-				deathEvent.Invoke();
+				if (!ignoreEvents) deathEvent.Invoke();
 			}
 		}
 

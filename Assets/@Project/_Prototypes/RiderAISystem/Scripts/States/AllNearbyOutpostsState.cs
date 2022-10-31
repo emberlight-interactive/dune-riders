@@ -27,6 +27,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("AllNearbyOutpostsGlobalState").AddComponent<AllNearbyOutpostsGlobalState>();
+			BubbleGameObjectToActiveScene.BubbleUp(globalState.gameObject);
 			globalState.updateIntervalInSeconds = updateIntervalInSeconds;
 		}
 

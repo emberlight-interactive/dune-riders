@@ -84,11 +84,12 @@ namespace DuneRiders.BanditSpawnerSystem {
 
 			for (int i = 0; i < numberOfRiders; i++) {
 				var riderToSpawn = (rider == null) ? enemyRiderInstanceBuilder.GetRandomRider().gameObject : rider;
-				Instantiate(
+				var go = Instantiate(
 					riderToSpawn,
 					formationInstance.formationPositions[i].transform.position,
 					rot
 				);
+				BubbleGameObjectToActiveScene.BubbleUp(go);
 			}
 
 			SimplePool.Despawn(formationInstance.gameObject);

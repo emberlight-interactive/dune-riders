@@ -21,6 +21,7 @@ namespace DuneRiders.RiderAI.State {
 			}
 
 			globalState = new GameObject("PlayerHasDrawnWeaponGlobalState").AddComponent<PlayerHasDrawnWeaponGlobalState>();
+			BubbleGameObjectToActiveScene.BubbleUp(globalState.gameObject);
 		}
 
 		public class PlayerHasDrawnWeaponGlobalState : MonoBehaviour

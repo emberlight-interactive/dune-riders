@@ -28,6 +28,7 @@ namespace DuneRiders.RiderAICombination {
 			DestroyImmediate(rider);
 
 			var gm = Instantiate(riderPrefab.gameObject);
+			BubbleGameObjectToActiveScene.BubbleUp(gm);
 			gm.GetComponent<UniqueIdentifier>().uniqueIdentifier = uniqueIdentifier.uniqueIdentifier;
 			gm.AddComponent<LoadLocalComponentsOnAwake>();
 

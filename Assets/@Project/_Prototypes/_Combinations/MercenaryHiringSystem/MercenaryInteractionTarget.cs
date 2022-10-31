@@ -169,7 +169,8 @@ namespace DuneRiders.MercenaryHiringSystem {
 			friendlyRiderPrefab.chasisType = mercenary.chassis;
 			friendlyRiderPrefab.gunType = mercenary.gunType;
 
-			Instantiate(friendlyRiderPrefab, riderPlaceholderLocation.position, riderPlaceholderLocation.rotation);
+			var rider = Instantiate(friendlyRiderPrefab, riderPlaceholderLocation.position, riderPlaceholderLocation.rotation);
+			BubbleGameObjectToActiveScene.BubbleUp(rider.gameObject);
 		}
 	}
 }
