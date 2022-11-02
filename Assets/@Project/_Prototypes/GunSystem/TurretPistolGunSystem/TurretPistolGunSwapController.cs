@@ -8,13 +8,13 @@ namespace DuneRiders.GunSystem {
 	public class TurretPistolGunSwapController : MonoBehaviour
 	{
 		[System.Serializable]
-		struct Gun {
+		public struct Gun {
 			public GunState gunState;
 			public GunPacker gunPacker;
 			public GunUnpacker gunUnpacker;
 		}
 
-		[SerializeField] List<Gun> gunsToSwapBetween = new List<Gun>();
+		[SerializeField] public List<Gun> gunsToSwapBetween = new List<Gun>();
 		[SerializeField] InputActionProperty gunTransitionButton;
 		[HideInInspector] public bool turretPistolIsHolstered = false;
 

@@ -37,7 +37,11 @@ namespace DuneRiders.PersistenceSystemCombination {
 		}
 
 		public T Load<T>(string key) {
-			return ES3.Load<T>(key);
+			if (ES3.KeyExists(key)) return ES3.Load<T>(key);
+			else {
+				Debug.LogWarning("This key does not exist, returning a default value");
+				return default(T);
+			}
 		}
 
 		public void Delete(string key) {
