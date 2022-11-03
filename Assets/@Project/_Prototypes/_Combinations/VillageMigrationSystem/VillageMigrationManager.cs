@@ -14,6 +14,7 @@ namespace DuneRiders.VillageMigrationSystem {
 		[Serializable]
 		class VillageMigrationManagerSerializable {
 			public string waypointUniqueIdentifier;
+			public bool isCurrentlyMigrating;
 		}
 
 		[SerializeField] HomeVillageInteractionTarget homeVillageInteractionTarget;
@@ -100,12 +101,14 @@ namespace DuneRiders.VillageMigrationSystem {
 		public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save(persistenceKey, new VillageMigrationManagerSerializable {
 				waypointUniqueIdentifier = currentWaypoint.GetComponent<UniqueIdentifier>().uniqueIdentifier,
+				isCurrentlyMigrating = this.isCurrentlyMigrating,
 			});
 		}
 
         public void Load(IPersistenceUtil persistUtil) {
 			var loadedVillageMigrationManager = persistUtil.Load<VillageMigrationManagerSerializable>(persistenceKey);
 			currentWaypoint = FindObjectsOfType<VillageMigrationWaypoint>().Where((instance) => instance.GetComponent<UniqueIdentifier>().uniqueIdentifier == loadedVillageMigrationManager.waypointUniqueIdentifier).FirstOrDefault();
+			isCurrentlyMigrating = loadedVillageMigrationManager.isCurrentlyMigrating;
 		}
 	}
 }

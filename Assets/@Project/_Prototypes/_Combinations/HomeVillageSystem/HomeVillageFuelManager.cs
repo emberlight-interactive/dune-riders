@@ -16,11 +16,15 @@ namespace DuneRiders.HomeVillageSystem {
 
 		[SerializeField] ResourceManager fuelResourceManager;
 		[SerializeField] UnityEvent villageOutOfFuel = new UnityEvent();
+		public UnityEvent migrationLevelsChanged = new UnityEvent();
 		public ResourceManager FuelResourceManager { get => fuelResourceManager; }
-		public int fuelPerHour = 750;
+		public int fuelPerHour = 400;
 		public int numberOfMigrations = 1;
-		public int reserveLevel { get => 5000; }
-		public int migrationLevel { get => 10000; }
+
+		[SerializeField] int baseMigrationLevel = 5000;
+		[SerializeField] int migrationIncrements = 1000;
+		int migrationLevel { get => baseMigrationLevel + (numberOfMigrations * migrationIncrements); }
+		[SerializeField] int reserveLevel = 5000;
 		public bool DisablePersistence { get => false; }
 		string persistenceKey = "HomeVillageFuelManager";
 
@@ -40,6 +44,7 @@ namespace DuneRiders.HomeVillageSystem {
 			if (CanMigrate()) {
 				if (fuelResourceManager.Take(migrationLevel - reserveLevel)) {
 					numberOfMigrations++;
+					migrationLevelsChanged.Invoke();
 					return true;
 				} else return false;
 			}
@@ -51,19 +56,23 @@ namespace DuneRiders.HomeVillageSystem {
 			while (true) {
 				yield return new WaitForSeconds(10f); // todo: Could exit and reload rapidly to cheat?
 
-				var fuelPerMinute = GetCurrentFuelPerHourConsumption() / 360f;
+				var fuelPerMinute = fuelPerHour / 360f;
 				if (!fuelResourceManager.Take(fuelPerMinute)) {
 					villageOutOfFuel.Invoke();
 				}
 			}
 		}
 
-		public int GetCurrentFuelPerHourConsumption() {
-			return fuelPerHour * numberOfMigrations;
-		}
-
 		public float GetPercentageOfVillageFuelLeft() {
 			return fuelResourceManager.Amount() / fuelResourceManager.ResourceLimit();
+		}
+
+		public float VillageFuelPercentageForMigration() {
+			return migrationLevel / fuelResourceManager.ResourceLimit();
+		}
+
+		public float VillageFuelPercentageForSustenance() {
+			return reserveLevel / fuelResourceManager.ResourceLimit();
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {

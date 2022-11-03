@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DuneRiders.Shared.PersistenceSystem;
 using DuneRiders.GatheringSystem;
 using DuneRiders.InteractionSystem;
 using DuneRiders.InteractionSystem.WaveInteraction;
@@ -11,8 +13,13 @@ using TMPro;
 using Sirenix.OdinInspector;
 
 namespace DuneRiders.HomeVillageSystem {
-	public class HomeVillageInteractionTarget : InteractionTarget
+	public class HomeVillageInteractionTarget : InteractionTarget, IPersistent
 	{
+		[Serializable]
+		class HomeVillageInteractionTargetSerializable {
+			public bool currentlyPreparingForMigration;
+		}
+
 		[SerializeField] HomeVillageFuelManager homeVillageFuelManager;
 
 		[SerializeField] LookAt questionMark;
@@ -28,6 +35,9 @@ namespace DuneRiders.HomeVillageSystem {
 
 		bool currentlyPreparingForMigration = false;
 		[ReadOnly] public bool nextMigrationTriggersWinCondition = false;
+
+		public bool DisablePersistence { get => false; }
+		string persistenceKey = "HomeVillageInteractionTarget";
 
 		Gatherer gatherer;
 		string[] villageInteractionOptions = new string[] { "Transfer Fuel", "Migrate", "Ring City" };
@@ -172,6 +182,17 @@ namespace DuneRiders.HomeVillageSystem {
 
 		public void MigrationFinished() {
 			currentlyPreparingForMigration = false;
+		}
+
+		public void Save(IPersistenceUtil persistUtil) {
+			persistUtil.Save(persistenceKey, new HomeVillageInteractionTargetSerializable {
+				currentlyPreparingForMigration = this.currentlyPreparingForMigration,
+			});
+		}
+
+        public void Load(IPersistenceUtil persistUtil) {
+			var loadedHomeVillageInteractionTarget = persistUtil.Load<HomeVillageInteractionTargetSerializable>(persistenceKey);
+			currentlyPreparingForMigration = loadedHomeVillageInteractionTarget.currentlyPreparingForMigration;
 		}
 	}
 }

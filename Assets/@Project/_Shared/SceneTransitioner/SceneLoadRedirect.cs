@@ -66,12 +66,14 @@ namespace DuneRiders {
 		}
 
 		void RunGC() {
+			#if !UNITY_EDITOR
 			GarbageCollector.GCMode = GarbageCollector.Mode.Manual;
 			GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.CompactOnce;
 			GC.Collect();
 			GC.WaitForPendingFinalizers();
 			GC.Collect();
 			GarbageCollector.GCMode = GarbageCollector.Mode.Enabled;
+			#endif
 		}
 	}
 

@@ -11,7 +11,7 @@ namespace DuneRiders.RiderTabletSystem {
 		TextMeshProUGUI text;
 		string textShowing;
 		[SerializeField] Slider slider;
-		[SerializeField] float valueAtOrAboveToShow;
+		public float valueAtOrAboveToShow;
 
 		void Start() {
 			text = GetComponent<TextMeshProUGUI>();

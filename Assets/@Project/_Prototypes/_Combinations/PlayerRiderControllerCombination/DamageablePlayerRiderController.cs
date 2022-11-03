@@ -23,6 +23,10 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		public bool DisablePersistence { get => false; }
 		string persistenceKey = "PlayerHealth";
 
+		void Awake() {
+			UpdateMonitor();
+		}
+
 		public override void Damage(float healthPoints)
 		{
 			var prevHealth = health;
