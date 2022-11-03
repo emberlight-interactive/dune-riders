@@ -6,10 +6,10 @@ using DuneRiders.Shared.DamageSystem;
 namespace DuneRiders.GunSystem {
 	public class DamageableTest : Damageable
 	{
-		[SerializeField] int healthPoints;
-		public int HealthPoints {get => healthPoints; }
+		[SerializeField] float healthPoints;
+		public float HealthPoints {get => healthPoints; }
 
-		public override void Damage(int healthPoints)
+		public override void Damage(float healthPoints)
 		{
 			this.healthPoints -= healthPoints;
 		}

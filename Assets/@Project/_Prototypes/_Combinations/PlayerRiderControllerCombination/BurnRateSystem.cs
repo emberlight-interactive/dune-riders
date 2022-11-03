@@ -16,7 +16,6 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		[SerializeField] UpkeepTracker upkeepTracker;
 		[SerializeField] PlayerRepairSystem playerRepairSystem;
-		List<RepairSystem> repairSystems = new List<RepairSystem>();
 
 		UpkeepTracker.UpkeepType GetUpkeepEquivalentEnum(ResourceType resourceType) {
 			switch (resourceType) {
@@ -36,32 +35,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		public float GetOneTimeResourceCost(ResourceType resourceType) {
-			if (resourceType == ResourceType.ScrapMetal) return GetTotalScrapForRepairs();
 			return 0f;
-		}
-
-		float GetTotalScrapForRepairs() {
-			float totalScrapToSpend = 0f;
-
-			foreach (var repairer in repairSystems) {
-				totalScrapToSpend += repairer.TotalResourcesRequiredToFullyRepair();
-			}
-
-			totalScrapToSpend += playerRepairSystem.TotalResourcesRequiredToFullyRepair();
-
-			return totalScrapToSpend;
-		}
-
-		public void AttachMyself(RepairSystem repairSystem) {
-			if (!repairSystems.Exists((v) => v == repairSystem)) {
-				repairSystems.Add(repairSystem);
-			}
-		}
-
-		public void RemoveMyself(RepairSystem repairSystem) {
-			if (repairSystems.Exists((v) => v == repairSystem)) {
-				repairSystems.Remove(repairSystem);
-			}
 		}
 	}
 }

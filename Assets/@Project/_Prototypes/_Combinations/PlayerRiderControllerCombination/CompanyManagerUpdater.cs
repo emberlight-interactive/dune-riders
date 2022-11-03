@@ -6,7 +6,7 @@ using DuneRiders.Combinations;
 using DuneRiders.RiderTabletSystem;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
-using DuneRiders.RiderAICombination;
+using DuneRiders.RiderAI.Actioners;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
 	[RequireComponent(typeof(CompanyManagementDisplayController))]

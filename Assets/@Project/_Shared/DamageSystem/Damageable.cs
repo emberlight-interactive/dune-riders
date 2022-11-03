@@ -5,6 +5,6 @@ using UnityEngine;
 namespace DuneRiders.Shared.DamageSystem {
 	public abstract class Damageable : MonoBehaviour
 	{
-		public abstract void Damage(int healthPoints);
+		public abstract void Damage(float healthPoints);
 	}
 }

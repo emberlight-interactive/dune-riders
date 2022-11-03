@@ -8,7 +8,7 @@ namespace DuneRiders.Shared.DamageSystem {
 	{
 		public UnityEvent damageEvent = new UnityEvent();
 
-		public override void Damage(int healthPoints) {
+		public override void Damage(float healthPoints) {
 			damageEvent.Invoke();
 		}
 	}

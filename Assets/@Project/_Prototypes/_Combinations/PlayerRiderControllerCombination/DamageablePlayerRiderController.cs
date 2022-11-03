@@ -13,16 +13,17 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 	{
 		[Serializable]
 		class DamageablePlayerRiderControllerSerializable {
-			public int health;
+			public float health;
 		}
 
 		[SerializeField] DashboardHealthMonitor dashboardHealthMonitor;
-		[SerializeField] int health = 100;
+		[SerializeField] float maxHealth = 100;
+		[SerializeField] float health = 100;
 		[SerializeField] UnityEvent onZeroHealthPoints = new UnityEvent();
 		public bool DisablePersistence { get => false; }
 		string persistenceKey = "PlayerHealth";
 
-		public override void Damage(int healthPoints)
+		public override void Damage(float healthPoints)
 		{
 			var prevHealth = health;
 			health -= healthPoints;
@@ -31,16 +32,20 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		void UpdateMonitor() {
-			dashboardHealthMonitor.Health = health;
+			dashboardHealthMonitor.UpdateMonitors(health / maxHealth);
 		}
 
-		public void Heal(int healthPoints) {
+		public void Heal(float healthPoints) {
 			health += healthPoints;
 			UpdateMonitor();
 		}
 
-		public int Health() {
+		public float Health() {
 			return health;
+		}
+
+		public float MaxHealth() {
+			return maxHealth;
 		}
 
 		void HandleZeroHealthPoints() {

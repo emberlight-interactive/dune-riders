@@ -7,7 +7,7 @@ namespace DuneRiders.Shared.DamageSystem {
 	[RequireComponent(typeof(AudioSource))]
 	public class MachineGunProjectile : Projectile
 	{
-		[SerializeField] int directHitDamage = 2;
+		[SerializeField] float directHitDamage = 2;
 
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem launchParticle;
 		[BoxGroup("Projectile Effects"), SerializeField] private float launchParticleScale = 2;

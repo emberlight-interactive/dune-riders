@@ -11,15 +11,15 @@ namespace DuneRiders.OutpostAI.State {
 	{
 		[Serializable]
 		class TurretHealthState {
-			public int health;
+			public float health;
 		}
 
 		[SerializeField, ReadOnly] TurretHealthState state;
 		ProceduralTools proceduralTools;
-		[SerializeField] int maxHealth = 100;
-		public int MaxHealth { get => maxHealth; }
+		[SerializeField] float maxHealth = 100;
+		public float MaxHealth { get => maxHealth; }
 
-		public int health { get => state.health; set => state.health = value; }
+		public float health { get => state.health; set => state.health = value; }
 
 		void Awake() {
 			proceduralTools = new ProceduralTools(transform, true);

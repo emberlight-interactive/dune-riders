@@ -28,7 +28,7 @@ namespace DuneRiders.RiderTabletSystem {
 		public struct RiderToDisplay {
 			public ArmourType armourType;
 			public WeaponType weaponType;
-			public int health;
+			public float health;
 			public DisbandCallback disbandCallback;
 			public bool isBeingRepaired;
 		}
@@ -118,8 +118,8 @@ namespace DuneRiders.RiderTabletSystem {
 			}
 		}
 
-		float HealthToDamageOverlay(int health) {
-			var healtAvailablepercentage = (float) health / 100f;
+		float HealthToDamageOverlay(float health) {
+			var healtAvailablepercentage = health / 100f;
 			return 1f - healtAvailablepercentage;
 		}
 	}

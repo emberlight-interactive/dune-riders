@@ -11,7 +11,7 @@ namespace DuneRiders.OutpostAICombination {
 	{
 		[SerializeField] StructureHealth healthState;
 
-		public override void Damage(int healthPoints)
+		public override void Damage(float healthPoints)
 		{
 			healthState.health -= healthPoints;
 		}

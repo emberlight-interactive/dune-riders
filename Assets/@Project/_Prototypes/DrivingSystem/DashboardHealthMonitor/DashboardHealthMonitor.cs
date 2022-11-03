@@ -7,41 +7,26 @@ using System.Linq;
 namespace DuneRiders.DrivingSystem {
 	public class DashboardHealthMonitor : MonoBehaviour
 	{
-		int _health = 100;
-		public int Health {
-			get => _health;
-			set {
-				var health = value >= 100 ? 100 : value;
-				health = health <= 0 ? 0 : health;
-				_health = health;
-
-				UpdateMonitors(_health);
-			}
-		}
-
 		[SerializeField] Image cliImage;
 
-		void Start() {
-			UpdateMonitors(_health);
-		}
-
-		void UpdateMonitors(int newHealth) {
-			if (newHealth > 80) {
+		public void UpdateMonitors(float healthPercentage) {
+			var healthPercentageRelativeToOneHundred = 100 * healthPercentage;
+			if (healthPercentageRelativeToOneHundred == 100) {
 				cliImage.fillAmount = 0f;
 				return;
-			} else if (newHealth > 60) {
+			} else if (healthPercentageRelativeToOneHundred > 80) {
 				cliImage.fillAmount = 0.2f;
 				return;
-			} else if (newHealth > 40) {
+			} else if (healthPercentageRelativeToOneHundred > 60) {
 				cliImage.fillAmount = 0.4f;
 				return;
-			} else if (newHealth > 20) {
+			} else if (healthPercentageRelativeToOneHundred > 40) {
 				cliImage.fillAmount = 0.6f;
 				return;
-			} else if (newHealth > 0) {
+			} else if (healthPercentageRelativeToOneHundred > 20) {
 				cliImage.fillAmount = 0.8f;
 				return;
-			} else if (newHealth <= 0) {
+			} else if (healthPercentageRelativeToOneHundred <= 0) {
 				cliImage.fillAmount = 1f;
 				return;
 			}

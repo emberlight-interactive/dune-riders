@@ -10,11 +10,11 @@ namespace DuneRiders.OutpostAICombination {
 	public class TurretAutoHealer : MonoBehaviour
 	{
 		RidersInRange ridersInRange;
-		(OutpostTurret turret, int maxHealth)[] turrets;
+		(OutpostTurret turret, float maxHealth)[] turrets;
 
 		[SerializeField] Allegiance enemyAllegiance = Allegiance.Player;
 
-		[SerializeField] int healAmount = 5;
+		[SerializeField] float healAmount = 5;
 		[SerializeField] float healInterval = 4.0f;
 
 		bool finishedStart = false;
@@ -60,8 +60,8 @@ namespace DuneRiders.OutpostAICombination {
 			}
 		}
 
-		(OutpostTurret turret, int maxHealth)[] CompileTurretInfo() {
-			var compiledList = new List<(OutpostTurret turret, int maxHealth)>();
+		(OutpostTurret turret, float maxHealth)[] CompileTurretInfo() {
+			var compiledList = new List<(OutpostTurret turret, float maxHealth)>();
 			var turrets = GetComponentsInChildren<OutpostTurret>();
 			for (int i = 0; i < turrets.Length; i++) {
 				compiledList.Add((turrets[i], turrets[i].GetComponent<HealthState>().MaxHealth));

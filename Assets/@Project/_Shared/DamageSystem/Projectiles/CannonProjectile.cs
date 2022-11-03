@@ -10,9 +10,9 @@ namespace DuneRiders.Shared.DamageSystem {
 	{
 		[BoxGroup("Debug"), SerializeField] private Color debugExplosiveRadiusColor = Color.red;
 
-		[BoxGroup("Projectile Stats"), SerializeField] private int initialForce = 100;
-		[BoxGroup("Projectile Stats"), SerializeField] private int explosiveRadius = 3;
-		[BoxGroup("Projectile Stats"), SerializeField] private int directHitDamage = 20;
+		[BoxGroup("Projectile Stats"), SerializeField] private float initialForce = 100;
+		[BoxGroup("Projectile Stats"), SerializeField] private float explosiveRadius = 3;
+		[BoxGroup("Projectile Stats"), SerializeField] private float directHitDamage = 20;
 
 		[BoxGroup("Projectile Effects"), SerializeField] private ParticleSystem launchParticle;
 		[BoxGroup("Projectile Effects"), SerializeField] private float launchParticleScale = 2;

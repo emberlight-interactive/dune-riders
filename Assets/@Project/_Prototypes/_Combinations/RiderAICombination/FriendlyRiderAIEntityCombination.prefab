@@ -1,80 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8702868879433698722
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8818980877560609511}
-  - component: {fileID: 6455640576380998635}
-  - component: {fileID: 8667495037133413500}
-  m_Layer: 5
-  m_Name: Repair Icon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8818980877560609511
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702868879433698722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3822261257290690212}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -275, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6455640576380998635
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702868879433698722}
-  m_CullTransparentMesh: 0
---- !u!114 &8667495037133413500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702868879433698722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85bb490996500ea4eae04a2804b24441, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &2834749753208258211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7970549692662903069, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
+      propertyPath: riderRepairIcon
+      value: 
+      objectReference: {fileID: 8772511718478254526}
     m_RemovedComponents:
     - {fileID: 5809143628830744130, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
@@ -188,9 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3822261257290690212 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1323050850512670727, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
+--- !u!1 &8772511718478254526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6839055836887887645, guid: 36b066b47479e774c8a84ce64723a8d5, type: 3}
   m_PrefabInstance: {fileID: 2834749753208258211}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &379835561876162213
@@ -250,6 +179,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentsToActivate:
   - {fileID: 379835561876162213}
+--- !u!114 &1229435337905763092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631488140989997287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4502db9b91c0cc24381f396d0d2c6554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToActivate:
+  - {fileID: 3978698290954891874}
+  - {fileID: 8631488140989997292}
 --- !u!114 &1616896531341982074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,26 +257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePrefabInstanceKeyInstead: 1
   persistenceKey: 
---- !u!114 &7208448459055741865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631488140989997287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c41bf148768ae3048bedc284bb87c768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repairCycleIntervalInSeconds: 4
-  resourcesPerHeavyChasisRepairCycle: 20
-  healthPerHeavyChasisRepairCycle: 6
-  resourcesPerNormalChasisRepairCycle: 10
-  healthPerNormalChasisRepairCycle: 3
-  resourcesPerLightChasisRepairCycle: 4
-  healthPerLightChasisRepairCycle: 2
-  riderRepairIcon: {fileID: 8702868879433698722}
 --- !u!114 &8524133974312986536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,18 +282,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mercenaryToReplaceRider: {fileID: 7172977316693519089, guid: 599a12f27e9850f43800c0503fdeef57, type: 3}
---- !u!114 &1229435337905763092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631488140989997287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4502db9b91c0cc24381f396d0d2c6554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentsToActivate:
-  - {fileID: 3978698290954891874}
-  - {fileID: 8631488140989997292}

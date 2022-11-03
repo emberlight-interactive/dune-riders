@@ -12,17 +12,17 @@ namespace DuneRiders.RiderAI.State {
 	{
 		[Serializable]
 		class HealthStateSerializable {
-			public int health;
+			public float health;
 		}
 
-		[SerializeField] int maxHealth = 100;
-		public int MaxHealth { get => maxHealth; }
+		[SerializeField] float maxHealth = 100;
+		public float MaxHealth { get => maxHealth; }
 		public bool DisablePersistence { get => false; }
 
-		[ReadOnly] public int health;
+		[ReadOnly] public float health;
 
 		void Awake() {
-			if (health == default(int)) health = maxHealth;
+			if (health == default(float)) health = maxHealth;
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {
