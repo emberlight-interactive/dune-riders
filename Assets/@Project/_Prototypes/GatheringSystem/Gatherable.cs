@@ -45,7 +45,7 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		void MoveTowardsGatherer() {
-			if (Vector3.Distance(transform.position, gatherer.transform.position) < 0.05f) gameObject.SetActive(false);
+			if (Vector3.Distance(transform.position, gatherer.transform.position) < 0.05f) SimplePool.Despawn(gameObject);
 
 			float step = gatherSpeed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, gatherer.transform.position, step);
@@ -58,6 +58,7 @@ namespace DuneRiders.GatheringSystem {
 			if (gathererComponent && !gathered) {
 				if (gathererComponent.GetManager(resourceType).Give(amount)) {
 					gatherer = gathererComponent;
+					gatherer.rootAdditionRow.RenderAddition(resourceType, amount);
 					gathered = true;
 				}
 			}

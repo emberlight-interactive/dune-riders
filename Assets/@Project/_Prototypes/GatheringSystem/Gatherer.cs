@@ -15,6 +15,7 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		[SerializeField] ResourceManager[] resourceManagers;
+		public AdditionRow rootAdditionRow;
 
 		public ResourceManager GetManager(SupportedResources resourceType) {
 			if (resourceManagers == null) return null;
