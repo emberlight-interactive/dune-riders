@@ -35,6 +35,12 @@ namespace DuneRiders.POISystem {
 		[SerializeField, ReadOnly] Dictionary<int, GameObject> spawnedLootables = new Dictionary<int, GameObject>();
 		[SerializeField] int minimumNumberOfLootables = 3;
 
+		[SerializeField] bool regenerateExhaustedPOI = false;
+		[SerializeField] float minRegenerationTime;
+		[SerializeField] float maxRegenerationTime;
+		[SerializeField] int minLootablesToRegenerate;
+		[SerializeField] int maxLootablesToRegenerate;
+
 		[SerializeField] UnityEvent poiTouched;
 		[SerializeField] UnityEvent poiExhausted;
 
@@ -54,6 +60,8 @@ namespace DuneRiders.POISystem {
 			StartCoroutine(UpdateStateOfLootables());
 			StartCoroutine(WatchPOITouchedEventTrigger());
 			StartCoroutine(WatchPOIExhaustedEventTrigger());
+
+			if (regenerateExhaustedPOI) StartCoroutine(RegenerateLootables());
 		}
 
 		void OnDisable() {
@@ -143,8 +151,8 @@ namespace DuneRiders.POISystem {
 			while (true) {
 				if (IsPOIPartiallyLooted()) {
 					poiTouched?.Invoke();
-					yield break;
 				}
+
 				yield return new WaitForSeconds(0.2f);
 			}
 		}
@@ -153,9 +161,26 @@ namespace DuneRiders.POISystem {
 			while (true) {
 				if (IsPOIFullyLooted()) {
 					poiExhausted?.Invoke();
-					yield break;
 				}
+
 				yield return new WaitForSeconds(0.2f);
+			}
+		}
+
+		IEnumerator RegenerateLootables() {
+			while (true) {
+				if (IsPOIFullyLooted()) {
+					yield return new WaitForSeconds(UnityEngine.Random.Range(minRegenerationTime, maxRegenerationTime));
+					var lootables = state.lootableStates.Where((lootableState) => lootableState.harvested == true).Take(UnityEngine.Random.Range(minLootablesToRegenerate, maxLootablesToRegenerate));
+
+					foreach (var lootable in lootables) {
+						lootable.harvested = false;
+					}
+
+					SpawnLootables();
+				}
+
+				yield return new WaitForSeconds(10f);
 			}
 		}
 

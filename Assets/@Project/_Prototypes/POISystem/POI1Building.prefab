@@ -402,10 +402,14 @@ MonoBehaviour:
       availabilityValue: 10
   lootLocations:
   - {fileID: 2381200763477659194}
-  - {fileID: 0}
   - {fileID: 8990192524489434954}
   - {fileID: 4785589426436157130}
   minimumNumberOfLootables: 1
+  regenerateExhaustedPOI: 1
+  minRegenerationTime: 900
+  maxRegenerationTime: 1800
+  minLootablesToRegenerate: 1
+  maxLootablesToRegenerate: 2
   poiTouched:
     m_PersistentCalls:
       m_Calls:
