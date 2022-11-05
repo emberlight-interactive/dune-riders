@@ -172,5 +172,14 @@ namespace DuneRiders.MercenaryHiringSystem {
 			var rider = Instantiate(friendlyRiderPrefab, riderPlaceholderLocation.position, riderPlaceholderLocation.rotation);
 			BubbleGameObjectToActiveScene.BubbleUp(rider.gameObject);
 		}
+
+		[SerializeField] bool hireMercenary;
+
+		void OnValidate() {
+			if (hireMercenary) {
+				AddMercenaryToParty();
+				hireMercenary = false;
+			}
+		}
 	}
 }

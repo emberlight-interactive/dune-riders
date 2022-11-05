@@ -15,7 +15,12 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 	public class MercenaryHiringSpotSpawner : MonoBehaviour
 	{
+		[SerializeField] bool enableRegeneration = false;
+		[SerializeField] float minRegenerationTime;
+		[SerializeField] float maxRegenerationTime;
+
 		[SerializeField] GameObject mercenaryHiringSpot;
+		GameObject spawnedSpot;
 		MercenaryInteractionTarget mercenaryInteractionTarget;
 		ProceduralTools proceduralTools;
 		string transformHash;
@@ -29,14 +34,22 @@ namespace DuneRiders.MercenaryHiringSystem {
 			InitializeState();
 		}
 
+		void OnEnable() {
+			if (enableRegeneration) StartCoroutine(RegenerateSpot());
+		}
+
 		void Start() {
 			if (!state.mercenaryHired) {
 				SpawnMercenaryHiringSpot();
 			}
 		}
 
+		void OnDisable() {
+			StopAllCoroutines();
+		}
+
 		void SpawnMercenaryHiringSpot() {
-			Instantiate(mercenaryHiringSpot, transform);
+			spawnedSpot = Instantiate(mercenaryHiringSpot, transform);
 			mercenaryInteractionTarget = GetComponentInChildren<MercenaryInteractionTarget>();
 			mercenaryInteractionTarget?.mercenaryHiredEvent.AddListener(() => MarkMercenaryHired());
 		}
@@ -71,6 +84,19 @@ namespace DuneRiders.MercenaryHiringSystem {
 			Gizmos.DrawSphere(transform.position, 1);
 		}
 		#endif
+
+		IEnumerator RegenerateSpot() {
+			while (true) {
+				if (state.mercenaryHired) {
+					yield return new WaitForSeconds(UnityEngine.Random.Range(minRegenerationTime, maxRegenerationTime));
+					Destroy(spawnedSpot);
+					state.mercenaryHired = false;
+					SpawnMercenaryHiringSpot();
+				}
+
+				yield return new WaitForSeconds(10f);
+			}
+		}
 
 		class MercenaryHiringSpotGlobalState : GlobalStateGameObject<string, MercenaryHiringSpotState> {}
 	}
