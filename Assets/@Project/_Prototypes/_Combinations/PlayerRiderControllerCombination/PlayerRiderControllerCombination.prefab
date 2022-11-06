@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistenceManager: {fileID: 0}
+  mainMenuTransitioner: {fileID: 0}
   savingEnabled: 1
 --- !u!1001 &1479153900680585712
 PrefabInstance:
@@ -1268,8 +1269,16 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7673201751603802230, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000033775
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673201751603802230, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: 4.8787994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673201751603802230, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.3959007
       objectReference: {fileID: 0}
     - target: {fileID: 8176214361081021411, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
       propertyPath: m_Layer
@@ -4697,6 +4706,34 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8694274953777699509}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveAndMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DuneRiders.PlayerRiderControllerCombination.PauseMenuActions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585461290282536944, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6795293229599919130, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4708,6 +4745,10 @@ PrefabInstance:
     - target: {fileID: 7593576449281225469, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814602118795054459, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645762233498501988, guid: d89931c99ec2fd54c9c86f61ead57b34, type: 3}
       propertyPath: m_Layer

@@ -8,6 +8,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 	public class PauseMenuActions : MonoBehaviour
 	{
 		[SerializeField] PersistenceManager persistenceManager;
+		[SerializeField] SceneTransitioner mainMenuTransitioner;
 
 		public bool savingEnabled = true;
 
@@ -19,6 +20,12 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 			#else
 				Application.Quit();
 			#endif
+		}
+
+		public void SaveAndMainMenu() {
+			if (savingEnabled) persistenceManager.SaveGame();
+			Time.timeScale = 1.0f;
+			mainMenuTransitioner.LoadNextScene();
 		}
 	}
 }
