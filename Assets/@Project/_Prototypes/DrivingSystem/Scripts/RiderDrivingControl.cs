@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Autohand;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class RiderDrivingControl : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class RiderDrivingControl : MonoBehaviour
 	[SerializeField] InputActionProperty leftControllerTrigger;
 	[SerializeField] InputActionProperty leftControllerY;
 	[SerializeField] InputActionProperty leftControllerX;
+	[SerializeField] InputActionProperty brake;
 
 	[SerializeField] WheelCollider frontLeft;
 	[SerializeField] WheelCollider frontRight;
 	[SerializeField] WheelCollider backLeft;
 	[SerializeField] WheelCollider backRight;
+
+	bool brakeModeEnabled = false;
+	bool brakeModeUtilized = false;
 
 	bool rightHandHoldingWheel = false;
 	bool leftHandHoldingWheel = false;
@@ -35,23 +40,41 @@ public class RiderDrivingControl : MonoBehaviour
 		leftControllerTrigger.action.Enable();
 		leftControllerY.action.Enable();
 		leftControllerX.action.Enable();
+		brake.action.Enable();
+
+		brake.action.performed += context =>
+		{
+			if (context.interaction is TapInteraction) {
+				brakeModeEnabled = true;
+			}
+		};
 	}
 
 	private void FixedUpdate() {
 		currentAcceleration = acceleration * GetAccelerationValue();
 
-		frontLeft.motorTorque = currentAcceleration;
-		frontRight.motorTorque = currentAcceleration;
-
-		var localVel = LocalVelocity();
-
-		if (localVel.z > 10f && currentAcceleration < 0)
-		{
+		if (brakeModeEnabled && currentAcceleration < 0) {
 			Brake();
-		} else if (localVel.z < -10f && currentAcceleration > 0) {
-			Brake();
+			brakeModeUtilized = true;
 		} else {
-			ReleaseBrake();
+			if (brakeModeUtilized) {
+				brakeModeEnabled = false;
+				brakeModeUtilized = false;
+			}
+
+			frontLeft.motorTorque = currentAcceleration;
+			frontRight.motorTorque = currentAcceleration;
+
+			var localVel = LocalVelocity();
+
+			if (localVel.z > 10f && currentAcceleration < 0)
+			{
+				Brake();
+			} else if (localVel.z < -10f && currentAcceleration > 0) {
+				Brake();
+			} else {
+				ReleaseBrake();
+			}
 		}
 
 		currentTurnAngle = GetTurnAngle() * steeringWheel.GetValue();
