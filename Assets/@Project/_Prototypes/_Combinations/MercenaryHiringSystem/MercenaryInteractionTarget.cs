@@ -37,6 +37,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
 
+		[SerializeField] Image healthIcon;
 		[SerializeField] TextMeshProUGUI healthStat;
 		[SerializeField] Image turretIcon;
 		[SerializeField] TextMeshProUGUI turretName;
@@ -146,6 +147,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 		}
 
 		void InitPromptStats() {
+			healthIcon.sprite = riderConfig.RiderAIChassisToSprite(mercenary.chassis);
 			healthStat.text = riderConfig.FriendlyRiderAIChassisToHealth(mercenary.chassis).ToString();
 			turretIcon.sprite = riderConfig.RiderAIGunToSprite(mercenary.gunType);
 			turretName.text = riderConfig.RiderAIGunToName(mercenary.gunType);
