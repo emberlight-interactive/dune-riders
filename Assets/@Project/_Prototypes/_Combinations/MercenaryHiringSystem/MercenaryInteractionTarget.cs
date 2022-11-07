@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
+using DuneRiders.Config;
 using DuneRiders.RiderAI.Traits;
 using DuneRiders.RiderAI.State;
 using DuneRiders.GatheringSystem;
@@ -34,6 +36,13 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
+
+		[SerializeField] TextMeshProUGUI healthStat;
+		[SerializeField] Image turretIcon;
+		[SerializeField] TextMeshProUGUI turretName;
+		[SerializeField] TextMeshProUGUI preciousMetalCostStat;
+
+		[SerializeField] RiderConfig riderConfig;
 
 		public UnityEvent mercenaryHiredEvent = new UnityEvent();
 
@@ -78,6 +87,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 
 		void StartMercenaryNegotiation(bool waved) {
 			SetInteractionSpotToActive();
+			InitPromptStats();
 
 			if (GlobalQuery.GetAllCompanyRiders().Length >= 10) {
 				SetPromptText("Looks like you have a full company, come back if you need us");
@@ -133,6 +143,13 @@ namespace DuneRiders.MercenaryHiringSystem {
 			}
 
 			prompt.text = promptText;
+		}
+
+		void InitPromptStats() {
+			healthStat.text = riderConfig.FriendlyRiderAIChassisToHealth(mercenary.chassis).ToString();
+			turretIcon.sprite = riderConfig.RiderAIGunToSprite(mercenary.gunType);
+			turretName.text = riderConfig.RiderAIGunToName(mercenary.gunType);
+			preciousMetalCostStat.text = $"- {mercenary.preciousMetalCost.ToString()}";
 		}
 
 		IEnumerator DelayedInteractionRestart(float time = 5f) {

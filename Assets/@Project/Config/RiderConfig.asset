@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a3ae3b81a79d14e875383335a56c94, type: 3}
+  m_Name: RiderConfig
+  m_EditorClassIdentifier: 
+  friendlyHeavyChassisHealth: 350
+  enemyHeavyChassisHealth: 325
+  friendlyNormalChassisHealth: 200
+  enemyNormalChassisHealth: 180
+  friendlyLightChassisHealth: 120
+  enemyLightChassisHealth: 90
+  heavyChassisFuelPerHour: 150
+  normalChassisFuelPerHour: 150
+  lightChassisFuelPerHour: 150
+  heavyChassisSprite: {fileID: 21300000, guid: 24734b30701375d4fb2b4f6ddece7cee, type: 3}
+  normalChassisSprite: {fileID: 21300000, guid: 6d91209fca8232a44b5ef4a960616859, type: 3}
+  lightChassisSprite: {fileID: 21300000, guid: 72577aaa9fbc8f24494d856486b2866b, type: 3}
+  cannonSprite: {fileID: 21300000, guid: 5f929bd8005d1d243a780c911e129047, type: 3}
+  missilesSprite: {fileID: 21300000, guid: bb28646049d0c8c48a3545cdc7ce8356, type: 3}
+  turretSprite: {fileID: 21300000, guid: 39d0a79e97ffe1245ae509aa8e440273, type: 3}
+  mercenaryLightChassisTurret:
+    preciousMetalCost: 20
+    availabilityValue: 100
+  mercenaryLightChassisMissiles:
+    preciousMetalCost: 33
+    availabilityValue: 49
+  mercenaryNormalChassisTurret:
+    preciousMetalCost: 26
+    availabilityValue: 70
+  mercenaryNormalChassisMissiles:
+    preciousMetalCost: 43
+    availabilityValue: 34
+  mercenaryNormalChassisCannon:
+    preciousMetalCost: 75
+    availabilityValue: 16
+  mercenaryHeavyChassisMissiles:
+    preciousMetalCost: 57
+    availabilityValue: 24
+  mercenaryHeavyChassisCannon:
+    preciousMetalCost: 95
+    availabilityValue: 11
