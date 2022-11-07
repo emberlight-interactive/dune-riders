@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace DuneRiders.RiderTabletSystem {
 	[RequireComponent(typeof(Button))]
@@ -12,6 +13,7 @@ namespace DuneRiders.RiderTabletSystem {
 		public Image armourIconography;
 		public Image weaponIconography;
 		public Image repairImage;
+		public TextMeshProUGUI healthText;
 
 		DisbandConfirmation disbandConfirmation;
 		Button hostButton;

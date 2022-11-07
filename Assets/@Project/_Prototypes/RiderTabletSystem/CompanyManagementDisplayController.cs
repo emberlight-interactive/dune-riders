@@ -84,6 +84,7 @@ namespace DuneRiders.RiderTabletSystem {
 					availableTiles[i].armourIconography.sprite = GetIconForArmour(rider.armourType);
 					availableTiles[i].weaponIconography.sprite = GetIconForWeapon(rider.weaponType);
 					availableTiles[i].healthOverlay.fillAmount = HealthToDamageOverlay(rider.health);
+					availableTiles[i].healthText.text = rider.health.ToString();
 					availableTiles[i].repairImage.gameObject.SetActive(rider.isBeingRepaired);
 					i++;
 				}
@@ -119,7 +120,7 @@ namespace DuneRiders.RiderTabletSystem {
 		}
 
 		float HealthToDamageOverlay(float health) {
-			var healtAvailablepercentage = health / 100f;
+			var healtAvailablepercentage = health / 100f; // todo: not 100 anymore lol
 			return 1f - healtAvailablepercentage;
 		}
 	}
