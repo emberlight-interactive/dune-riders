@@ -286,9 +286,9 @@ MonoBehaviour:
   - {fileID: 6801916244373543810}
   - {fileID: 7289377194732767351}
   gatherablesToSpawn:
-  - {fileID: 1257076406645165952, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
-  - {fileID: 1257076406645165952, guid: 251220e9b1eb55b4ca2a0123e17a9f60, type: 3}
-  - {fileID: 1257076406645165952, guid: d56df6e667159be4abc3f7a24fc44e17, type: 3}
+  - {fileID: -4277411234573843691, guid: 794f8be285be02c478f71d6819ecaf84, type: 3}
+  - {fileID: 3206130832710033739, guid: 08757167744865c4197a1c46ea4f42ac, type: 3}
+  - {fileID: -465630686636767625, guid: 665c3c2ec431c6642a6418becb829178, type: 3}
   increaseRareProbabilityMultipler: 0
 --- !u!114 &719968417301309089
 MonoBehaviour:
@@ -345,6 +345,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1224528458558034510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781603190224703967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4502db9b91c0cc24381f396d0d2c6554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToActivate:
+  - {fileID: 6361227898181813082}
+  - {fileID: 7454505705752844648}
 --- !u!114 &1971225086264976061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,18 +435,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f4261985dcdc740aba8ea4438df7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1224528458558034510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781603190224703967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4502db9b91c0cc24381f396d0d2c6554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentsToActivate:
-  - {fileID: 6361227898181813082}
-  - {fileID: 7454505705752844648}

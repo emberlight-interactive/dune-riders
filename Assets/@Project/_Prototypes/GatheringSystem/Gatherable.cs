@@ -6,7 +6,7 @@ namespace DuneRiders.GatheringSystem {
 	public class Gatherable : MonoBehaviour
 	{
 		Gatherer gatherer;
-		Vector3 restingDestination;
+		protected virtual Vector3 restingDestination { get; set; }
 		[SerializeField] Gatherer.SupportedResources resourceType;
 		public int amount = 5;
 		public float yOffsetOfRestingPlace = 2f;
