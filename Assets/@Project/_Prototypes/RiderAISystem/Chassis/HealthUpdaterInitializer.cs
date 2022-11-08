@@ -7,11 +7,24 @@ namespace DuneRiders.RiderAI {
 	[RequireComponent(typeof(DamageableRiderAI))]
 	public class HealthUpdaterInitializer : MonoBehaviour
 	{
+		DamageableRiderAI damageableRiderAI;
+		bool shouldDamageableComponentComeWithMeToTheKamakazyGrave = false;
+
 		void Awake() {
-			var damageableRiderAI = GetComponent<DamageableRiderAI>();
+			damageableRiderAI = GetComponent<DamageableRiderAI>();
 			if (!damageableRiderAI) return;
 
-			damageableRiderAI.HealthState = GetComponentInParent<HealthState>();
+			var healthState = GetComponentInParent<HealthState>();
+			if (healthState) {
+				damageableRiderAI.HealthState = healthState;
+			} else {
+				shouldDamageableComponentComeWithMeToTheKamakazyGrave = true;
+				Destroy(this);
+			}
+		}
+
+		void OnDestroy() {
+			if (shouldDamageableComponentComeWithMeToTheKamakazyGrave && damageableRiderAI != null) Destroy(damageableRiderAI);
 		}
 	}
 }
