@@ -20,9 +20,21 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3365782732278991986, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
+      propertyPath: playHitMarkerAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365782732278991986, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
       propertyPath: maxProjectileDistance
       value: 530
       objectReference: {fileID: 0}
+    - target: {fileID: 3365782732278991986, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
+      propertyPath: directHitMarkerSoundPlayer
+      value: 
+      objectReference: {fileID: -2540033027198658104}
+    - target: {fileID: 3365782732278991986, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
+      propertyPath: radiusHitMarkerSoundPlayer
+      value: 
+      objectReference: {fileID: -1802424214439013099}
     - target: {fileID: 7029898402891140958, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
       propertyPath: m_Name
       value: PlayerRiderMissileProjectile
@@ -78,6 +90,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7029898402891140958, guid: 859d4a8a019eb9c4aa34b0128e1b7ad0, type: 3}
   m_PrefabInstance: {fileID: 698499200498550259}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2540033027198658104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511623796939672237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioSource: {fileID: 4080826588445787547, guid: 874279155802651499f3addef6b3c05b, type: 3}
+  sound: {fileID: 8300000, guid: b7cdf9c7828959e428b39fb7e8602ae0, type: 3}
+--- !u!114 &-1802424214439013099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511623796939672237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioSource: {fileID: 4080826588445787547, guid: 874279155802651499f3addef6b3c05b, type: 3}
+  sound: {fileID: 8300000, guid: f3e6a8194a9da1744a4036c563b94030, type: 3}
 --- !u!114 &-676338840018557963
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,7 +49,10 @@ namespace DuneRiders.Shared.DamageSystem {
 		void RegisterDamageOnObjectIfDamageable(RaycastHit hit) {
 			var damageableComponent = hit.collider.gameObject.GetComponent<Damageable>();
 			if (damageableComponent != null) {
-				if (CanDamage(damageableComponent)) damageableComponent.Damage(directHitDamage);
+				if (CanDamage(damageableComponent)) {
+					damageableComponent.Damage(directHitDamage);
+					if (playHitMarkerAudio) directHitMarkerSoundPlayer.Play();
+				}
 			}
 		}
 

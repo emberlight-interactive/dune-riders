@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1794581736181503391
+--- !u!1 &2827539934517383327
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1759890028852635765}
-  - component: {fileID: 6534340815493094056}
-  - component: {fileID: 2672641019947009494}
-  - component: {fileID: 7677583876249742308}
+  - component: {fileID: 3486821515136344050}
+  - component: {fileID: 4080826588445787547}
   m_Layer: 0
-  m_Name: MachineGunProjectile
+  m_Name: HitMarkerAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1759890028852635765
+--- !u!4 &3486821515136344050
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794581736181503391}
+  m_GameObject: {fileID: 2827539934517383327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,56 +31,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6534340815493094056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794581736181503391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a720820a416714f92d93792073802d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageableCheck: {fileID: 0}
-  accuracyVariance: 0
-  playHitMarkerAudio: 0
-  directHitMarkerSoundPlayer: {fileID: 0}
-  radiusHitMarkerSoundPlayer: {fileID: 0}
-  directHitDamage: 1
-  launchParticle: {fileID: 198347678361706746, guid: 955ee7aba920ba04e8d3f3e21e40ff1c, type: 3}
-  launchParticleScale: 1
-  landParticle: {fileID: 1794795611015890955, guid: e9a3d6767b1c5c544a538284d1c2ce56, type: 3}
-  landParticleScale: 1
-  explosionNoise: {fileID: 8300000, guid: 5bdf4a1d620db3a458ccb4f8dde08c36, type: 3}
-  launchNoise: {fileID: 8300000, guid: d0fce3bfe3c70234baeb76b46b202f77, type: 3}
-  maxProjectileDistance: 0
---- !u!114 &2672641019947009494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794581736181503391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!82 &7677583876249742308
+--- !u!82 &4080826588445787547
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794581736181503391}
+  m_GameObject: {fileID: 2827539934517383327}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -126,7 +87,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

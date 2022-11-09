@@ -63,6 +63,7 @@ namespace DuneRiders.Shared.DamageSystem {
 			var collisionObjectDamagable = collision.gameObject.GetComponent<Damageable>();
 			if (collisionObjectDamagable != null && CanDamage(collisionObjectDamagable)) {
 				collisionObjectDamagable.Damage(directHitDamage);
+				if (playHitMarkerAudio) directHitMarkerSoundPlayer.Play();
 			}
 
 			Collider[] hits = Physics.OverlapSphere(transform.position, explosiveRadius);
@@ -73,7 +74,10 @@ namespace DuneRiders.Shared.DamageSystem {
 				var damageableComponent = hits[i].GetComponent<Damageable>();
 				if (damageableComponent != null) {
 					var hitDistance = Vector3.Distance(transform.position, hits[i].transform.position);
-					if (CanDamage(damageableComponent)) damageableComponent.Damage(Mathf.CeilToInt(directHitDamage / (hitDistance < 1 ? 1 : hitDistance)));
+					if (CanDamage(damageableComponent)) {
+						damageableComponent.Damage(Mathf.CeilToInt(directHitDamage / (hitDistance < 1 ? 1 : hitDistance)));
+						if (playHitMarkerAudio) radiusHitMarkerSoundPlayer.Play();
+					}
 				}
 			}
 

@@ -60,9 +60,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8696564585470180143}
     - target: {fileID: 6534340815493094056, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
+      propertyPath: playHitMarkerAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534340815493094056, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
       propertyPath: maxProjectileDistance
       value: 530
       objectReference: {fileID: 0}
+    - target: {fileID: 6534340815493094056, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
+      propertyPath: directHitMarkerSoundPlayer
+      value: 
+      objectReference: {fileID: 1530985615221901800}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
 --- !u!1 &8758991150374570028 stripped
@@ -70,6 +78,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1794581736181503391, guid: 59726853181b1c84d9ce3e121c33b729, type: 3}
   m_PrefabInstance: {fileID: 7019302709947620787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1530985615221901800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758991150374570028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioSource: {fileID: 4080826588445787547, guid: 874279155802651499f3addef6b3c05b, type: 3}
+  sound: {fileID: 8300000, guid: b7cdf9c7828959e428b39fb7e8602ae0, type: 3}
 --- !u!114 &8696564585470180143
 MonoBehaviour:
   m_ObjectHideFlags: 0

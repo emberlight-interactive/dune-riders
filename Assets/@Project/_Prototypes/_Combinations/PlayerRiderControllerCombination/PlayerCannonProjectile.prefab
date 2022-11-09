@@ -64,9 +64,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5041203329349004666, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
+      propertyPath: playHitMarkerAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041203329349004666, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
       propertyPath: maxProjectileDistance
       value: 530
       objectReference: {fileID: 0}
+    - target: {fileID: 5041203329349004666, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
+      propertyPath: directHitMarkerSoundPlayer
+      value: 
+      objectReference: {fileID: 6832817268813284124}
+    - target: {fileID: 5041203329349004666, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
+      propertyPath: radiusHitMarkerSoundPlayer
+      value: 
+      objectReference: {fileID: 2467142630702993717}
     - target: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
       propertyPath: m_Name
       value: PlayerCannonProjectile
@@ -78,6 +90,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6048169039058194049, guid: ca02f133eebea724f86fe3b5a5dbfaf8, type: 3}
   m_PrefabInstance: {fileID: 6664034988381359376}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2467142630702993717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122523520973833105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioSource: {fileID: 4080826588445787547, guid: 874279155802651499f3addef6b3c05b, type: 3}
+  sound: {fileID: 8300000, guid: f3e6a8194a9da1744a4036c563b94030, type: 3}
 --- !u!114 &6748220341769019346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,3 +116,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e9b0301c4bb03e4cb7d6d8cf48af794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6832817268813284124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122523520973833105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioSource: {fileID: 4080826588445787547, guid: 874279155802651499f3addef6b3c05b, type: 3}
+  sound: {fileID: 8300000, guid: b7cdf9c7828959e428b39fb7e8602ae0, type: 3}
