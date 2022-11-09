@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DuneRiders.Shared.Sound;
 
 namespace DuneRiders.GatheringSystem {
 	public class Gatherable : MonoBehaviour
@@ -8,6 +9,7 @@ namespace DuneRiders.GatheringSystem {
 		Gatherer gatherer;
 		protected virtual Vector3 restingDestination { get; set; }
 		[SerializeField] Gatherer.SupportedResources resourceType;
+		[SerializeField] SoundPlayer succSoundPlayer;
 		public int amount = 5;
 		public float yOffsetOfRestingPlace = 2f;
 		public float moveSpeed = 1f;
@@ -57,6 +59,8 @@ namespace DuneRiders.GatheringSystem {
 
 			if (gathererComponent && !gathered) {
 				if (gathererComponent.GetManager(resourceType).Give(amount)) {
+					succSoundPlayer.Play();
+
 					gatherer = gathererComponent;
 					gatherer.rootAdditionRow.RenderAddition(resourceType, amount);
 					gathered = true;

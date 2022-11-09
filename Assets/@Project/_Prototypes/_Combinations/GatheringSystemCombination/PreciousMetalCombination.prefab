@@ -63,6 +63,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1257076406645165967, guid: 251220e9b1eb55b4ca2a0123e17a9f60, type: 3}
   m_PrefabInstance: {fileID: 4452414829301188700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4597712986777029628 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -9077994435330554976, guid: 251220e9b1eb55b4ca2a0123e17a9f60, type: 3}
+  m_PrefabInstance: {fileID: 4452414829301188700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222378199961946067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3206130832710033739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 2
+  succSoundPlayer: {fileID: 4597712986777029628}
   amount: 5
   yOffsetOfRestingPlace: 0.5
   moveSpeed: 2

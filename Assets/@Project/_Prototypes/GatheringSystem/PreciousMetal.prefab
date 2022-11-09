@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1257076406645165953}
   - component: {fileID: 1257076406645165966}
   - component: {fileID: 1257076406645165952}
+  - component: {fileID: -9077994435330554976}
   m_Layer: 0
   m_Name: PreciousMetal
   m_TagString: Untagged
@@ -59,11 +60,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 2
+  succSoundAudioSource: {fileID: 6756086036748522870, guid: a9690b53fc03adc43a490e96348b75f1, type: 3}
+  succSound: {fileID: 8300000, guid: b82227178298c554db3bd0d110646897, type: 3}
+  succSoundPlayer: {fileID: -9077994435330554976}
   amount: 5
   yOffsetOfRestingPlace: 0.5
   moveSpeed: 2
   gatherSpeed: 12
   rarityValue: 10
+--- !u!114 &-9077994435330554976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257076406645165967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edb843c6a5932e4cb096a6f5ce9549a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  succSoundAudioSource: {fileID: 6756086036748522870, guid: a9690b53fc03adc43a490e96348b75f1, type: 3}
+  sound: {fileID: 8300000, guid: b82227178298c554db3bd0d110646897, type: 3}
 --- !u!1001 &5382855653420722379
 PrefabInstance:
   m_ObjectHideFlags: 0
