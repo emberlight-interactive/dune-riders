@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DuneRiders.AI;
 
-namespace DuneRiders.OutpostAI.Traits { // todo: Add colliders to turret platforms
+namespace DuneRiders.OutpostAI.Traits {
 	[DisallowMultipleComponent]
 	public class OutpostTurret : MonoBehaviour
 	{

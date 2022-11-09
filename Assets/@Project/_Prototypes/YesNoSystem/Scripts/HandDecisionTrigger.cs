@@ -13,7 +13,7 @@ namespace DuneRiders.YesNoSystem {
 		None
 	}
 
-	public class HandDecisionTrigger : MonoBehaviour // todo: Double tapping does not properly exit dialouge
+	public class HandDecisionTrigger : MonoBehaviour
 	{
 		[BoxGroup("Debug"), SerializeField] public bool isDebug = true;
 		[BoxGroup("Debug"), ShowIf("isDebug", true), SerializeField] private HandDecision handDecision;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DuneRiders.RiderTabletSystem { //todo: Mercenaries show on map as friendly, making a new mercenary variant should relieve all this
+namespace DuneRiders.RiderTabletSystem {
 	public class MapIcon : bl_MiniMapEntity
 	{
 		[SerializeField] bool hideIconWhenGameObjectIsDisabled = true;

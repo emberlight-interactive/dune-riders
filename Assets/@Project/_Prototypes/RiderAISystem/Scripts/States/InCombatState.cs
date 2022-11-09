@@ -12,7 +12,7 @@ namespace DuneRiders.RiderAI.State {
 	[RequireComponent(typeof(AllNearbyOutpostsState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(Rider))]
-	public class InCombatState : MonoBehaviour // todo: Rig up with EnemyAiEntitiesInRange
+	public class InCombatState : MonoBehaviour
 	{
 		[ReadOnly] public bool inCombat = false;
 
@@ -59,7 +59,7 @@ namespace DuneRiders.RiderAI.State {
 
 		IEnumerator UpdateInCombatState() {
 			while (true) {
-				if (AreThereAnyEnemiesLeft()) { // todo: Fix riders fighting riders then cross mapping the turrets
+				if (AreThereAnyEnemiesLeft()) {
 					if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
 						inCombat = true;
 					}

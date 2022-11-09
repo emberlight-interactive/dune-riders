@@ -7,7 +7,7 @@ using DuneRiders.AI;
 namespace DuneRiders.OutpostAI.BehaviourTrees {
 	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(HealthState))]
-	public class AmandaTurretAI : BehaviourTree // todo: Add gizmos for firing range / aggro range
+	public class AmandaTurretAI : BehaviourTree
 	{
 		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner deathAction;
