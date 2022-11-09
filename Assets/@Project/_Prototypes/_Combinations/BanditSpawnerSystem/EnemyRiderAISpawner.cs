@@ -114,9 +114,9 @@ namespace DuneRiders.BanditSpawnerSystem {
 			var yAngleModifier = (side == Side.Left ? 90 : -90);
 			var rotation = player.rotation;
 			rotation.eulerAngles = new Vector3(
-				rotation.eulerAngles.x, // todo: 0?, player might be on an angle and could affect raycasts
+				0,
 				rotation.eulerAngles.y + yAngleModifier,
-				rotation.z // todo: 0?, player might be on an angle and could affect raycasts
+				0
 			);
 			return rotation;
 		}
