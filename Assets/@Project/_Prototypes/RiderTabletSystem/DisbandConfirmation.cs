@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 namespace DuneRiders.RiderTabletSystem {
@@ -9,6 +10,8 @@ namespace DuneRiders.RiderTabletSystem {
 	{
 		[SerializeField] Button yesButton;
 		[SerializeField] Button noButton;
+
+		[SerializeField] UnityEvent onDisband;
 
 		void Awake() {
 			gameObject.SetActive(false);
@@ -21,6 +24,7 @@ namespace DuneRiders.RiderTabletSystem {
 				disbandCallback();
 				initiatingTile.SetActive(false);
 				gameObject.SetActive(false);
+				onDisband?.Invoke();
 			});
 		}
 	}
