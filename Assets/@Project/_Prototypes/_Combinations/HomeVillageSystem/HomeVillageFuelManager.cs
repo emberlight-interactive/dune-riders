@@ -12,7 +12,12 @@ namespace DuneRiders.HomeVillageSystem {
 		[Serializable]
 		class HomeVillageFuelManagerSerializable {
 			public int numberOfMigrations;
+			public float remainingSecondsUntilNextWarning;
 		}
+
+		[SerializeField] UnityEvent lowFuelWarningEvent = new UnityEvent();
+		[SerializeField] float secondsBetweenEveryWarning = 300f;
+		float remainingSecondsUntilNextWarning = 0f;
 
 		[SerializeField] ResourceManager fuelResourceManager;
 		[SerializeField] UnityEvent villageOutOfFuel = new UnityEvent();
@@ -27,6 +32,10 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] int reserveLevel = 5000;
 		public bool DisablePersistence { get => false; }
 		string persistenceKey = "HomeVillageFuelManager";
+
+		void Start() {
+			InvokeRepeating(nameof(DecrementSecondsUntilWarning), 1f, 1f);
+		}
 
 		void OnEnable() {
 			StartCoroutine(FuelConsumption());
@@ -59,8 +68,17 @@ namespace DuneRiders.HomeVillageSystem {
 				var fuelPerMinute = fuelPerHour / 360f;
 				if (!fuelResourceManager.Take(fuelPerMinute)) {
 					villageOutOfFuel.Invoke();
+				} else if (fuelResourceManager.Amount() / fuelResourceManager.ResourceLimit() <= 0.15f) {
+					if (remainingSecondsUntilNextWarning <= 0) {
+						lowFuelWarningEvent?.Invoke();
+						remainingSecondsUntilNextWarning = secondsBetweenEveryWarning;
+					}
 				}
 			}
+		}
+
+		void DecrementSecondsUntilWarning() {
+			remainingSecondsUntilNextWarning -= remainingSecondsUntilNextWarning < 0 ? 0 : 1;
 		}
 
 		public float GetPercentageOfVillageFuelLeft() {
@@ -78,12 +96,14 @@ namespace DuneRiders.HomeVillageSystem {
 		public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save(persistenceKey, new HomeVillageFuelManagerSerializable {
 				numberOfMigrations = this.numberOfMigrations,
+				remainingSecondsUntilNextWarning = this.remainingSecondsUntilNextWarning,
 			});
 		}
 
         public void Load(IPersistenceUtil persistUtil) {
 			var loadedHomeVillageFuelManager = persistUtil.Load<HomeVillageFuelManagerSerializable>(persistenceKey);
 			numberOfMigrations = loadedHomeVillageFuelManager.numberOfMigrations;
+			remainingSecondsUntilNextWarning = loadedHomeVillageFuelManager.remainingSecondsUntilNextWarning;
 		}
 	}
 }
