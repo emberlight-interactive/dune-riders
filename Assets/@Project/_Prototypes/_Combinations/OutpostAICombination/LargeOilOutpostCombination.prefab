@@ -806,19 +806,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
+--- !u!212 &8135720788041162042 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4682237711477282141, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
+  m_PrefabInstance: {fileID: 3467002706436999271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1260151907903644999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2405399304804920608, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
-  m_PrefabInstance: {fileID: 3467002706436999271}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7871824550814201898 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6711227864211288141, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
-  m_PrefabInstance: {fileID: 3467002706436999271}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7871824550814201892 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6711227864211288131, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
   m_PrefabInstance: {fileID: 3467002706436999271}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7871824549779802931 stripped
@@ -832,14 +827,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7871824550814201898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6711227864211288141, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
+  m_PrefabInstance: {fileID: 3467002706436999271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7871824550814201892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6711227864211288131, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
+  m_PrefabInstance: {fileID: 3467002706436999271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &7871824550654855485 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6711227864588845402, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
-  m_PrefabInstance: {fileID: 3467002706436999271}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &8135720788041162042 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4682237711477282141, guid: 2c812f7a670d9de4c900d72ce021250e, type: 3}
   m_PrefabInstance: {fileID: 3467002706436999271}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1506039744856602042
@@ -958,6 +958,18 @@ MonoBehaviour:
   gatherablesToSpawn:
   - {fileID: -465630686636767625, guid: 665c3c2ec431c6642a6418becb829178, type: 3}
   increaseRareProbabilityMultipler: 0
+--- !u!114 &3734968205348999097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871824550814201898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15506dac729b334d80cdcef7e9bef92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4868163326423505970
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ namespace DuneRiders.NPCGuidanceSystem {
 		[SerializeField] AudioClip radioBuzz;
 		AudioClip clipToPlay;
 		AudioSource audioSource;
+		public AudioSource usedAudioSource { get => audioSource; }
+		public AudioClip currentClipToPlay { get => clipToPlay; }
 
 		void Awake() {
 			audioSource = GetComponent<AudioSource>();
