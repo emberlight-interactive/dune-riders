@@ -32,6 +32,7 @@ namespace DuneRiders.HomeVillageSystem {
 
 		[SerializeField] UnityEvent migrateVillage = new UnityEvent();
 		[SerializeField] UnityEvent fuelSuccessfullyTransferred = new UnityEvent();
+		[SerializeField] UnityEvent variableLargeFuelTransferEvent = new UnityEvent();
 
 		bool currentlyPreparingForMigration = false;
 		[ReadOnly] public bool nextMigrationTriggersWinCondition = false;
@@ -127,6 +128,7 @@ namespace DuneRiders.HomeVillageSystem {
 		void FuelToTransfer(int value) {
 			if (gatherer.GetManager(Gatherer.SupportedResources.Fuel).Take(value)) {
 				if (homeVillageFuelManager.FuelResourceManager.Give(value)) {
+					if (value > 1700 && gatherer.GetManager(Gatherer.SupportedResources.Fuel).RemainingCapacityPercentage() > 0.25f) StartCoroutine(TriggerVariableLargeFuelTransferEvent());
 					SetPromptText("Thank you for your help rider");
 					fuelSuccessfullyTransferred.Invoke();
 				} else {
@@ -182,6 +184,12 @@ namespace DuneRiders.HomeVillageSystem {
 
 		public void MigrationFinished() {
 			currentlyPreparingForMigration = false;
+		}
+
+		IEnumerator TriggerVariableLargeFuelTransferEvent() {
+			if (UnityEngine.Random.Range(0, 10) < 6.5) yield break;
+			yield return new WaitForSeconds(12f);
+			variableLargeFuelTransferEvent?.Invoke();
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {

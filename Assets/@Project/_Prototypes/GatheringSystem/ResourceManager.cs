@@ -40,6 +40,7 @@ namespace DuneRiders.GatheringSystem {
 		public float Amount() { return resourceAmount; }
 		public float ResourceLimit() { return resourceLimit; }
 		public float RemainingCapacity() { return resourceLimit - resourceAmount; }
+		public float RemainingCapacityPercentage() { return resourceAmount / resourceLimit; }
 
         public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save<ResourceManagerSerializable>(persistenceKey, new ResourceManagerSerializable {

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 369055793998268986}
   - component: {fileID: 8512324782113981585}
   - component: {fileID: 8941552439183213572}
+  - component: {fileID: 7728241009109429421}
   m_Layer: 0
   m_Name: NPCGuidance
   m_TagString: Untagged
@@ -138,3 +139,16 @@ AudioHighPassFilter:
   m_Enabled: 1
   m_CutoffFrequency: 1750
   m_HighpassResonanceQ: 4.5
+--- !u!114 &7728241009109429421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3628367037166911022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e5692148ad6574bbf73f6430fa07f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioBuzz: {fileID: 8300000, guid: 0922c7f25b9886b488ce5be0c6333ae1, type: 3}
