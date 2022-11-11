@@ -15,16 +15,16 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		Player player;
 		IsParkedState isParkedState;
 
-		(System.Type, string, System.Object)[] _priorityStates;
-		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => _priorityStates;
+		PriorityStateMonitor[] _priorityStateMonitors;
+		protected override PriorityStateMonitor[] priorityStateMonitors {
+			get => _priorityStateMonitors;
 		}
 
 		void Awake() {
 			player = FindObjectOfType<Player>();
 			isParkedState = GetComponent<IsParkedState>();
 
-			_priorityStates = new (System.Type, string, System.Object)[] {};
+			_priorityStateMonitors = new PriorityStateMonitor[] {};
 		}
 
 		protected override void ProcessBehaviourTree() {

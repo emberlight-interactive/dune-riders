@@ -29,9 +29,9 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		PlayerHasDrawnWeapon playerHasDrawnWeapon;
 		Player player;
 
-		(System.Type, string, System.Object)[] _priorityStates;
-		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => _priorityStates;
+		PriorityStateMonitor[] _priorityStateMonitors;
+		protected override PriorityStateMonitor[] priorityStateMonitors {
+			get => _priorityStateMonitors;
 		}
 
 		void Awake()
@@ -44,9 +44,9 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			playerHasDrawnWeapon = GetComponent<PlayerHasDrawnWeapon>();
 			player = FindObjectOfType<Player>();
 
-			_priorityStates = new (System.Type, string, System.Object)[] {
-				(typeof(PlayerCommandState), "command", playerCommandState),
-				(typeof(HealthState), "health", healthState)
+			_priorityStateMonitors = new PriorityStateMonitor[] {
+				new HealthStateMonitor(healthState),
+				new CommandStateMonitor(playerCommandState),
 			};
 		}
 
@@ -57,23 +57,23 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 				SetActionersActive(teleportNearPlayerAction);
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Charge)) {
 				if (AreAnyEnemiesInDetectionRange()) {
-					SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
+					SetActionersActive(GenerateActionerList(chargeAction, gunnerAction));
 				} else {
 					SetActionersActive(followAction);
 				}
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Halt)) {
 				if (AreAnyEnemiesInDetectionRange() && IsPlayerWeaponDrawn()) {
-					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
+					SetActionersActive(GenerateActionerList(haltAction, gunnerAction));
 				} else if (AreAnyEnemiesInThreatRange()) {
-					SetActionersActive(new Actioner[] {haltAction, gunnerAction});
+					SetActionersActive(GenerateActionerList(haltAction, gunnerAction));
 				} else {
 					SetActionersActive(haltAction);
 				}
 			} else if (IsCurrentCommand(PlayerCommandState.Command.Follow)) {
 				if (AreAnyEnemiesInDetectionRange() && IsPlayerWeaponDrawn()) {
-					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+					SetActionersActive(GenerateActionerList(followAction, gunnerAction));
 				} else if (AreAnyEnemiesInThreatRange()) {
-					SetActionersActive(new Actioner[] {followAction, gunnerAction});
+					SetActionersActive(GenerateActionerList(followAction, gunnerAction));
 				} else {
 					SetActionersActive(followAction);
 				}

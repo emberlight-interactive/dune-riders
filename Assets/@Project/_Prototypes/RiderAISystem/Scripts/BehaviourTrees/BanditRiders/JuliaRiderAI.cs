@@ -23,9 +23,9 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		MoraleState moraleState;
 		Player player;
 
-		(System.Type, string, System.Object)[] _priorityStates;
-		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => _priorityStates;
+		PriorityStateMonitor[] _priorityStateMonitors;
+		protected override PriorityStateMonitor[] priorityStateMonitors {
+			get => _priorityStateMonitors;
 		}
 
 		void Awake()
@@ -35,10 +35,9 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			inCombatState = GetComponent<InCombatState>();
 			player = FindObjectOfType<Player>();
 
-			_priorityStates = new (System.Type, string, System.Object)[] {
-				(typeof(HealthState), "health", healthState)
+			_priorityStateMonitors = new PriorityStateMonitor[] {
+				new HealthStateMonitor(healthState),
 			};
-
 		}
 
 		protected override void ProcessBehaviourTree() {
@@ -51,7 +50,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			// todo: Have we brutalized the player enough to continue traversing as we were (player company size reduction, is player fleeing)
 			// Make sure code is set up for reengagement
 			} else if (AmIEngagedInCombat()) {
-				SetActionersActive(new Actioner[] {chargeAction, gunnerAction});
+				SetActionersActive(GenerateActionerList(chargeAction, gunnerAction));
 			} else {
 				SetActionersActive(traverseAction);
 			}

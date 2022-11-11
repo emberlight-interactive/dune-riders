@@ -16,15 +16,18 @@ namespace DuneRiders.OutpostAI.BehaviourTrees {
 		InCombatState inCombatState;
 		HealthState healthState;
 
-		protected override (System.Type, string, System.Object)[] priorityStates {
-			get => new (System.Type, string, System.Object)[] {
-				(typeof(HealthState), "health", healthState)
-			};
+		PriorityStateMonitor[] _priorityStateMonitors;
+		protected override PriorityStateMonitor[] priorityStateMonitors {
+			get => _priorityStateMonitors;
 		}
 
 		void Awake() {
 			healthState = GetComponent<HealthState>();
 			inCombatState = GetComponent<InCombatState>();
+
+			_priorityStateMonitors = new PriorityStateMonitor[] {
+				new HealthStateMonitor(healthState),
+			};
 		}
 
 		protected override void ProcessBehaviourTree() {

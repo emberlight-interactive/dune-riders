@@ -7,10 +7,10 @@ using Sirenix.OdinInspector;
 namespace DuneRiders.AI {
 	public abstract class BehaviourTree : MonoBehaviour
 	{
+		List<Actioner> resuableActionersList = new List<Actioner>();
 		[SerializeField, ReadOnly] protected List<Actioner> currentlyActiveActioners = new List<Actioner>();
 		protected abstract void ProcessBehaviourTree();
-		protected abstract (Type, string, System.Object)[] priorityStates {get;}
-		List<System.Object> priorityStatesCache = new List<System.Object>();
+		protected abstract PriorityStateMonitor[] priorityStateMonitors { get; }
 		bool hasBeenDisabled = false;
 
 		void Start() {
@@ -62,10 +62,11 @@ namespace DuneRiders.AI {
 			}
 		}
 
-		protected void SetActionersActive(Actioner[] actioners) {
+		/// <summary>Please reuse lists to help with reducing GCAlloc issues</summary>
+		protected void SetActionersActive(List<Actioner> actioners) {
 			if (currentlyActiveActioners.Count >= 1) { // Clear all other actioners not included in our added actioners array
 				currentlyActiveActioners.RemoveAll((thisActioner) => {
-					for (int i = 0; i < actioners.Length; i++) {
+					for (int i = 0; i < actioners.Count; i++) {
 						if (thisActioner == actioners[i]) return false;
 					}
 
@@ -74,7 +75,7 @@ namespace DuneRiders.AI {
 				});
 			}
 
-			for (int i = 0; i < actioners.Length; i++) { // Add + activate / reactivate existing deactivated actioners
+			for (int i = 0; i < actioners.Count; i++) { // Add + activate / reactivate existing deactivated actioners
 				var actionerFromActiveList = currentlyActiveActioners.Find((thisActioner) => thisActioner == actioners[i]);
 
 				if (actionerFromActiveList == null) {
@@ -87,37 +88,32 @@ namespace DuneRiders.AI {
 		}
 
 		bool HaveUpdatesOccuredForPriorityStates() {
-			// Populate cache with current values on first run //
-			if (priorityStates.Length != priorityStatesCache.Count) {
-				for (int i = 0; i < priorityStates.Length; i++) {
-					priorityStatesCache.Add(GetFieldOrPropertyValueFromTargetObject(priorityStates[i].Item1, priorityStates[i].Item2, priorityStates[i].Item3));
-				}
-
-				return false;
-			}
-
-			// On subsequent runs check if updates have happened to priority states //
-			for (int i = 0; i < priorityStates.Length; i++) {
-				var currentValue = GetFieldOrPropertyValueFromTargetObject(priorityStates[i].Item1, priorityStates[i].Item2, priorityStates[i].Item3);
-				var cachedValue = priorityStatesCache[i];
-
-				if (currentValue != cachedValue) {
-					priorityStatesCache[i] = currentValue;
-					return true;
-				}
+			foreach (var stateMonitor in priorityStateMonitors) {
+				if (stateMonitor.StateChanged()) return true;
 			}
 
 			return false;
 		}
 
-		object GetFieldOrPropertyValueFromTargetObject(Type type, string memberName, object targetObject) {
-			var fieldInfo = type.GetField(memberName);
-			if (fieldInfo != null) return fieldInfo.GetValue(targetObject);
-
-			var propertyInfo = type.GetProperty(memberName);
-			if (propertyInfo != null) return propertyInfo.GetValue(targetObject);
-
-			return default(object);
+		/// <summary>Helps with reducing GCAlloc issues</summary>
+		protected List<Actioner> GenerateActionerList(Actioner actionerOne, Actioner actionerTwo) {
+			resuableActionersList.Clear();
+			resuableActionersList.Add(actionerOne);
+			resuableActionersList.Add(actionerTwo);
+			return resuableActionersList;
 		}
+
+		/// <summary>Helps with reducing GCAlloc issues</summary>
+		protected List<Actioner> GenerateActionerList(Actioner actionerOne, Actioner actionerTwo, Actioner actionerThree) {
+			resuableActionersList.Clear();
+			resuableActionersList.Add(actionerOne);
+			resuableActionersList.Add(actionerTwo);
+			resuableActionersList.Add(actionerThree);
+			return resuableActionersList;
+		}
+	}
+
+	public abstract class PriorityStateMonitor {
+		public abstract bool StateChanged();
 	}
 }
