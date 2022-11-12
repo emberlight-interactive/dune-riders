@@ -124,7 +124,7 @@ namespace DuneRiders.RiderAI.State {
 		}
 
 		bool HaveITakenDamage() {
-			if (healthState.health < 100) return true;
+			if (healthState.health < healthState.MaxHealth) return true;
 			return false;
 		}
 

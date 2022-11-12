@@ -17,6 +17,7 @@ namespace DuneRiders.RiderTabletSystem {
 					armourType = CompanyManagementDisplayController.ArmourType.Heavy,
 					weaponType = CompanyManagementDisplayController.WeaponType.MachineGun,
 					health = 75,
+					maxHealth = 100,
 					disbandCallback = Disband,
 				}
 			};

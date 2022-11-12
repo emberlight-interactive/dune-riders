@@ -55,6 +55,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 					armourType = ArmourTypeEnumConverter(riders[i].chasisType),
 					weaponType = WeaponTypeEnumConverter(riders[i].gunType),
 					health = riders[i].GetComponent<HealthState>().health,
+					maxHealth = riders[i].GetComponent<HealthState>().MaxHealth,
 					disbandCallback = riders[i].GetComponent<DisbandRider>().Disband,
 					isBeingRepaired = riders[i].GetComponent<RepairSystem>().IsCurrentlyRepairing,
 				});
