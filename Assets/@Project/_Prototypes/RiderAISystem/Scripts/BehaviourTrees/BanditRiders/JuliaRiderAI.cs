@@ -10,6 +10,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(InCombatState))]
 	[RequireComponent(typeof(MoraleState))]
+	[RequireComponent(typeof(PlayerFleeingState))]
 	public class JuliaRiderAI : BehaviourTree
 	{
 		[SerializeField] Actioner chargeAction;
@@ -21,6 +22,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		HealthState healthState;
 		InCombatState inCombatState;
 		MoraleState moraleState;
+		PlayerFleeingState playerFleeingState;
 		Player player;
 
 		PriorityStateMonitor[] _priorityStateMonitors;
@@ -33,6 +35,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 			healthState = GetComponent<HealthState>();
 			moraleState = GetComponent<MoraleState>();
 			inCombatState = GetComponent<InCombatState>();
+			playerFleeingState = GetComponent<PlayerFleeingState>();
 			player = FindObjectOfType<Player>();
 
 			_priorityStateMonitors = new PriorityStateMonitor[] {
@@ -47,8 +50,8 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 				SetActionersActive(despawnAction);
 			} else if (RidersMoraleHasBeenDestroyed()) {
 				SetActionersActive(fleeAction);
-			// todo: Have we brutalized the player enough to continue traversing as we were (player company size reduction, is player fleeing)
-			// Make sure code is set up for reengagement
+			} else if (IsPlayerPartyFleeing()) {
+				SetActionersActive(traverseAction);
 			} else if (AmIEngagedInCombat()) {
 				SetActionersActive(GenerateActionerList(chargeAction, gunnerAction));
 			} else {
@@ -71,6 +74,10 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 
 		bool RiderHasLostAllHealth() {
 			return healthState.health <= 0;
+		}
+
+		bool IsPlayerPartyFleeing() {
+			return playerFleeingState.PlayerFleeing;
 		}
 	}
 }

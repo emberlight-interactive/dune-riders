@@ -12,6 +12,7 @@ namespace DuneRiders.RiderAI.State {
 	[RequireComponent(typeof(AllNearbyOutpostsState))]
 	[RequireComponent(typeof(HealthState))]
 	[RequireComponent(typeof(Rider))]
+	[RequireComponent(typeof(PlayerFleeingState))]
 	public class InCombatState : MonoBehaviour
 	{
 		[ReadOnly] public bool inCombat = false;
@@ -19,47 +20,32 @@ namespace DuneRiders.RiderAI.State {
 		AllActiveRidersState allActiveRidersState;
 		AllActiveTurretsState allActiveTurretsState;
 		AllNearbyOutpostsState allNearbyOutpostsState;
+		PlayerFleeingState playerFleeingState;
 		HealthState healthState;
 		Rider rider;
 		float firingRangeOfThisRider = 200;
 		float detectRange = 400;
+		float healthFromLastCheck = 0;
 
 		void Awake()
 		{
 			allActiveRidersState = GetComponent<AllActiveRidersState>();
 			allActiveTurretsState = GetComponent<AllActiveTurretsState>();
 			allNearbyOutpostsState = GetComponent<AllNearbyOutpostsState>();
+			playerFleeingState = GetComponent<PlayerFleeingState>();
 			healthState = GetComponent<HealthState>();
 			rider = GetComponent<Rider>();
+
+			healthFromLastCheck = healthState.health;
 		}
 
 		void Start() {
 			StartCoroutine(UpdateInCombatState());
 		}
 
-		#if UNITY_EDITOR
-		void OnDrawGizmosDRAFT() {
-			GUIStyle style = new GUIStyle();
-
-			var labelPosition = transform.position;
-
-			Handles.color = Color.red;
-        	style.normal.textColor = Color.red;
-			labelPosition.y += 2;
-			Handles.Label(labelPosition, "[InCombatState] Firing range", style);
-        	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), firingRangeOfThisRider);
-
-			Handles.color = Color.blue;
-        	style.normal.textColor = Color.blue;
-			labelPosition.y += 2;
-			Handles.Label(labelPosition, "[InCombatState] Detection range", style);
-        	Handles.DrawWireDisc(transform.position, new Vector3(0, 1, 0), detectRange);
-		}
-		#endif
-
 		IEnumerator UpdateInCombatState() {
 			while (true) {
-				if (AreThereAnyEnemiesLeft()) {
+				if (AreThereAnyEnemiesLeft() && !playerFleeingState.PlayerFleeing) {
 					if (HaveITakenDamage() || AreAnyOfMyFriendsInCombat() || AreThereAnyEnemiesInFiringRangeOfMe()) {
 						inCombat = true;
 					}
@@ -123,9 +109,11 @@ namespace DuneRiders.RiderAI.State {
 			return false;
 		}
 
+
 		bool HaveITakenDamage() {
-			if (healthState.health < healthState.MaxHealth) return true;
-			return false;
+			var haveITakenDamage = healthState.health < healthFromLastCheck;
+			healthFromLastCheck = healthState.health;
+			return haveITakenDamage;
 		}
 
 		bool AreAnyEnemyStructuresInRange() {
