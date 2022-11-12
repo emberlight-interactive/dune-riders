@@ -19,6 +19,7 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 		[SerializeField] Actioner haltAction;
 		[SerializeField] Actioner gunnerAction;
 		[SerializeField] Actioner chargeAction;
+		[SerializeField] Actioner retreatAction;
 		[SerializeField] Actioner deathAction;
 		[SerializeField] Actioner teleportNearPlayerAction;
 		Rider rider;
@@ -77,6 +78,8 @@ namespace DuneRiders.RiderAI.BehaviourTrees {
 				} else {
 					SetActionersActive(followAction);
 				}
+			} else if (IsCurrentCommand(PlayerCommandState.Command.Retreat)) {
+				SetActionersActive(retreatAction);
 			} else {
 				SetActionersActive(followAction);
 			}

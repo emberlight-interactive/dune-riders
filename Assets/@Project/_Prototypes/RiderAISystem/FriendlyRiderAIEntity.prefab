@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 143559974258635668}
   - component: {fileID: 8576314890636260573}
   - component: {fileID: 5764858139583023775}
+  - component: {fileID: 5284050904343910890}
   - component: {fileID: 8272870781977448185}
   - component: {fileID: 8719444701080706797}
   - component: {fileID: 5809143628830744143}
@@ -73,6 +74,7 @@ GameObject:
   - component: {fileID: 7456364413245128368}
   - component: {fileID: 5334284438471281684}
   - component: {fileID: 2142855892727606432}
+  - component: {fileID: 2977722245300428766}
   - component: {fileID: 5128939193122605526}
   - component: {fileID: 5016071827799240507}
   - component: {fileID: 315896023135117700}
@@ -260,6 +262,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outposts: []
   updateIntervalInSeconds: 4
+--- !u!114 &5284050904343910890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bcff9232c4ccf40bf09f712ad63ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8272870781977448185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +315,7 @@ MonoBehaviour:
   haltAction: {fileID: 5334284438471281684}
   gunnerAction: {fileID: 2142855892727606432}
   chargeAction: {fileID: 7456364413245128368}
+  retreatAction: {fileID: 2977722245300428766}
   deathAction: {fileID: 315896023135117700}
   teleportNearPlayerAction: {fileID: 2718716329369017372}
 --- !u!114 &1880663301664012116
@@ -355,6 +370,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 0}
+--- !u!114 &2977722245300428766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809143628830744132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e279335cf59bd4494e11bb6a33f5b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5128939193122605526
 MonoBehaviour:
   m_ObjectHideFlags: 0

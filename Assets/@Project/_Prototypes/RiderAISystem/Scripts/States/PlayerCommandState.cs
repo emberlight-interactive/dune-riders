@@ -9,7 +9,7 @@ namespace DuneRiders.RiderAI.State {
 	[DisallowMultipleComponent]
 	public class PlayerCommandState : MonoBehaviour
 	{
-		public enum Command {Charge, Follow, Halt};
+		public enum Command {Charge, Follow, Halt, Retreat};
 		PlayerCommandGlobalState globalState;
 		[ReadOnly] public Command command;
 
