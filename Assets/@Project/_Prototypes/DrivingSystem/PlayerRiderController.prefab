@@ -2879,7 +2879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.19794719
+      value: -0.0000033775
       objectReference: {fileID: 0}
     - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -2887,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080117436386901629, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.3428619
+      value: 0.3959007
       objectReference: {fileID: 0}
     - target: {fileID: 6080117436386901631, guid: b3f6639619f99eb44b9076569785de46, type: 3}
       propertyPath: jointBreakForce
@@ -6288,19 +6288,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4064686240346407341, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
+--- !u!4 &465260918931299341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4064686241146708900, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
+  m_PrefabInstance: {fileID: 4475551974773899177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465260919683017020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4064686240419665557, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
   m_PrefabInstance: {fileID: 4475551974773899177}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &465260919683017021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4064686240419665556, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
+  m_PrefabInstance: {fileID: 4475551974773899177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &465260919748181506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4064686240346407339, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
-  m_PrefabInstance: {fileID: 4475551974773899177}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &465260918931299341 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4064686241146708900, guid: 7ff9f8a3ec92bbd469101316da15eac0, type: 3}
   m_PrefabInstance: {fileID: 4475551974773899177}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4475551973450735811
@@ -6315,6 +6320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b7c3844c0c0754abb903f9638d290a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  setHeightWhenBelowThreshold: 1
+  cam: {fileID: 465260919748181506}
+  camOffset: {fileID: 465260919683017021}
+  camFollowerOffset: {fileID: 4475551973783687812}
+  heightMinimumThreshold: 1.17
+  heightToSet: 1.17
 --- !u!1001 &5053612041596338928
 PrefabInstance:
   m_ObjectHideFlags: 0
