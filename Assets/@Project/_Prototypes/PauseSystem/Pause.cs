@@ -19,13 +19,21 @@ namespace DuneRiders.PauseSystem {
 			pauseInput.action.performed += context =>
 			{
 				if (paused) {
-					unpauseEvents.Invoke();
+					UnPauseGame();
 				} else {
-					pauseEvents.Invoke();
+					PauseGame();
 				}
 
 				paused = !paused;
 			};
+		}
+
+		public void PauseGame() {
+			pauseEvents.Invoke();
+		}
+
+		public void UnPauseGame() {
+			unpauseEvents.Invoke();
 		}
 	}
 }
