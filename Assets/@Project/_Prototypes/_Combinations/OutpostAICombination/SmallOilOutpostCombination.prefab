@@ -755,6 +755,18 @@ MonoBehaviour:
   gatherablesToSpawn:
   - {fileID: -465630686636767625, guid: 665c3c2ec431c6642a6418becb829178, type: 3}
   increaseRareProbabilityMultipler: 0
+--- !u!114 &7803443358000195408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923757963335498343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15506dac729b334d80cdcef7e9bef92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8079376966487222283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,7 +810,7 @@ MonoBehaviour:
   debugColor: {r: 0, g: 0, b: 1, a: 1}
   labelYOffset: 1
   rangeDistance: 570
---- !u!114 &7803443358000195408
+--- !u!114 &333749939525578238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -807,9 +819,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1923757963335498343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15506dac729b334d80cdcef7e9bef92, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f9bc308145fb5147ae816b0b0bada3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAllegiance: 0
+  healAmount: 5
+  healInterval: 4
 --- !u!1001 &8366955977592485128
 PrefabInstance:
   m_ObjectHideFlags: 0

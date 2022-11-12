@@ -14,6 +14,7 @@ namespace DuneRiders.Shared {
 
 		[SerializeField] Transform weaponBaseYPivot;
 		[SerializeField] Transform weaponBarrelXPivot;
+		[SerializeField] bool noYPivotBounds = false;
 		[SerializeField] RotationAngleBounds weaponBaseYPivotBounds = new RotationAngleBounds() { lowerBounds = 270, upperBounds = 90};
 		[SerializeField] RotationAngleBounds weaponBarrelXPivotBounds = new RotationAngleBounds() { lowerBounds = 15, upperBounds = 25};
 
@@ -59,6 +60,8 @@ namespace DuneRiders.Shared {
 			var rotation = Quaternion.Slerp(weaponBaseYPivot.rotation, targetRotation, stepSpeed);
 
 			weaponBaseYPivot.rotation = rotation;
+
+			if (noYPivotBounds) return;
 
 			var angles = weaponBaseYPivot.localEulerAngles;
 			angles.z = 0;
