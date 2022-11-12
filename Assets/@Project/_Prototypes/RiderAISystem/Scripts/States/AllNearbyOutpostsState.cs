@@ -41,9 +41,11 @@ namespace DuneRiders.RiderAI.State {
 			return targetOutpostList;
 		}
 
-		public Outpost GetClosestOutpostFromList(List<Outpost> outpostList = null) {
+		public Outpost GetClosestOutpostFromList(List<Outpost> outpostList = null, Vector3? relativePosition = null) {
+			var selectedRelativePosition = relativePosition ?? transform.position;
+
 			return (outpostList ?? outposts)
-				.OrderBy(t=>(t.transform.position - transform.position).sqrMagnitude)
+				.OrderBy(t=>(t.transform.position - selectedRelativePosition).sqrMagnitude)
 				.First();
 		}
 

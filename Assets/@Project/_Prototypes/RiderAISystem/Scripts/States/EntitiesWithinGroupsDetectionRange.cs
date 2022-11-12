@@ -30,6 +30,7 @@ namespace DuneRiders.RiderAI.State {
 		[RequireComponent(typeof(AveragePositionOfRidersState))]
 		[RequireComponent(typeof(AllActiveRidersState))]
 		[RequireComponent(typeof(AllActiveTurretsState))]
+		[RequireComponent(typeof(AllNearbyOutpostsState))]
 		class EntitiesWithinGroupsDetectionRangeGlobalState : MonoBehaviour
 		{
 			private static EntitiesWithinGroupsDetectionRangeGlobalState _instance;
@@ -38,6 +39,7 @@ namespace DuneRiders.RiderAI.State {
 			AveragePositionOfRidersState averagePositionOfRidersState;
 			AllActiveRidersState allActiveRidersState;
 			AllActiveTurretsState allActiveTurretsState;
+			AllNearbyOutpostsState allNearbyOutpostsState;
 
 			private void Awake()
 			{
@@ -51,6 +53,7 @@ namespace DuneRiders.RiderAI.State {
 				averagePositionOfRidersState = GetComponent<AveragePositionOfRidersState>();
 				allActiveRidersState = GetComponent<AllActiveRidersState>();
 				allActiveTurretsState = GetComponent<AllActiveTurretsState>();
+				allNearbyOutpostsState = GetComponent<AllNearbyOutpostsState>();
 
 				StartCoroutine(UpdateState());
 			}
@@ -73,9 +76,11 @@ namespace DuneRiders.RiderAI.State {
 			bool AreAnyEnemyEntitiesWithinDistance(float distance) {
 				var positionOfClosestEnemyRider = PositionOfClosestEnemyRider();
 				var positionOfClosestEnemyTurret = PositionOfClosestEnemyTurret();
+				var positionOfClosestEnemyOutpost = PositionOfClosestEnemyOutpost();
 
 				if (positionOfClosestEnemyRider != null && Vector3.Distance(averageGroupPosition, (Vector3) positionOfClosestEnemyRider) < distance) return true;
 				if (positionOfClosestEnemyTurret != null && Vector3.Distance(averageGroupPosition, (Vector3) positionOfClosestEnemyTurret) < distance) return true;
+				if (positionOfClosestEnemyOutpost != null && Vector3.Distance(averageGroupPosition, (Vector3) positionOfClosestEnemyOutpost) < distance) return true;
 
 				return false;
 			}
@@ -92,6 +97,13 @@ namespace DuneRiders.RiderAI.State {
 				if (allTurrets.Count == 0) return null;
 
 				return allActiveTurretsState.GetClosestTurretFromList(allTurrets, averageGroupPosition).transform.position;
+			}
+
+			Vector3? PositionOfClosestEnemyOutpost() {
+				var allOutposts = allNearbyOutpostsState.GetAllOutpostsOfAllegiance(Allegiance.Bandits);
+				if (allOutposts.Count == 0) return null;
+
+				return allNearbyOutpostsState.GetClosestOutpostFromList(allOutposts, averageGroupPosition).transform.position;
 			}
 
 			#if UNITY_EDITOR
