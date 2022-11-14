@@ -160,6 +160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageableCheck: {fileID: 0}
+  accuracyVariance: 0
+  playHitMarkerAudio: 0
+  directHitMarkerSoundPlayer: {fileID: 0}
+  radiusHitMarkerSoundPlayer: {fileID: 0}
   debugExplosiveRadiusColor: {r: 1, g: 0.35251242, b: 0.21383637, a: 1}
   initialForce: 500
   explosiveRadius: 10
@@ -170,6 +174,7 @@ MonoBehaviour:
   explosionParticleScale: 1
   explosionNoise: {fileID: 8300000, guid: 80697af7158f2fa4ea08d0c52ba9f12d, type: 3}
   launchNoise: {fileID: 8300000, guid: a2d5c6cfafb505c4d9cef4a37e245e8d, type: 3}
+  maxProjectileDistance: 0
 --- !u!114 &-5558494158054062484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +207,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -253,7 +258,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.6944444
       inSlope: 0
       outSlope: 0
       tangentMode: 0
