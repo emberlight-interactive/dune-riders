@@ -35,6 +35,12 @@ public class RiderDrivingControl : MonoBehaviour
 	float currentAcceleration = 0f;
 	float currentTurnAngle = 15f;
 
+	bool accelerating = false;
+	public bool Accelerating { get => accelerating; }
+
+	bool reversing = false;
+	public bool Reversing { get => reversing; }
+
 	void Start() {
 		rightControllerTrigger.action.Enable();
 		leftControllerTrigger.action.Enable();
@@ -52,6 +58,8 @@ public class RiderDrivingControl : MonoBehaviour
 
 	private void FixedUpdate() {
 		currentAcceleration = acceleration * GetAccelerationValue();
+
+		UpdateDrivingState(currentAcceleration);
 
 		if (brakeModeEnabled && currentAcceleration < 0) {
 			Brake();
@@ -126,5 +134,18 @@ public class RiderDrivingControl : MonoBehaviour
 
 	float GetTurnAngle() {
 		return Mathf.Max(maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z), 1);
+	}
+
+	void UpdateDrivingState(float currentAcceleration) {
+		if (currentAcceleration > 0.15f) {
+			accelerating = true;
+			reversing = false;
+		} else if (currentAcceleration < 0.15f && currentAcceleration > -0.15f) {
+			accelerating = false;
+			reversing = false;
+		} else {
+			accelerating = false;
+			reversing = true;
+		}
 	}
 }
