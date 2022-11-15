@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBaseYPivot: {fileID: 6293710549484570974}
   weaponBarrelXPivot: {fileID: 5300496143873264277}
+  noYPivotBounds: 0
   weaponBaseYPivotBounds:
     lowerBounds: 270
     upperBounds: 90
@@ -307,6 +308,14 @@ PrefabInstance:
     - target: {fileID: 2675902805100394040, guid: fae9a0506fe776d49a1769a0399d8d1d, type: 3}
       propertyPath: m_Layer
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891433642472108741, guid: fae9a0506fe776d49a1769a0399d8d1d, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.048706226
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891433642472108741, guid: fae9a0506fe776d49a1769a0399d8d1d, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.0035936479
       objectReference: {fileID: 0}
     - target: {fileID: 4795615409810605953, guid: fae9a0506fe776d49a1769a0399d8d1d, type: 3}
       propertyPath: m_Layer

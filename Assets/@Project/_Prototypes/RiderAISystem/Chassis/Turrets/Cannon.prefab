@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBaseYPivot: {fileID: 3200631189987550488}
   weaponBarrelXPivot: {fileID: 6352932089217980316}
+  noYPivotBounds: 0
   weaponBaseYPivotBounds:
     lowerBounds: 270
     upperBounds: 90
@@ -395,6 +396,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6338312157399474916, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.050309543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338312157399474916, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.0038385997
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
 --- !u!4 &3200631189987550488 stripped
@@ -447,6 +456,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6352932089217980316}
     m_Modifications:
+    - target: {fileID: 310086270771994654, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.047128346
+      objectReference: {fileID: 0}
+    - target: {fileID: 310086270771994654, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.0038385997
+      objectReference: {fileID: 0}
     - target: {fileID: 1130047077934272293, guid: 29d1cbd7dad89ed45a3babe5d3cea6d7, type: 3}
       propertyPath: m_Layer
       value: 20
