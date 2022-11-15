@@ -809,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841244, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: resourceAmount
-      value: 5000
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: fuelPerHour
@@ -825,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: lowFuelWarningEvent.m_PersistentCalls.m_Calls.Array.size
@@ -836,7 +836,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1967888634}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1967888632}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
@@ -852,7 +860,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVillageOutOfFuel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: TriggerGameOver
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
@@ -865,6 +881,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DuneRiders.GameLossReason, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DuneRiders.Combinations.GameOver, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
@@ -873,6 +893,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: villageOutOfFuel.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
@@ -1268,6 +1292,30 @@ MonoBehaviour:
   m_selectAllOperations: 1
   m_waitForSpawningDuringTerrainCreation: 0
   m_worldCreationRunning: 0
+--- !u!114 &244643374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1001 &254269429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1938,30 +1986,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &564195954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &574760976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7504228220949698469, guid: 4d30912cbbf241c43b194b1ad6c0d254, type: 3}
@@ -3703,14 +3727,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1967888634}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1967888632}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -3718,15 +3750,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerOutOfFuelReason
+      objectReference: {fileID: 0}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: TriggerGameOver
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DuneRiders.GameLossReason, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: DuneRiders.Combinations.GameOver, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1129974744617970922, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -3799,22 +3847,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
+      objectReference: {fileID: 1967888634}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
       objectReference: {fileID: 1967888632}
     - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: SetPlayerDiedReason
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
       value: DelayedGameOver
       objectReference: {fileID: 0}
     - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: DuneRiders.GameLossReason, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
       value: DuneRiders.Combinations.GameOver, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697671429746426415, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: onZeroHealthPoints.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2095681192834451830, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -4230,6 +4302,7 @@ MonoBehaviour:
   gasBonusesUsed: 0
   maxAllowedGasBonuses: 3
   applyGasBonusOnMainSceneLoad: 0
+  gameLossReason: Game Over
 --- !u!4 &1096842007
 Transform:
   m_ObjectHideFlags: 0
@@ -6241,7 +6314,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 564195954}
+    m_noiseSettings: {fileID: 244643374}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0
@@ -8562,6 +8635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1967888633}
   - component: {fileID: 1967888632}
+  - component: {fileID: 1967888634}
   m_Layer: 0
   m_Name: GameOver
   m_TagString: Untagged
@@ -8598,6 +8672,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1967888634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967888631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a652ee8fe4bc0ac4aba9b0f5fc0b9690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1981771655
 MonoBehaviour:
   m_ObjectHideFlags: 0

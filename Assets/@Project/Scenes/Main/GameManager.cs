@@ -21,6 +21,7 @@ namespace DuneRiders {
 		public int gasBonusesUsed = 0;
 		public int maxAllowedGasBonuses = 3;
 		public bool applyGasBonusOnMainSceneLoad = false;
+		public string gameLossReason = "Game Over";
 
 		void Awake() {
 			if (instance != null && instance != this) {
