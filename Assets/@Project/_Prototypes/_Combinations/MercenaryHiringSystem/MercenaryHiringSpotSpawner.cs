@@ -16,8 +16,7 @@ namespace DuneRiders.MercenaryHiringSystem {
 	public class MercenaryHiringSpotSpawner : MonoBehaviour
 	{
 		[SerializeField] bool enableRegeneration = false;
-		[SerializeField] float minRegenerationTime;
-		[SerializeField] float maxRegenerationTime;
+		[SerializeField] float percentageChanceOfRegeneration;
 
 		[SerializeField] GameObject mercenaryHiringSpot;
 		GameObject spawnedSpot;
@@ -34,18 +33,14 @@ namespace DuneRiders.MercenaryHiringSystem {
 			InitializeState();
 		}
 
-		void OnEnable() {
-			if (enableRegeneration) StartCoroutine(RegenerateSpot());
-		}
-
 		void Start() {
 			if (!state.mercenaryHired) {
 				SpawnMercenaryHiringSpot();
 			}
 		}
 
-		void OnDisable() {
-			StopAllCoroutines();
+		void OnDestroy() {
+			if (enableRegeneration) HandleRegeneration();
 		}
 
 		void SpawnMercenaryHiringSpot() {
@@ -85,16 +80,10 @@ namespace DuneRiders.MercenaryHiringSystem {
 		}
 		#endif
 
-		IEnumerator RegenerateSpot() {
-			while (true) {
-				if (state.mercenaryHired) {
-					yield return new WaitForSeconds(UnityEngine.Random.Range(minRegenerationTime, maxRegenerationTime));
-					Destroy(spawnedSpot);
-					state.mercenaryHired = false;
-					SpawnMercenaryHiringSpot();
-				}
-
-				yield return new WaitForSeconds(10f);
+		void HandleRegeneration() {
+			var randomNumber = UnityEngine.Random.Range(1, 100);
+			if (randomNumber <= percentageChanceOfRegeneration * 100) {
+				state.mercenaryHired = false;
 			}
 		}
 

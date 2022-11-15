@@ -36,8 +36,7 @@ namespace DuneRiders.POISystem {
 		[SerializeField] int minimumNumberOfLootables = 3;
 
 		[SerializeField] bool regenerateExhaustedPOI = false;
-		[SerializeField] float minRegenerationTime;
-		[SerializeField] float maxRegenerationTime;
+		[SerializeField] float percentageChanceOfRegeneration;
 		[SerializeField] int minLootablesToRegenerate;
 		[SerializeField] int maxLootablesToRegenerate;
 
@@ -60,13 +59,15 @@ namespace DuneRiders.POISystem {
 			StartCoroutine(UpdateStateOfLootables());
 			StartCoroutine(WatchPOITouchedEventTrigger());
 			StartCoroutine(WatchPOIExhaustedEventTrigger());
-
-			if (regenerateExhaustedPOI) StartCoroutine(RegenerateLootables());
 		}
 
 		void OnDisable() {
 			StopAllCoroutines();
 			DespawnLootables();
+		}
+
+		void OnDestroy() {
+			if (regenerateExhaustedPOI) HandlePOIRegeneration();
 		}
 
 		void InitializeState() {
@@ -167,20 +168,14 @@ namespace DuneRiders.POISystem {
 			}
 		}
 
-		IEnumerator RegenerateLootables() {
-			while (true) {
-				if (IsPOIFullyLooted()) {
-					yield return new WaitForSeconds(UnityEngine.Random.Range(minRegenerationTime, maxRegenerationTime));
-					var lootables = state.lootableStates.Where((lootableState) => lootableState.harvested == true).Take(UnityEngine.Random.Range(minLootablesToRegenerate, maxLootablesToRegenerate));
+		void HandlePOIRegeneration() {
+			var randomNumber = UnityEngine.Random.Range(1, 100);
+			if (randomNumber <= percentageChanceOfRegeneration * 100) {
+				var lootables = state.lootableStates.Where((lootableState) => lootableState.harvested == true).Take(UnityEngine.Random.Range(minLootablesToRegenerate, maxLootablesToRegenerate));
 
-					foreach (var lootable in lootables) {
-						lootable.harvested = false;
-					}
-
-					SpawnLootables();
+				foreach (var lootable in lootables) {
+					lootable.harvested = false;
 				}
-
-				yield return new WaitForSeconds(10f);
 			}
 		}
 
