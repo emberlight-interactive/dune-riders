@@ -18,9 +18,9 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		}
 
 		public void DisableGrabbing() {
-			DisableGrabbables();
 			rightHand.ForceReleaseGrab();
 			leftHand.ForceReleaseGrab();
+			DisableGrabbables();
 		}
 
 		void DisableGrabbables() {
