@@ -14,6 +14,7 @@ namespace DuneRiders.Shared.InRange {
 		[SerializeField] List<string> tagsToCheckFor = new List<string>();
 		[SerializeField] bool selfDestructAfterCheck = false;
 		[SerializeField] UnityEvent tagInRangeEvent;
+		[SerializeField] UnityEvent tagOutOfRangeEvent;
 
 		void Start() {
 			InvokeRepeating(nameof(CheckForTagsInRange), 1f, secondsBetweenChecks);
@@ -29,10 +30,13 @@ namespace DuneRiders.Shared.InRange {
 						if (tag.tagString == tagToCheck) {
 							tagInRangeEvent?.Invoke();
 							if (selfDestructAfterCheck) Destroy(this);
+							return;
 						}
 					}
 				}
 			}
+
+			tagOutOfRangeEvent?.Invoke();
 		}
 
 		#if UNITY_EDITOR

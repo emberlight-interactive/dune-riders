@@ -27,7 +27,7 @@ namespace DuneRiders {
 			transitionFinished.Invoke();
 		}
 
-		public static IEnumerator StartAudioFade(AudioSource audioSource, float duration, float targetVolume)
+		IEnumerator StartAudioFade(AudioSource audioSource, float duration, float targetVolume)
 		{
 			float currentTime = 0;
 			float start = audioSource.volume;
@@ -49,7 +49,7 @@ namespace DuneRiders {
 				yield return null;
 			}
 
-			audioSource.Stop ();
+			audioSource.Stop();
 			audioSource.volume = startVolume;
 		}
 	}

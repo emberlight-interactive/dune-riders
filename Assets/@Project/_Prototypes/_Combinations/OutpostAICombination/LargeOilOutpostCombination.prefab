@@ -856,6 +856,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riderDataList: []
   updateIntervalInSeconds: 4
+--- !u!114 &2037528930870440782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871824550814201898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9bc308145fb5147ae816b0b0bada3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAllegiance: 0
+  healAmount: 5
+  healInterval: 4
 --- !u!114 &3096114378786415435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +985,7 @@ MonoBehaviour:
   gatherablesToSpawn:
   - {fileID: -465630686636767625, guid: 665c3c2ec431c6642a6418becb829178, type: 3}
   increaseRareProbabilityMultipler: 0
---- !u!114 &2037528930870440782
+--- !u!114 &3575484072170564764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -979,12 +994,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7871824550814201898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9bc308145fb5147ae816b0b0bada3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b3e91a251bab904582555681add209c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAllegiance: 0
-  healAmount: 5
-  healInterval: 4
 --- !u!1001 &4868163326423505970
 PrefabInstance:
   m_ObjectHideFlags: 0
