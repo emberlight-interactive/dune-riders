@@ -73,7 +73,12 @@ namespace DuneRiders.VillageMigrationSystem {
 
 		void JumpToNewLocation() {
 			currentWaypoint = currentWaypoint.nextWaypoint;
-			transform.position = currentWaypoint.transform.position;
+			MoveToWaypoint(currentWaypoint.transform);
+		}
+
+		void MoveToWaypoint(Transform waypoint) {
+			transform.position = waypoint.transform.position;
+			transform.rotation = waypoint.transform.rotation;
 		}
 
 		void SetNextJumpIsWinOnVillageInteractionTarget() {

@@ -12,7 +12,7 @@ namespace DuneRiders {
 		}
 
 		public void SetPlayerOutOfFuelReason() {
-			gm.gameLossReason = "Player ran out of fuel";
+			gm.gameLossReason = "Player company ran out of fuel";
 		}
 
 		public void SetPlayerDiedReason() {
