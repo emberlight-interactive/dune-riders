@@ -68,7 +68,7 @@ namespace DuneRiders.HomeVillageSystem {
 				var fuelPerMinute = fuelPerHour / 360f;
 				if (!fuelResourceManager.Take(fuelPerMinute)) {
 					villageOutOfFuel.Invoke();
-				} else if (fuelResourceManager.Amount() / fuelResourceManager.ResourceLimit() <= 0.15f) {
+				} else if (fuelResourceManager.Amount() / fuelResourceManager.ResourceLimit() <= 0.07f) {
 					if (remainingSecondsUntilNextWarning <= 0) {
 						lowFuelWarningEvent?.Invoke();
 						remainingSecondsUntilNextWarning = secondsBetweenEveryWarning;
