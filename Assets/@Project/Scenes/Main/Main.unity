@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994a9c0ca94026943a6ea033e107113b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoSaveCycleTime: 900
+  autoSaveCycleTime: 240
   savingIndicator: {fileID: 1051771964}
 --- !u!1 &89091715
 GameObject:
@@ -3407,7 +3407,7 @@ MonoBehaviour:
   m_worldMapStampSettings: {fileID: 1219390120}
   m_oldTerrainOffsetX: 0
   m_oldTerrainOffsetZ: 0
---- !u!114 &1014398213
+--- !u!114 &1001111108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5306,9 +5306,9 @@ MonoBehaviour:
       y: 0
       z: 0
     m_Extents:
-      x: 100000
-      y: 100000
-      z: 100000
+      x: 0
+      y: 0
+      z: 0
   m_sceneViewImpostorLoadingBounds:
     m_Center:
       x: -11173.873046875
@@ -5889,7 +5889,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 1014398213}
+    m_noiseSettings: {fileID: 1001111108}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0
