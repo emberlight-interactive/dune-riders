@@ -14,6 +14,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 
 		public void UpdateRiderAICommand() {
 			if (globalCommandState == null) LinkToGlobalState();
+			if (globalCommandState == null) return;
 
 			if (pulseCommand) StartCoroutine(PulseCommand());
 			else globalCommandState.command = commandToSet;
