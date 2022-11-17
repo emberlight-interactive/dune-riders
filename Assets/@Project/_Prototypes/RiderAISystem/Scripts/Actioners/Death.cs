@@ -19,7 +19,7 @@ namespace DuneRiders.RiderAI.Actioners {
 				gameObject.SetActive(false);
 			}
 
-			deathEvent.Invoke();
+			deathEvent?.Invoke();
 		}
 
 		public override void EndAction() {}
