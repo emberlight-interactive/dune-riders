@@ -10,13 +10,20 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 	{
 		[SerializeField] ResourceManager scrapResourceManager;
 		[SerializeField] float requiredScrapToEnable = 0f;
+		[SerializeField] GameObjectDisabledEvent purchaseConfirmationDisabled;
 		Button button;
 
 		void Awake() {
 			button = GetComponent<Button>();
+
+			purchaseConfirmationDisabled.onDisableEvent.AddListener(() => Invoke(nameof(HandleInsufficentResources), 0.05f));
 		}
 
 		void OnEnable() {
+			HandleInsufficentResources();
+		}
+
+		public void HandleInsufficentResources() {
 			if (scrapResourceManager.Amount() < requiredScrapToEnable) {
 				button.interactable = false;
 			} else {
