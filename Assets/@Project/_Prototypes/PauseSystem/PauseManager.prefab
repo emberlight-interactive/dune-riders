@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2463328330080894627}
   - component: {fileID: 2463328330080894624}
   - component: {fileID: 2463328330080894626}
+  - component: {fileID: 8976801607177585507}
   m_Layer: 0
   m_Name: PauseManager
   m_TagString: Untagged
@@ -186,3 +187,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pauseCanvas: {fileID: 0}
+--- !u!114 &8976801607177585507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463328330080894625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcca0036bd5508a4cbfcdceadd0ad9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialCanvas: {fileID: 0}
+  tutorialButton: {fileID: 0}
+  firingTutorialButton: {fileID: 0}
