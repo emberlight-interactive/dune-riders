@@ -10,6 +10,7 @@ namespace DuneRiders.DrivingSystem {
 		bool active = false;
 		[SerializeField] float borderResistanceMuliplier = 10f;
 		[SerializeField] UnityEvent onOutOfBounds;
+		[SerializeField] UnityEvent onReturnToBounds;
 
 		void Awake() {
 			playerRiderRb = FindObjectOfType<RiderDrivingControl>().GetComponent<Rigidbody>();
@@ -34,6 +35,7 @@ namespace DuneRiders.DrivingSystem {
 			if (active) {
 				if (c.GetComponentInParent<RiderDrivingControl>() != null) {
 					active = false;
+					onReturnToBounds?.Invoke();
 				}
 			}
 		}
