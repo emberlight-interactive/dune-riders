@@ -63,7 +63,7 @@ namespace DuneRiders.RiderAI.State {
 
 					if (playerCommandState.command == PlayerCommandState.Command.Follow || playerCommandState.command == PlayerCommandState.Command.Retreat) {
 						var currentPlayerDistanceFromEnemyAverage = Vector3.Distance(averagePositionOfEntitiesState.GetAverageWorldPositionOfEntities(Allegiance.Bandits), player.transform.position);
-						if (currentPlayerDistanceFromEnemyAverage > lastCheckedPlayerDistanceFromEnemyAverage) {
+						if (currentPlayerDistanceFromEnemyAverage > 25 && currentPlayerDistanceFromEnemyAverage > lastCheckedPlayerDistanceFromEnemyAverage) {
 							consecutiveCheck++;
 							lastCheckedPlayerDistanceFromEnemyAverage = currentPlayerDistanceFromEnemyAverage;
 							if (consecutiveCheck >= 4) playerFleeing = true;

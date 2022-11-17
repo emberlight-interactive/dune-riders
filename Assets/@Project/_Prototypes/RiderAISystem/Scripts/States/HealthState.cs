@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using DuneRiders.Config;
+using DuneRiders.AI;
 using DuneRiders.Shared.PersistenceSystem;
+using DuneRiders.RiderAI.Traits;
 
 namespace DuneRiders.RiderAI.State {
+	[RequireComponent(typeof(Rider))]
 	[RequireComponent(typeof(UniqueIdentifier))]
 	[DisallowMultipleComponent]
 	public class HealthState : MonoBehaviour, IPersistent
@@ -15,14 +19,22 @@ namespace DuneRiders.RiderAI.State {
 			public float health;
 		}
 
-		[SerializeField] float maxHealth = 100;
+		[SerializeField] RiderConfig riderConfig;
 		public float MaxHealth { get => maxHealth; }
 		public bool DisablePersistence { get => false; }
 
+		[ReadOnly] float maxHealth = 100;
 		[ReadOnly] public float health;
 
+		Rider rider;
+
 		void Awake() {
-			if (health == default(float)) health = maxHealth;
+			rider = GetComponent<Rider>();
+
+			if (rider.allegiance == Allegiance.Player) maxHealth = riderConfig.FriendlyRiderAIChassisToHealth(rider.chasisType);
+			else if (rider.allegiance == Allegiance.Bandits) maxHealth = riderConfig.EnemyRiderAIChassisToHealth(rider.chasisType);
+
+			health = maxHealth;
 		}
 
 		public void Save(IPersistenceUtil persistUtil) {

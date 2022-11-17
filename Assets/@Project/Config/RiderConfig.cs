@@ -61,6 +61,19 @@ namespace DuneRiders.Config {
 			}
 		}
 
+		public float EnemyRiderAIChassisToHealth(Rider.ChasisType chasisType) {
+			switch (chasisType) {
+				case Rider.ChasisType.Light:
+					return enemyLightChassisHealth;
+				case Rider.ChasisType.Normal:
+					return enemyNormalChassisHealth;
+				case Rider.ChasisType.Heavy:
+					return enemyHeavyChassisHealth;
+				default:
+					return enemyLightChassisHealth;
+			}
+		}
+
 		public Sprite RiderAIChassisToSprite(Rider.ChasisType chasisType) {
 			switch (chasisType) {
 				case Rider.ChasisType.Light:
