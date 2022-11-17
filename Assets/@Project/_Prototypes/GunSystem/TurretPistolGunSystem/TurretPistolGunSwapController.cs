@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using Sirenix.OdinInspector;
 
 namespace DuneRiders.GunSystem {
 	public class TurretPistolGunSwapController : MonoBehaviour
@@ -16,7 +17,7 @@ namespace DuneRiders.GunSystem {
 
 		[SerializeField] public List<Gun> gunsToSwapBetween = new List<Gun>();
 		[SerializeField] InputActionProperty gunTransitionButton;
-		[HideInInspector] public bool turretPistolIsHolstered = false;
+		[ReadOnly] public bool turretPistolIsHolstered = false;
 
 		void Start() {
 			gunTransitionButton.action.Enable();

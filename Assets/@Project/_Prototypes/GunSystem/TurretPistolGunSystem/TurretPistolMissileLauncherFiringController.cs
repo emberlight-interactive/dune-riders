@@ -43,8 +43,12 @@ namespace DuneRiders.GunSystem {
 			return gunState.availableActions.canFire;
 		}
 
-		public void ToggleTriggerPull() {
-			triggerPulled = !triggerPulled;
+		public void TriggerPulled() {
+			triggerPulled = true;
+		}
+
+		public void TriggerReleased() {
+			triggerPulled = false;
 		}
 
 		IEnumerator Reload(float timeToReload) {

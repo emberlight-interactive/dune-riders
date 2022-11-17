@@ -10,28 +10,32 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		[SerializeField] Hand rightHand;
 		[SerializeField] Hand leftHand;
 
-		// todo: Adding new grabbables will not be added here which will mean future grababbles could break pause
-		[SerializeField] List<Grabbable> grabbables = new List<Grabbable>();
-
 		public void EnableGrabbing() {
-			EnableGrabbables();
+			ToggleAllGrabbables(true);
 		}
 
 		public void DisableGrabbing() {
-			rightHand.ForceReleaseGrab();
-			leftHand.ForceReleaseGrab();
-			DisableGrabbables();
+			DisableHand(rightHand);
+			DisableHand(leftHand);
+
+			ToggleAllGrabbables(false);
 		}
 
-		void DisableGrabbables() {
-			foreach (var grabbable in grabbables) {
-				grabbable.enabled = false;
-			}
+		void DisableHand(Hand hand) {
+			hand.Release();
+			hand.ForceReleaseGrab();
+			hand.Unsqueeze();
+			hand.RelaxHand();
 		}
 
-		void EnableGrabbables() {
+		void ToggleAllGrabbables(bool on) {
+			var grabbables = FindObjectsOfType<Grabbable>();
+
 			foreach (var grabbable in grabbables) {
-				grabbable.enabled = true;
+				var colliders = grabbable.GetComponentsInChildren<Collider>();
+				foreach (var collider in colliders) {
+					collider.enabled = on;
+				}
 			}
 		}
 	}

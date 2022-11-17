@@ -40,8 +40,12 @@ namespace DuneRiders.GunSystem {
 			return triggerPulled;
 		}
 
-		public void ToggleTriggerPull() {
-			triggerPulled = !triggerPulled;
+		public void TriggerPulled() {
+			triggerPulled = true;
+		}
+
+		public void TriggerReleased() {
+			triggerPulled = false;
 		}
 
 		bool CanTheGunFire() {
