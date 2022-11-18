@@ -496,6 +496,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 407558111050606584, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
+      propertyPath: maxHealth
+      value: 1700
+      objectReference: {fileID: 0}
+    - target: {fileID: 407558111050606584, guid: e00ba1b9a22a23e429a21110107645c7, type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -698,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAllegiance: 0
-  healAmount: 5
+  healAmount: 75
   healInterval: 4
 --- !u!114 &1662705489038422167
 MonoBehaviour:
@@ -715,7 +719,7 @@ MonoBehaviour:
   countdownTimer: {fileID: 1923757962235038078}
   countdownIcon: {fileID: 1923757963645881200}
   warningIcon: {fileID: 534586846680588151}
-  secondsUntilDefendersSpawn: 240
+  secondsUntilDefendersSpawn: 360
   secondsToTimerResetAfterAbsentRiders: 120
   enemyAllegiance: 0
   enemyRiderInstanceBuilder: {fileID: 8079376966487222283}
@@ -746,7 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAllegiance: 0
-  healAmount: 5
+  healAmount: 25
   healInterval: 4
 --- !u!114 &4218042439810651301
 MonoBehaviour:
@@ -766,7 +770,6 @@ MonoBehaviour:
   - {fileID: 6130170283971426636}
   - {fileID: 5971273870512792516}
   - {fileID: 7374634840593555660}
-  - {fileID: 8725392507897780143}
   gatherablesToSpawn:
   - {fileID: 7401089655727228774, guid: 1c3f7c70284664346b15e204a575632e, type: 3}
   increaseRareProbabilityMultipler: 0

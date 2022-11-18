@@ -49,6 +49,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5842939033366228846, guid: 12050d021e1df1741899b852712000b0, type: 3}
+      propertyPath: maxHealth
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 8168645098009091120, guid: 12050d021e1df1741899b852712000b0, type: 3}
       propertyPath: m_Name
       value: PlatformedTurretCombination
@@ -145,7 +149,7 @@ MonoBehaviour:
   weaponBarrelXPivotBounds:
     lowerBounds: 15
     upperBounds: 25
-  rotationSpeed: 1
+  rotationSpeed: 1.5
   target: {fileID: 0}
   defaultTarget: {fileID: 914417099490896361}
 --- !u!114 &2249479840978209175
