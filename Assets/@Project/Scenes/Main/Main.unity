@@ -1798,6 +1798,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dbba4357b43674082b55582614935e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &193333657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7768318166739385875, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+  m_PrefabInstance: {fileID: 193333655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &193333658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+  m_PrefabInstance: {fileID: 193333655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ba9ea8475b2224aba3acb69a15fad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &243985775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,30 +2803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &608755202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!114 &627516476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3114004998169854368, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -4318,6 +4310,10 @@ PrefabInstance:
       propertyPath: resourceAmount
       value: 1517.5
       objectReference: {fileID: 0}
+    - target: {fileID: 702437292464413712, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: travelPosition
+      value: 
+      objectReference: {fileID: 193333657}
     - target: {fileID: 845930831560249597, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceFullyDepletedEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -4532,7 +4528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731366017476, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.77
+      value: 96.59
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731366017476, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4540,7 +4536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731366017476, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16038.58
+      value: -16063.32
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731366017476, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4786,6 +4782,18 @@ PrefabInstance:
       propertyPath: mainMenuTransitioner
       value: 
       objectReference: {fileID: 1685281857}
+    - target: {fileID: 8977660458905508878, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: fastTravelLocation
+      value: 
+      objectReference: {fileID: 193333657}
+    - target: {fileID: 8977660458905508878, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: homeVillageFuelManager
+      value: 
+      objectReference: {fileID: 193333658}
+    - target: {fileID: 8977660458905508878, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: homeVillageFuelResourceManager
+      value: 
+      objectReference: {fileID: 193333656}
     - target: {fileID: 9187095517154401020, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.0000033775
@@ -5050,6 +5058,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1189712478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1001 &1199786670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6828,7 +6860,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 608755202}
+    m_noiseSettings: {fileID: 1189712478}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0
