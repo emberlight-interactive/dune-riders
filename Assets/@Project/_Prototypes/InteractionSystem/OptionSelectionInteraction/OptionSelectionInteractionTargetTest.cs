@@ -11,7 +11,11 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 					Debug.Log("They selected: " + optionSelected);
 				},
 				() => { /* close dialogue */ },
-				new string[] { "Migrate Village", "Poggers", "3rd option" }
+				new SelectableOption[] {
+					new SelectableOption { optionName = "Migrate Village" },
+					new SelectableOption { optionName = "Poggers" },
+					new SelectableOption { optionName = "3rd option" },
+				}
 			);
 
 			optionSelection.Initiate();

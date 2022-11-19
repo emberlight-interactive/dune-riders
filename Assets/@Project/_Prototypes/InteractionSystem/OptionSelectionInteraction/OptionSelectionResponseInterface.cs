@@ -11,8 +11,8 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 		[SerializeField] List<OptionButton> optionButtons = new List<OptionButton>();
 		[SerializeField] Canvas hostCanvas;
 
-		string[] options;
-		public string[] Options {
+		SelectableOption[] options;
+		public SelectableOption[] Options {
 			get => options;
 			set => options = value;
 		}
@@ -31,18 +31,19 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 			ClearButtons();
 		}
 
-		void InitializeButtons(string[] optionStrings) {
-			for (int i = 0; i < optionStrings.Length; i++) {
+		void InitializeButtons(SelectableOption[] optionConfigs) {
+			for (int i = 0; i < optionConfigs.Length; i++) {
 				if (i >= optionButtons.Count) break;
-				if (optionStrings[i] == null) break;
+				if (optionConfigs[i] == null) break;
 
 				optionButtons[i].GetButton().gameObject.SetActive(true);
 				optionButtons[i].GetButton().enabled = true;
-				optionButtons[i].SetText(optionStrings[i]);
+				optionButtons[i].SetText(optionConfigs[i].optionName);
+				optionButtons[i].SetGameObject(optionConfigs[i].injectableGameObject);
 
 				var iSpentAnHourTryingToRealizeForLoopIntegersAreSomehowPassedByReferenceWithoutDoingThis = i;
 				optionButtons[i].GetButton().onClick.RemoveAllListeners();
-				optionButtons[i].GetButton().onClick.AddListener(() => HandleButtonPressed(optionStrings[iSpentAnHourTryingToRealizeForLoopIntegersAreSomehowPassedByReferenceWithoutDoingThis]));
+				optionButtons[i].GetButton().onClick.AddListener(() => HandleButtonPressed(optionConfigs[iSpentAnHourTryingToRealizeForLoopIntegersAreSomehowPassedByReferenceWithoutDoingThis].optionName));
 			}
 		}
 
@@ -60,9 +61,9 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 	}
 
 	class OptionSelectionResponseRequester : ResponseRequester<string, OptionSelectionResponseInterface> {
-		string[] options;
+		SelectableOption[] options;
 
-		public OptionSelectionResponseRequester(HandleResult successCallback, HandleCancel cancelCallback, string[] options) : base(successCallback, cancelCallback) {
+		public OptionSelectionResponseRequester(HandleResult successCallback, HandleCancel cancelCallback, SelectableOption[] options) : base(successCallback, cancelCallback) {
 			this.options = options;
 		}
 
@@ -72,5 +73,10 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 		}
 
 		public override void ForceCancel() { linkedBehaviour.ForceCancel(); }
+	}
+
+	public class SelectableOption {
+		public string optionName;
+		public GameObject injectableGameObject;
 	}
 }

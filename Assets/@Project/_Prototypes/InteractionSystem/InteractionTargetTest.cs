@@ -40,7 +40,11 @@ namespace DuneRiders.InteractionSystem {
 								else Nothing();
 							},
 							() => {},
-							new string[] { "Move Village", "Option 2", "Option 3" }
+							new SelectableOption[] {
+								new SelectableOption { optionName = "Move Village" },
+								new SelectableOption { optionName = "Option 2" },
+								new SelectableOption { optionName = "Option 3" },
+							}
 						),
 
 						confirm = new Node {

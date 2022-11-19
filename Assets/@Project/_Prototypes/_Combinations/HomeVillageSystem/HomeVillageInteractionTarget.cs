@@ -30,6 +30,8 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] Canvas promptCanvas;
 		[SerializeField] TextMeshProUGUI prompt;
 
+		[SerializeField] GameObject migrationCounter;
+
 		[SerializeField] UnityEvent migrateVillage = new UnityEvent();
 		[SerializeField] UnityEvent fuelSuccessfullyTransferred = new UnityEvent();
 		[SerializeField] UnityEvent variableLargeFuelTransferEvent = new UnityEvent();
@@ -42,8 +44,19 @@ namespace DuneRiders.HomeVillageSystem {
 		string persistenceKey = "HomeVillageInteractionTarget";
 
 		Gatherer gatherer;
-		string[] villageInteractionOptions = new string[] { "Transfer Fuel", "Migrate", "Ring City" };
-		string[] availableVillageInteractionOptions = new string[3];
+
+		SelectableOption[] villageInteractionOptions = new SelectableOption[] {
+			new SelectableOption { optionName = "Transfer Fuel" },
+			new SelectableOption { optionName = "Migrate" },
+			new SelectableOption { optionName = "Ring City" },
+		};
+
+		SelectableOption[] availableVillageInteractionOptions = new SelectableOption[3];
+
+		void Awake() {
+			if (villageInteractionOptions[1].optionName != "Migrate") Debug.LogError("ARE YOU SURE THE MIGRATION COUNTER GOES HERE");
+			else villageInteractionOptions[1].injectableGameObject = migrationCounter;
+		}
 
 		void Start() {
 			gatherer = FindObjectOfType<Gatherer>();
@@ -105,11 +118,11 @@ namespace DuneRiders.HomeVillageSystem {
 		}
 
 		void OptionSelected(string option) {
-			if (option == villageInteractionOptions[0]) {
+			if (option == villageInteractionOptions[0].optionName) {
 				SetPromptText("How much Fuel would you like to give?");
 				SetCurrentNodeToCustom(FuelTransferInteractionTree());
 				InitiateCurrentResponseRequester();
-			} else if (option == villageInteractionOptions[1] || option == villageInteractionOptions[2]) {
+			} else if (option == villageInteractionOptions[1].optionName || option == villageInteractionOptions[2].optionName) {
 				AttemptMigration();
 			} else InteractionRestart();
 		}

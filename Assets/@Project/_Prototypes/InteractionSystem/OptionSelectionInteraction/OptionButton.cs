@@ -10,6 +10,12 @@ namespace DuneRiders.InteractionSystem.OptionSelectionInteraction {
 	{
 		[SerializeField] Button button;
 		[SerializeField] TextMeshProUGUI buttonText;
+		GameObject injectedGameObject;
+
+		public void SetGameObject(GameObject injectableGameObject) {
+			if (injectedGameObject != null) Destroy(injectedGameObject);
+			if (injectableGameObject != null) injectedGameObject = Instantiate(injectableGameObject, button.transform);
+		}
 
 		public void SetText(string text) {
 			buttonText.text = text;

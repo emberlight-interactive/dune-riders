@@ -163,6 +163,7 @@ MonoBehaviour:
   promptParent: {fileID: 7694167236932037676}
   promptCanvas: {fileID: 7694167236416180383}
   prompt: {fileID: 7694167237298124842}
+  migrationCounter: {fileID: 6749423713334996055, guid: 613ebe5bdfa48054c8a27797830d87e6, type: 3}
   migrateVillage:
     m_PersistentCalls:
       m_Calls:
@@ -181,6 +182,12 @@ MonoBehaviour:
   fuelSuccessfullyTransferred:
     m_PersistentCalls:
       m_Calls: []
+  variableLargeFuelTransferEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canMigrateAfterTransferEvent:
+    m_PersistentCalls:
+      m_Calls: []
   nextMigrationTriggersWinCondition: 0
 --- !u!114 &7694167236373193540
 MonoBehaviour:
@@ -194,12 +201,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ba9ea8475b2224aba3acb69a15fad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowFuelWarningEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  secondsBetweenEveryWarning: 300
   fuelResourceManager: {fileID: 7694167236373193541}
   villageOutOfFuel:
     m_PersistentCalls:
       m_Calls: []
+  migrationLevelsChanged:
+    m_PersistentCalls:
+      m_Calls: []
   fuelPerHour: 750
   numberOfMigrations: 1
+  baseMigrationLevel: 5000
+  migrationIncrements: 1000
+  reserveLevel: 5000
 --- !u!114 &7694167236373193541
 MonoBehaviour:
   m_ObjectHideFlags: 0

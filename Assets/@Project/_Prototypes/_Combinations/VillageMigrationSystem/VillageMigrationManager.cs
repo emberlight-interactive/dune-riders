@@ -49,6 +49,10 @@ namespace DuneRiders.VillageMigrationSystem {
 			}
 		}
 
+		public VillageMigrationWaypoint GetCurrentWaypoint() {
+			return currentWaypoint;
+		}
+
 		IEnumerator WatchForMigrateOpportunity() {
 			while (true) {
 				if (PlayerIsIgnorantOfVillagePosition()) {
