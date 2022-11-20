@@ -23,17 +23,17 @@ namespace DuneRiders.PauseSystem {
 				} else {
 					PauseGame();
 				}
-
-				paused = !paused;
 			};
 		}
 
 		public void PauseGame() {
 			pauseEvents.Invoke();
+			paused = true;
 		}
 
 		public void UnPauseGame() {
 			unpauseEvents.Invoke();
+			paused = false;
 		}
 	}
 }
