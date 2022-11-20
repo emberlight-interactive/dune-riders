@@ -63,6 +63,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1257076406645165967, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
   m_PrefabInstance: {fileID: 1391706912976297302}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &153788986437161687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1257076406645165953, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
+  m_PrefabInstance: {fileID: 1391706912976297302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1525687089748439000 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8756121087425465714, guid: ba875c655b88bcf4f9aee3bb8aae33d6, type: 3}
@@ -89,7 +94,7 @@ MonoBehaviour:
   resourceType: 1
   succSoundPlayer: {fileID: 1525687089748439000}
   amount: 30
-  yOffsetOfRestingPlace: 0.5
+  yOffsetOfRestingPlace: 1
   moveSpeed: 2
   gatherSpeed: 12
   rarityValue: 20
@@ -105,3 +110,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1976341940576315331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 153788986437161687}
+    m_Modifications:
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783340628692377397, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304203866016944158, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 57e77aee3fc4df44c8076855f11f07f8, type: 3}
+    - target: {fileID: 2304203866016944158, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: IconColor.b
+      value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304203866016944158, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: IconColor.g
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304203866016944158, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: IconColor.r
+      value: 0.5568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165296231369944811, guid: 09d181d60c852f0428c42743771afb52, type: 3}
+      propertyPath: m_Name
+      value: GatherableMapIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09d181d60c852f0428c42743771afb52, type: 3}
