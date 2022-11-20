@@ -238,6 +238,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoSaveCycleTime: 240
   savingIndicator: {fileID: 1051771964}
+--- !u!114 &52575475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &89091715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,8 +1505,32 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1051771974}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: canMigrateAfterTransferEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TemporarilyEnable
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: variableLargeFuelTransferEvent.m_PersistentCalls.m_Calls.Array.size
@@ -1493,12 +1541,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: canMigrateAfterTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1051771966}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1051771973}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: variableLargeFuelTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DuneRiders.TemporarilyEnableGameObject, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: variableLargeFuelTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1509,8 +1569,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: canMigrateAfterTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayTip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TemporarilyEnable
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: variableLargeFuelTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1525,11 +1593,23 @@ PrefabInstance:
       value: DuneRiders.NPCGuidanceSystem.PlayMigrationTipAfterDelay, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DuneRiders.TemporarilyEnableGameObject, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: variableLargeFuelTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DuneRiders.NPCGuidanceSystem.ParvGratitude, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: migrateVillage.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: canMigrateAfterTransferEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
+      propertyPath: unsuccessfulMigrationRequest.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841246, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
@@ -2527,30 +2607,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &365417593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &382951423
 GameObject:
   m_ObjectHideFlags: 19
@@ -4973,6 +5029,28 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 7777978125410250527, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
   m_PrefabInstance: {fileID: 1051771959}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051771973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2056085947682754718, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+  m_PrefabInstance: {fileID: 1051771959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6da8f9b6354d3a46a5572dd5c0521bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1051771974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7158635030344117878, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+  m_PrefabInstance: {fileID: 1051771959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6da8f9b6354d3a46a5572dd5c0521bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096842005
 GameObject:
   m_ObjectHideFlags: 0
@@ -6876,7 +6954,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 365417593}
+    m_noiseSettings: {fileID: 52575475}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0

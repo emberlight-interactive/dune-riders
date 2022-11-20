@@ -93,6 +93,12 @@ namespace DuneRiders.HomeVillageSystem {
 			return reserveLevel / fuelResourceManager.ResourceLimit();
 		}
 
+		public float FuelNeededForAnotherMigration() {
+			var amount = migrationLevel - fuelResourceManager.Amount();
+			if (amount <= 0) return 0;
+			else return amount;
+		}
+
 		public void Save(IPersistenceUtil persistUtil) {
 			persistUtil.Save(persistenceKey, new HomeVillageFuelManagerSerializable {
 				numberOfMigrations = this.numberOfMigrations,

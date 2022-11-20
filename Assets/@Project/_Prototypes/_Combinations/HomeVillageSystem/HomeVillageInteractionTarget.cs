@@ -33,6 +33,7 @@ namespace DuneRiders.HomeVillageSystem {
 		[SerializeField] GameObject migrationCounter;
 
 		[SerializeField] UnityEvent migrateVillage = new UnityEvent();
+		[SerializeField] UnityEvent unsuccessfulMigrationRequest = new UnityEvent();
 		[SerializeField] UnityEvent fuelSuccessfullyTransferred = new UnityEvent();
 		[SerializeField] UnityEvent variableLargeFuelTransferEvent = new UnityEvent();
 		[SerializeField] UnityEvent canMigrateAfterTransferEvent = new UnityEvent();
@@ -135,6 +136,7 @@ namespace DuneRiders.HomeVillageSystem {
 				migrateVillage.Invoke();
 			} else {
 				SetPromptText("Unfortunately it looks like we don't have enough fuel");
+				unsuccessfulMigrationRequest?.Invoke();
 				StartCoroutine(DelayedInteractionRestart());
 			}
 		}
