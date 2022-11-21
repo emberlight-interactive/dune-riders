@@ -1382,7 +1382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841244, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: resourceAmount
-      value: 4500
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 5007656698491841245, guid: 0d7907ed0b4482d4baa7cff8e3d75cff, type: 3}
       propertyPath: fuelPerHour
@@ -4157,18 +4157,7 @@ MonoBehaviour:
   m_stampJitter: 0.25
   m_stampWidth: 100
   m_stampHeight: 100
---- !u!114 &812877831 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7416243815439512510, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-  m_PrefabInstance: {fileID: 1051771959}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61f1cc55b092e634394e28ed21d51a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &877753319
+--- !u!114 &790430795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4192,6 +4181,17 @@ MonoBehaviour:
     fractalTypeName: Fbm
     noiseTypeParams: 
     fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
+--- !u!114 &812877831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7416243815439512510, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+  m_PrefabInstance: {fileID: 1051771959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f1cc55b092e634394e28ed21d51a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &923988374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4716,7 +4716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3478736754222911054, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceAmount
-      value: 2000
+      value: 1250
       objectReference: {fileID: 0}
     - target: {fileID: 4093927841483351748, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: gunsToSwapBetween.Array.data[1].gunState
@@ -6958,7 +6958,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 877753319}
+    m_noiseSettings: {fileID: 790430795}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0

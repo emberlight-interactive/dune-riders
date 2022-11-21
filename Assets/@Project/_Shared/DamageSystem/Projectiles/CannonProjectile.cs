@@ -37,7 +37,7 @@ namespace DuneRiders.Shared.DamageSystem {
 			ApplyRandomRotation();
 			rb.velocity += transform.forward * initialForce;
 			SpawnLaunchParticles();
-			StartMaxDistanceCheck();
+			StartCoroutine(StartMaxDistanceCheck());
 			PlayLaunchAudio();
 		}
 
@@ -106,12 +106,15 @@ namespace DuneRiders.Shared.DamageSystem {
 			AudioSource.PlayClipAtPoint(explosionNoise, transform.position);
 		}
 
-		void StartMaxDistanceCheck() {
-			if (maxProjectileDistance == 0) return;
-			Invoke(nameof(DisableProjectileAfterMaxDistance), maxProjectileDistance / initialForce);
-		}
+		IEnumerator StartMaxDistanceCheck() {
+			if (maxProjectileDistance == 0) yield break;
+			var startPos = transform.position;
 
-		void DisableProjectileAfterMaxDistance() {
+			while (Vector3.Distance(startPos, transform.position) <= maxProjectileDistance) {
+				var i = 3;
+				while (i-- > 0) yield return null;
+			}
+
 			SimplePool.Despawn(gameObject);
 		}
 	}
