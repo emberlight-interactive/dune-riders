@@ -12,6 +12,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		public UnityEvent fastTravelFinished = new UnityEvent();
 		TerrainScene terrainSceneToWaitFor;
 		bool currentlyTeleporting = false;
+		public bool CurrentlyTeleporting { get => currentlyTeleporting; }
 
 		public void Teleport() {
 			currentlyTeleporting = true;

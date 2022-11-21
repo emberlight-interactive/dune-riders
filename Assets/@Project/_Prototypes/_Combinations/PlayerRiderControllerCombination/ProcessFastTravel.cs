@@ -8,10 +8,10 @@ using DuneRiders.RiderAI.Actioners;
 using DuneRiders.Combinations;
 
 namespace DuneRiders.PlayerRiderControllerCombination {
-	[RequireComponent(typeof(FastTravel))]
 	public class ProcessFastTravel : MonoBehaviour
 	{
 		[SerializeField] TextMeshProUGUI warningText;
+		[SerializeField] FastTravel fastTravel;
 		[SerializeField] FastTravelFuelCost fastTravelFuelCost;
 		[SerializeField] EnemyAIEntitiesInRange enemyAIEntitiesInRange;
 		[SerializeField] GraphicRaycaster mapRaycaster;
@@ -20,11 +20,8 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		[SerializeField] Transform entityTravelling;
 		[SerializeField] Transform travelPosition;
 
-		FastTravel fastTravel;
 
 		void Awake() {
-			fastTravel = GetComponent<FastTravel>();
-
 			fastTravel.fastTravelFinished.AddListener(FinishFastTravel);
 			fastTravel.fastTravelFinished.AddListener(TriggerFriendlyRiderSpawnNearPlayer);
 			fastTravel.fastTravelFinished.AddListener(ChangePlayerCommandToFollow);
@@ -36,7 +33,7 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 			} else if (enemyAIEntitiesInRange.EntityCount > 0) {
 				ShowWarningText("Enemies Nearby");
 			} else {
-				StartFastTravel();
+				if (!fastTravel.CurrentlyTeleporting) StartFastTravel();
 			}
 		}
 
