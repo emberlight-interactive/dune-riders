@@ -1904,7 +1904,7 @@ PrefabInstance:
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 2766590440143057211}
+      objectReference: {fileID: 9505290531981160}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
@@ -1928,7 +1928,7 @@ PrefabInstance:
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 2766590440143057211}
+      objectReference: {fileID: 9505290531981160}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
@@ -1955,7 +1955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
-      value: SetActive
+      value: set_blocksRaycasts
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
@@ -1979,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
-      value: SetActive
+      value: set_blocksRaycasts
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
@@ -1995,7 +1995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.CanvasGroup, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: pauseEvents.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
@@ -2019,7 +2019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.CanvasGroup, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2463328330080894624, guid: 0518b160c5d690f4b875ce2024c9fff3, type: 3}
       propertyPath: unpauseEvents.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_BoolArgument
@@ -5132,9 +5132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2766590440143057211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3690497837238009754, guid: abad81c66ecf51249b4ceeeaaa418047, type: 3}
+--- !u!224 &3625138671498718771 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2818333109985648786, guid: abad81c66ecf51249b4ceeeaaa418047, type: 3}
   m_PrefabInstance: {fileID: 1536764734368173729}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5592935918900127127 stripped
@@ -5277,9 +5277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3625138671498718771 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2818333109985648786, guid: abad81c66ecf51249b4ceeeaaa418047, type: 3}
+--- !u!225 &9505290531981160 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1545414586297584073, guid: abad81c66ecf51249b4ceeeaaa418047, type: 3}
   m_PrefabInstance: {fileID: 1536764734368173729}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &1536764735265060400 stripped

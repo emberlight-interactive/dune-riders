@@ -4953,6 +4953,7 @@ GameObject:
   - component: {fileID: 2856106606509651709}
   - component: {fileID: 7104141665651777131}
   - component: {fileID: 500699060823604790}
+  - component: {fileID: 1545414586297584073}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5045,6 +5046,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4027584503
+--- !u!225 &1545414586297584073
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690497837238009754}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3795912277575450978
 GameObject:
   m_ObjectHideFlags: 0
@@ -10500,11 +10513,6 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: bb28646049d0c8c48a3545cdc7ce8356, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c55503cf69cd9db47978f24188dd79b6, type: 3}
---- !u!224 &87774295610901766 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1036724108547592653, guid: c55503cf69cd9db47978f24188dd79b6, type: 3}
-  m_PrefabInstance: {fileID: 1104781951046014155}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1104781950788055889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1889560474, guid: c55503cf69cd9db47978f24188dd79b6, type: 3}
@@ -10516,6 +10524,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54754cce01cb604a913ed6ce27300d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &87774295610901766 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1036724108547592653, guid: c55503cf69cd9db47978f24188dd79b6, type: 3}
+  m_PrefabInstance: {fileID: 1104781951046014155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1104781951401404892
 PrefabInstance:
   m_ObjectHideFlags: 0
