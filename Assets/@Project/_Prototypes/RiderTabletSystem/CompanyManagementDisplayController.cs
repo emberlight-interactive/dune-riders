@@ -85,7 +85,7 @@ namespace DuneRiders.RiderTabletSystem {
 					availableTiles[i].armourIconography.sprite = GetIconForArmour(rider.armourType);
 					availableTiles[i].weaponIconography.sprite = GetIconForWeapon(rider.weaponType);
 					availableTiles[i].healthOverlay.fillAmount = HealthToDamageOverlay(rider.health, rider.maxHealth);
-					availableTiles[i].healthText.text = rider.health.ToString();
+					availableTiles[i].healthText.text = ((int) rider.health).ToString();
 					availableTiles[i].repairImage.gameObject.SetActive(rider.isBeingRepaired);
 					i++;
 				}
