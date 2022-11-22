@@ -15,6 +15,8 @@ namespace DuneRiders.GatheringSystem {
 		public float moveSpeed = 1f;
 		public float gatherSpeed = 5f;
 		public float rarityValue = 1f;
+		[Tooltip("Maximum number of seconds it is moving towards the gatherer")]
+		public float maxSecondsToGatherer = 1.2f;
 		bool gathered = false;
 
 		void OnEnable() {
@@ -24,8 +26,10 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		void Update() {
-			if (gatherer != null) MoveTowardsGatherer();
-			else MoveTowardsDestination();
+			if (gatherer != null) {
+				MoveTowardsGatherer();
+				StartCoroutine(DespawnTimer());
+			} else MoveTowardsDestination();
 		}
 
 		void SetYAxisOfDestinationToGroundLevel() {
@@ -52,6 +56,11 @@ namespace DuneRiders.GatheringSystem {
 			float step = gatherSpeed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, gatherer.transform.position, step);
 			transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), step / 4);
+		}
+
+		IEnumerator DespawnTimer() {
+			yield return new WaitForSeconds(maxSecondsToGatherer);
+			SimplePool.Despawn(gameObject);
 		}
 
 		private void OnTriggerEnter(Collider other) {
