@@ -50,8 +50,8 @@ namespace DuneRiders.GunSystem {
 			{
 				bulletsFiredCounter++;
 				var spawnedProjectile = SimplePool.Spawn(projectile, projectileSpawnLocation.transform.position, projectileSpawnLocation.transform.rotation);
-				SimplePool.Despawn(spawnedProjectile, .025f);
-				yield return new WaitForSeconds(.025f);
+				SimplePool.Despawn(spawnedProjectile, .046f);
+				yield return new WaitForSeconds(.046f);
 			}
 
 			StopFiring();
