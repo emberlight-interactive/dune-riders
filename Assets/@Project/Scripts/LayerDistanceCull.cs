@@ -17,5 +17,11 @@ namespace DuneRiders {
 			distances[layerIndex] = distanceToUntilCull;
 			cameraPerformingCulling.layerCullDistances = distances;
 		}
+
+		void OnDrawGizmos() {
+			Gizmos.color = new Vector4(1, 0, 0, 0.3f);
+			Gizmos.matrix = transform.localToWorldMatrix;
+			Gizmos.DrawWireCube(Vector3.zero, Vector3.one * distanceToUntilCull * 2);
+		}
 	}
 }

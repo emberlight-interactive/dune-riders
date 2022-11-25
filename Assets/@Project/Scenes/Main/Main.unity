@@ -4738,42 +4738,6 @@ PrefabInstance:
       propertyPath: resourceAmount
       value: 1095
       objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsRegular.m_Center.x
-      value: -2989.498779296875
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsRegular.m_Center.y
-      value: 10.190999984741211
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsRegular.m_Center.z
-      value: -19694.548828125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Center.x
-      value: -2989.498779296875
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Center.y
-      value: 10.190999984741211
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Center.z
-      value: -19694.548828125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Extents.x
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Extents.y
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
-      propertyPath: m_loadingBoundsImpostor.m_Extents.z
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 6249377486958498286, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceAmount
       value: 200
@@ -5130,6 +5094,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1184578844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &1186731653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,7 +6934,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 1611595623}
+    m_noiseSettings: {fileID: 1184578844}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0
@@ -7894,30 +7882,6 @@ MonoBehaviour:
     m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
   m_inputTerrain: {fileID: 0}
   m_advancedInputSettingsUnfolded: 0
---- !u!114 &1611595623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1001 &1672358887
 PrefabInstance:
   m_ObjectHideFlags: 0
