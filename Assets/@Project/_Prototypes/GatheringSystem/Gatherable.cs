@@ -18,18 +18,27 @@ namespace DuneRiders.GatheringSystem {
 		[Tooltip("Maximum number of seconds it is moving towards the gatherer")]
 		public float maxSecondsToGatherer = 1.2f;
 		bool gathered = false;
+		bool despawnTimerStarted = false;
 
 		void OnEnable() {
 			SetYAxisOfDestinationToGroundLevel();
 			OffSetDestination();
 			gathered = false;
+			despawnTimerStarted = false;
 		}
 
 		void Update() {
 			if (gatherer != null) {
 				MoveTowardsGatherer();
-				StartCoroutine(DespawnTimer());
+				if (!despawnTimerStarted) {
+					StartCoroutine(DespawnTimer());
+					despawnTimerStarted = true;
+				}
 			} else MoveTowardsDestination();
+		}
+
+		void OnDisable() {
+			StopAllCoroutines();
 		}
 
 		void SetYAxisOfDestinationToGroundLevel() {

@@ -14,15 +14,13 @@ public class RiderDrivingControl : MonoBehaviour
 	[SerializeField] InputActionProperty leftControllerTrigger;
 	[SerializeField] InputActionProperty leftControllerY;
 	[SerializeField] InputActionProperty leftControllerX;
-	[SerializeField] InputActionProperty brake;
 
 	[SerializeField] WheelCollider frontLeft;
 	[SerializeField] WheelCollider frontRight;
 	[SerializeField] WheelCollider backLeft;
 	[SerializeField] WheelCollider backRight;
 
-	bool brakeModeEnabled = false;
-	bool brakeModeUtilized = false;
+	bool persistentBrakeSinceForwardAcceleration = false;
 
 	bool rightHandHoldingWheel = false;
 	bool leftHandHoldingWheel = false;
@@ -46,43 +44,32 @@ public class RiderDrivingControl : MonoBehaviour
 		leftControllerTrigger.action.Enable();
 		leftControllerY.action.Enable();
 		leftControllerX.action.Enable();
-		brake.action.Enable();
-
-		brake.action.performed += context =>
-		{
-			if (context.interaction is TapInteraction) {
-				brakeModeEnabled = true;
-			}
-		};
 	}
 
-	private void FixedUpdate() {
+	void FixedUpdate() {
 		currentAcceleration = acceleration * GetAccelerationValue();
 
+		DetectPersistentBrakeSinceForwardAcceleration();
 		UpdateDrivingState(currentAcceleration);
 
-		if (brakeModeEnabled && currentAcceleration < 0) {
-			Brake();
-			brakeModeUtilized = true;
-		} else {
-			if (brakeModeUtilized) {
-				brakeModeEnabled = false;
-				brakeModeUtilized = false;
-			}
+		SetWheelTorque(currentAcceleration);
 
-			frontLeft.motorTorque = currentAcceleration;
-			frontRight.motorTorque = currentAcceleration;
+		var localVel = LocalVelocity();
 
-			var localVel = LocalVelocity();
-
-			if (localVel.z > 10f && currentAcceleration < 0)
-			{
+		if (persistentBrakeSinceForwardAcceleration && currentAcceleration < 0)
+		{
+			if (GetRiderKMH() > 35f) {
 				Brake();
-			} else if (localVel.z < -10f && currentAcceleration > 0) {
-				Brake();
-			} else {
+			} else if (GetRiderKMH() <= 35f && GetRiderKMH() >= 5f) {
 				ReleaseBrake();
+			} else if (GetRiderKMH() < 5f) {
+				Brake();
+				SetWheelTorque(0);
 			}
+		} else if (localVel.z < -10f && currentAcceleration > 0) {
+			Brake();
+		} else {
+			ReleaseBrake();
 		}
 
 		currentTurnAngle = GetTurnAngle() * steeringWheel.GetValue();
@@ -133,7 +120,7 @@ public class RiderDrivingControl : MonoBehaviour
 	}
 
 	float GetTurnAngle() {
-		return Mathf.Max(maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z), 1);
+		return Mathf.Max(maxTurnAngle - Mathf.Abs(speedEffectOnTurnAngle * LocalVelocity().z), 3);
 	}
 
 	void UpdateDrivingState(float currentAcceleration) {
@@ -147,5 +134,19 @@ public class RiderDrivingControl : MonoBehaviour
 			accelerating = false;
 			reversing = true;
 		}
+	}
+
+	void SetWheelTorque(float acceleration) {
+		frontLeft.motorTorque = acceleration;
+		frontRight.motorTorque = acceleration;
+	}
+
+	void DetectPersistentBrakeSinceForwardAcceleration() {
+		if (GetAccelerationValue() < 0 && LocalVelocity().z >= 1f) persistentBrakeSinceForwardAcceleration = true;
+		else if (GetAccelerationValue() >= 0 && LocalVelocity().z < 1f && persistentBrakeSinceForwardAcceleration) persistentBrakeSinceForwardAcceleration = false;
+	}
+
+	float GetRiderKMH() {
+		return 3.6f * riderRB.velocity.magnitude;
 	}
 }
