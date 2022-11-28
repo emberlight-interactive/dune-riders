@@ -160,6 +160,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46727842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &49862115
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8268315514777095364, guid: 127f4b9b392ff8a4da42466efc14b8a5, type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAACYn+vVwBtW7wEAANQDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01v2zAM/SuBz2sg13bc7Lg06A5LMsQ9FC12YCzaFipLmSwlaYL+94n+SF1sl51kPeo9ko/0JcgrMJBbNFvgwjXB18ntdP5lEuRaWe3MCk5LY7QhnFCUMhNn7K9HkK+wk/gdRVlZD8YjcCFFvfMYm94mHq7hlEm9J2rEuvuSl/gDVWkr0mtBobZYCq36JERELqw2j0LikDmZedj2wNNfyPMVcQ0Sj7qyxqFHDEo8gLIPBvZV5kwBOa40J9ngXq+13eJvJwwG9BYa74sXXGgpBUcz1hliK2yqNkEBsvkUeURjQKh/hgyOi8p7/e0Qv0cLQvoHYedU8+q/L5PgANJRqTchi++SNJ28U9tQrroXL7/o2qXNoN5fHYsoubZgvbOd0okG49G3/jzT2coV2uTIv2mneLNA5eX+h9En7N+Hs4QNnDCeTeMojeK0J8dsPusEmkofyceNs1IoHDlGkbUfz0IrhTmVP7JtoPVj/AgoBIONzfyRVxsl356eR5qoaDvXcKg9d+GsFar84JZO8M9mBzOWJncpmyMvMMaI3aSYFvM4wSRk4S5iLGi7EEpYAfKn15d2cMkvvBoVBnWruMXcj3rSLiFtGjdwfBDnWo+6E6rQWe4XRW06jasnfkVAep/5sv0zMmxbIGpweQ/e/wBQSwMEFAAACAgAAJif6wPYHIRvAAAAegAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTTUVBKL0osyCgGihiCOKWZKSB2tJKZgbmphbmBZWpKWqpJqrGBrnmqeZqliWmqqaGBYZKxgYFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAmJ/r1cAbVu8BAADUAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rA9gchG8AAAB6AAAACQAkAAAAAAAAAAAAAAA8AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAPYCAAAAAA==
+      value: UEsDBBQAAAgIAACYn+s6Njur7wEAANcDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGVU01z2jAQ/SuMzw0j46/SYwmTHgp0cA6ZZHpY7LWtiSxRWQICw3/vyh/UmeTSk6y3+97uPq0vXlaBhsyg3kLObeN9m8ym8y8TL1PSKKtXcFpqrbTDHYpCpPyM/fUI4hV2An8gLytDYMBG6ELwekcgm84igms4pULtcUij+zIv8SfK0lROsAW53GLJleyrOCLm3Cj9yAUOpaOYYNMDTx+Q5xtiG3Q8N5bRFgnRKPAA0jxo2Fep1QVkuFK5k/Xu1VqZLf6xXKPncqEhY0hwoYTgOeqxzhBbYVO1BQoQzbvII2oNXH4a0jhuKuv1t0P8Hg1wQQl+51TzSt+XiXcAYV2rd7M48GcJiyZXNzeUqy7l5be7dnVTqPc3ywJXXRkwZG0ndXIvQ+hbf57d2coVSmeYf1dW5s0CJcn9D6Mv2Of7ccQGjh/G0zBIgjDpySGbx51AU6mjM3JjjeASR5a5yJreZ6GkxMy1P/JtoPXv+C8gETQ2JqUjqzZSvD09jzRRuvVcw6Em7sIaw2U5CpeW5+/t9mKWRF8TNse8wBADdpdgUszDCCOf+buAMa8dg0tuOIhfVECYwSZaeTnqDOpWcYsZPfakXUO3a7mG4wM/12o0HpeFSjNaFbnpNG6m0JKAIKPzZftvpNjO4Kje5epd/wJQSwMEFAAACAgAAJif6wPYHIRvAAAAegAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTTUVBKL0osyCgGihiCOKWZKSB2tJKZgbmphbmBZWpKWqpJqrGBrnmqeZqliWmqqaGBYZKxgYFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAmJ/rOjY7q+8BAADXAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rA9gchG8AAAB6AAAACQAkAAAAAAAAAAAAAAA8AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAPYCAAAAAA==
       objectReference: {fileID: 0}
     - target: {fileID: 8268315514777095364, guid: 127f4b9b392ff8a4da42466efc14b8a5, type: 3}
       propertyPath: data.cacheStartup
@@ -4688,7 +4712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731951975384, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 34836407
+      value: 60002231
       objectReference: {fileID: 0}
     - target: {fileID: 3107470732345291704, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4737,6 +4761,54 @@ PrefabInstance:
     - target: {fileID: 4379606291750624940, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceAmount
       value: 1095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Center.x
+      value: -18.473276138305664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Center.y
+      value: 15.539999961853027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Center.z
+      value: -15987.73828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Center.x
+      value: -18.473276138305664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Center.y
+      value: 15.539999961853027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Center.z
+      value: -15987.73828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Extents.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Extents.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsRegular.m_Extents.z
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Extents.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Extents.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815846593285009852, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
+      propertyPath: m_loadingBoundsImpostor.m_Extents.z
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6249377486958498286, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: resourceAmount
@@ -4948,7 +5020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerIndex: 16
-  distanceToUntilCull: 2000
+  distanceToUntilCull: 3000
 --- !u!114 &1051771970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4962,7 +5034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerIndex: 15
-  distanceToUntilCull: 1250
+  distanceToUntilCull: 2000
 --- !u!114 &1051771971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4975,7 +5047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ea3df668f934141a26b8d8f57fb76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToUntilCull: 1250
+  distanceToUntilCull: 3000
 --- !u!223 &1051771972 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7777978125410250527, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -5094,30 +5166,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1184578844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &1186731653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6351,23 +6399,23 @@ MonoBehaviour:
       y: 0
       z: 0
     m_Extents:
-      x: 0
-      y: 0
-      z: 0
+      x: 100000
+      y: 100000
+      z: 100000
   m_sceneViewImpostorLoadingBounds:
     m_Center:
-      x: -8.151623725891113
-      y: 5.450021743774414
-      z: -10.581705093383789
+      x: -36.20234298706055
+      y: 52.23521041870117
+      z: -15923.9755859375
     m_Extents:
       x: 0
       y: 0
       z: 0
   m_sceneViewCameraLoadingBounds:
     m_Center:
-      x: -8.151623725891113
-      y: 5.450021743774414
-      z: -10.581705093383789
+      x: -36.20234298706055
+      y: 52.23521041870117
+      z: -15923.9755859375
     m_Extents:
       x: 100000
       y: 100000
@@ -6934,7 +6982,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 1184578844}
+    m_noiseSettings: {fileID: 46727842}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0

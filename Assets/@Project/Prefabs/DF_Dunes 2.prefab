@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 1223241328831377626}
   - component: {fileID: 919104978785069110}
   - component: {fileID: 1548480795999975809}
+  - component: {fileID: 3273514629789590564}
   m_Layer: 0
   m_Name: DF_Dunes 2_LOD1
   m_TagString: Untagged
@@ -157,6 +158,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: a993255991e76ed48ac02a15ee6df1f9, type: 2}
+--- !u!114 &3273514629789590564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103492801072856369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &7915204374079714980
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +188,7 @@ GameObject:
   - component: {fileID: 1585734460498455525}
   - component: {fileID: 4509656612097765920}
   - component: {fileID: 4343298273067478698}
+  - component: {fileID: 6558422802895030693}
   m_Layer: 0
   m_Name: DF_Dunes 2_LOD2
   m_TagString: Untagged
@@ -253,6 +273,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 71ebfb398a1e4c44c94e767e355699b4, type: 2}
+--- !u!114 &6558422802895030693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915204374079714980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &7917414207126234347
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +303,7 @@ GameObject:
   - component: {fileID: 9071137170312642777}
   - component: {fileID: 951343714629000756}
   - component: {fileID: 1008101018916827879}
+  - component: {fileID: 5669671650553111462}
   m_Layer: 0
   m_Name: DF_Dunes 2_LOD3
   m_TagString: Untagged
@@ -349,3 +388,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4157cd42bc5648040a93248295dcd107, type: 2}
+--- !u!114 &5669671650553111462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917414207126234347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1

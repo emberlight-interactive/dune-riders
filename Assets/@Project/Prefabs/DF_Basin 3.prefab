@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2913750401907911698}
   - component: {fileID: 3138447496882447717}
   - component: {fileID: 1160247022014125929}
+  - component: {fileID: 8879226182282592903}
   m_Layer: 0
   m_Name: DF_Basin 3_LOD1
   m_TagString: Untagged
@@ -158,6 +159,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f455541c46a38a74eb3e8638e945fee1, type: 2}
+--- !u!114 &8879226182282592903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317036681768942686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &3856276578273966981
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +189,7 @@ GameObject:
   - component: {fileID: 3746849084643774221}
   - component: {fileID: 231722902781411294}
   - component: {fileID: 5978479793345553926}
+  - component: {fileID: 1654579839033621990}
   m_Layer: 0
   m_Name: DF_Basin 3_LOD2
   m_TagString: Untagged
@@ -255,6 +275,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ec44dc01e9b795c4a94443efa77e4918, type: 2}
+--- !u!114 &1654579839033621990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856276578273966981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &7047450199860425782
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +305,7 @@ GameObject:
   - component: {fileID: 3410332864666316915}
   - component: {fileID: 8242087219783444363}
   - component: {fileID: 6837646521268229583}
+  - component: {fileID: 6295698092327368985}
   m_Layer: 0
   m_Name: DF_Basin 3_LOD3
   m_TagString: Untagged
@@ -352,3 +391,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9a617a082c0a31640989c40178999a19, type: 2}
+--- !u!114 &6295698092327368985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047450199860425782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1

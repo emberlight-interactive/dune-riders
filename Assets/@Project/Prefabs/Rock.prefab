@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2539829772801890144}
   - component: {fileID: 595372787608785357}
   - component: {fileID: 6528016602226397955}
+  - component: {fileID: 9025207446502947483}
   m_Layer: 0
   m_Name: RockModel
   m_TagString: Untagged
@@ -97,6 +98,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7ffc1105c53073545b73d3bf940a1562, type: 2}
+--- !u!114 &9025207446502947483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649670305534016173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &7982381453367727114
 GameObject:
   m_ObjectHideFlags: 0

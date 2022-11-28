@@ -2553,6 +2553,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4475551972661264722, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 60002231
+      objectReference: {fileID: 0}
     - target: {fileID: 4475551972783467722, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
       propertyPath: m_Name
       value: PlayerRiderControllerCombination
@@ -2898,179 +2902,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4475551972783467722, guid: 87b83fc10cf03b144b30293c823f8cd3, type: 3}
   m_PrefabInstance: {fileID: 1514246194668087946}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5751649585245311743
+--- !u!114 &3088578302961275148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402693933164369035}
+  m_GameObject: {fileID: 3107470731821385280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4af9602d2cfbd9c48be72d97d2240219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.5
-  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
-  fadeOnStart: 1
-  renderQueue: 5000
---- !u!114 &5258704809462221794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514246195098393112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4442eebf92c20344e918b1c83c40a614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burnRateSystem: {fileID: 3261319979207133760}
-  gatherer: {fileID: 2808908350455346943}
-  fuelBurnRateText: {fileID: 1514246194656878547}
---- !u!114 &2870848445358138762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514246195290062533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ffe869c61a51044f9b99d079797e8f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cannon: {fileID: 3114004999946873990}
-  missiles: {fileID: 3114004998545503790}
-  machineGun: {fileID: 3114004998169854372}
-  gunNameText: {fileID: 1514246195290062555}
-  gunStateText: {fileID: 1514246194834783492}
-  gunStateBackground: {fileID: 1514246195034272709}
---- !u!114 &1697671429746426415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872907315039980069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7088923da4ed9944996a36b64269c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashboardHealthMonitor: {fileID: 1514246195893329286}
-  maxHealth: 100
-  health: 100
-  onZeroHealthPoints:
+  fastTravelFinished:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6611218502763006489}
-        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
-          Assembly-CSharp
-        m_MethodName: BurnMetal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6611218502763006489}
-        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
-          Assembly-CSharp
-        m_MethodName: StartSmoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6611218502763006489}
-        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
-          Assembly-CSharp
-        m_MethodName: FadeOutCamera
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3107470731366017478}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6611218502763006489}
-        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
-          Assembly-CSharp
-        m_MethodName: SlowDownRider
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6611218502763006489}
-        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
-          Assembly-CSharp
-        m_MethodName: LoadFailScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6611218502763006489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872907315039980069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e3afa9678c1c204db0eaadddbcf6ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOutTime: 4
-  smoke: {fileID: 9170960348348756574}
-  burntMetalMateral: {fileID: 2100000, guid: 2eff5398c0f214c4baa6bd1541da8990, type: 2}
-  sceneTransitioner: {fileID: 0}
-  riderMeshes:
-  - {fileID: 8528036752811970139}
-  - {fileID: 8817732339200667531}
-  - {fileID: 297909887098158321}
-  - {fileID: 6208521876051249507}
-  faders:
-  - {fileID: 4779473131911449985}
-  - {fileID: 5751649585245311743}
-  wheelColliders:
-  - {fileID: 3107470731612823881}
-  - {fileID: 3107470731294767080}
-  - {fileID: 3107470731442544660}
-  - {fileID: 3107470733255406291}
+      m_Calls: []
 --- !u!114 &225941999941611580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3239,18 +3085,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_loadingBoundsRegular:
     m_Center:
-      x: -18.473276138305664
-      y: 15.539999961853027
-      z: -15987.73828125
+      x: 0
+      y: 0
+      z: 0
     m_Extents:
       x: 650
       y: 650
       z: 650
   m_loadingBoundsImpostor:
     m_Center:
-      x: -18.473276138305664
-      y: 15.539999961853027
-      z: -15987.73828125
+      x: 0
+      y: 0
+      z: 0
     m_Extents:
       x: 1000
       y: 1000
@@ -3395,21 +3241,130 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: 7eb6e07c-2edb-4124-b17d-3ba6fc3c539b
---- !u!114 &3088578302961275148
+--- !u!114 &1697671429746426415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3107470731821385280}
+  m_GameObject: {fileID: 2872907315039980069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af9602d2cfbd9c48be72d97d2240219, type: 3}
+  m_Script: {fileID: 11500000, guid: e7088923da4ed9944996a36b64269c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastTravelFinished:
+  dashboardHealthMonitor: {fileID: 1514246195893329286}
+  maxHealth: 100
+  health: 100
+  onZeroHealthPoints:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6611218502763006489}
+        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
+          Assembly-CSharp
+        m_MethodName: BurnMetal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6611218502763006489}
+        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
+          Assembly-CSharp
+        m_MethodName: StartSmoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6611218502763006489}
+        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
+          Assembly-CSharp
+        m_MethodName: FadeOutCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3107470731366017478}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6611218502763006489}
+        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
+          Assembly-CSharp
+        m_MethodName: SlowDownRider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6611218502763006489}
+        m_TargetAssemblyTypeName: DuneRiders.PlayerRiderControllerCombination.HandleDeath,
+          Assembly-CSharp
+        m_MethodName: LoadFailScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6611218502763006489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872907315039980069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3afa9678c1c204db0eaadddbcf6ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutTime: 4
+  smoke: {fileID: 9170960348348756574}
+  burntMetalMateral: {fileID: 2100000, guid: 2eff5398c0f214c4baa6bd1541da8990, type: 2}
+  sceneTransitioner: {fileID: 0}
+  riderMeshes:
+  - {fileID: 8528036752811970139}
+  - {fileID: 8817732339200667531}
+  - {fileID: 297909887098158321}
+  - {fileID: 6208521876051249507}
+  faders:
+  - {fileID: 4779473131911449985}
+  - {fileID: 5751649585245311743}
+  wheelColliders:
+  - {fileID: 3107470731612823881}
+  - {fileID: 3107470731294767080}
+  - {fileID: 3107470731442544660}
+  - {fileID: 3107470733255406291}
 --- !u!114 &4779473131911449985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3426,6 +3381,55 @@ MonoBehaviour:
   fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
   fadeOnStart: 1
   renderQueue: 5000
+--- !u!114 &5751649585245311743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402693933164369035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
+--- !u!114 &2870848445358138762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514246195290062533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffe869c61a51044f9b99d079797e8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannon: {fileID: 3114004999946873990}
+  missiles: {fileID: 3114004998545503790}
+  machineGun: {fileID: 3114004998169854372}
+  gunNameText: {fileID: 1514246195290062555}
+  gunStateText: {fileID: 1514246194834783492}
+  gunStateBackground: {fileID: 1514246195034272709}
+--- !u!114 &5258704809462221794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514246195098393112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4442eebf92c20344e918b1c83c40a614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burnRateSystem: {fileID: 3261319979207133760}
+  gatherer: {fileID: 2808908350455346943}
+  fuelBurnRateText: {fileID: 1514246194656878547}
 --- !u!1001 &1536764734368173729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5333,158 +5337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8974873770392605853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536764734402086222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aead1684ba29b7b4ca20ac5b10e15947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2588069267228158979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2360243140100977741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountAndCapacityText: {fileID: 5592935918900127127}
-  burnRateText: {fileID: 6909618052006571836}
-  burnRateUnits: L/h
-  burnRateSystem: {fileID: 3261319979207133760}
-  oneTimeBurnRateResource: 0
-  resourceTracked: 0
-  gatherer: {fileID: 2808908350455346943}
-  resourceSlider: {fileID: 2360243140100977747}
---- !u!114 &3058811331441770399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417564985001829313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0cd564a96700445931d62d428be12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerFuelCost: {fileID: 691012344553895683}
-  homeFuelCost: {fileID: 7428715036983060887}
-  fastTravelFuelCost: {fileID: 8977660458905508878}
---- !u!114 &388765798654285236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375579588267919610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountAndCapacityText: {fileID: 793776727196244256}
-  burnRateText: {fileID: 1835765701309879179}
-  burnRateUnits: kg/h
-  burnRateSystem: {fileID: 3261319979207133760}
-  oneTimeBurnRateResource: 0
-  resourceTracked: 2
-  gatherer: {fileID: 2808908350455346943}
-  resourceSlider: {fileID: 7375579588267919588}
---- !u!114 &1768510366547141041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375579588381969068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountAndCapacityText: {fileID: 793776727858142070}
-  burnRateText: {fileID: 1835765701690659293}
-  burnRateUnits: kg
-  burnRateSystem: {fileID: 3261319979207133760}
-  oneTimeBurnRateResource: 1
-  resourceTracked: 1
-  gatherer: {fileID: 2808908350455346943}
-  resourceSlider: {fileID: 7375579588381969074}
---- !u!114 &2309951388396456778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375579588527314825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d171e03aa2aeaa7498e2a867616dbb54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showOnSliderValue: {fileID: 1875562562460239069}
-  sliderFill: {fileID: 7375579588382195338}
-  sustenanceMarker: {fileID: 1536764735360365998}
-  migrationMarker: {fileID: 1536764735265060400}
-  amountAndCapacityText: {fileID: 793776727978346067}
-  burnRateText: {fileID: 1835765701570579704}
-  burnRateUnits: L/h
---- !u!114 &1180785270187327181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763075606131216423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c713107ca73ba4b9d16d78db60e36b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrapResourceManager: {fileID: 14013045299475561}
-  requiredScrapToEnable: 1100
-  purchaseConfirmationDisabled: {fileID: 3509242166047232437}
---- !u!114 &5766946033829437400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763075606131216423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bcc6ff76376cc84994e2c22bc51c0f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  confirmButton: {fileID: 6329329366655508561}
-  scrapResourceManager: {fileID: 14013045299475561}
-  playerTurretUpgrader: {fileID: 5682835189138545213}
-  upgradeType: 1
-  scrapForPurchase: 1100
---- !u!114 &7085722599968777812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763075606131216423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d8788891be5ee4db13c468ade6ee59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTurretUpgrader: {fileID: 5682835189138545213}
-  appliedUpgrade: 1
 --- !u!114 &702437292464413712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5524,6 +5376,112 @@ MonoBehaviour:
   fastTravelLocation: {fileID: 0}
   playerFuelManager: {fileID: 3478736754222911054}
   homeVillageFuelResourceManager: {fileID: 0}
+--- !u!114 &3058811331441770399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417564985001829313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0cd564a96700445931d62d428be12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFuelCost: {fileID: 691012344553895683}
+  homeFuelCost: {fileID: 7428715036983060887}
+  fastTravelFuelCost: {fileID: 8977660458905508878}
+--- !u!114 &2588069267228158979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360243140100977741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountAndCapacityText: {fileID: 5592935918900127127}
+  burnRateText: {fileID: 6909618052006571836}
+  burnRateUnits: L/h
+  burnRateSystem: {fileID: 3261319979207133760}
+  oneTimeBurnRateResource: 0
+  resourceTracked: 0
+  gatherer: {fileID: 2808908350455346943}
+  resourceSlider: {fileID: 2360243140100977747}
+--- !u!114 &1768510366547141041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375579588381969068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountAndCapacityText: {fileID: 793776727858142070}
+  burnRateText: {fileID: 1835765701690659293}
+  burnRateUnits: kg
+  burnRateSystem: {fileID: 3261319979207133760}
+  oneTimeBurnRateResource: 1
+  resourceTracked: 1
+  gatherer: {fileID: 2808908350455346943}
+  resourceSlider: {fileID: 7375579588381969074}
+--- !u!114 &388765798654285236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375579588267919610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80ef6a9424515e4ea1151424a8b66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountAndCapacityText: {fileID: 793776727196244256}
+  burnRateText: {fileID: 1835765701309879179}
+  burnRateUnits: kg/h
+  burnRateSystem: {fileID: 3261319979207133760}
+  oneTimeBurnRateResource: 0
+  resourceTracked: 2
+  gatherer: {fileID: 2808908350455346943}
+  resourceSlider: {fileID: 7375579588267919588}
+--- !u!114 &2309951388396456778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375579588527314825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d171e03aa2aeaa7498e2a867616dbb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showOnSliderValue: {fileID: 1875562562460239069}
+  sliderFill: {fileID: 7375579588382195338}
+  sustenanceMarker: {fileID: 1536764735360365998}
+  migrationMarker: {fileID: 1536764735265060400}
+  amountAndCapacityText: {fileID: 793776727978346067}
+  burnRateText: {fileID: 1835765701570579704}
+  burnRateUnits: L/h
+--- !u!114 &8974873770392605853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536764734402086222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aead1684ba29b7b4ca20ac5b10e15947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4459070726617679247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5570,6 +5528,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTurretUpgrader: {fileID: 5682835189138545213}
   appliedUpgrade: 0
+--- !u!114 &1180785270187327181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763075606131216423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c713107ca73ba4b9d16d78db60e36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrapResourceManager: {fileID: 14013045299475561}
+  requiredScrapToEnable: 1100
+  purchaseConfirmationDisabled: {fileID: 3509242166047232437}
+--- !u!114 &5766946033829437400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763075606131216423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcc6ff76376cc84994e2c22bc51c0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmButton: {fileID: 6329329366655508561}
+  scrapResourceManager: {fileID: 14013045299475561}
+  playerTurretUpgrader: {fileID: 5682835189138545213}
+  upgradeType: 1
+  scrapForPurchase: 1100
+--- !u!114 &7085722599968777812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763075606131216423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d8788891be5ee4db13c468ade6ee59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTurretUpgrader: {fileID: 5682835189138545213}
+  appliedUpgrade: 1
 --- !u!1001 &2858125302835034117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8118,21 +8122,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1149921469628657766, guid: 21952d0967bcaeb4783deb7f6c9b241c, type: 3}
   m_PrefabInstance: {fileID: 7985731629819695541}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9190762483103764277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7000374894610260435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec4965e004382e4691ea3eab1d2eb24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  commandToSet: 1
-  pulseCommand: 0
-  commandToPulse: 0
 --- !u!114 &5005894903885799342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8146,6 +8135,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandToSet: 0
+  pulseCommand: 0
+  commandToPulse: 0
+--- !u!114 &9190762483103764277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000374894610260435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec4965e004382e4691ea3eab1d2eb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandToSet: 1
   pulseCommand: 0
   commandToPulse: 0
 --- !u!114 &2093560297026248095

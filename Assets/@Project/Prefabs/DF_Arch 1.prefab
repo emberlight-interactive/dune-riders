@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 4238324604425393378}
   - component: {fileID: 3943128612302517906}
   - component: {fileID: 8786933047862463253}
+  - component: {fileID: 1860216065741335806}
   m_Layer: 0
   m_Name: DF_Arch 1_LOD2
   m_TagString: Untagged
@@ -158,6 +159,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bc577964da3f7c649ab69b051adbaacd, type: 2}
+--- !u!114 &1860216065741335806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268293988434515699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &3911131292410285452
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +189,7 @@ GameObject:
   - component: {fileID: 6761224912896606183}
   - component: {fileID: 8488652400022739851}
   - component: {fileID: 8476422413443535378}
+  - component: {fileID: 6831022826136020047}
   m_Layer: 0
   m_Name: DF_Arch 1_LOD3
   m_TagString: Untagged
@@ -255,6 +275,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 85d156591bf77db47ad70984ca2a9559, type: 2}
+--- !u!114 &6831022826136020047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911131292410285452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &7546347247260509886
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +305,7 @@ GameObject:
   - component: {fileID: 7326162526659807325}
   - component: {fileID: 3077138877821385291}
   - component: {fileID: 3609092677471756372}
+  - component: {fileID: 9095414789120888321}
   m_Layer: 0
   m_Name: DF_Arch 1_LOD1
   m_TagString: Untagged
@@ -352,3 +391,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 7b66b1ebd4c1d514a99adfd814a1d2db, type: 2}
+--- !u!114 &9095414789120888321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7546347247260509886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1

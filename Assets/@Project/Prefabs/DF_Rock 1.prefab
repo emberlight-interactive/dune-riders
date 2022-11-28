@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 7935452009587035845}
   - component: {fileID: 8665125018165954592}
   - component: {fileID: 4607435239614020269}
+  - component: {fileID: 1477795616608467875}
   m_Layer: 0
   m_Name: DF_Rock 1_LOD3
   m_TagString: Untagged
@@ -158,6 +159,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e52cdcf3d091d774fa4357fcb34c0bae, type: 2}
+--- !u!114 &1477795616608467875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056715740428021243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &5034412266531973033
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +189,7 @@ GameObject:
   - component: {fileID: 2563404689333751183}
   - component: {fileID: 8687518944298330729}
   - component: {fileID: 3864068191093763525}
+  - component: {fileID: 475718408140527986}
   m_Layer: 0
   m_Name: DF_Rock 1_LOD1
   m_TagString: Untagged
@@ -255,6 +275,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: aa96321e19c83884c9dae96a2955a22a, type: 2}
+--- !u!114 &475718408140527986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034412266531973033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &8416879892766153976
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +305,7 @@ GameObject:
   - component: {fileID: 452215138855586025}
   - component: {fileID: 536826700644822717}
   - component: {fileID: 1130239657811867175}
+  - component: {fileID: 2239729947389520038}
   m_Layer: 0
   m_Name: DF_Rock 1_LOD2
   m_TagString: Untagged
@@ -352,3 +391,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1de586460fb64e14f94572073a3edf9c, type: 2}
+--- !u!114 &2239729947389520038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416879892766153976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1

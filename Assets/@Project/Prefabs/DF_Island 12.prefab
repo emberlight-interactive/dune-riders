@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 8263591827987100559}
   - component: {fileID: 8263591827987100557}
   - component: {fileID: 8263591827987100556}
+  - component: {fileID: 8691653449466932101}
   m_Layer: 0
   m_Name: Island 12_LOD1
   m_TagString: Untagged
@@ -159,6 +160,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d1b5f5b681949094a83f6a6ee7fe5b4d, type: 2}
+--- !u!114 &8691653449466932101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263591827987100554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &8263591828130528753
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +190,7 @@ GameObject:
   - component: {fileID: 8263591828130528754}
   - component: {fileID: 8263591828130528752}
   - component: {fileID: 8263591828130528755}
+  - component: {fileID: 4396979707801926617}
   m_Layer: 0
   m_Name: Island 12_LOD3
   m_TagString: Untagged
@@ -257,6 +277,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f0cb1697758c8954daa4c040dc8eafee, type: 2}
+--- !u!114 &4396979707801926617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263591828130528753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
 --- !u!1 &8263591828444587522
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +307,7 @@ GameObject:
   - component: {fileID: 8263591828444587527}
   - component: {fileID: 8263591828444587525}
   - component: {fileID: 8263591828444587524}
+  - component: {fileID: 3984097158083311574}
   m_Layer: 0
   m_Name: Island 12_LOD2
   m_TagString: Untagged
@@ -355,3 +394,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bcc9968d23b394644aedb29194ae12b2, type: 2}
+--- !u!114 &3984097158083311574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263591828444587522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  dynamic: 0
+  area: -1
