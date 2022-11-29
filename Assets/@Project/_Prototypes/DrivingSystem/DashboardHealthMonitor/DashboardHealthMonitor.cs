@@ -8,8 +8,11 @@ namespace DuneRiders.DrivingSystem {
 	public class DashboardHealthMonitor : MonoBehaviour
 	{
 		[SerializeField] Image cliImage;
+		[SerializeField] Image pulseImage;
 
 		public void UpdateMonitors(float healthPercentage) {
+			PulseMonitor();
+
 			var healthPercentageRelativeToOneHundred = 100 * healthPercentage;
 			if (healthPercentageRelativeToOneHundred == 100) {
 				cliImage.fillAmount = 0f;
@@ -30,6 +33,17 @@ namespace DuneRiders.DrivingSystem {
 				cliImage.fillAmount = 1f;
 				return;
 			}
+		}
+
+		void PulseMonitor() {
+			StopAllCoroutines();
+			StartCoroutine(DamagePulse());
+		}
+
+		IEnumerator DamagePulse() {
+			pulseImage.enabled = true;
+			yield return new WaitForSeconds(0.1f);
+			pulseImage.enabled = false;
 		}
 	}
 }
