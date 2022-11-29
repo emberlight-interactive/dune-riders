@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Autohand;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 
 public class RiderDrivingControl : MonoBehaviour
 {
@@ -66,7 +65,7 @@ public class RiderDrivingControl : MonoBehaviour
 				Brake();
 				SetWheelTorque(0);
 			}
-		} else if (localVel.z < -10f && currentAcceleration > 0) {
+		} else if (localVel.z < -4f && currentAcceleration > 0) {
 			Brake();
 		} else {
 			ReleaseBrake();
