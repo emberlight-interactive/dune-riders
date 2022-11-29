@@ -65,7 +65,7 @@ namespace DuneRiders.RiderAI.Actioners {
 			if (finalDestination == Vector3.zero) finalDestination = transform.position + (transform.forward * 3000);
 		}
 
-		Vector3 CalculatePositionAlongPathToFinalDestination(float distance = 100) {
+		Vector3 CalculatePositionAlongPathToFinalDestination(float distance = 300) {
 			return transform.position + (finalDestination - transform.position).normalized * distance;
 		}
 	}
