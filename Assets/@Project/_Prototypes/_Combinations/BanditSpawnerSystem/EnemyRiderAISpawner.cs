@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using DuneRiders.RiderAI;
 using DuneRiders.Shared.PersistenceSystem;
+using DuneRiders.Combinations;
 
 namespace DuneRiders.BanditSpawnerSystem {
 	[RequireComponent(typeof(EnemiesInRangeOfPlayer))]
@@ -18,6 +19,7 @@ namespace DuneRiders.BanditSpawnerSystem {
 		[SerializeField] float maxSpawnTimeInSeconds = 1200;
 		[SerializeField] SpawnDifficulty spawnDifficulty = SpawnDifficulty.Medium;
 		[SerializeField] bool getSpawnDifficultyFromPositions = false;
+		[SerializeField] bool getSpawnDifficultyFromPlayerStrength = false;
 		[SerializeField] List<SpawnerDifficultyPos> spawnerDifficultyPositions = new List<SpawnerDifficultyPos>();
 		[SerializeField, ReadOnly] int maxRiders = 10;
 		[SerializeField] EnemyRiderInstanceBuilder enemyRiderInstanceBuilder;
@@ -124,9 +126,9 @@ namespace DuneRiders.BanditSpawnerSystem {
 		int NumberOfRidersToSpawn() {
 			switch (GetSpawnDifficulty()) {
 				case SpawnDifficulty.VeryEasy:
-					return (int) ((float) maxRiders * 0.2f);
+					return (int) ((float) maxRiders * 0.1f);
 				case SpawnDifficulty.Easy:
-					return (int) ((float) maxRiders * 0.4f);
+					return (int) ((float) maxRiders * 0.3f);
 				case SpawnDifficulty.Medium:
 					return (int) ((float) maxRiders * 0.7f);
 				case SpawnDifficulty.Hard:
@@ -144,23 +146,42 @@ namespace DuneRiders.BanditSpawnerSystem {
 		}
 
 		SpawnDifficulty GetSpawnDifficulty() {
-			if (!getSpawnDifficultyFromPositions) return spawnDifficulty;
+			if (getSpawnDifficultyFromPositions) return GetSpawnDifficultyFromPositions();
+			else if (getSpawnDifficultyFromPlayerStrength) return GetSpawnDifficultyFromPlayerStrength();
 			else {
-				(float distance, SpawnDifficulty spawnDifficulty) closestSpawnPosition = (default(float), default(SpawnDifficulty));
-				foreach (var spawnPos in spawnerDifficultyPositions) {
-					if (closestSpawnPosition == default((float, SpawnDifficulty))) {
-						closestSpawnPosition.distance = Vector3.Distance(player.position, spawnPos.transform.position);
+				return spawnDifficulty;
+			}
+		}
+
+		SpawnDifficulty GetSpawnDifficultyFromPositions() {
+			(float distance, SpawnDifficulty spawnDifficulty) closestSpawnPosition = (default(float), default(SpawnDifficulty));
+			foreach (var spawnPos in spawnerDifficultyPositions) {
+				if (closestSpawnPosition == default((float, SpawnDifficulty))) {
+					closestSpawnPosition.distance = Vector3.Distance(player.position, spawnPos.transform.position);
+					closestSpawnPosition.spawnDifficulty = spawnPos.spawnDifficulty;
+				} else {
+					var distance = Vector3.Distance(player.position, spawnPos.transform.position);
+					if (distance < closestSpawnPosition.distance) {
+						closestSpawnPosition.distance = distance;
 						closestSpawnPosition.spawnDifficulty = spawnPos.spawnDifficulty;
-					} else {
-						var distance = Vector3.Distance(player.position, spawnPos.transform.position);
-						if (distance < closestSpawnPosition.distance) {
-							closestSpawnPosition.distance = distance;
-							closestSpawnPosition.spawnDifficulty = spawnPos.spawnDifficulty;
-						}
 					}
 				}
+			}
 
-				return closestSpawnPosition.spawnDifficulty;
+			return closestSpawnPosition.spawnDifficulty;
+		}
+
+		SpawnDifficulty GetSpawnDifficultyFromPlayerStrength() {
+			var numberOfFriendlyRiders = GlobalQuery.GetAllCompanyRiders().Length;
+
+			if (numberOfFriendlyRiders > 7) {
+				return SpawnDifficulty.Hard;
+			} else if (numberOfFriendlyRiders > 4) {
+				return SpawnDifficulty.Medium;
+			} else if (numberOfFriendlyRiders > 1) {
+				return SpawnDifficulty.Easy;
+			} else {
+				return SpawnDifficulty.VeryEasy;
 			}
 		}
 	}
