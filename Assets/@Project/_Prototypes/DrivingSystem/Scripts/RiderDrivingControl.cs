@@ -58,7 +58,7 @@ public class RiderDrivingControl : MonoBehaviour
 		if (persistentBrakeSinceForwardAcceleration && currentAcceleration < 0)
 		{
 			if (GetRiderKMH() > 35f) {
-				Brake();
+				Brake(GetRiderKMH() / 100f);
 			} else if (GetRiderKMH() <= 35f && GetRiderKMH() >= 5f) {
 				ReleaseBrake();
 			} else if (GetRiderKMH() < 5f) {
@@ -76,11 +76,11 @@ public class RiderDrivingControl : MonoBehaviour
 		frontRight.steerAngle = currentTurnAngle;
 	}
 
-	void Brake() {
-		frontLeft.brakeTorque = breakingForce;
-		frontRight.brakeTorque = breakingForce;
-		backLeft.brakeTorque = breakingForce;
-		backRight.brakeTorque = breakingForce;
+	void Brake(float multiplier = 1f) {
+		frontLeft.brakeTorque = breakingForce * multiplier;
+		frontRight.brakeTorque = breakingForce * multiplier;
+		backLeft.brakeTorque = breakingForce * multiplier;
+		backRight.brakeTorque = breakingForce * multiplier;
 	}
 
 	void ReleaseBrake() {
