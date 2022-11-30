@@ -60,7 +60,7 @@ namespace DuneRiders.GatheringSystem {
 		}
 
 		void MoveTowardsGatherer() {
-			if (Vector3.Distance(transform.position, gatherer.transform.position) < 0.2f) SimplePool.Despawn(gameObject);
+			if (Vector3.Distance(transform.position, gatherer.transform.position) < 0.2f) Destroy(gameObject);
 
 			float step = gatherSpeed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, gatherer.transform.position, step);
@@ -69,7 +69,7 @@ namespace DuneRiders.GatheringSystem {
 
 		IEnumerator DespawnTimer() {
 			yield return new WaitForSeconds(maxSecondsToGatherer);
-			SimplePool.Despawn(gameObject);
+			Destroy(gameObject);
 		}
 
 		private void OnTriggerEnter(Collider other) {

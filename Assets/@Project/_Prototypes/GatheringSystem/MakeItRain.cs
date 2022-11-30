@@ -13,7 +13,8 @@ namespace DuneRiders.GatheringSystem {
 		public void SpawnLootables() {
 			for (int i = 0; i < gatherableSpawnLocations.Length; i++) {
 				var gatherable = SelectGatherable();
-				SimplePool.Spawn(gatherable.gameObject, gatherableSpawnLocations[i].position, gatherable.transform.rotation);
+				// todo: Set up a robust pooling system
+				Instantiate(gatherable.gameObject, gatherableSpawnLocations[i].position, gatherable.transform.rotation);
 			}
 		}
 
