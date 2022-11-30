@@ -11,8 +11,6 @@ namespace DuneRiders.DrivingSystem {
 		[SerializeField] Image pulseImage;
 
 		public void UpdateMonitors(float healthPercentage) {
-			PulseMonitor();
-
 			var healthPercentageRelativeToOneHundred = 100 * healthPercentage;
 			if (healthPercentageRelativeToOneHundred == 100) {
 				cliImage.fillAmount = 0f;
@@ -35,7 +33,7 @@ namespace DuneRiders.DrivingSystem {
 			}
 		}
 
-		void PulseMonitor() {
+		public void DamagePulseMonitor() {
 			StopAllCoroutines();
 			StartCoroutine(DamagePulse());
 		}

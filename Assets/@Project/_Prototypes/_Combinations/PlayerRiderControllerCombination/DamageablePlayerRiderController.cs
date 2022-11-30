@@ -31,7 +31,10 @@ namespace DuneRiders.PlayerRiderControllerCombination {
 		{
 			var prevHealth = health;
 			health -= healthPoints;
+
+			dashboardHealthMonitor.DamagePulseMonitor();
 			UpdateMonitor();
+
 			if (prevHealth > 0 && health <= 0) HandleZeroHealthPoints();
 		}
 
