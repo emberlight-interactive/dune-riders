@@ -2866,6 +2866,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548017945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformSettings:
+    translation: {x: 500, y: 200, z: 350}
+    scale: {x: 0.09765625, y: 1, z: 0.09765625}
+    rotation: {x: 0, y: 0, z: 0}
+    flipScaleX: 0
+    flipScaleY: 0
+    flipScaleZ: 0
+  domainSettings:
+    noiseTypeName: Ridge
+    fractalTypeName: Fbm
+    noiseTypeParams: 
+    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1 &574760976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7504228220949698469, guid: 4d30912cbbf241c43b194b1ad6c0d254, type: 3}
@@ -3211,30 +3235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c07c84a4f846f4fb6dfb7d105f51f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &733082236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba17d399ab86974c8ef9551f6e8f8d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformSettings:
-    translation: {x: 500, y: 200, z: 350}
-    scale: {x: 0.09765625, y: 1, z: 0.09765625}
-    rotation: {x: 0, y: 0, z: 0}
-    flipScaleX: 0
-    flipScaleY: 0
-    flipScaleZ: 0
-  domainSettings:
-    noiseTypeName: Ridge
-    fractalTypeName: Fbm
-    noiseTypeParams: 
-    fractalTypeParams: '{"warpOffsets":{"x":0.0,"y":0.0,"z":0.0,"w":0.0},"octavesMinMax":{"x":0.0,"y":16.0},"amplitudeMinMax":{"x":0.0,"y":1.0},"frequencyMinMax":{"x":0.0,"y":2.0},"lacunarityMinMax":{"x":0.0,"y":4.0},"persistenceMinMax":{"x":0.0,"y":1.0},"warpIterationsMinMax":{"x":0.0,"y":8.0},"warpStrengthMinMax":{"x":-2.0,"y":2.0},"octaves":8.0,"amplitude":0.10599999874830246,"frequency":1.0,"persistence":0.5,"lacunarity":1.5,"warpIterations":0.0,"warpStrength":1.0,"warpEnabled":false,"warpExpanded":true}'
 --- !u!1001 &738040725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4702,7 +4702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731951975384, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: far clip plane
-      value: 5000
+      value: 4500
       objectReference: {fileID: 0}
     - target: {fileID: 3107470731951975384, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerIndex: 16
-  distanceToUntilCull: 5000
+  distanceToUntilCull: 4500
 --- !u!114 &1051771970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5028,7 +5028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerIndex: 15
-  distanceToUntilCull: 2500
+  distanceToUntilCull: 2000
 --- !u!114 &1051771971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5041,7 +5041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ea3df668f934141a26b8d8f57fb76c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToUntilCull: 4500
+  distanceToUntilCull: 3000
 --- !u!223 &1051771972 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7777978125410250527, guid: 1155286ccc3e4aa45b06b6658a376ece, type: 3}
@@ -5067,6 +5067,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6da8f9b6354d3a46a5572dd5c0521bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1082884111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
+  m_PrefabInstance: {fileID: 1199786670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611fee4527e93314fa35a6fb5aa66f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1096842005
@@ -5251,7 +5262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128173081264996449, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: m_Name
-      value: MigrationWaypoint (5) (Unused)
+      value: MigrationWaypoint (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: nextWaypoint
@@ -6386,23 +6397,23 @@ MonoBehaviour:
       y: 0
       z: 0
     m_Extents:
-      x: 0
-      y: 0
-      z: 0
+      x: 100000
+      y: 100000
+      z: 100000
   m_sceneViewImpostorLoadingBounds:
     m_Center:
-      x: -23554.650390625
-      y: 13897.6337890625
-      z: -859.1550903320312
+      x: 659.87548828125
+      y: 337.2184753417969
+      z: -587.2212524414062
     m_Extents:
       x: 0
       y: 0
       z: 0
   m_sceneViewCameraLoadingBounds:
     m_Center:
-      x: -23554.650390625
-      y: 13897.6337890625
-      z: -859.1550903320312
+      x: 659.87548828125
+      y: 337.2184753417969
+      z: -587.2212524414062
     m_Extents:
       x: 100000
       y: 100000
@@ -6969,7 +6980,7 @@ MonoBehaviour:
       m_warpIterations: 0
       m_warpStrength: 1
       m_warpOffset: {x: 0, y: 0, z: 0, w: 0}
-    m_noiseSettings: {fileID: 733082236}
+    m_noiseSettings: {fileID: 548017945}
     m_noiseToolSettings:
       worldHeightRemap: {x: 0, y: 0}
       coordSpace: 0
@@ -7393,7 +7404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128173081264996449, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: m_Name
-      value: MigrationWaypoint (6)
+      value: MigrationWaypoint (6) (Unused)
       objectReference: {fileID: 0}
     - target: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: uniqueIdentifier
@@ -7406,17 +7417,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3128173081264996448, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
   m_PrefabInstance: {fileID: 1550598630}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1550598632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
-  m_PrefabInstance: {fileID: 1550598630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611fee4527e93314fa35a6fb5aa66f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1550834876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7990,7 +7990,7 @@ PrefabInstance:
     - target: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: nextWaypoint
       value: 
-      objectReference: {fileID: 1550598632}
+      objectReference: {fileID: 1082884111}
     - target: {fileID: 3128173081264997279, guid: f17b78dedb070d845aa15e1bbce8febc, type: 3}
       propertyPath: uniqueIdentifier
       value: bd65d321-08a8-4277-9228-07d4280c81fc

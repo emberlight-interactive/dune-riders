@@ -165,3 +165,19 @@ When gas is provided for the last migration to the ring the camera fades black a
 - Testing methodologies can be released in blog posts and on reddit to passively market game
 - Co-routine Performance combined with global instances to improve performance
 - Write article on design consideration collection
+- Phycological challenges of completing a game
+  - Is what I'm making fun
+    - Rely on a theory, not on your intuition
+      - Game design by jessie schell along with a personal developed theory I had tested with a previous game
+      - You will completely lose an objective perspective on how fun your game is
+      - Basing your game idea on your intuitation will conflate tightly with your ego and can actually make taking constructive critism exceptionally difficult since your "supieror insights" will be assaulted directly without the established theory acting as a wall to protect you as a designer
+  - Closing
+    - Life balance as a means of reducing pressure without 
+  - Motivation
+    - Feels like I'm wasting my whole life
+    - Accoutnability; give a trusted person something of value, if you fail, it's theirs
+      - Small goals with rolling accountability
+      - Possibility for damaging relationship, make sure to manage well with people you don't want to hurt
+      - "Burn the ships"
+      - Shifting your goals from a want to a need carries powerful phycological effects
+        - Now when I go to the gym it's not to get fit, it's because I don't want to lose $500 today
